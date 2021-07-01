@@ -8,7 +8,8 @@ target 'bzBoss' do
   # Pods for bzBoss
 pod 'iOSDropDown'
 pod 'IQKeyboardManagerSwift'
-
+pod 'AlamofireImage', '~> 4.1'
+pod 'Alamofire', '~> 5.2'
 
   target 'bzBossTests' do
     inherit! :search_paths

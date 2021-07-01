@@ -24,6 +24,9 @@
 		1B4DCD31268AF34000D3710B /* Main1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B4DCD30268AF34000D3710B /* Main1.storyboard */; };
 		1B4DCD3A268B330F00D3710B /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4DCD39268B330F00D3710B /* UIView+Extension.swift */; };
 		1B4DCD3F268B5C2700D3710B /* MyButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4DCD3E268B5C2700D3710B /* MyButton+Extension.swift */; };
+		1B64A337268D77CC00159D98 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B64A335268D77CC00159D98 /* APIRouter.swift */; };
+		1B64A338268D77CC00159D98 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B64A336268D77CC00159D98 /* APIClient.swift */; };
+		1B64A33C268D78E600159D98 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B64A33B268D78E600159D98 /* Constants.swift */; };
 		4F26566054E285A099D50C5C /* Pods_bzBoss_bzBossUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A6EA9C5727D7B4F9C6FFD44 /* Pods_bzBoss_bzBossUITests.framework */; };
 		57355F0B13D57137E8A76714 /* Pods_bzBossTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67DE81C33A42552E49A2C259 /* Pods_bzBossTests.framework */; };
 		A762F27B268C8B760058EEEB /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A762F27A268C8B760058EEEB /* SignInViewController.swift */; };
@@ -84,6 +87,9 @@
 		1B4DCD30268AF34000D3710B /* Main1.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main1.storyboard; sourceTree = "<group>"; };
 		1B4DCD39268B330F00D3710B /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		1B4DCD3E268B5C2700D3710B /* MyButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MyButton+Extension.swift"; sourceTree = "<group>"; };
+		1B64A335268D77CC00159D98 /* APIRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
+		1B64A336268D77CC00159D98 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		1B64A33B268D78E600159D98 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3D93B227C4E1E0C4030D2A65 /* Pods-bzBoss.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bzBoss.debug.xcconfig"; path = "Target Support Files/Pods-bzBoss/Pods-bzBoss.debug.xcconfig"; sourceTree = "<group>"; };
 		4361EB9BD1E8F556083A006C /* Pods-bzBossTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bzBossTests.debug.xcconfig"; path = "Target Support Files/Pods-bzBossTests/Pods-bzBossTests.debug.xcconfig"; sourceTree = "<group>"; };
 		67DE81C33A42552E49A2C259 /* Pods_bzBossTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bzBossTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +133,7 @@
 		1B356291268C240E00BC0396 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				1B64A33B268D78E600159D98 /* Constants.swift */,
 				1B356292268C243300BC0396 /* Validation.swift */,
 			);
 			path = Utilities;
@@ -190,6 +197,7 @@
 				1B4DCCFA268AE56600D3710B /* AppDelegate.swift */,
 				1B4DCCFE268AE56600D3710B /* ViewController.swift */,
 				1B356297268C244000BC0396 /* ViewControllers */,
+				1B64A334268D77AB00159D98 /* API */,
 				1B4DCD30268AF34000D3710B /* Main1.storyboard */,
 				1B4DCD00268AE56600D3710B /* Main.storyboard */,
 				1B4DCD06268AE56B00D3710B /* Assets.xcassets */,
@@ -225,6 +233,15 @@
 				1B4DCD39268B330F00D3710B /* UIView+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1B64A334268D77AB00159D98 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				1B64A336268D77CC00159D98 /* APIClient.swift */,
+				1B64A335268D77CC00159D98 /* APIRouter.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		549BB4C1EF275DB6D8A951DF /* Pods */ = {
@@ -491,6 +508,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B4DCCFF268AE56600D3710B /* ViewController.swift in Sources */,
+				1B64A337268D77CC00159D98 /* APIRouter.swift in Sources */,
 				1B356283268C23C700BC0396 /* OnboardingViewController.swift in Sources */,
 				1B4DCCFB268AE56600D3710B /* AppDelegate.swift in Sources */,
 				A762F283268C915F0058EEEB /* PasswordViewController.swift in Sources */,
@@ -498,7 +516,9 @@
 				1B4DCD05268AE56600D3710B /* bzBoss.xcdatamodeld in Sources */,
 				1B356288268C23E400BC0396 /* OnboardingCollectionViewCell.swift in Sources */,
 				1B35629A268C249400BC0396 /* SignUpViewController.swift in Sources */,
+				1B64A338268D77CC00159D98 /* APIClient.swift in Sources */,
 				1B356293268C243300BC0396 /* Validation.swift in Sources */,
+				1B64A33C268D78E600159D98 /* Constants.swift in Sources */,
 				A762F27B268C8B760058EEEB /* SignInViewController.swift in Sources */,
 				1B4DCD3F268B5C2700D3710B /* MyButton+Extension.swift in Sources */,
 			);
