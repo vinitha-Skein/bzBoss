@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Onboarding View Controller-->
         <scene sceneID="dSL-tk-EMR">
             <objects>
-                <viewController id="eTA-n7-zsN" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardingViewController" id="eTA-n7-zsN" customClass="OnboardingViewController" customModule="bzBoss" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iaT-VX-9IZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -50,30 +50,39 @@
                                             <constraint firstAttribute="height" constant="200" id="RVd-9G-WGB"/>
                                         </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OsA-7L-hNu">
-                                            <size key="itemSize" width="201" height="137"/>
+                                            <size key="itemSize" width="213" height="157"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nD8-tQ-sIt">
-                                                <rect key="frame" x="19.5" y="0.0" width="201" height="137"/>
+                                                <rect key="frame" x="13.5" y="0.0" width="213" height="157"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="joX-cD-GWE">
-                                                    <rect key="frame" x="0.0" y="0.0" width="201" height="137"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="213" height="157"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vTM-fi-Q1g">
-                                                            <rect key="frame" x="8" y="4" width="185" height="100"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vTM-fi-Q1g">
+                                                            <rect key="frame" x="8" y="4" width="197" height="100"/>
                                                         </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Mt5-xI-An2">
+                                                            <rect key="frame" x="24" y="112" width="160" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstItem="Mt5-xI-An2" firstAttribute="centerX" secondItem="vTM-fi-Q1g" secondAttribute="centerX" id="6gb-TW-SKl"/>
                                                         <constraint firstAttribute="trailing" secondItem="vTM-fi-Q1g" secondAttribute="trailing" constant="8" id="AAL-cB-3cj"/>
                                                         <constraint firstItem="vTM-fi-Q1g" firstAttribute="top" secondItem="joX-cD-GWE" secondAttribute="top" constant="4" id="D6M-Wk-MUv"/>
                                                         <constraint firstItem="vTM-fi-Q1g" firstAttribute="leading" secondItem="joX-cD-GWE" secondAttribute="leading" constant="8" id="K6v-82-94d"/>
+                                                        <constraint firstItem="Mt5-xI-An2" firstAttribute="top" secondItem="vTM-fi-Q1g" secondAttribute="bottom" constant="8" symbolic="YES" id="aJk-ML-mZ2"/>
                                                     </constraints>
                                                 </collectionViewCellContentView>
-                                                <size key="customSize" width="201" height="137"/>
+                                                <size key="customSize" width="213" height="157"/>
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
