@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>513256632782-t5tkg21h6mmqirl8tsqb1p0ro92npcbp.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.513256632782-t5tkg21h6mmqirl8tsqb1p0ro92npcbp</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD_zkJNqGmKiaSga1etZpyMAa00t7K8TXU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>513256632782</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.skeintech.bzBoss</string>
+	<key>PROJECT_ID</key>
+	<string>bzbossauth</string>
+	<key>STORAGE_BUCKET</key>
+	<string>bzbossauth.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:513256632782:ios:f2e3c5105ff51968997b9f</string>
+</dict>
+</plist>

@@ -10,6 +10,7 @@ pod 'iOSDropDown'
 pod 'IQKeyboardManagerSwift'
 pod 'AlamofireImage', '~> 4.1'
 pod 'Alamofire', '~> 5.2'
+pod 'Firebase/Auth'
 
   target 'bzBossTests' do
     inherit! :search_paths

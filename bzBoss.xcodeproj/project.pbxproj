@@ -31,6 +31,9 @@
 		57355F0B13D57137E8A76714 /* Pods_bzBossTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67DE81C33A42552E49A2C259 /* Pods_bzBossTests.framework */; };
 		A762F27B268C8B760058EEEB /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A762F27A268C8B760058EEEB /* SignInViewController.swift */; };
 		A762F283268C915F0058EEEB /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A762F282268C915F0058EEEB /* PasswordViewController.swift */; };
+		A7DDFA77268D825300D639B0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A7DDFA76268D825300D639B0 /* GoogleService-Info.plist */; };
+		A7DDFAB4268DD99400D639B0 /* ShopDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDFAB3268DD99400D639B0 /* ShopDetailsViewController.swift */; };
+		A7DDFABA268DD9F600D639B0 /* ShopDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDFAB9268DD9F600D639B0 /* ShopDetailsCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +100,9 @@
 		86F55840FC1A575C9CB63F01 /* Pods-bzBoss-bzBossUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bzBoss-bzBossUITests.debug.xcconfig"; path = "Target Support Files/Pods-bzBoss-bzBossUITests/Pods-bzBoss-bzBossUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A762F27A268C8B760058EEEB /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		A762F282268C915F0058EEEB /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
+		A7DDFA76268D825300D639B0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A7DDFAB3268DD99400D639B0 /* ShopDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailsViewController.swift; sourceTree = "<group>"; };
+		A7DDFAB9268DD9F600D639B0 /* ShopDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
 		D67CA8006710C10D6E8AB3D2 /* Pods_bzBoss.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bzBoss.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA6E791BC621AF6F2A6A5CA9 /* Pods-bzBossTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bzBossTests.release.xcconfig"; path = "Target Support Files/Pods-bzBossTests/Pods-bzBossTests.release.xcconfig"; sourceTree = "<group>"; };
 		ECF76640346C4AE2114CE36A /* Pods-bzBoss.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bzBoss.release.xcconfig"; path = "Target Support Files/Pods-bzBoss/Pods-bzBoss.release.xcconfig"; sourceTree = "<group>"; };
@@ -192,6 +198,7 @@
 		1B4DCCF9268AE56600D3710B /* bzBoss */ = {
 			isa = PBXGroup;
 			children = (
+				A7DDFAB2268DD97300D639B0 /* Shop Details */,
 				1B356291268C240E00BC0396 /* Utilities */,
 				1B4DCD38268B32F800D3710B /* Extensions */,
 				1B4DCCFA268AE56600D3710B /* AppDelegate.swift */,
@@ -202,6 +209,7 @@
 				1B4DCD00268AE56600D3710B /* Main.storyboard */,
 				1B4DCD06268AE56B00D3710B /* Assets.xcassets */,
 				1B4DCD08268AE56B00D3710B /* LaunchScreen.storyboard */,
+				A7DDFA76268D825300D639B0 /* GoogleService-Info.plist */,
 				1B4DCD0B268AE56B00D3710B /* Info.plist */,
 				1B4DCD03268AE56600D3710B /* bzBoss.xcdatamodeld */,
 			);
@@ -265,6 +273,15 @@
 				67DE81C33A42552E49A2C259 /* Pods_bzBossTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A7DDFAB2268DD97300D639B0 /* Shop Details */ = {
+			isa = PBXGroup;
+			children = (
+				A7DDFAB3268DD99400D639B0 /* ShopDetailsViewController.swift */,
+				A7DDFAB9268DD9F600D639B0 /* ShopDetailsCollectionViewCell.swift */,
+			);
+			path = "Shop Details";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -378,6 +395,7 @@
 			files = (
 				1B4DCD0A268AE56B00D3710B /* LaunchScreen.storyboard in Resources */,
 				1B4DCD31268AF34000D3710B /* Main1.storyboard in Resources */,
+				A7DDFA77268D825300D639B0 /* GoogleService-Info.plist in Resources */,
 				1B4DCD07268AE56B00D3710B /* Assets.xcassets in Resources */,
 				1B4DCD02268AE56600D3710B /* Main.storyboard in Resources */,
 			);
@@ -520,6 +538,8 @@
 				1B356293268C243300BC0396 /* Validation.swift in Sources */,
 				1B64A33C268D78E600159D98 /* Constants.swift in Sources */,
 				A762F27B268C8B760058EEEB /* SignInViewController.swift in Sources */,
+				A7DDFABA268DD9F600D639B0 /* ShopDetailsCollectionViewCell.swift in Sources */,
+				A7DDFAB4268DD99400D639B0 /* ShopDetailsViewController.swift in Sources */,
 				1B4DCD3F268B5C2700D3710B /* MyButton+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -698,7 +718,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8D6QJ8FVC9;
+				DEVELOPMENT_TEAM = 66AXNRYMA4;
 				INFOPLIST_FILE = bzBoss/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -719,7 +739,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8D6QJ8FVC9;
+				DEVELOPMENT_TEAM = 66AXNRYMA4;
 				INFOPLIST_FILE = bzBoss/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
