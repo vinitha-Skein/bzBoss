@@ -9,6 +9,7 @@ import UIKit
 
 class ShopDetailsViewController: UIViewController
 {
+    @IBOutlet var dateLabel: UILabel!
     @IBOutlet var graphicalButton: Mybutton!
     @IBOutlet var numericalButton: Mybutton!
     @IBOutlet var calenderView: UIView!
@@ -31,6 +32,10 @@ class ShopDetailsViewController: UIViewController
         
         collectionview.delegate = self
         collectionview.dataSource = self
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
+        dateLabel.text = dateFormatter.string(from: date)
     }
     
     @IBAction func numerical_Clicked(_ sender: Any)
@@ -55,6 +60,11 @@ class ShopDetailsViewController: UIViewController
         todayButton.layer.backgroundColor = selectedColor.cgColor
         todayButton.setTitleColor(UIColor.white, for: .normal)
         calenderView.layer.backgroundColor = dateSelectionBG.cgColor
+        
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
+        dateLabel.text = dateFormatter.string(from: date)
     }
     
     @IBAction func yesterday_clicked(_ sender: Any)
@@ -64,6 +74,12 @@ class ShopDetailsViewController: UIViewController
         todayButton.layer.backgroundColor = dateSelectionBG.cgColor
         todayButton.setTitleColor(UIColor.black, for: .normal)
         calenderView.layer.backgroundColor = dateSelectionBG.cgColor
+        let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date())
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
+        dateLabel.text = dateFormatter.string(from: yesterday!)
+
     }
     @IBAction func calender_clicked(_ sender: Any)
     {
@@ -72,6 +88,14 @@ class ShopDetailsViewController: UIViewController
         todayButton.layer.backgroundColor = dateSelectionBG.cgColor
         todayButton.setTitleColor(UIColor.black, for: .normal)
         calenderView.layer.backgroundColor = selectedColor.cgColor
+        
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: .main)
+        let popup = storyboard.instantiateViewController(withIdentifier: "DatePickerViewController") as! DatePickerViewController
+        popup.isTimePicker = false
+        popup.modalPresentationStyle = .overCurrentContext
+        popup.delegate = self
+        present(popup, animated: true, completion: nil)
     }
 }
 extension ShopDetailsViewController:UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout
@@ -94,4 +118,18 @@ extension ShopDetailsViewController:UICollectionViewDelegate,UICollectionViewDat
         var width = collectionView.frame.width/2 - 10
         return CGSize(width: width, height: 140)
     }
+}
+extension ShopDetailsViewController:DatePickerDelegate
+{
+    func selectedDate(date: String)
+    {
+        dateLabel.text = date
+    }
+    
+    func cancelDateSelection()
+    {
+        
+    }
+    
+    
 }
