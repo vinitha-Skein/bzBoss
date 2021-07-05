@@ -11,20 +11,24 @@ import SideMenu
 class HomeViewController: UIViewController {
     
     var leftMenu: SideMenuViewController = UIStoryboard(name: "Main1", bundle: Bundle.main).instantiateViewController(withIdentifier: "SideMenuViewController") as! SideMenuViewController
+    var rightBarButtonItem:UIBarButtonItem?
+
+    @IBOutlet weak var companytableview: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavBarItems()
         // Do any additional setup after loading the view.
     }
-    func configureNavBarItems() {
-        let leftMenu: UIBarButtonItem = UIBarButtonItem.init(image: UIImage(named: "sidemenu"), style: .plain, target: self, action: #selector(HomeViewController.showLeftMenu(_:)))
-        leftMenu.tintColor = .white
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.23, green: 0.64, blue: 0.91, alpha: 1.00)
-        self.navigationItem.leftBarButtonItem = leftMenu
+    override func viewWillAppear(_ animated: Bool) {
+        companytableview.tableFooterView = MyUIView()
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
-
-    @objc func showLeftMenu(_ sender:UIBarButtonItem) {
+    
+    @IBAction func RefreshListItem(_ sender: UIButton) {
+    }
+    
+    
+    @IBAction func barbuttonItem(_ sender: Any) {
         let sideMenuNavController: SideMenuNavigationController = SideMenuNavigationController.init(rootViewController: self.leftMenu)
         self.leftMenu.delegate = self
         sideMenuNavController.view.clipsToBounds = true
@@ -38,17 +42,29 @@ class HomeViewController: UIViewController {
         SideMenuManager.default.menuWidth = 280
         present(SideMenuManager.default.leftMenuNavigationController!, animated: true, completion: nil)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func  gotoCompanyDetails() {
+        let storyboard = UIStoryboard(name: "Main1", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "CompanyDetailsViewController") as! CompanyDetailsViewController
+        vc.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(vc, animated: true)
     }
-    */
 
+}
+extension HomeViewController:UITableViewDelegate,UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DashboardTableviewCell", for: indexPath) as! DashboardTableviewCell
+        
+        return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+      gotoCompanyDetails()
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
 }
 
 extension HomeViewController:SideMenuDelegate {
