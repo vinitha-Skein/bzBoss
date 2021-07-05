@@ -6,9 +6,24 @@
 //
 
 import UIKit
+import BEMAnalogClock
+
 
 class ShopDetailsViewController: UIViewController
 {
+    @IBOutlet weak var visitorsChartView: UIView!
+    @IBOutlet weak var closedatView: UIView!
+    @IBOutlet weak var staffChartView: UIView!
+    @IBOutlet weak var customersChartView: UIView!
+    @IBOutlet weak var firstCustomerView: UIView!
+    @IBOutlet weak var openedatView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var knownVistorsChart: DonutView!
+    @IBOutlet weak var staffsChart: DonutView!
+    @IBOutlet weak var customersChart: DonutView!
+    @IBOutlet weak var closedatClock: BEMAnalogClockView!
+    @IBOutlet weak var firstCustomerClock: BEMAnalogClockView!
+    @IBOutlet weak var openedatClock: BEMAnalogClockView!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var graphicalButton: Mybutton!
     @IBOutlet var numericalButton: Mybutton!
@@ -29,21 +44,45 @@ class ShopDetailsViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
         collectionview.delegate = self
         collectionview.dataSource = self
+        
+        setUpUI()
+    }
+    func setUpUI()
+    {
         let date = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
         dateLabel.text = dateFormatter.string(from: date)
+        scrollView.isHidden = true
+        firstCustomerView.layer.borderColor = UIColor.black.cgColor
+        firstCustomerView.layer.borderWidth = 0.5
+        firstCustomerView.layer.cornerRadius = 5
+        customersChartView.layer.borderColor = UIColor.black.cgColor
+        customersChartView.layer.borderWidth = 0.5
+        customersChartView.layer.cornerRadius = 5
+        staffChartView.layer.borderColor = UIColor.black.cgColor
+        staffChartView.layer.borderWidth = 0.5
+        staffChartView.layer.cornerRadius = 5
+        closedatView.layer.borderColor = UIColor.black.cgColor
+        closedatView.layer.borderWidth = 0.5
+        closedatView.layer.cornerRadius = 5
+        visitorsChartView.layer.borderColor = UIColor.black.cgColor
+        visitorsChartView.layer.borderWidth = 0.5
+        visitorsChartView.layer.cornerRadius = 5
+        openedatView.layer.borderColor = UIColor.black.cgColor
+        openedatView.layer.borderWidth = 0.5
+        openedatView.layer.cornerRadius = 5
     }
-    
     @IBAction func numerical_Clicked(_ sender: Any)
     {
         numericalButton.layer.backgroundColor = selectedColor.cgColor
         numericalButton.setTitleColor(UIColor.white, for: .normal)
         graphicalButton.layer.backgroundColor = UIColor.white.cgColor
         graphicalButton.setTitleColor(UIColor.black, for: .normal)
+        collectionview.isHidden = false
+        scrollView.isHidden = true
     }
     
     @IBAction func graphical_Clicked(_ sender: Any)
@@ -52,6 +91,8 @@ class ShopDetailsViewController: UIViewController
         graphicalButton.setTitleColor(UIColor.white, for: .normal)
         numericalButton.layer.backgroundColor = UIColor.white.cgColor
         numericalButton.setTitleColor(UIColor.black, for: .normal)
+        collectionview.isHidden = true
+        scrollView.isHidden = false
     }
     @IBAction func today_Clicked(_ sender: Any)
     {

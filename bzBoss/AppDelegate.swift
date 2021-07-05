@@ -8,7 +8,6 @@
 import UIKit
 import CoreData
 //import IQKeyboardManager
-import Firebase
 import FirebaseAuth
 
 @available(iOS 13.0, *)
@@ -18,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        FirebaseApp.configure()
+        //FirebaseApp.configure()
         // Override point for customization after application launch.
 //        IQKeyboardManager.shared.enable = true
         let storyboard:UIStoryboard = UIStoryboard(name: "Main1", bundle: nil)

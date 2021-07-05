@@ -12,6 +12,8 @@ pod 'iOSDropDown'
 pod 'AlamofireImage', '~> 4.1'
 pod 'SideMenu'
 pod 'FirebaseAuth'
+pod 'BEMAnalogClock'
+
 
 end
 

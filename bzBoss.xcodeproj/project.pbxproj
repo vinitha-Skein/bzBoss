@@ -31,6 +31,7 @@
 		1BBF443A268F479A002367D9 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBF4437268F479A002367D9 /* SideMenuViewController.swift */; };
 		1BBF443B268F479A002367D9 /* SideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBF4438268F479A002367D9 /* SideMenuViewModel.swift */; };
 		1BBF443C268F479A002367D9 /* SideMenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBF4439268F479A002367D9 /* SideMenuViewCell.swift */; };
+		A718003E26930ACD0087637A /* DonutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A718003D26930ACC0087637A /* DonutView.swift */; };
 		A762F27B268C8B760058EEEB /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A762F27A268C8B760058EEEB /* SignInViewController.swift */; };
 		A762F283268C915F0058EEEB /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A762F282268C915F0058EEEB /* PasswordViewController.swift */; };
 		A76FBADE268EE35F00D8615F /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76FBADD268EE35F00D8615F /* DatePickerViewController.swift */; };
@@ -100,6 +101,7 @@
 		1BBF4438268F479A002367D9 /* SideMenuViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuViewModel.swift; sourceTree = "<group>"; };
 		1BBF4439268F479A002367D9 /* SideMenuViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuViewCell.swift; sourceTree = "<group>"; };
 		3D93B227C4E1E0C4030D2A65 /* Pods-bzBoss.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bzBoss.debug.xcconfig"; path = "Target Support Files/Pods-bzBoss/Pods-bzBoss.debug.xcconfig"; sourceTree = "<group>"; };
+		A718003D26930ACC0087637A /* DonutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonutView.swift; sourceTree = "<group>"; };
 		A762F27A268C8B760058EEEB /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		A762F282268C915F0058EEEB /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		A76FBADD268EE35F00D8615F /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 		1B356291268C240E00BC0396 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				A718003D26930ACC0087637A /* DonutView.swift */,
 				1B64A33B268D78E600159D98 /* Constants.swift */,
 				1B356292268C243300BC0396 /* Validation.swift */,
 			);
@@ -489,6 +492,7 @@
 				1B64A338268D77CC00159D98 /* APIClient.swift in Sources */,
 				1BBF443A268F479A002367D9 /* SideMenuViewController.swift in Sources */,
 				1B356293268C243300BC0396 /* Validation.swift in Sources */,
+				A718003E26930ACD0087637A /* DonutView.swift in Sources */,
 				1B64A33C268D78E600159D98 /* Constants.swift in Sources */,
 				A76FBADE268EE35F00D8615F /* DatePickerViewController.swift in Sources */,
 				A762F27B268C8B760058EEEB /* SignInViewController.swift in Sources */,
