@@ -512,7 +512,7 @@
         <!--Sign In View Controller-->
         <scene sceneID="2ID-AZ-RPl">
             <objects>
-                <viewController id="UCH-Ub-cRt" customClass="SignInViewController" customModule="bzBoss" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignInViewController" id="UCH-Ub-cRt" customClass="SignInViewController" customModule="bzBoss" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hNd-EC-uQV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

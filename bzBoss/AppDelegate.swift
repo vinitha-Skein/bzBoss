@@ -19,8 +19,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 //        IQKeyboardManager.shared.enable = true
         let storyboard:UIStoryboard = UIStoryboard(name: "Main1", bundle: nil)
-        let loginPage = storyboard.instantiateViewController(withIdentifier: "OnboardingViewController") as! OnboardingViewController
-        self.window?.rootViewController = loginPage
+//        let loginPage = storyboard.instantiateViewController(withIdentifier: "OnboardingViewController") as! OnboardingViewController
+//        self.window?.rootViewController = loginPage
+        
+        let viewcontroller: HomeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+        viewcontroller.modalTransitionStyle = .crossDissolve
+        
+        let navController:UINavigationController = UINavigationController.init(rootViewController: viewcontroller)
+        
+        window?.rootViewController = navController
+        window?.makeKeyAndVisible()
+        
         return true
     }
 
