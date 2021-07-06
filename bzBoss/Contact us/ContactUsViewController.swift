@@ -54,6 +54,11 @@ class ContactUsViewController: UIViewController {
 //        }
 
     }
+    
+    @IBAction func backnbuttonpressed(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func send_clicked(_ sender: Any)
     {
         validate()

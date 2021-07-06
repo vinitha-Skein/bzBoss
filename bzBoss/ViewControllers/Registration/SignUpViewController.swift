@@ -60,6 +60,12 @@ class SignUpViewController: UIViewController {
     {
         guard let firstName = firstNameTextFeild.text,let lastName = lastNameTextFeild.text,let phone = mobileTextFeild.text, let accessLevel = accessLevelTextFeild.text else
         {
+            if #available(iOS 13.0, *) {
+                let appDelegate: AppDelegate = (UIApplication.shared.delegate as? AppDelegate)!
+                appDelegate.gotoHome()
+            } else {
+                // Fallback on earlier versions
+            }
             return
         }
         let isValidatephone = self.validation.validaPhoneNumber(phoneNumber: phone)
@@ -77,6 +83,14 @@ class SignUpViewController: UIViewController {
         if (accessLevel == "")
         {
             self.showAlert("Please Select the your Access Level")
+        }
+        else {
+            if #available(iOS 13.0, *) {
+                let appDelegate: AppDelegate = (UIApplication.shared.delegate as? AppDelegate)!
+                appDelegate.gotoHome()
+            } else {
+                // Fallback on earlier versions
+            }
         }
         
     }

@@ -43,8 +43,8 @@ class HomeViewController: UIViewController {
         present(SideMenuManager.default.leftMenuNavigationController!, animated: true, completion: nil)
     }
     func  gotoCompanyDetails() {
-        let storyboard = UIStoryboard(name: "Main1", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "CompanyDetailsViewController") as! CompanyDetailsViewController
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ShopDetailsViewController") as! ShopDetailsViewController
         vc.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -71,17 +71,45 @@ extension HomeViewController:SideMenuDelegate {
     
     func sideMenuControllerSelected(menu: SideMenuItem) {
         let sb = UIStoryboard(name: "Main1", bundle: nil)
+        let sb1 = UIStoryboard(name: "Main", bundle: nil)
         
         switch menu {
+          
+        case .TermsandConditions:
+        if let url = URL(string: DataService.Terms_Condition) {
+            UIApplication.shared.open(url)
+        }
             
+        case .privacyPolicy:
+            if let url = URL(string: DataService.Privacy_policy) {
+                UIApplication.shared.open(url)
+            }
         case .aboutUs:
-//            let faqController = sb.instantiateViewController(withIdentifier: "AboutUsViewController") as! AboutUsViewController
-//            self.navigationController?.pushViewController(faqController, animated: true)
-            print("AboutUs")
-  
-            
+            if let url = URL(string: DataService.About_us) {
+                UIApplication.shared.open(url)
+            }
+        case .contactUs:
+        let faqController = sb1.instantiateViewController(withIdentifier: "ContactUsViewController") as! ContactUsViewController
+        self.navigationController?.pushViewController(faqController, animated: true)
+        print("AboutUs")
         case .logout:
-            print("AboutUs")
+            let alert = UIAlertController.init(title: nil, message: "Are you sure you want to logout?", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction.init(title: "YES", style: .default, handler: { (action) in
+                
+                if #available(iOS 13.0, *) {
+                    let appDelegate: AppDelegate = (UIApplication.shared.delegate as? AppDelegate)!
+                    appDelegate.gotoOnboardingScreen()
+                } else {
+                    // Fallback on earlier versions
+                }
+            }))
+            
+            alert.addAction(UIAlertAction.init(title: "NO", style: .cancel, handler: { (action) in
+                
+            }))
+            
+            self.present(alert, animated: true, completion: nil)
           
             
         default:

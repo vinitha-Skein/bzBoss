@@ -108,6 +108,13 @@ class ShopDetailsViewController: UIViewController
         dateLabel.text = dateFormatter.string(from: date)
     }
     
+    @IBAction func ShopDetailsPressed(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main1", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "CompanyDetailsViewController") as! CompanyDetailsViewController
+        vc.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     @IBAction func yesterday_clicked(_ sender: Any)
     {
         yesterdayButton.layer.backgroundColor = selectedColor.cgColor
@@ -122,6 +129,11 @@ class ShopDetailsViewController: UIViewController
         dateLabel.text = dateFormatter.string(from: yesterday!)
 
     }
+    
+    @IBAction func backButtonPressed(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func calender_clicked(_ sender: Any)
     {
         yesterdayButton.layer.backgroundColor = dateSelectionBG.cgColor
@@ -138,6 +150,21 @@ class ShopDetailsViewController: UIViewController
         popup.delegate = self
         present(popup, animated: true, completion: nil)
     }
+    //MARK: Navigation
+    func gotoStaffDetails() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "StaffDetailsViewController") as! StaffDetailsViewController
+        vc.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    func gotomaintainTimingViewController(Str:String){
+        let storyboard = UIStoryboard(name: "Main1", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "MaintainTimingViewController") as! MaintainTimingViewController
+        vc.isfrom = Str
+        vc.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
 extension ShopDetailsViewController:UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout
 {
@@ -158,6 +185,19 @@ extension ShopDetailsViewController:UICollectionViewDelegate,UICollectionViewDat
     {
         var width = collectionView.frame.width/2 - 10
         return CGSize(width: width, height: 140)
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+           gotomaintainTimingViewController(Str: "OpenedAt")
+        }
+        else if indexPath.row == 1 {
+            gotomaintainTimingViewController(Str: "FirstCustomer")
+        } else if indexPath.row == 4 {
+            gotomaintainTimingViewController(Str: "ClosedAt")
+        }
+        if indexPath.row == 3{
+           gotoStaffDetails()
+        }
     }
 }
 extension ShopDetailsViewController:DatePickerDelegate

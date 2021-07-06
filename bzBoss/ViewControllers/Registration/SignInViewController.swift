@@ -38,43 +38,52 @@ class SignInViewController: UIViewController {
             self.showAlert("Please enter valid Phone number")
             return
         }
-        else
-            {
-                    IndicatorView.isHidden = false
-                    activityIndicator.startAnimating()
-                    //indicatorText.text = "Please Wait While we are Sending OTP"
-                    let phoneNumber = "+91" + numberTextFeild.text!
-                    Auth.auth().settings?.isAppVerificationDisabledForTesting = false
-                    PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil)
-            
-                    { (verificationID, error) in
-                    if let error = error
-                        {
-                            print(error.localizedDescription)
-                            return
-                        }
-                        else
-                        {
-                            self.verificationID = verificationID ?? "No Value"
-                            print(self.verificationID)
-                            self.IndicatorView.isHidden = true
-                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                            let vc = storyboard.instantiateViewController(withIdentifier: "PasswordViewController") as! PasswordViewController
-                            vc.modalPresentationStyle = .fullScreen
-                            self.present(vc, animated: true, completion: nil)
-                        }
-                    }
-            }
+        else {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "PasswordViewController") as! PasswordViewController
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true, completion: nil)
+        }
+//            {
+//                    IndicatorView.isHidden = false
+//                    activityIndicator.startAnimating()
+//                    //indicatorText.text = "Please Wait While we are Sending OTP"
+//                    let phoneNumber = "+91" + numberTextFeild.text!
+//                    Auth.auth().settings?.isAppVerificationDisabledForTesting = false
+//                    PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil)
+//
+//                    { (verificationID, error) in
+//                    if let error = error
+//                        {
+//                            print(error.localizedDescription)
+//                            return
+//                        }
+//                        else
+//                        {
+//                            self.verificationID = verificationID ?? "No Value"
+//                            print(self.verificationID)
+//                            self.IndicatorView.isHidden = true
+//                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                            let vc = storyboard.instantiateViewController(withIdentifier: "PasswordViewController") as! PasswordViewController
+//                            vc.modalPresentationStyle = .fullScreen
+//                            self.present(vc, animated: true, completion: nil)
+//                        }
+//                    }
+//            }
     
         
     }
     @IBAction func termsandConditions_clicked(_ sender: Any)
     {
-        
+        if let url = URL(string: DataService.Terms_Condition) {
+            UIApplication.shared.open(url)
+        }
     }
     @IBAction func policies_Clicked(_ sender: Any)
     {
-        
+        if let url = URL(string: DataService.Privacy_policy) {
+            UIApplication.shared.open(url)
+        }
     }
     func showAlert(_ message:String)
     {

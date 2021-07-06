@@ -27,6 +27,7 @@
 		1B64A337268D77CC00159D98 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B64A335268D77CC00159D98 /* APIRouter.swift */; };
 		1B64A338268D77CC00159D98 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B64A336268D77CC00159D98 /* APIClient.swift */; };
 		1B64A33C268D78E600159D98 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B64A33B268D78E600159D98 /* Constants.swift */; };
+		1BB77E8B2694BE6D00299261 /* MaintainTimingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB77E8A2694BE6D00299261 /* MaintainTimingViewController.swift */; };
 		1BB95E282690BF5A0085CACF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB95E272690BF5A0085CACF /* HomeViewController.swift */; };
 		1BB95EA02692CE500085CACF /* DashboardTableviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB95E9F2692CE500085CACF /* DashboardTableviewCell.swift */; };
 		1BB95EE426931FBF0085CACF /* PhotoPreview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BB95EE226931FBE0085CACF /* PhotoPreview.storyboard */; };
@@ -103,6 +104,7 @@
 		1B64A335268D77CC00159D98 /* APIRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		1B64A336268D77CC00159D98 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		1B64A33B268D78E600159D98 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1BB77E8A2694BE6D00299261 /* MaintainTimingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintainTimingViewController.swift; sourceTree = "<group>"; };
 		1BB95E272690BF5A0085CACF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1BB95E9F2692CE500085CACF /* DashboardTableviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTableviewCell.swift; sourceTree = "<group>"; };
 		1BB95EE226931FBE0085CACF /* PhotoPreview.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PhotoPreview.storyboard; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 		1B356297268C244000BC0396 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1BB77E892694BE4100299261 /* openTiming */,
 				1BB95EE826931FEC0085CACF /* companyDetailsView */,
 				1BB95EE126931FA20085CACF /* photopreviewView */,
 				1BB95E262690BF390085CACF /* HomeView */,
@@ -274,6 +277,14 @@
 				1B64A335268D77CC00159D98 /* APIRouter.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		1BB77E892694BE4100299261 /* openTiming */ = {
+			isa = PBXGroup;
+			children = (
+				1BB77E8A2694BE6D00299261 /* MaintainTimingViewController.swift */,
+			);
+			path = openTiming;
 			sourceTree = "<group>";
 		};
 		1BB95E262690BF390085CACF /* HomeView */ = {
@@ -535,6 +546,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7B04B9A26947BCE004D88CF /* StaffDetailsViewController.swift in Sources */,
+				1BB77E8B2694BE6D00299261 /* MaintainTimingViewController.swift in Sources */,
 				1B4DCCFF268AE56600D3710B /* ViewController.swift in Sources */,
 				1B64A337268D77CC00159D98 /* APIRouter.swift in Sources */,
 				1BB95EE526931FBF0085CACF /* PhotoPreviewViewController.swift in Sources */,

@@ -70,7 +70,14 @@ class PasswordViewController: UIViewController {
     
     
      @IBAction func signin_clicked(_ sender: Any) {
+        if #available(iOS 13.0, *) {
+            let appDelegate: AppDelegate = (UIApplication.shared.delegate as? AppDelegate)!
+            appDelegate.gotoHome()
+        } else {
+            // Fallback on earlier versions
+        }
      }
+    
      // MARK: - Navigation
     /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation

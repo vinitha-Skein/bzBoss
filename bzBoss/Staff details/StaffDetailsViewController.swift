@@ -16,6 +16,18 @@ class StaffDetailsViewController: UIViewController {
     }
     
 
+    @IBAction func backbuttonpressed(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+        
+    }
+    
+    @IBAction func companyDetailsPressed(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main1", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "CompanyDetailsViewController") as! CompanyDetailsViewController
+        vc.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 

@@ -29,7 +29,7 @@
         <!--Contact Us View Controller-->
         <scene sceneID="21V-Ac-bJx">
             <objects>
-                <viewController id="yIf-DL-PPi" customClass="ContactUsViewController" customModule="bzBoss" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContactUsViewController" id="yIf-DL-PPi" customClass="ContactUsViewController" customModule="bzBoss" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dIv-Gp-LXD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -43,12 +43,21 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fqo-Mf-fKu">
+                                        <rect key="frame" x="16" y="48.5" width="42" height="42"/>
+                                        <state key="normal" image="backImage"/>
+                                        <connections>
+                                            <action selector="backnbuttonpressed:" destination="yIf-DL-PPi" eventType="touchUpInside" id="vAj-vf-txk"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" name="App Theme"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="0vM-zf-1Yj"/>
+                                    <constraint firstItem="Fqo-Mf-fKu" firstAttribute="centerY" secondItem="RhM-Ci-qGG" secondAttribute="centerY" id="3TH-Wm-1yI"/>
                                     <constraint firstAttribute="bottom" secondItem="RhM-Ci-qGG" secondAttribute="bottom" constant="20" id="Njo-JY-6MX"/>
                                     <constraint firstItem="RhM-Ci-qGG" firstAttribute="centerX" secondItem="gA6-JV-Wgh" secondAttribute="centerX" id="PSk-go-Qn7"/>
+                                    <constraint firstItem="Fqo-Mf-fKu" firstAttribute="leading" secondItem="gA6-JV-Wgh" secondAttribute="leading" constant="16" id="gu1-hg-AgT"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SUq-LX-KrM">
@@ -384,7 +393,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DrU-tG-tnN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4814" y="96"/>
+            <point key="canvasLocation" x="-4814.4927536231889" y="95.758928571428569"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="Hyu-Hq-aeL">
@@ -1169,6 +1178,9 @@
                                                         <real key="value" value="8"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="ShopDetailsPressed:" destination="BAD-cL-Of5" eventType="touchUpInside" id="eRP-Qe-9gT"/>
+                                                </connections>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z60-6I-lMv">
                                                 <rect key="frame" x="20" y="44" width="32" height="32"/>
@@ -1177,6 +1189,9 @@
                                                     <constraint firstAttribute="width" constant="32" id="VqG-gC-pdo"/>
                                                 </constraints>
                                                 <state key="normal" image="backImage"/>
+                                                <connections>
+                                                    <action selector="backButtonPressed:" destination="BAD-cL-Of5" eventType="touchUpInside" id="nDc-ns-lmO"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" name="App Theme"/>
@@ -2190,14 +2205,26 @@
                                                                 <real key="value" value="8"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="companyDetailsPressed:" destination="c39-c7-l1m" eventType="touchUpInside" id="Ohp-Ix-i1G"/>
+                                                        </connections>
                                                     </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vM0-XR-tca">
+                                                        <rect key="frame" x="16" y="36" width="42" height="42"/>
+                                                        <state key="normal" image="backImage"/>
+                                                        <connections>
+                                                            <action selector="backbuttonpressed:" destination="c39-c7-l1m" eventType="touchUpInside" id="FNi-J0-MoU"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" name="App Theme"/>
                                                 <constraints>
                                                     <constraint firstItem="CKG-lf-loe" firstAttribute="centerX" secondItem="lFL-Vp-KvH" secondAttribute="centerX" id="4Wk-pB-fuB"/>
                                                     <constraint firstAttribute="trailing" secondItem="CKG-lf-loe" secondAttribute="trailing" constant="20" id="QJD-K6-Poo"/>
+                                                    <constraint firstItem="vM0-XR-tca" firstAttribute="top" secondItem="lFL-Vp-KvH" secondAttribute="top" constant="36" id="RJT-Al-YhI"/>
                                                     <constraint firstItem="CKG-lf-loe" firstAttribute="leading" secondItem="lFL-Vp-KvH" secondAttribute="leading" constant="20" id="Ydy-zc-uOT"/>
                                                     <constraint firstItem="CKG-lf-loe" firstAttribute="centerY" secondItem="lFL-Vp-KvH" secondAttribute="centerY" id="cva-nA-wBT"/>
+                                                    <constraint firstItem="vM0-XR-tca" firstAttribute="leading" secondItem="lFL-Vp-KvH" secondAttribute="leading" constant="16" id="tIp-3c-Faw"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QPp-2o-8Bs" customClass="MyUIView" customModule="bzBoss" customModuleProvider="target">
@@ -2407,7 +2434,7 @@
         <image name="splash icon" width="635" height="255"/>
         <image name="test_ofer" width="386" height="192"/>
         <namedColor name="App Theme">
-            <color red="0.0" green="0.63529411764705879" blue="0.90588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.63499999046325684" blue="0.90600001811981201" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
