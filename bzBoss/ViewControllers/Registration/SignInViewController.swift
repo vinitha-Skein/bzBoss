@@ -28,6 +28,10 @@ class SignInViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func back_Clicked(_ sender: Any)
+    {
+        dismiss(animated: true, completion: nil)
+    }
     @IBAction func verify_Clicked(_ sender: Any)
     {
         guard let phone = numberTextFeild.text

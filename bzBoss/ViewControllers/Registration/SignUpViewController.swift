@@ -56,6 +56,10 @@ class SignUpViewController: UIViewController {
         sigupButton.layer.cornerRadius = 8
         
     }
+    @IBAction func back_Clicked(_ sender: Any)
+    {
+        dismiss(animated: true, completion: nil)
+    }
     @IBAction func signup_Clicked(_ sender: Any)
     {
         guard let firstName = firstNameTextFeild.text,let lastName = lastNameTextFeild.text,let phone = mobileTextFeild.text, let accessLevel = accessLevelTextFeild.text else
@@ -88,7 +92,8 @@ class SignUpViewController: UIViewController {
             if #available(iOS 13.0, *) {
                 let appDelegate: AppDelegate = (UIApplication.shared.delegate as? AppDelegate)!
                 appDelegate.gotoHome()
-            } else {
+            } else
+            {
                 // Fallback on earlier versions
             }
         }

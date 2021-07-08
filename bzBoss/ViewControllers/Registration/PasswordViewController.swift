@@ -12,12 +12,14 @@ class PasswordViewController: UIViewController {
     @IBOutlet var timerLabel: UILabel!
     @IBOutlet var resendButton: UIButton!
     
+    @IBOutlet weak var passwordTextfeild: UITextField!
     @IBOutlet var passwordresendView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         resendButton.isHidden = true
         // Do any additional setup after loading the view.
+        passwordTextfeild.delegate = self
         passwordBg_view.layer.cornerRadius = 10
         passwordBg_view.layer.borderColor = UIColor.lightGray.cgColor
         passwordBg_view.layer.borderWidth = 1
@@ -41,6 +43,10 @@ class PasswordViewController: UIViewController {
             }
     }
     
+    @IBAction func back_clicked(_ sender: Any)
+    {
+        dismiss(animated: true, completion: nil)
+    }
     @IBAction func resend_Clicked(_ sender: Any)
     {
         self.passwordresendView.isHidden = false
@@ -73,7 +79,12 @@ class PasswordViewController: UIViewController {
         if #available(iOS 13.0, *) {
             let appDelegate: AppDelegate = (UIApplication.shared.delegate as? AppDelegate)!
             appDelegate.gotoHome()
-        } else {
+        } else
+        {
+            let storyboard = UIStoryboard(name: "Main1", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true, completion: nil)
             // Fallback on earlier versions
         }
      }
@@ -87,4 +98,12 @@ class PasswordViewController: UIViewController {
     }
     */
 
+}
+extension PasswordViewController: UITextFieldDelegate
+{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
+        passwordTextfeild.resignFirstResponder()
+        return true
+    }
 }
