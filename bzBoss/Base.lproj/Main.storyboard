@@ -2180,6 +2180,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JzX-XD-rqM">
                                         <rect key="frame" x="20" y="20" width="42" height="42"/>
                                         <state key="normal" image="backImage"/>
+                                        <connections>
+                                            <action selector="back_clicked:" destination="7wh-z6-Lla" eventType="touchUpInside" id="jtX-EP-Vwx"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>

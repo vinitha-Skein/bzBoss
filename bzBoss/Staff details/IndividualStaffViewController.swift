@@ -32,6 +32,10 @@ class IndividualStaffViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func back_clicked(_ sender: Any)
+    {
+        dismiss(animated: true, completion: nil)
+    }
     
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer)
     {
