@@ -38,6 +38,7 @@
 		1BBF443C268F479A002367D9 /* SideMenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBF4439268F479A002367D9 /* SideMenuViewCell.swift */; };
 		A70940A3269590BB00421C84 /* StaffCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70940A2269590BB00421C84 /* StaffCollectionViewCell.swift */; };
 		A718003E26930ACD0087637A /* DonutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A718003D26930ACC0087637A /* DonutView.swift */; };
+		A72EC81A26970F450034AA34 /* IndividualStaffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72EC81926970F450034AA34 /* IndividualStaffViewController.swift */; };
 		A762F27B268C8B760058EEEB /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A762F27A268C8B760058EEEB /* SignInViewController.swift */; };
 		A762F283268C915F0058EEEB /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A762F282268C915F0058EEEB /* PasswordViewController.swift */; };
 		A76FBADE268EE35F00D8615F /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76FBADD268EE35F00D8615F /* DatePickerViewController.swift */; };
@@ -117,6 +118,7 @@
 		3D93B227C4E1E0C4030D2A65 /* Pods-bzBoss.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bzBoss.debug.xcconfig"; path = "Target Support Files/Pods-bzBoss/Pods-bzBoss.debug.xcconfig"; sourceTree = "<group>"; };
 		A70940A2269590BB00421C84 /* StaffCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffCollectionViewCell.swift; sourceTree = "<group>"; };
 		A718003D26930ACC0087637A /* DonutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonutView.swift; sourceTree = "<group>"; };
+		A72EC81926970F450034AA34 /* IndividualStaffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualStaffViewController.swift; sourceTree = "<group>"; };
 		A762F27A268C8B760058EEEB /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		A762F282268C915F0058EEEB /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		A76FBADD268EE35F00D8615F /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 			children = (
 				A7B04B9926947BCE004D88CF /* StaffDetailsViewController.swift */,
 				A70940A2269590BB00421C84 /* StaffCollectionViewCell.swift */,
+				A72EC81926970F450034AA34 /* IndividualStaffViewController.swift */,
 			);
 			path = "Staff details";
 			sourceTree = "<group>";
@@ -574,6 +577,7 @@
 				1BB95E282690BF5A0085CACF /* HomeViewController.swift in Sources */,
 				1BBF443C268F479A002367D9 /* SideMenuViewCell.swift in Sources */,
 				1BB95EA02692CE500085CACF /* DashboardTableviewCell.swift in Sources */,
+				A72EC81A26970F450034AA34 /* IndividualStaffViewController.swift in Sources */,
 				A7DDFABA268DD9F600D639B0 /* ShopDetailsCollectionViewCell.swift in Sources */,
 				A7DDFAB4268DD99400D639B0 /* ShopDetailsViewController.swift in Sources */,
 				1B4DCD3F268B5C2700D3710B /* MyButton+Extension.swift in Sources */,
