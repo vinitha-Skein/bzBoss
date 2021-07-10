@@ -15,6 +15,16 @@ class APIClient {
             }
         }
 
+   static func registerUser(params:[String:Any],completion:@escaping(AFResult<RegisterUserModel>)->Void){
+        performRequest(route: APIRouter.registerUser(params: params),completion: completion)
+    }
+    static func loginUser(params:[String:Any],completion:@escaping(AFResult<userSignIn>)->Void){
+        performRequest(route: APIRouter.loginUser(params: params),completion: completion)
+    }
+    static func shopDetails(params:[String:Any],completion:@escaping(AFResult<ShopDetailsModel>)->Void){
+        performRequest(route: APIRouter.shopDetails(params: params),completion: completion)
+    }
+    
     
     //User Auth
 //    static func registerUser(params:[String:Any],completion:@escaping(AFResult<RegisterNewUser>)->Void){

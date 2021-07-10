@@ -1147,22 +1147,22 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prince Complex" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8K-tn-eZa">
-                                                        <rect key="frame" x="86" y="23" width="144" height="28"/>
+                                                        <rect key="frame" x="86" y="23" width="158" height="28"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chennai, Tamilnadu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nke-TO-blX">
-                                                        <rect key="frame" x="86" y="56" width="132.5" height="17"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chennai" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nke-TO-blX">
+                                                        <rect key="frame" x="86" y="56" width="55.5" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4VO-gQ-vvF" customClass="Mybutton" customModule="bzBoss" customModuleProvider="target">
-                                                        <rect key="frame" x="238.5" y="23" width="115.5" height="28"/>
+                                                        <rect key="frame" x="254" y="23" width="100" height="28"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Closed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLR-4E-M9a">
-                                                                <rect key="frame" x="37" y="6.5" width="42" height="14.5"/>
+                                                                <rect key="frame" x="29" y="6.5" width="42" height="14.5"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -1171,6 +1171,7 @@
                                                         <color key="backgroundColor" systemColor="systemRedColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="28" id="0eD-zx-5nL"/>
+                                                            <constraint firstAttribute="width" constant="100" id="Wxk-f7-66R"/>
                                                             <constraint firstItem="SLR-4E-M9a" firstAttribute="centerX" secondItem="4VO-gQ-vvF" secondAttribute="centerX" id="b8H-Qk-HF4"/>
                                                             <constraint firstItem="SLR-4E-M9a" firstAttribute="centerY" secondItem="4VO-gQ-vvF" secondAttribute="centerY" id="v5g-jg-6eJ"/>
                                                         </constraints>
@@ -1186,14 +1187,22 @@
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tamil Nadu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TXO-bJ-oKe">
+                                                        <rect key="frame" x="146.5" y="56" width="75" height="17"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstItem="d0S-NI-Spe" firstAttribute="leading" secondItem="zXb-YA-XaM" secondAttribute="leading" constant="24" id="0wa-WL-HWT"/>
                                                     <constraint firstItem="Nke-TO-blX" firstAttribute="top" secondItem="a8K-tn-eZa" secondAttribute="bottom" constant="5" id="28X-UM-CcV"/>
+                                                    <constraint firstItem="TXO-bJ-oKe" firstAttribute="centerY" secondItem="Nke-TO-blX" secondAttribute="centerY" id="C4Q-bn-YS4"/>
+                                                    <constraint firstItem="4VO-gQ-vvF" firstAttribute="leading" secondItem="a8K-tn-eZa" secondAttribute="trailing" constant="10" id="GoV-6n-DID"/>
                                                     <constraint firstItem="d0S-NI-Spe" firstAttribute="centerY" secondItem="zXb-YA-XaM" secondAttribute="centerY" id="Hd8-nx-c39"/>
                                                     <constraint firstAttribute="trailing" secondItem="DBT-WW-Adi" secondAttribute="trailing" constant="20" id="HyV-MW-msn"/>
-                                                    <constraint firstItem="4VO-gQ-vvF" firstAttribute="leading" secondItem="Nke-TO-blX" secondAttribute="trailing" constant="20" id="IzL-KU-WUu"/>
+                                                    <constraint firstItem="TXO-bJ-oKe" firstAttribute="leading" secondItem="Nke-TO-blX" secondAttribute="trailing" constant="5" id="KeW-0S-y8E"/>
                                                     <constraint firstItem="4VO-gQ-vvF" firstAttribute="top" secondItem="a8K-tn-eZa" secondAttribute="top" id="N3l-cY-cD9"/>
                                                     <constraint firstAttribute="trailing" secondItem="4VO-gQ-vvF" secondAttribute="trailing" constant="20" id="O1f-bl-kRg"/>
                                                     <constraint firstItem="Nke-TO-blX" firstAttribute="leading" secondItem="a8K-tn-eZa" secondAttribute="leading" id="TYa-BY-suB"/>
@@ -1353,6 +1362,9 @@
                                             <constraint firstAttribute="height" constant="24" id="mgQ-r1-ZRn"/>
                                         </constraints>
                                         <state key="normal" image="refresh"/>
+                                        <connections>
+                                            <action selector="refresh_clicked:" destination="BAD-cL-Of5" eventType="touchUpInside" id="51p-iD-WNE"/>
+                                        </connections>
                                     </button>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0dc-a0-fLX">
                                         <rect key="frame" x="20" y="114" width="374" height="493"/>
@@ -1660,6 +1672,9 @@
                                                                                     </userDefinedRuntimeAttribute>
                                                                                     <userDefinedRuntimeAttribute type="number" keyPath="progress">
                                                                                         <integer key="value" value="5"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="color" keyPath="progressColor">
+                                                                                        <color key="value" systemColor="systemOrangeColor"/>
                                                                                     </userDefinedRuntimeAttribute>
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </view>
@@ -2043,6 +2058,7 @@
                         <outlet property="customersChart" destination="AFe-9H-7Z8" id="6wW-gj-whK"/>
                         <outlet property="customersChartView" destination="qnd-kP-dci" id="mRv-To-aBy"/>
                         <outlet property="dateLabel" destination="KGv-Tq-Qpd" id="8d0-ER-lul"/>
+                        <outlet property="dateandTimeLabel" destination="DBT-WW-Adi" id="NR8-QX-ew2"/>
                         <outlet property="firstCustomerClock" destination="rjv-lf-B64" id="s1A-tY-xTj"/>
                         <outlet property="firstCustomerView" destination="MfM-zT-9eq" id="hqY-QP-ac8"/>
                         <outlet property="graphicalButton" destination="6Xd-pd-Bza" id="39O-tQ-jcn"/>
@@ -2050,9 +2066,14 @@
                         <outlet property="numericalButton" destination="fi3-EA-vOB" id="jQr-aB-RRi"/>
                         <outlet property="openedatClock" destination="t7c-sb-JvS" id="lZR-F0-0ux"/>
                         <outlet property="openedatView" destination="7BY-nv-4BI" id="sEM-7a-nXT"/>
+                        <outlet property="premiseCityLabel" destination="Nke-TO-blX" id="ULQ-Gk-IEU"/>
+                        <outlet property="premiseImage" destination="d0S-NI-Spe" id="7Tu-vm-zhU"/>
+                        <outlet property="premiseStateLabel" destination="TXO-bJ-oKe" id="PBy-uv-yME"/>
+                        <outlet property="premiseTitle" destination="a8K-tn-eZa" id="zj8-Zd-BhB"/>
                         <outlet property="scrollView" destination="0dc-a0-fLX" id="tsi-C8-x3H"/>
                         <outlet property="staffChartView" destination="mgm-vy-scA" id="Om6-82-4Se"/>
                         <outlet property="staffsChart" destination="e9A-pC-SBL" id="FIM-gP-jPA"/>
+                        <outlet property="statusLabel" destination="SLR-4E-M9a" id="yTS-vD-u3e"/>
                         <outlet property="todayButton" destination="aPZ-Ie-oVU" id="sdY-Wd-gnO"/>
                         <outlet property="visitorsChartView" destination="wxd-N5-vDL" id="3fQ-1w-Psi"/>
                         <outlet property="yesterdayButton" destination="Vzg-bU-9Xd" id="jVi-4z-HR8"/>
@@ -2542,26 +2563,8 @@
         <designable name="0Jv-Rt-2ue">
             <size key="intrinsicContentSize" width="56" height="32"/>
         </designable>
-        <designable name="4VO-gQ-vvF">
-            <size key="intrinsicContentSize" width="30" height="34"/>
-        </designable>
-        <designable name="5LW-ua-VBa">
-            <size key="intrinsicContentSize" width="30" height="34"/>
-        </designable>
         <designable name="6Xd-pd-Bza">
             <size key="intrinsicContentSize" width="58" height="28"/>
-        </designable>
-        <designable name="7P1-Hd-5s4">
-            <size key="intrinsicContentSize" width="30" height="34"/>
-        </designable>
-        <designable name="9n8-Vn-uUa">
-            <size key="intrinsicContentSize" width="30" height="34"/>
-        </designable>
-        <designable name="CKG-lf-loe">
-            <size key="intrinsicContentSize" width="30" height="34"/>
-        </designable>
-        <designable name="LMv-z5-DxK">
-            <size key="intrinsicContentSize" width="30" height="34"/>
         </designable>
         <designable name="PbF-rG-Oyu">
             <size key="intrinsicContentSize" width="137" height="32"/>
@@ -2569,17 +2572,11 @@
         <designable name="Vzg-bU-9Xd">
             <size key="intrinsicContentSize" width="68" height="30"/>
         </designable>
-        <designable name="Zgi-F1-1CA">
-            <size key="intrinsicContentSize" width="30" height="34"/>
-        </designable>
         <designable name="aPZ-Ie-oVU">
             <size key="intrinsicContentSize" width="42" height="30"/>
         </designable>
         <designable name="fi3-EA-vOB">
             <size key="intrinsicContentSize" width="62" height="28"/>
-        </designable>
-        <designable name="zXb-YA-XaM">
-            <size key="intrinsicContentSize" width="30" height="34"/>
         </designable>
     </designables>
     <resources>
@@ -2611,6 +2608,9 @@
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

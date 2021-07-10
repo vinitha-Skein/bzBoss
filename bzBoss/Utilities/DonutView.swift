@@ -27,8 +27,17 @@ var selectedColor = UIColor(red: 29/255, green: 138/255, blue: 254/255, alpha: 1
 		}
 	  }
 	}
+    @IBInspectable var progressColor: UIColor = .red {
+      didSet {
 
-    override func draw(_ rect: CGRect) {
+          //the view needs to be refreshed, this trigger draw
+          setNeedsDisplay()
+      }
+    }
+
+
+    override func draw(_ rect: CGRect)
+    {
 		//center is half diameter (width or height of rect)
 		let center = CGPoint(x: bounds.width / 2, y: bounds.height / 2)
 		
@@ -79,7 +88,7 @@ var selectedColor = UIColor(red: 29/255, green: 138/255, blue: 254/255, alpha: 1
 										 clockwise: true)
 		
 		progressDonut.lineWidth = arcWidth
-		selectedColor.setStroke()
+		progressColor.setStroke()
 		progressDonut.stroke()
 		
 

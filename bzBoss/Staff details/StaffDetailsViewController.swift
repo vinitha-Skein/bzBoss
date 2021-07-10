@@ -7,7 +7,8 @@
 
 import UIKit
 
-class StaffDetailsViewController: UIViewController {
+class StaffDetailsViewController: UIViewController
+{
     @IBOutlet weak var collectionview: UICollectionView!
     var staffs = ["Staff 1","Staff 2","Staff 3","Staff 4"]
     override func viewDidLoad()

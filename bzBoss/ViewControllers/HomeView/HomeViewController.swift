@@ -24,7 +24,8 @@ class HomeViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    @IBAction func RefreshListItem(_ sender: UIButton) {
+    @IBAction func RefreshListItem(_ sender: UIButton)
+    {
     }
     
     

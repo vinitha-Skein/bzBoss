@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class PasswordViewController: UIViewController {
     @IBOutlet var passwordBg_view: UIView!
@@ -14,6 +15,8 @@ class PasswordViewController: UIViewController {
     
     @IBOutlet weak var passwordTextfeild: UITextField!
     @IBOutlet var passwordresendView: UIView!
+    var verificationID = String()
+    var phoneNumber = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,12 +30,10 @@ class PasswordViewController: UIViewController {
                 
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true)
         { timer in
-                print("timer fired!")
                         
                 timeLeft -= 1
                         
                 self.timerLabel.text = String(timeLeft)
-                print(timeLeft)
                         
                 if(timeLeft==0)
                 {
@@ -52,6 +53,26 @@ class PasswordViewController: UIViewController {
         self.passwordresendView.isHidden = false
         resendButton.isHidden = true
         
+        self.activityIndicator(self.view, startAnimate: true)
+        PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil)
+
+        { (verificationID, error) in
+        if let error = error
+            {
+                print(error.localizedDescription)
+                return
+            }
+            else
+            {
+                self.activityIndicator(self.view, startAnimate: false)
+                self.timerON()
+            }
+        }
+
+        
+    }
+    func timerON()
+    {
         var timeLeft = 30
 
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true)
@@ -70,10 +91,7 @@ class PasswordViewController: UIViewController {
                     timer.invalidate()
                 }
             }
-
-        
     }
-    
     
      @IBAction func signin_clicked(_ sender: Any) {
         if #available(iOS 13.0, *) {

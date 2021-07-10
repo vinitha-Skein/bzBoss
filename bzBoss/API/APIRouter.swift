@@ -6,11 +6,12 @@ enum APIRouter : URLRequestConvertible {
     //Auth
     case registerUser(params:[String:Any])
     case loginUser(params:[String:Any])
+    case shopDetails(params:[String:Any])
 
     // MARK: - HTTPMethod
     private var method : HTTPMethod{
         switch self{
-        case .registerUser,.loginUser:
+        case .registerUser,.loginUser,.shopDetails:
             return .post
 //        case .editFamilyMember,.editInsurance:
 //            return .put
@@ -30,22 +31,28 @@ enum APIRouter : URLRequestConvertible {
             return "register"
         case .loginUser:
             return "login"
+        case .shopDetails:
+            return "premise"
         }
     }
     
     // MARK: - Parameters
-    private var parameters: Parameters? {
+    private var parameters: Parameters?
+    {
         switch self {
         case .registerUser(let params):
             return params
         case .loginUser(let params):
+            return params
+        case .shopDetails(let params):
             return params
       
         }
     }
     
     // MARK: - URLRequestConvertible
-    func asURLRequest() throws -> URLRequest {
+    func asURLRequest() throws -> URLRequest
+    {
         let url = try DataService.developmentBaseURL.asURL()
         
         var urlRequest = URLRequest(url: url.appendingPathComponent(path))
@@ -64,8 +71,8 @@ enum APIRouter : URLRequestConvertible {
         break//"No auth token needed
         default:
             urlRequest.setValue(UserDefaults.standard.string(forKey: "Authorization"), forHTTPHeaderField: "Authorization")
+            print(urlRequest)
         }
-        
         // Parameters
         if let parameters = parameters {
             do {
