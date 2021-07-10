@@ -19,9 +19,7 @@ class OnboardingViewController: UIViewController,UIScrollViewDelegate{
         super.viewDidLoad()
         startTimer()
     }
-    override func viewWillAppear(_ animated: Bool)
-    {
-//        companytableview.tableFooterView = MyUIView()
+    override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     @objc func scrollToNextCell(){
