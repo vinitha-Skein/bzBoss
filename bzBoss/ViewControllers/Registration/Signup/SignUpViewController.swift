@@ -112,6 +112,41 @@ class SignUpViewController: UIViewController {
         else
         {
             userRegister()
+            self.activityIndicator(self.view, startAnimate: true)
+            let params = ["first_name":encryptData(str: firstName),
+                          "last_name":encryptData(str: lastName),
+                          "access_level":encryptData(str: accessLevel),
+                          "phone_number": encryptData(str: phone),
+                          "device_type":encryptData(str: "iOS"),
+                          "device_token":"",
+                          "time_zone":encryptData(str: "Asia/Calcutta"),
+                          "type":"check"
+                        ]
+                    viewModel.signupUser(params: params)
+                    viewModel.registerSuccess =
+                        {
+                        //UserDefaults.standard.set(true, forKey: "isLoggedIn")
+                            self.FirebaseCall()
+                            let alerttext = self.viewModel.signupUserData?.first_name
+                            print("error \(alerttext)")
+
+                    }
+            
+                    viewModel.loadingStatus = {
+                        if self.viewModel.isLoading
+                        {
+                            self.activityIndicator(self.view, startAnimate: true)
+                        }
+                        else
+                        {
+                            self.activityIndicator(self.view, startAnimate: false)
+                            UIApplication.shared.endIgnoringInteractionEvents()
+                        }
+                    }
+            
+                    viewModel.errorMessageAlert = {
+                        self.showAlert(self.viewModel.errorMessage ?? "Error")
+                    }
             
         }
         
@@ -127,36 +162,7 @@ class SignUpViewController: UIViewController {
     */
     func userRegister()
     {
-        self.activityIndicator(self.view, startAnimate: true)
-        let params = ["first_name":"cHdwakxxdllDalA3elBPQ0ZsSE4xdz09",
-                      "last_name":"cHdwakxxdllDalA3elBPQ0ZsSE4xdz09",
-                      "access_level":"QXVrN29pN1d5WVlCRmpyb3l6ekNodz09",
-                  "phone_number": "eVdpYmlZYTRGcXdPS3FWRWFpcGdnZz09"]
-                viewModel.signupUser(params: params)
-                viewModel.registerSuccess =
-                    {
-                    //UserDefaults.standard.set(true, forKey: "isLoggedIn")
-                        self.FirebaseCall()
-                        let alerttext = self.viewModel.signupUserData?.first_name
-                        print("error \(alerttext)")
-
-                }
-        
-                viewModel.loadingStatus = {
-                    if self.viewModel.isLoading
-                    {
-                        self.activityIndicator(self.view, startAnimate: true)
-                    }
-                    else
-                    {
-                        self.activityIndicator(self.view, startAnimate: false)
-                        UIApplication.shared.endIgnoringInteractionEvents()
-                    }
-                }
-        
-                viewModel.errorMessageAlert = {
-                    self.showAlert(self.viewModel.errorMessage ?? "Error")
-                }
+   
     }
     func FirebaseCall()
     {

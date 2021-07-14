@@ -47,7 +47,7 @@ class SignInViewController: UIViewController {
             return
         }
         else {
-            userlogin()
+            userlogin(phone: phone)
            print(encryptData(str: phone))
         }
           
@@ -65,13 +65,14 @@ class SignInViewController: UIViewController {
             UIApplication.shared.open(url)
         }
     }
-    func userlogin()
+    func userlogin(phone: String)
     {
         //self.activityIndicator(self.view, startAnimate: true)
                 IndicatorView.isHidden = false
                 activityIndicator.startAnimating()
                 let params = [
-                  "phone_number": "eVdpYmlZYTRGcXdPS3FWRWFpcGdnZz09"]
+                  "phone_number": encryptData(str: phone)]
+                print(params)
                 viewModel.loginUser(params: params)
                 viewModel.loginSuccess =
                     {
