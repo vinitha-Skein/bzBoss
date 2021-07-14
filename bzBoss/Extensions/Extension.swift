@@ -349,7 +349,7 @@ extension UIViewController
         let decodeStr = str
 
         guard let base64Decoded = Data(base64Encoded: decodeStr, options: Data.Base64DecodingOptions(rawValue: 0))
-                .map({ String(data: $0, encoding: .utf8) }) else { return <#default value#> }
+                .map({ String(data: $0, encoding: .utf8) }) else { return "" }
         
         return base64Decoded!
     }
