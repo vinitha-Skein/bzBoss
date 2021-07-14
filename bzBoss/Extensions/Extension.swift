@@ -8,6 +8,9 @@
 
 import Foundation
 import UIKit
+import CryptoSwift
+
+
 extension UIView{
     func createBorderForView(cornerRadius:CGFloat,borderWidth:CGFloat,borderColor:UIColor){
         self.layer.cornerRadius = cornerRadius
@@ -292,7 +295,64 @@ extension UIView {
 }
 
 
-extension UIViewController{
+extension UIViewController
+{
+    func encryptData(str: String) -> String
+    {
+       let datatoEncode = str
+       var encrptedValue = String()
+        do
+        {
+//
+            let keyval = "12345678901234561234567890123456"
+            let ivVal = "1234567890123456"
+            let ivarray = Array(ivVal.utf8)
+            
+            
+            let key1 = Array(keyval.utf8)
+            let aes = try AES(key: key1, blockMode: CBC(iv: ivarray), padding: .pkcs5)
+     
+
+            let inputData = datatoEncode
+            var arraySlice = Array(inputData.utf8)
+            var datamain = inputData.data(using: .utf8)!
+            let encryptedBytes = try aes.encrypt([UInt8](datamain))
+            let encryptedData = Data(encryptedBytes)
+            //print(encryptedData)
+            let encval = encryptedData.base64EncodedString()
+            //print("Encrypted Value: \(encval)")
+            //print(encval)
+           // print(encodeString(str: encval))
+            encrptedValue = encodeString(str: encval)
+        }
+        catch
+        {
+            print("Went in catch")
+        }
+        
+        return encrptedValue
+    }
+    
+    func encodeString(str:String) -> String
+    {
+        let EncodeStr = str
+
+        let utf8str = EncodeStr.data(using: .utf8)
+
+        let base64Encoded = utf8str?.base64EncodedString(options: Data.Base64EncodingOptions(rawValue: 0))
+
+        return "\(base64Encoded)"
+    }
+    
+    func decodeString(str:String) -> String
+    {
+        let decodeStr = str
+
+        let base64Decoded = Data(base64Encoded: decodeStr, options: Data.Base64DecodingOptions(rawValue: 0))
+            .map({ String(data: $0, encoding: .utf8) })
+        return "\(base64Decoded)"
+    }
+    
     func rightToLeftTransition() -> CATransition{
         let transition = CATransition()
         transition.duration = 0.5

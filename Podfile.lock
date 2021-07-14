@@ -3,6 +3,7 @@ PODS:
   - AlamofireImage (4.2.0):
     - Alamofire (~> 5.4)
   - BEMAnalogClock (1.6)
+  - CryptoSwift (1.4.0)
   - Firebase/CoreOnly (7.9.0):
     - FirebaseCore (= 7.9.0)
   - Firebase/Messaging (7.9.0):
@@ -75,6 +76,7 @@ DEPENDENCIES:
   - Alamofire (~> 5.2)
   - AlamofireImage (~> 4.1)
   - BEMAnalogClock
+  - CryptoSwift (~> 1.4.0)
   - Firebase/Messaging
   - FirebaseAuth
   - iOSDropDown
@@ -86,6 +88,7 @@ SPEC REPOS:
     - Alamofire
     - AlamofireImage
     - BEMAnalogClock
+    - CryptoSwift
     - Firebase
     - FirebaseAuth
     - FirebaseCore
@@ -106,6 +109,7 @@ SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   AlamofireImage: 34a2d90b0e5fe6a5605f85ae4b7b01e784c60192
   BEMAnalogClock: b654e7f507cc02895222a26c33ca8493172b39cd
+  CryptoSwift: 7cc902df1784de3b389a387756c7d710f197730c
   Firebase: d8bd6bd34b4c7ed57bfdd056c66ff5adcdde53ab
   FirebaseAuth: 20625f04fdd213995249a82375b3dab39b1c136c
   FirebaseCore: 0798738ad1ae0fda67e17c7b9081241c431c6859
@@ -122,6 +126,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
 
-PODFILE CHECKSUM: 9f7171d789987028eaa445559e18d2ebc4fc7359
+PODFILE CHECKSUM: 7bcba3d0ca1867a3041fc10cf89e3c1d5f2a8f23
 
 COCOAPODS: 1.10.1

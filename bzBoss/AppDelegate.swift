@@ -23,25 +23,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Override point for customization after application launch.
 //        IQKeyboardManager.shared.enable = true
-        let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard:UIStoryboard = UIStoryboard(name: "Main1", bundle: nil)
 //        let loginPage = storyboard.instantiateViewController(withIdentifier: "OnboardingViewController") as! OnboardingViewController
 //        self.window?.rootViewController = loginPage
         
-//        let viewcontroller: OnboardingViewController = storyboard.instantiateViewController(withIdentifier: "OnboardingViewController") as! OnboardingViewController
+        let viewcontroller: OnboardingViewController = storyboard.instantiateViewController(withIdentifier: "OnboardingViewController") as! OnboardingViewController
+        viewcontroller.modalTransitionStyle = .crossDissolve
+
+        let navController:UINavigationController = UINavigationController.init(rootViewController: viewcontroller)
+
+        window?.rootViewController = navController
+        window?.makeKeyAndVisible()
+        
+//        let viewcontroller: ShopDetailsViewController = storyboard.instantiateViewController(withIdentifier: "ShopDetailsViewController") as! ShopDetailsViewController
 //        viewcontroller.modalTransitionStyle = .crossDissolve
 //
 //        let navController:UINavigationController = UINavigationController.init(rootViewController: viewcontroller)
 //
 //        window?.rootViewController = navController
 //        window?.makeKeyAndVisible()
-        
-        let viewcontroller: ShopDetailsViewController = storyboard.instantiateViewController(withIdentifier: "ShopDetailsViewController") as! ShopDetailsViewController
-        viewcontroller.modalTransitionStyle = .crossDissolve
-        
-        let navController:UINavigationController = UINavigationController.init(rootViewController: viewcontroller)
-        
-        window?.rootViewController = navController
-        window?.makeKeyAndVisible()
         
         return true
     }

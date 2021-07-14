@@ -395,6 +395,7 @@ class ShopDetailsViewController: UIViewController
     @IBAction func backButtonPressed(_ sender: Any)
     {
         self.navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func calender_clicked(_ sender: Any)

@@ -7,6 +7,8 @@
 
 import UIKit
 import FirebaseAuth
+import CryptoSwift
+
 
 class SignInViewController: UIViewController {
     @IBOutlet var mobile_BgView: UIView!
@@ -46,6 +48,7 @@ class SignInViewController: UIViewController {
         }
         else {
             userlogin()
+           print(encryptData(str: phone))
         }
           
         
