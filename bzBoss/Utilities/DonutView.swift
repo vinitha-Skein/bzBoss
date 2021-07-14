@@ -76,14 +76,14 @@ var selectedColor = UIColor(red: 29/255, green: 138/255, blue: 254/255, alpha: 1
 		
 		//end is calculated by progress part + starting point
 		//I want starting point to be at the bottom which is pi/2 radian
-		let endAngle = pathPerGoal * CGFloat(progress) + .pi/2
+        let endAngle = pathPerGoal * CGFloat(progress) + .pi/2
 
 		
 		let progressDonut = UIBezierPath(arcCenter: center,
 										 //line width (arcWidth) occupy space half in and half out of circumference line
 										 radius: radius - arcWidth/2,
 										 //I want starting point to be at the bottom which is pi/2 radian
-										 startAngle: .pi/2,
+                                         startAngle: .pi/2,
 										 endAngle: endAngle,
 										 clockwise: true)
 		

@@ -10,7 +10,8 @@ import Alamofire
 class SignUpViewModel {
     //Properties
      var signupUserData:RegisterUserData?{
-        didSet{
+        didSet
+        {
             self.registerSuccess?()
         }
     }
@@ -60,7 +61,9 @@ class SignUpViewModel {
                     default:
                         print("Unknown Error")
                     }
-                }else{
+                }
+                else
+                {
                     
                 }
             case .failure(let error):

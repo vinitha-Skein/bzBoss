@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import UIKit
 class SignInViewModel {
     //Properties
      var signInUserData:SignInData?{
@@ -18,16 +19,22 @@ class SignInViewModel {
     var error:Error?{
         didSet{self.errorMessageAlert?()}
     }
-    var errorMessage:String?
+   public var errorMessage:String?
     
     var isLoading: Bool = false{
         didSet{self.loadingStatus?()}
     }
+    var errorHit: Bool = false{
+        didSet{self.errorHited?()}
+    }
+
     
     //Closures for callback
     var loginSuccess:(() -> ())?
     var loadingStatus:(() -> ())?
     var errorMessageAlert:(() -> ())?
+    var errorHited:(() -> ())?
+
     
     
     //Login user
@@ -37,10 +44,10 @@ class SignInViewModel {
             switch result {
             case .success(let responseData):
                 self.isLoading = false
-                if responseData.status_code == 200{
                     switch responseData.status_code!{
                     case 200..<300:
-                            if responseData.data != nil{
+                            if responseData.data != nil
+                            {
                                 let jsonData = try! JSONEncoder().encode(responseData.data)
                                 let decoder = JSONDecoder()
                                 
@@ -51,19 +58,21 @@ class SignInViewModel {
                                 catch {
                                     print(error.localizedDescription)
                                 }
-                            }else{
-                                self.errorMessage = responseData.message
+                            }else
+                            {
+                                self.errorHit = true
+                                self.isLoading = false
+                                self.errorMessage = responseData.data?.all
                                 self.errorMessageAlert?()
                             }
                     case 400..<500:
-                        self.errorMessage = responseData.message
+                        self.isLoading = false
+                        self.errorHit = true
+                        self.errorMessage = responseData.data?.all
                         self.errorMessageAlert?()
                     default:
                         print("Unknown Error")
                     }
-                }else{
-                    
-                }
             case .failure(let error):
                 print(error.localizedDescription)
                 self.errorMessage = error.localizedDescription

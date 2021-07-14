@@ -76,22 +76,32 @@ class SignInViewController: UIViewController {
                         self.FirebaseCall()
                         let alerttext = self.viewModel.signInUserData?.access_level
                         print("error \(alerttext)")
-
                 }
         
-                viewModel.loadingStatus = {
+                viewModel.loadingStatus =
+                {
                     if self.viewModel.isLoading{
-                        self.activityIndicator(self.view, startAnimate: true)
+                        //self.activityIndicator(self.view, startAnimate: true)
+                        self.IndicatorView.isHidden = false
                     }
                     else
                     {
-                        self.activityIndicator(self.view, startAnimate: false)
+                        //self.activityIndicator(self.view, startAnimate: false)
+                        self.IndicatorView.isHidden = true
                         UIApplication.shared.endIgnoringInteractionEvents()
                     }
                 }
         
-                viewModel.errorMessageAlert = {
-                    self.showAlert(self.viewModel.errorMessage ?? "Error")
+                viewModel.errorHited =
+                    {
+                        if self.viewModel.errorHit
+                        {   print("Hit \(self.viewModel.errorMessage)")
+                            self.showAlert("This Phone number Not Exist in our record")
+                        }
+                        else
+                        {
+                            
+                        }
                 }
     }
     func FirebaseCall()

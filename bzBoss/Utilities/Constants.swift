@@ -1,15 +1,17 @@
 
 
 import Foundation
-struct DataService {
+struct DataService
+{
     static let productionBaseURL = ""
-    static let developmentBaseURL = "https://e4af3953dbd1.ngrok.io/api/user/"
+    static let developmentBaseURL = "https://2740541c62d1.ngrok.io/api/user/"
     static let Terms_Condition = "https://theadeptz.com/bzBoss/public/term/condition"
     static let Privacy_policy = "https://theadeptz.com/bzBoss/public/privecy/policy"
     static let About_us = "https://theadeptz.com/bzBoss/public/about/us"
     static var authToken = ""
 }
-struct UserLoginData{
+struct UserLoginData
+{
     static var userId = 0
 }
 enum HTTPHeaderField: String {
@@ -19,12 +21,14 @@ enum HTTPHeaderField: String {
     case acceptEncoding = "Accept-Encoding"
 }
 
-enum ContentType: String {
+enum ContentType: String
+{
     case json = "application/json"
 }
 
 
-struct Colors{
+struct Colors
+{
     static var labelBlack = "#757575"
     static var buttonColor = "#7980dd"
     static var textfieldColor = "#F0F0F5"

@@ -37,7 +37,6 @@ class ShopdetailsViewModel
             switch result {
             case .success(let responseData):
                 self.isLoading = false
-                if responseData.status_code == 200{
                     switch responseData.status_code!{
                     case 200..<300:
                             if responseData.data != nil{
@@ -58,12 +57,10 @@ class ShopdetailsViewModel
                     case 400..<500:
                         self.errorMessage = responseData.message
                         self.errorMessageAlert?()
+                        self.isLoading = false
                     default:
                         print("Unknown Error")
                     }
-                }else{
-                    
-                }
             case .failure(let error):
                 print(error.localizedDescription)
                 self.errorMessage = error.localizedDescription
