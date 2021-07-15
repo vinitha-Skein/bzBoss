@@ -127,6 +127,10 @@ class SignInViewController: UIViewController {
                               {
                                   self.verificationID = verificationID ?? "No Value"
                                   print(self.verificationID)
+                                let token = String(self.viewModel.signInUserData?.token ?? "No data")
+                                    UserDefaults.standard.set("Bearer \(token)", forKey: "Authorization")
+                                UserDefaults.standard.set(self.viewModel.signInUserData?.user_id, forKey: "user_id")
+
                                   self.IndicatorView.isHidden = true
                                   let storyboard = UIStoryboard(name: "Main", bundle: nil)
                                   let vc = storyboard.instantiateViewController(withIdentifier: "PasswordViewController") as! PasswordViewController

@@ -47,10 +47,12 @@ class ShopDetailsViewController: UIViewController
     @IBOutlet var collectionview: UICollectionView!
     @IBOutlet var todayButton: Mybutton!
     let viewModel = ShopdetailsViewModel()
+    let userViewModel = SignInViewModel()
     
     var dateSelectionBG = UIColor(red: 195/255, green: 250/255, blue: 255/255, alpha: 1)
     var selectedColor = UIColor(red: 29/255, green: 138/255, blue: 254/255, alpha: 1)
     
+    var toggleSelected = String()
     var openedat = String()
     var closedat = String()
     var firstcustomer = String()
@@ -62,7 +64,8 @@ class ShopDetailsViewController: UIViewController
     var firstcusHour = Int()
     var firstcusmin = Int()
     var firstLoad = true
-    
+    var premiseID = 5
+    var selectedDate = String()
     var category = ["OPENED AT","FIRST CUSTOMER","CUSTOMERS","STAFF","CLOSED AT","KNOWN VISITORS"]
 //    var green1 = UIColor(red: 76/255, green: 192/255, blue: 166/255, alpha: 1)
 //    var orange = UIColor(red: 243/255, green: 118/255, blue: 108/255, alpha: 1)
@@ -79,12 +82,10 @@ class ShopDetailsViewController: UIViewController
         if (firstLoad)
         {
             apiCall()
+            selectedDate = todaysDate()
         }
         clockchange()
-       
         
-        
-        print(visitorsTarget.text)
     }
     override func viewWillAppear(_ animated: Bool)
     {
@@ -130,12 +131,13 @@ class ShopDetailsViewController: UIViewController
     {
         firstLoad = false
         activityIndicator(view, startAnimate: true)
-            UserDefaults.standard.set("Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImRhZjA2NDViNWY1N2NkNTRmM2QwNzczZWEwMjk4NzU1NjMxMGUxM2VjNGZhMjY2ZDcyOWE4N2MyNTZlMTVlYmQ2ZGI3OGQ1NmFlYWI5ZmZkIn0.eyJhdWQiOiIxIiwianRpIjoiZGFmMDY0NWI1ZjU3Y2Q1NGYzZDA3NzNlYTAyOTg3NTU2MzEwZTEzZWM0ZmEyNjZkNzI5YTg3YzI1NmUxNWViZDZkYjc4ZDU2YWVhYjlmZmQiLCJpYXQiOjE2MjU1NzE3NDcsIm5iZiI6MTYyNTU3MTc0NywiZXhwIjoxNjU3MTA3NzQ3LCJzdWIiOiIxMyIsInNjb3BlcyI6W119.F6REeZaPqt-SkRfciIkQeHPzntgYyLTETHKN0mAH9k8AujZWhnWTf2PtX-5ICBI2drVVLoYxsfCgpq2Y9w73m1ZTdCmDfksIyYuk2jJKJnx1PiZoV6r-NqDG0h20w9icjx1t51V9puoohZlnrByufjcdHv3rGpsSN2MwFqrN2ni1ujEFNX27eB67p6ajPRFhJTCV4-5gHI7zDhZNREpFZxb3tCe1Bnr2tDaRBsxsHTmnAe5FasDXy_XGWk5h5t8tlPm8BRNZ9x6GoiiNtYtxEIIUDXpZrjEL1Jdlxokg7BwP7nt1kTNcv8abLQ5qL3XOt0Mh1mwxMsJpOhiuujcNjuvXtGETvXnAPtmVxx6g6vQW1uBNCM8WXpkp0_Rdc5OoGvrRMSWhoc7i3s7RuigsadaavhCOWhioBujMmFJOlPUwHidLVGFNnkfD5T4FPOYmoIwHILeLYbhs9jESZDnhDgxHx8_Mb0Qjh4ysKKqmfl1Rduu5XrgbLKS_ys_oIwxVDthd3GqrAcEcYd8R3ujQJx2fI6lPUFRqxkjxdUkBDlwFn0qEbsQXDNQqikWweAsesa46iDsIehy_AdfBRc6VNjAGFjtZdD7L04P6baZrijdyjGK4rcRaGAagdDWxkwyO32NwNC3yS6fDj7FTeGiXORFMJQHBKwjb9sQt-8J8sEU", forKey: "Authorization")
-
+        var user_id = String(UserDefaults.standard.integer(forKey: "user_id"))
         let params = [
-          "date": "WTR0RVJUUWUrMFFFWVBkdGEzOHZjQT09",
-            "id":"YVg2b0xYZTQvYzhKU3NEWjdyOGZzQT09",
-            "user_id":"YTNYYWg2c3FHR2VhYUJGenhmMk8zdz09"]
+          "date": encryptData(str: selectedDate),
+            "id": encryptData(str: String(premiseID)),
+            "user_id": encryptData(str: user_id)
+            ]
+        print(params)
         viewModel.shopDetail(params: params)
         viewModel.shopdetailsfetchedSuccess =
             {
@@ -156,7 +158,41 @@ class ShopDetailsViewController: UIViewController
                 UIApplication.shared.endIgnoringInteractionEvents()
             }
         }
+    
+    }
+    func userConfigApi()
+    {
+        let dateselected = selectedDate
+        let targertstaff = String(staffTarget.text!)
+        let targetcus = String(customersTarget.text!)
+        let usertoggle = toggleSelected
+        let premiseid = String(premiseID)
+        let userid = String(UserDefaults.standard.integer(forKey: "user_id"))
+        print(usertoggle)
         
+        let params = [
+        "user_id":encryptData(str: userid),
+        "premise_id":encryptData(str: premiseid),
+        "date":encryptData(str: dateselected),
+        "toggle":encryptData(str: usertoggle),
+        "targetstaff":encryptData(str: targertstaff),
+        "targetcust":encryptData(str: targetcus)]
+        viewModel.userConfig(params: params)
+        print(params)
+        viewModel.userConfigstatus =
+        {
+            if self.viewModel.userConfigUpdated
+            {
+                self.activityIndicator(self.view, startAnimate: true)
+            }
+            else
+            {
+                self.activityIndicator(self.view, startAnimate: true)
+                UIApplication.shared.endIgnoringInteractionEvents()
+                print("Changes not updated in server")
+            }
+        }
+        apiCall()
     }
     func convertto12(time: String) -> String
     {
@@ -282,7 +318,7 @@ class ShopDetailsViewController: UIViewController
         let date = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
-        dateLabel.text = dateFormatter.string(from: date)
+        dateLabel.text = selectedDate
         scrollView.isHidden = true
         firstCustomerView.layer.borderColor = UIColor.black.cgColor
         firstCustomerView.layer.borderWidth = 0.5
@@ -314,19 +350,25 @@ class ShopDetailsViewController: UIViewController
         staffTarget.didSelect{(selectedText , index ,id) in
               var staffselected = "Selected String: \(selectedText) \n index: \(index)"
             print(staffselected)
+            self.staffTarget.text = selectedText
             self.staffsgraph(target: selectedText)
             print(self.staffTarget.text)
+            self.userConfigApi()
                }
         customersTarget.didSelect{(selectedText , index ,id) in
               var staffselected = "Selected String: \(selectedText) \n index: \(index)"
             print(staffselected)
+            self.customersTarget.text = selectedText
             self.customersgraph(target: selectedText)
-            print(self.staffTarget.text)
+            self.userConfigApi()
                }
         visitorsTarget.didSelect{(selectedText , index ,id) in
               var staffselected = "Selected String: \(selectedText) \n index: \(index)"
             print(staffselected)
+            self.visitorsTarget.text = selectedText
             self.visitorsgraph(target: selectedText)
+            self.userConfigApi()
+
                }
     }
     func setImage(from url: String) {
@@ -345,12 +387,17 @@ class ShopDetailsViewController: UIViewController
     @IBAction func numerical_Clicked(_ sender: Any)
     {
         numericalUI()
+        toggleSelected = "numeric"
+        userConfigApi()
     }
     
     
     @IBAction func graphical_Clicked(_ sender: Any)
     {
         graphicalUI()
+        toggleSelected = "graphic"
+        userConfigApi()
+
     }
     @IBAction func refresh_clicked(_ sender: Any)
     {
@@ -368,6 +415,8 @@ class ShopDetailsViewController: UIViewController
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
         dateLabel.text = dateFormatter.string(from: date)
+        selectedDate = dateFormatter.string(from: date)
+        userConfigApi()
     }
     
     @IBAction func ShopDetailsPressed(_ sender: Any) {
@@ -389,6 +438,8 @@ class ShopDetailsViewController: UIViewController
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
         dateLabel.text = dateFormatter.string(from: yesterday!)
+        selectedDate = dateFormatter.string(from: yesterday!)
+        userConfigApi()
 
     }
     
@@ -542,6 +593,9 @@ extension ShopDetailsViewController:DatePickerDelegate
     func selectedDate(date: String)
     {
         dateLabel.text = date
+        selectedDate = date
+        userConfigApi()
+
     }
     
     func cancelDateSelection()

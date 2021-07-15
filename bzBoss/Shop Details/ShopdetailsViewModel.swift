@@ -9,7 +9,8 @@ class ShopdetailsViewModel
             self.shopdetailsfetchedSuccess?()
         }
     }
-    var shopdetailsData:ShopdetailsData?{
+    var shopdetailsData:ShopdetailsData?
+    {
        didSet{
            self.shopdetailsfetchedSuccess?()
        }
@@ -22,19 +23,24 @@ class ShopdetailsViewModel
     var isLoading: Bool = false{
         didSet{self.loadingStatus?()}
     }
+    var userConfigUpdated: Bool = false{
+        didSet{self.userConfigstatus?()}
+    }
     
     //Closures for callback
     var shopdetailsfetchedSuccess:(() -> ())?
     var loadingStatus:(() -> ())?
+    var userConfigstatus:(() -> ())?
+
     var errorMessageAlert:(() -> ())?
     
     
-    //Login user
     func shopDetail(params:Dictionary<String,Any>)
     {
         isLoading = true
         APIClient.shopDetails(params: params){ result in
-            switch result {
+            switch result
+            {
             case .success(let responseData):
                 self.isLoading = false
                     switch responseData.status_code!{
@@ -68,6 +74,35 @@ class ShopdetailsViewModel
                 self.isLoading = false
             }
         }
-        
-}
+    }
+    func userConfig(params:Dictionary<String,Any>)
+    {
+        isLoading = true
+        self.userConfigUpdated = false
+        APIClient.userConfig(params: params){ result in
+            switch result
+            {
+            case .success(let responseData):
+                self.isLoading = false
+                    switch responseData.status_code!{
+                    case 200..<300:
+                        self.isLoading = false
+                        self.userConfigUpdated = true
+                    case 400..<500:
+                        self.errorMessage = responseData.message
+                        self.errorMessageAlert?()
+                        self.isLoading = false
+                    default:
+                        print("Unknown Error")
+                    }
+            case .failure(let error):
+                print(error.localizedDescription)
+                self.errorMessage = error.localizedDescription
+                self.error = error
+                self.isLoading = false
+            }
+        }
+    }
+    
+    
 }

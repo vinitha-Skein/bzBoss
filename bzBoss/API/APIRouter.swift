@@ -7,11 +7,13 @@ enum APIRouter : URLRequestConvertible {
     case registerUser(params:[String:Any])
     case loginUser(params:[String:Any])
     case shopDetails(params:[String:Any])
+    case userConfig(params:[String:Any])
+
 
     // MARK: - HTTPMethod
     private var method : HTTPMethod{
         switch self{
-        case .registerUser,.loginUser,.shopDetails:
+        case .registerUser,.loginUser,.shopDetails,.userConfig:
             return .post
 //        case .editFamilyMember,.editInsurance:
 //            return .put
@@ -33,6 +35,8 @@ enum APIRouter : URLRequestConvertible {
             return "login"
         case .shopDetails:
             return "premise"
+        case .userConfig:
+            return "userconfig"
         }
     }
     
@@ -45,6 +49,8 @@ enum APIRouter : URLRequestConvertible {
         case .loginUser(let params):
             return params
         case .shopDetails(let params):
+            return params
+        case .userConfig(let params):
             return params
       
         }

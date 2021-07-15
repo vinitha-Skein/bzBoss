@@ -24,6 +24,9 @@ class APIClient {
     static func shopDetails(params:[String:Any],completion:@escaping(AFResult<ShopDetailsModel>)->Void){
         performRequest(route: APIRouter.shopDetails(params: params),completion: completion)
     }
+    static func userConfig(params:[String:Any],completion:@escaping(AFResult<ShopDetailsModel>)->Void){
+        performRequest(route: APIRouter.userConfig(params: params),completion: completion)
+    }
     
     
     //User Auth

@@ -39,7 +39,7 @@ class SignUpViewController: UIViewController {
         lastNameTextFeild.delegate = self
         accessLevelTextFeild.delegate = self
         // Do any additional setup after loading the view.
-        accessLevelTextFeild.optionArray = ["Manager", "Staff", "User"]
+        accessLevelTextFeild.optionArray = ["Manager", "Staff", "Other"]
 //        accessLevelTextFeild.didSelect{(selectedText , index ,id) in
 //        self.valueLabel.text = "Selected String: \(selectedText) \n index: \(index)"
 //        }
@@ -75,7 +75,6 @@ class SignUpViewController: UIViewController {
         accessLevelView.layer.borderColor = UIColor.lightGray.cgColor
         accessLevelView.layer.cornerRadius = 5
         sigupButton.layer.cornerRadius = 8
-        
     }
     @IBAction func back_Clicked(_ sender: Any)
     {
@@ -120,7 +119,7 @@ class SignUpViewController: UIViewController {
                           "device_type":encryptData(str: "iOS"),
                           "device_token":"",
                           "time_zone":encryptData(str: "Asia/Calcutta"),
-                          "type":"check"
+                          "type":""
                         ]
                     viewModel.signupUser(params: params)
                     viewModel.registerSuccess =
@@ -187,6 +186,9 @@ class SignUpViewController: UIViewController {
                                 vc.verificationID = verificationID ?? ""
                                   vc.modalPresentationStyle = .fullScreen
                                   self.present(vc, animated: true, completion: nil)
+                                let token = String(self.viewModel.signupUserData?.token ?? "No data")
+                                UserDefaults.standard.set("Bearer \(token)", forKey: "Authorization")
+
                               }
                           }
     }

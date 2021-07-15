@@ -353,7 +353,14 @@ extension UIViewController
         
         return base64Decoded!
     }
-    
+    func todaysDate() -> String
+    {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
+        let today = dateFormatter.string(from: date)
+        return today
+    }
     func rightToLeftTransition() -> CATransition{
         let transition = CATransition()
         transition.duration = 0.5
