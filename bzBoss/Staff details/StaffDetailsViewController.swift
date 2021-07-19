@@ -14,8 +14,15 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
     var staffs = ["Staff 1","Staff 2","Staff 3","Staff 4"]
     
     @IBOutlet weak var chartView: LineChartView!
-    let arrayString = ["12/07", "13/07", "14/07", "15/07", "16/07"]
+    let viewModel = premiseDataViewModel()
+
+   
+    let arrayxString = ["12/07", "13/07", "14/07", "15/07", "16/07","17/07","18/07"]
+    var dateString = [String()]
     let arrayYAxis = ["11.02 AM","01:50 pm" ,"04:36 pm", "07.23 pm"]
+    
+    var selectedDate = "12-06-2021"
+    var staffCount = [Float()]
     
     override func viewDidLoad()
     {
@@ -23,17 +30,15 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         
         collectionview.delegate = self
         collectionview.dataSource = self
-        let data1 = dataWithCount()
-        data1.setValueFont(UIFont(name: "HelveticaNeue", size: 7)!)
-        chartView.backgroundColor = UIColor.white
-        setupChart(chartView, data: data1, color: .green)
-        // Do any additional setup after loading the view.
+        
+        
+       apiCall()
     }
     
 
     @IBAction func backbuttonpressed(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
-        
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func companyDetailsPressed(_ sender: Any) {
@@ -43,7 +48,8 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         self.navigationController?.pushViewController(vc, animated: true)
     }
  
-    func setupChart(_ chart: LineChartView, data: LineChartData, color: UIColor) {
+    func setupChart(_ chart: LineChartView, data: LineChartData, color: UIColor)
+    {
         
         chart.delegate = self
         chart.backgroundColor = .white
@@ -71,21 +77,23 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         chart.xAxis.labelHeight = 21.0
         
         chart.xAxis.valueFormatter = XAxisNameFormater()
-        chart.xAxis.labelCount = arrayString.count
+        chart.xAxis.labelCount = arrayxString.count
         chart.xAxis.granularity = 1.0
         chart.data = data
         //        chart.animate(xAxisDuration: 2.5)
     }
-    
-    func dataWithCount() -> LineChartData {
-        let yVals = ChartDataEntry(x: 0.0, y: 0.0)
-        let yval2 = ChartDataEntry(x:1.0,y:0.0)
-        let yval3 = ChartDataEntry(x:2.0,y:0.0)
-        let yval4 = ChartDataEntry(x:3.0,y:2.0)
-        let yval5 = ChartDataEntry(x:4.0, y: 4.0)
+    func dataWithCount() -> LineChartData
+    {
+        let yVals = ChartDataEntry(x: 0.0, y: Double(staffCount[0]))
+        let yval2 = ChartDataEntry(x:1.0,y:Double(staffCount[1]))
+        let yval3 = ChartDataEntry(x:2.0,y:Double(staffCount[2]))
+        let yval4 = ChartDataEntry(x:3.0,y:Double(staffCount[3]))
+        let yval5 = ChartDataEntry(x:4.0, y: Double(staffCount[4]))
+        let yval6 = ChartDataEntry(x:4.0, y: Double(staffCount[5]))
+        let yval7 = ChartDataEntry(x:4.0, y: Double(staffCount[6]))
         
         
-        let set1 = LineChartDataSet(entries: [yVals,yval2,yval3,yval4,yval5], label: "DataSet 1")
+        let set1 = LineChartDataSet(entries: [yVals,yval2,yval3,yval4,yval5,yval6,yval7], label: "DataSet 1")
         
         set1.lineWidth = 1.75
         set1.circleRadius = 5.0
@@ -97,6 +105,93 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         set1.mode = LineChartDataSet.Mode.horizontalBezier
         
         return LineChartData(dataSet: set1)
+    }
+    
+    
+    func apiCall()
+    {
+       
+        let params = [
+                "startdate": encryptData(str: fromdate()),
+                "enddate": encryptData(str: todate()),
+                "id": encryptData(str: "4")]
+                    print(params)
+            
+                    viewModel.premiseDatafetch(params: params)
+                    viewModel.premiseDatafetchedSuccess =
+                    {
+                        print("APi called")
+                        self.setDatatoVariables()
+                    }
+            
+                    viewModel.loadingStatus =
+                    {
+                        if self.viewModel.isLoading{
+                            //self.activityIndicator(self.view, startAnimate: true)
+                        }
+                        else
+                        {
+                            //self.activityIndicator(self.view, startAnimate: false)
+                            UIApplication.shared.endIgnoringInteractionEvents()
+                        }
+                    }
+        
+    }
+    func setDatatoVariables()
+    {
+        let count = 0...6
+        for number in count
+        {
+            let staff_min = viewModel.premiseData?.premisedailydata![number].number_of_staff_min ?? 0
+            let staff_max = viewModel.premiseData?.premisedailydata![number].number_of_staff_max ?? 0
+            var staff = Float((staff_min+staff_max)/2)
+            staffCount.append(staff)
+            var tempDate = viewModel.premiseData?.premisedailydata![number].date ?? "01-01-2020"
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+            var date1 = dateFormatter.date(from:tempDate)!
+            
+            
+            var dateFormatter1 = DateFormatter()
+            dateFormatter1.dateFormat = "dd-MM"
+            dateString.append(dateFormatter.string(from: date1))
+        }
+        let data1 = dataWithCount()
+        data1.setValueFont(UIFont(name: "HelveticaNeue", size: 7)!)
+        chartView.backgroundColor = UIColor.white
+        setupChart(chartView, data: data1, color: .green)
+
+    }
+
+    func fromdate() -> String
+    {
+        let isoDate = selectedDate
+        print(selectedDate)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
+        let date3 = dateFormatter.date(from:isoDate)!
+                
+        let yesterday = Calendar.current.date(byAdding: .day, value: -7, to: date3)
+
+        let dateFormatter1 = DateFormatter()
+        dateFormatter1.dateFormat = "yyyy-MM-dd"
+        let prevDate = dateFormatter1.string(from: yesterday!)
+        return prevDate
+
+    }
+    func todate() -> String
+    {
+        let isoDate = selectedDate
+        print(selectedDate)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
+        let date3 = dateFormatter.date(from:isoDate)!
+                
+        let dateFormatter1 = DateFormatter()
+        dateFormatter1.dateFormat = "yyyy-MM-dd"
+        let prevDate = dateFormatter1.string(from: date3)
+        return prevDate
     }
     
 
@@ -138,7 +233,7 @@ class XAxisNameFormater: NSObject, IAxisValueFormatter {
     func stringForValue( _ value: Double, axis _: AxisBase?) -> String {
         let variable = StaffDetailsViewController()
         
-        let months: [String]! = variable.arrayString
+        let months: [String]! = variable.arrayxString
         
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")

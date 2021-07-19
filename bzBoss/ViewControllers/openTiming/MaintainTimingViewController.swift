@@ -167,7 +167,7 @@ class MaintainTimingViewController: UIViewController,ChartViewDelegate
         premiseTitleLabel.text = UserDefaults.standard.string(forKey: "premiseTitle")
         
         stateandcityLabel.text = String("\(city), \(state)")
-        timeLabel.text = UserDefaults.standard.string(forKey: "premiseDate") 
+        timeLabel.text = UserDefaults.standard.string(forKey: "premiseDate")
         statusLabel.text = UserDefaults.standard.string(forKey: "premiseStatus")
         timingLabel.text = selectedDate
         
@@ -210,3 +210,6 @@ class MaintainTimingViewController: UIViewController,ChartViewDelegate
 
     
 }
+
+    
+

@@ -488,6 +488,7 @@ class ShopDetailsViewController: UIViewController
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "StaffDetailsViewController") as! StaffDetailsViewController
         vc.modalPresentationStyle = .fullScreen
+        vc.selectedDate = selectedDate
         //self.navigationController?.pushViewController(vc, animated: true)
         present(vc, animated: true, completion: nil)
     }
