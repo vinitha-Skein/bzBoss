@@ -84,6 +84,10 @@ class ShopDetailsViewController: UIViewController
             apiCall()
             selectedDate = todaysDate()
         }
+//        if (firstLoad)
+//        {
+//            apiCall()
+//        }
         clockchange()
         
     }
@@ -478,6 +482,15 @@ class ShopDetailsViewController: UIViewController
         vc.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    func gotoCustomersViewController(Str:String){
+        let storyboard = UIStoryboard(name: "Main1", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "CustomersViewController") as! CustomersViewController
+        vc.isfrom = Str
+        vc.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func numericalUI()
     {
         numericalButton.layer.backgroundColor = selectedColor.cgColor
@@ -575,11 +588,19 @@ extension ShopDetailsViewController:UICollectionViewDelegate,UICollectionViewDat
         return CGSize(width: width, height: 140)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        
         if indexPath.row == 0 {
            gotomaintainTimingViewController(Str: "OpenedAt")
         }
         else if indexPath.row == 1 {
             gotomaintainTimingViewController(Str: "FirstCustomer")
+        }
+        else if indexPath.row == 2 {
+          gotoCustomersViewController(Str: "Customers")
+        }
+        else if indexPath.row == 5 {
+            gotoCustomersViewController(Str: "KnownVisitors")
         } else if indexPath.row == 4 {
             gotomaintainTimingViewController(Str: "ClosedAt")
         }

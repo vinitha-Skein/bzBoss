@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B22B98D26A071F5006B4AED /* CustomersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B22B98C26A071F5006B4AED /* CustomersViewController.swift */; };
 		1B356283268C23C700BC0396 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B356282268C23C700BC0396 /* OnboardingViewController.swift */; };
 		1B356288268C23E400BC0396 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B356287268C23E400BC0396 /* OnboardingCollectionViewCell.swift */; };
 		1B356293268C243300BC0396 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B356292268C243300BC0396 /* Validation.swift */; };
@@ -89,6 +90,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1B22B98C26A071F5006B4AED /* CustomersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomersViewController.swift; sourceTree = "<group>"; };
 		1B356282268C23C700BC0396 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		1B356287268C23E400BC0396 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
 		1B356292268C243300BC0396 /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
@@ -173,6 +175,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B22B98B26A071CB006B4AED /* customers */ = {
+			isa = PBXGroup;
+			children = (
+				1B22B98C26A071F5006B4AED /* CustomersViewController.swift */,
+			);
+			path = customers;
+			sourceTree = "<group>";
+		};
 		1B356291268C240E00BC0396 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +196,7 @@
 		1B356297268C244000BC0396 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1B22B98B26A071CB006B4AED /* customers */,
 				1BB77E892694BE4100299261 /* openTiming */,
 				1BB95EE826931FEC0085CACF /* companyDetailsView */,
 				1BB95EE126931FA20085CACF /* photopreviewView */,
@@ -610,6 +621,7 @@
 				1B64A338268D77CC00159D98 /* APIClient.swift in Sources */,
 				1BBF443A268F479A002367D9 /* SideMenuViewController.swift in Sources */,
 				A7B04B9526942675004D88CF /* ContactUsViewController.swift in Sources */,
+				1B22B98D26A071F5006B4AED /* CustomersViewController.swift in Sources */,
 				1B356293268C243300BC0396 /* Validation.swift in Sources */,
 				A718003E26930ACD0087637A /* DonutView.swift in Sources */,
 				1B64A33C268D78E600159D98 /* Constants.swift in Sources */,

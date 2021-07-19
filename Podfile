@@ -14,8 +14,8 @@ pod 'SideMenu'
 pod 'FirebaseAuth'
 pod 'BEMAnalogClock'
 pod 'Firebase/Messaging'
-pod 'CryptoSwift', '~> 1.4.0'
-
+pod 'CryptoSwift', '~> 0.15.0'
+pod 'Charts'
 
 end
 

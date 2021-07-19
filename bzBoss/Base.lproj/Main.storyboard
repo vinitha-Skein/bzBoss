@@ -2454,7 +2454,7 @@
                                                                     <constraint firstItem="gXS-06-EUb" firstAttribute="top" secondItem="AJn-4D-jdX" secondAttribute="top" constant="20" id="ZxE-Ji-zh0"/>
                                                                 </constraints>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="905-Bp-ste">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="905-Bp-ste" customClass="LineChartView" customModule="Charts">
                                                                 <rect key="frame" x="20" y="61" width="354" height="300"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
@@ -2527,6 +2527,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="chartView" destination="905-Bp-ste" id="DZf-wa-iz4"/>
                         <outlet property="collectionview" destination="gXS-06-EUb" id="xEC-ux-HLO"/>
                     </connections>
                 </viewController>

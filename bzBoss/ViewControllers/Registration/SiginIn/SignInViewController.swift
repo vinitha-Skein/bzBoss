@@ -47,8 +47,14 @@ class SignInViewController: UIViewController {
             return
         }
         else {
-            userlogin(phone: phone)
+//            userlogin(phone: phone)
            print(encryptData(str: phone))
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "PasswordViewController") as! PasswordViewController
+            vc.phoneNumber = self.phoneNumber ?? ""
+            vc.verificationID = self.verificationID ?? ""
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true, completion: nil)
         }
           
         

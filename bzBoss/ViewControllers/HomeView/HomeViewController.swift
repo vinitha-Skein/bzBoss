@@ -47,8 +47,8 @@ class HomeViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ShopDetailsViewController") as! ShopDetailsViewController
         vc.modalPresentationStyle = .fullScreen
-        //self.navigationController?.pushViewController(vc, animated: true)
-        present(vc,animated: true)
+        self.navigationController?.pushViewController(vc, animated: true)
+//        present(vc,animated: true)
     }
 
 }
