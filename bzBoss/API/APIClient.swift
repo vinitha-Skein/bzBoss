@@ -27,6 +27,9 @@ class APIClient {
     static func userConfig(params:[String:Any],completion:@escaping(AFResult<ShopDetailsModel>)->Void){
         performRequest(route: APIRouter.userConfig(params: params),completion: completion)
     }
+    static func premiseGraphData(params:[String:Any],completion:@escaping(AFResult<premiseDataModel>)->Void){
+        performRequest(route: APIRouter.premisedata(params: params),completion: completion)
+    }
     
     
     //User Auth

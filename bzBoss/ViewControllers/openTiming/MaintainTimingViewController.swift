@@ -8,34 +8,45 @@
 import UIKit
 import Charts
 
-class MaintainTimingViewController: UIViewController, ChartViewDelegate {
+class MaintainTimingViewController: UIViewController,ChartViewDelegate
+{
 
-    let arrayString = ["12/07", "13/07", "14/07", "15/07", "16/07"]
-
+    @IBOutlet weak var statusView: Mybutton!
+    @IBOutlet weak var stateandcityLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var premiseTitleLabel: UILabel!
     @IBOutlet weak var timingLabel: UILabel!
+    @IBOutlet weak var chartView: LineChartView!
+
     
     @IBOutlet weak var titleLabel: UILabel!
+    let viewModel = premiseDataViewModel()
     
     var isfrom = ""
+    var Time = ""
+    var selectedDate = "2021-06-01"
     
     @IBOutlet weak var imageView: UIImageView!
-    
-    @IBOutlet weak var chartView: LineChartView!
-    
-    override func viewDidLoad() {
+    let arrayString = ["12/07", "13/07", "14/07", "15/07", "16/07"]
+
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         if isfrom == "OpenedAt" {
-            titleLabel.text = "OPENED AT 11:13 PM"
+            titleLabel.text = "OPENED AT \(Time)"
         } else if isfrom == "FirstCustomer" {
-            titleLabel.text = "FIRST CUSTOMER 11:13 PM"
+            titleLabel.text = "FIRST CUSTOMER \(Time)"
         } else if isfrom == "ClosedAt"{
-            titleLabel.text = "CLOSED AT 11:13 PM"
+            titleLabel.text = "CLOSED AT \(Time)"
         }
-        
+        setData()
+        apiCall()
+
         
     }
-    
-    func setupChart(_ chart: LineChartView, data: LineChartData, color: UIColor) {
+    func setupChart(_ chart: LineChartView, data: LineChartData, color: UIColor)
+    {
         
         chart.delegate = self
         chart.backgroundColor = .white
@@ -101,10 +112,10 @@ class MaintainTimingViewController: UIViewController, ChartViewDelegate {
         
         return LineChartData(dataSet: set1)
     }
-    
-    
+
     @IBAction func backButtonPressed(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func companydetailsPressed(_ sender: Any) {
@@ -119,6 +130,83 @@ class MaintainTimingViewController: UIViewController, ChartViewDelegate {
         vc.image = imageView.image
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    func apiCall()
+    {
+       
+        let params = [
+                "startdate": encryptData(str: fromdate()),
+                "enddate": encryptData(str: todate()),
+                "id": encryptData(str: "4")]
+                    print(params)
+            
+                    viewModel.premiseDatafetch(params: params)
+                    viewModel.premiseDatafetchedSuccess =
+                    {
+                        print("APi called")
+                       print( self.viewModel.premiseData?.premisedailydata![0].closed_at)
+                    }
+            
+                    viewModel.loadingStatus =
+                    {
+                        if self.viewModel.isLoading{
+                            //self.activityIndicator(self.view, startAnimate: true)
+                        }
+                        else
+                        {
+                            //self.activityIndicator(self.view, startAnimate: false)
+                            UIApplication.shared.endIgnoringInteractionEvents()
+                        }
+                    }
+        
+    }
+    func setData()
+    {
+        
+        let city = String(UserDefaults.standard.string(forKey: "premiseCity") ??  "")
+        let state = String(UserDefaults.standard.string(forKey: "premiseState") ?? "")
+        premiseTitleLabel.text = UserDefaults.standard.string(forKey: "premiseTitle")
+        
+        stateandcityLabel.text = String("\(city), \(state)")
+        timeLabel.text = UserDefaults.standard.string(forKey: "premiseDate") 
+        statusLabel.text = UserDefaults.standard.string(forKey: "premiseStatus")
+        timingLabel.text = selectedDate
+        
+        if(statusLabel.text == "Open")
+        {
+            statusView.backgroundColor = UIColor.green
+        }
+    }
+    func fromdate() -> String
+    {
+        let isoDate = selectedDate
+        print(selectedDate)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
+        let date3 = dateFormatter.date(from:isoDate)!
+                
+        let yesterday = Calendar.current.date(byAdding: .day, value: -7, to: date3)
+
+        let dateFormatter1 = DateFormatter()
+        dateFormatter1.dateFormat = "yyyy-MM-dd"
+        let prevDate = dateFormatter1.string(from: yesterday!)
+        return prevDate
+
+    }
+    func todate() -> String
+    {
+        let isoDate = selectedDate
+        print(selectedDate)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
+        let date3 = dateFormatter.date(from:isoDate)!
+                
+        let dateFormatter1 = DateFormatter()
+        dateFormatter1.dateFormat = "yyyy-MM-dd"
+        let prevDate = dateFormatter1.string(from: date3)
+        return prevDate
+    }
+
     
 
+    
 }

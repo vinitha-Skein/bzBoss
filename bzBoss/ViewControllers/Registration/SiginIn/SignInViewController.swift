@@ -47,14 +47,14 @@ class SignInViewController: UIViewController {
             return
         }
         else {
-//            userlogin(phone: phone)
-           print(encryptData(str: phone))
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "PasswordViewController") as! PasswordViewController
-            vc.phoneNumber = self.phoneNumber ?? ""
-            vc.verificationID = self.verificationID ?? ""
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true, completion: nil)
+            userlogin(phone: phone)
+//           print(encryptData(str: phone))
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let vc = storyboard.instantiateViewController(withIdentifier: "PasswordViewController") as! PasswordViewController
+//            vc.phoneNumber = self.phoneNumber ?? ""
+//            vc.verificationID = self.verificationID ?? ""
+//            vc.modalPresentationStyle = .fullScreen
+//            self.present(vc, animated: true, completion: nil)
         }
           
         
@@ -113,6 +113,9 @@ class SignInViewController: UIViewController {
                             
                         }
                 }
+        viewModel.errorMessageAlert = {
+            self.showAlert("Unable to Connect to Server")
+        }
     }
     func FirebaseCall()
     {

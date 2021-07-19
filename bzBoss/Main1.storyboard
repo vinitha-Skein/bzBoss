@@ -20,10 +20,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o1L-Ks-POP">
-                                <rect key="frame" x="0.0" y="44" width="414" height="358.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="358.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash icon" translatesAutoresizingMaskIntoConstraints="NO" id="J3F-Xo-SSs">
-                                        <rect key="frame" x="62" y="32" width="290" height="100"/>
+                                        <rect key="frame" x="124" y="72" width="166" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="dZU-Af-fKL"/>
                                         </constraints>
@@ -31,8 +31,8 @@
                                 </subviews>
                                 <color key="backgroundColor" name="App Theme"/>
                                 <constraints>
-                                    <constraint firstItem="J3F-Xo-SSs" firstAttribute="top" secondItem="o1L-Ks-POP" secondAttribute="top" constant="32" id="87t-Ca-7S0"/>
-                                    <constraint firstItem="J3F-Xo-SSs" firstAttribute="width" secondItem="o1L-Ks-POP" secondAttribute="width" multiplier="0.7" id="U00-Hh-NmH"/>
+                                    <constraint firstItem="J3F-Xo-SSs" firstAttribute="top" secondItem="o1L-Ks-POP" secondAttribute="top" constant="72" id="87t-Ca-7S0"/>
+                                    <constraint firstItem="J3F-Xo-SSs" firstAttribute="width" secondItem="o1L-Ks-POP" secondAttribute="width" multiplier="0.4" id="U00-Hh-NmH"/>
                                     <constraint firstItem="J3F-Xo-SSs" firstAttribute="centerX" secondItem="o1L-Ks-POP" secondAttribute="centerX" id="aB9-Z6-88s"/>
                                 </constraints>
                             </view>
@@ -180,7 +180,7 @@
                             <constraint firstItem="o1L-Ks-POP" firstAttribute="height" secondItem="iaT-VX-9IZ" secondAttribute="height" multiplier="0.4" id="Wu2-pm-sva"/>
                             <constraint firstItem="J8B-7J-Rgz" firstAttribute="leading" secondItem="9vX-g0-ORV" secondAttribute="leading" id="YEx-hV-uAv"/>
                             <constraint firstItem="9vX-g0-ORV" firstAttribute="bottom" secondItem="J8B-7J-Rgz" secondAttribute="bottom" id="bvh-GJ-mql"/>
-                            <constraint firstItem="o1L-Ks-POP" firstAttribute="top" secondItem="9vX-g0-ORV" secondAttribute="top" id="cHW-X3-iXj"/>
+                            <constraint firstItem="o1L-Ks-POP" firstAttribute="top" secondItem="iaT-VX-9IZ" secondAttribute="top" id="cHW-X3-iXj"/>
                             <constraint firstItem="9vX-g0-ORV" firstAttribute="trailing" secondItem="o1L-Ks-POP" secondAttribute="trailing" id="mHR-ct-ffK"/>
                             <constraint firstItem="o1L-Ks-POP" firstAttribute="leading" secondItem="9vX-g0-ORV" secondAttribute="leading" id="tSd-n7-3fO"/>
                         </constraints>
@@ -207,14 +207,14 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SideMenuViewCellID" id="LWu-Wu-Oad" customClass="SideMenuViewCell" customModule="bzBoss" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LWu-Wu-Oad" id="mJT-Rh-nPQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dex-bw-NRj">
-                                                    <rect key="frame" x="28" y="11" width="42" height="21.5"/>
+                                                    <rect key="frame" x="28" y="11" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -804,6 +804,11 @@
                     <connections>
                         <outlet property="chartView" destination="2NV-ZL-tKb" id="Ugy-NO-gjB"/>
                         <outlet property="imageView" destination="IZ3-Pd-m1j" id="ZN5-hH-wXk"/>
+                        <outlet property="premiseTitleLabel" destination="tut-Bu-kyG" id="E8C-KK-igC"/>
+                        <outlet property="stateandcityLabel" destination="Adg-cf-qBI" id="Lvk-AI-E9P"/>
+                        <outlet property="statusLabel" destination="i2b-aa-Xw4" id="kuV-8E-hBu"/>
+                        <outlet property="statusView" destination="1Wr-KO-yDm" id="T7e-eB-fzR"/>
+                        <outlet property="timeLabel" destination="LgB-iT-P0O" id="aAQ-Cs-L8v"/>
                         <outlet property="timingLabel" destination="ljc-Ey-FIu" id="VJ4-PC-3Vf"/>
                         <outlet property="titleLabel" destination="S7U-47-AYm" id="Jfi-dv-1DH"/>
                     </connections>
@@ -1051,23 +1056,8 @@
         </scene>
     </scenes>
     <designables>
-        <designable name="1Wr-KO-yDm">
-            <size key="intrinsicContentSize" width="30" height="34"/>
-        </designable>
-        <designable name="IDg-Yl-kVc">
-            <size key="intrinsicContentSize" width="30" height="34"/>
-        </designable>
-        <designable name="VTb-uR-FkZ">
-            <size key="intrinsicContentSize" width="30" height="34"/>
-        </designable>
-        <designable name="aKn-Tz-sfZ">
-            <size key="intrinsicContentSize" width="30" height="34"/>
-        </designable>
         <designable name="cPI-V6-PVG">
             <size key="intrinsicContentSize" width="108" height="32"/>
-        </designable>
-        <designable name="gQU-CJ-j4X">
-            <size key="intrinsicContentSize" width="30" height="34"/>
         </designable>
         <designable name="qEr-zF-LmO">
             <size key="intrinsicContentSize" width="63" height="34"/>

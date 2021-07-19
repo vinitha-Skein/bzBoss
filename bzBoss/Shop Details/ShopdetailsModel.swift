@@ -141,7 +141,8 @@ struct Userconfigdata : Codable {
     let date : String?
     let toggle : String?
     let targetstaff : String?
-    let targetcust : Int?
+    let targetknown : String?
+    let targetcust : String?
     let created_at : String?
     let updated_at : String?
 
@@ -154,6 +155,7 @@ struct Userconfigdata : Codable {
         case toggle = "toggle"
         case targetstaff = "targetstaff"
         case targetcust = "targetcust"
+        case targetknown = "targetknown"
         case created_at = "created_at"
         case updated_at = "updated_at"
     }

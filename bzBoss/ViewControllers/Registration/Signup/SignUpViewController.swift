@@ -9,7 +9,7 @@ import UIKit
 import iOSDropDown
 import FirebaseAuth
 import FirebaseMessaging
-import FirebaseInstanceID
+//import FirebaseInstanceID
 
 
 
@@ -48,15 +48,15 @@ class SignUpViewController: UIViewController {
 //                print("InstanceID token: \(refreshedToken)")
 //            }
 //        }
-        func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-            InstanceID.instanceID().instanceID(handler: { (result, error) in
-                if let error = error {
-                    print("Error fetching remote instange ID: \(error)")
-                } else if let result = result {
-                    print("Remote instance ID token: \(result.token)")
-                }
-            })
-        }
+//        func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+//            InstanceID.instanceID().instanceID(handler: { (result, error) in
+//                if let error = error {
+//                    print("Error fetching remote instange ID: \(error)")
+//                } else if let result = result {
+//                    print("Remote instance ID token: \(result.token)")
+//                }
+//            })
+//        }
     }
     func setupUI()
     {

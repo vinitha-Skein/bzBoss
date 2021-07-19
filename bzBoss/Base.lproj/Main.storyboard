@@ -393,7 +393,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DrU-tG-tnN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4814.4927536231889" y="95.758928571428569"/>
+            <point key="canvasLocation" x="-4820" y="106"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="Hyu-Hq-aeL">
@@ -407,7 +407,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="358.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash icon" translatesAutoresizingMaskIntoConstraints="NO" id="zpf-SN-py3">
-                                        <rect key="frame" x="62" y="70" width="290" height="100"/>
+                                        <rect key="frame" x="124" y="70" width="166" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="V3l-XG-G8E"/>
                                         </constraints>
@@ -417,7 +417,7 @@
                                 <constraints>
                                     <constraint firstItem="zpf-SN-py3" firstAttribute="centerX" secondItem="NOK-xZ-25A" secondAttribute="centerX" id="JoK-7g-EaX"/>
                                     <constraint firstItem="zpf-SN-py3" firstAttribute="top" secondItem="NOK-xZ-25A" secondAttribute="top" constant="70" id="uWK-lN-1MI"/>
-                                    <constraint firstItem="zpf-SN-py3" firstAttribute="width" secondItem="NOK-xZ-25A" secondAttribute="width" multiplier="0.7" id="w1M-F0-VhA"/>
+                                    <constraint firstItem="zpf-SN-py3" firstAttribute="width" secondItem="NOK-xZ-25A" secondAttribute="width" multiplier="0.4" id="w1M-F0-VhA"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T4t-dR-xdG">
@@ -721,7 +721,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9E6-iF-Pkv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-707" y="107"/>
+            <point key="canvasLocation" x="-722" y="96"/>
         </scene>
         <!--Password View Controller-->
         <scene sceneID="3WT-wb-pbQ">
@@ -746,7 +746,7 @@
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash icon" translatesAutoresizingMaskIntoConstraints="NO" id="j6B-7c-mqN">
-                                        <rect key="frame" x="62" y="70" width="290" height="100"/>
+                                        <rect key="frame" x="124" y="70" width="166" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="iP8-Aq-7KN"/>
                                         </constraints>
@@ -758,7 +758,7 @@
                                     <constraint firstItem="j6B-7c-mqN" firstAttribute="top" secondItem="JuV-vy-g4p" secondAttribute="top" constant="70" id="Yub-tK-8bL"/>
                                     <constraint firstItem="rTU-82-dJK" firstAttribute="top" secondItem="JuV-vy-g4p" secondAttribute="top" constant="44" id="b7C-i3-c9S"/>
                                     <constraint firstItem="j6B-7c-mqN" firstAttribute="centerX" secondItem="JuV-vy-g4p" secondAttribute="centerX" id="g2c-vY-p25"/>
-                                    <constraint firstItem="j6B-7c-mqN" firstAttribute="width" secondItem="JuV-vy-g4p" secondAttribute="width" multiplier="0.7" id="uD1-cD-9m0"/>
+                                    <constraint firstItem="j6B-7c-mqN" firstAttribute="width" secondItem="JuV-vy-g4p" secondAttribute="width" multiplier="0.4" id="uD1-cD-9m0"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EaK-Pe-Lgl" customClass="MyUIView" customModule="bzBoss" customModuleProvider="target">
@@ -929,7 +929,7 @@
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash icon" translatesAutoresizingMaskIntoConstraints="NO" id="ONY-o7-Qtb">
-                                        <rect key="frame" x="62" y="70" width="290" height="100"/>
+                                        <rect key="frame" x="124" y="70" width="166" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="gcj-di-Ped"/>
                                         </constraints>
@@ -939,7 +939,7 @@
                                 <constraints>
                                     <constraint firstItem="ONY-o7-Qtb" firstAttribute="centerX" secondItem="NET-d8-8Oa" secondAttribute="centerX" id="7c5-yG-Jgy"/>
                                     <constraint firstItem="ONY-o7-Qtb" firstAttribute="top" secondItem="NET-d8-8Oa" secondAttribute="top" constant="70" id="G1d-zC-neB"/>
-                                    <constraint firstItem="ONY-o7-Qtb" firstAttribute="width" secondItem="NET-d8-8Oa" secondAttribute="width" multiplier="0.7" id="JZE-0U-C8d"/>
+                                    <constraint firstItem="ONY-o7-Qtb" firstAttribute="width" secondItem="NET-d8-8Oa" secondAttribute="width" multiplier="0.4" id="JZE-0U-C8d"/>
                                     <constraint firstItem="rKz-yW-CF0" firstAttribute="top" secondItem="NET-d8-8Oa" secondAttribute="top" constant="44" id="L0n-7v-kXB"/>
                                     <constraint firstItem="rKz-yW-CF0" firstAttribute="leading" secondItem="NET-d8-8Oa" secondAttribute="leading" constant="20" id="nMh-we-llg"/>
                                 </constraints>
@@ -2048,6 +2048,7 @@
                         <outlet property="staffTarget" destination="dBo-Q0-PWD" id="qAr-De-KI5"/>
                         <outlet property="staffsChart" destination="e9A-pC-SBL" id="FIM-gP-jPA"/>
                         <outlet property="statusLabel" destination="SLR-4E-M9a" id="yTS-vD-u3e"/>
+                        <outlet property="statusView" destination="4VO-gQ-vvF" id="hoM-ac-HW2"/>
                         <outlet property="todayButton" destination="aPZ-Ie-oVU" id="sdY-Wd-gnO"/>
                         <outlet property="visitorsChartView" destination="wxd-N5-vDL" id="3fQ-1w-Psi"/>
                         <outlet property="visitorsLabel" destination="CRm-5B-Fbx" id="AZA-li-qww"/>
@@ -2142,7 +2143,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZG-Tk-pOm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4023" y="96"/>
+            <point key="canvasLocation" x="-4016" y="106"/>
         </scene>
         <!--StaffDetailsViewController-->
         <scene sceneID="D7X-pU-tzs">
@@ -2540,20 +2541,8 @@
         <designable name="0Jv-Rt-2ue">
             <size key="intrinsicContentSize" width="56" height="32"/>
         </designable>
-        <designable name="4VO-gQ-vvF">
-            <size key="intrinsicContentSize" width="30" height="34"/>
-        </designable>
-        <designable name="5LW-ua-VBa">
-            <size key="intrinsicContentSize" width="30" height="34"/>
-        </designable>
         <designable name="6Xd-pd-Bza">
             <size key="intrinsicContentSize" width="58" height="28"/>
-        </designable>
-        <designable name="9n8-Vn-uUa">
-            <size key="intrinsicContentSize" width="30" height="34"/>
-        </designable>
-        <designable name="CKG-lf-loe">
-            <size key="intrinsicContentSize" width="30" height="34"/>
         </designable>
         <designable name="PbF-rG-Oyu">
             <size key="intrinsicContentSize" width="137" height="32"/>
@@ -2566,9 +2555,6 @@
         </designable>
         <designable name="fi3-EA-vOB">
             <size key="intrinsicContentSize" width="62" height="28"/>
-        </designable>
-        <designable name="zXb-YA-XaM">
-            <size key="intrinsicContentSize" width="30" height="34"/>
         </designable>
     </designables>
     <resources>

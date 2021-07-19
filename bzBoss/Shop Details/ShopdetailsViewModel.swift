@@ -84,7 +84,7 @@ class ShopdetailsViewModel
             {
             case .success(let responseData):
                 self.isLoading = false
-                    switch responseData.status_code!{
+                    switch responseData.status_code ?? 501{
                     case 200..<300:
                         self.isLoading = false
                         self.userConfigUpdated = true
@@ -92,6 +92,8 @@ class ShopdetailsViewModel
                         self.errorMessage = responseData.message
                         self.errorMessageAlert?()
                         self.isLoading = false
+                    case 501:
+                self.userConfigUpdated = false
                     default:
                         print("Unknown Error")
                     }

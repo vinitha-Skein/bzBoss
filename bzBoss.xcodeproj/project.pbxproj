@@ -41,6 +41,8 @@
 		A707C70226983C65007D50C1 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A707C70126983C65007D50C1 /* SignInViewModel.swift */; };
 		A70940A3269590BB00421C84 /* StaffCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70940A2269590BB00421C84 /* StaffCollectionViewCell.swift */; };
 		A718003E26930ACD0087637A /* DonutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A718003D26930ACC0087637A /* DonutView.swift */; };
+		A72D7E2D26A561E800F8F6AE /* premiseDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72D7E2C26A561E700F8F6AE /* premiseDataModel.swift */; };
+		A72D7E3126A561F100F8F6AE /* premiseDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72D7E3026A561F100F8F6AE /* premiseDataViewModel.swift */; };
 		A72EC81A26970F450034AA34 /* IndividualStaffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72EC81926970F450034AA34 /* IndividualStaffViewController.swift */; };
 		A762F27B268C8B760058EEEB /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A762F27A268C8B760058EEEB /* SignInViewController.swift */; };
 		A762F283268C915F0058EEEB /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A762F282268C915F0058EEEB /* PasswordViewController.swift */; };
@@ -129,6 +131,8 @@
 		A707C70126983C65007D50C1 /* SignInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		A70940A2269590BB00421C84 /* StaffCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffCollectionViewCell.swift; sourceTree = "<group>"; };
 		A718003D26930ACC0087637A /* DonutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonutView.swift; sourceTree = "<group>"; };
+		A72D7E2C26A561E700F8F6AE /* premiseDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = premiseDataModel.swift; sourceTree = "<group>"; };
+		A72D7E3026A561F100F8F6AE /* premiseDataViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = premiseDataViewModel.swift; sourceTree = "<group>"; };
 		A72EC81926970F450034AA34 /* IndividualStaffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualStaffViewController.swift; sourceTree = "<group>"; };
 		A762F27A268C8B760058EEEB /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		A762F282268C915F0058EEEB /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
@@ -413,6 +417,8 @@
 		A7DDFAB2268DD97300D639B0 /* Shop Details */ = {
 			isa = PBXGroup;
 			children = (
+				A72D7E3026A561F100F8F6AE /* premiseDataViewModel.swift */,
+				A72D7E2C26A561E700F8F6AE /* premiseDataModel.swift */,
 				A7D72D672699813400495013 /* ShopdetailsModel.swift */,
 				A7DDFAB3268DD99400D639B0 /* ShopDetailsViewController.swift */,
 				A7DDFAB9268DD9F600D639B0 /* ShopDetailsCollectionViewCell.swift */,
@@ -607,7 +613,9 @@
 				1B4DCCFF268AE56600D3710B /* ViewController.swift in Sources */,
 				1B64A337268D77CC00159D98 /* APIRouter.swift in Sources */,
 				1BB95EE526931FBF0085CACF /* PhotoPreviewViewController.swift in Sources */,
+				A72D7E2D26A561E800F8F6AE /* premiseDataModel.swift in Sources */,
 				1B356283268C23C700BC0396 /* OnboardingViewController.swift in Sources */,
+				A72D7E3126A561F100F8F6AE /* premiseDataViewModel.swift in Sources */,
 				1B4DCCFB268AE56600D3710B /* AppDelegate.swift in Sources */,
 				1BB95EEA2693203E0085CACF /* CompanyDetailsViewController.swift in Sources */,
 				1BBF443B268F479A002367D9 /* SideMenuViewModel.swift in Sources */,

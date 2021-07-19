@@ -11,6 +11,7 @@ import iOSDropDown
 
 class ShopDetailsViewController: UIViewController
 {
+    @IBOutlet weak var statusView: Mybutton!
     @IBOutlet weak var visitorsLabel: UILabel!
     @IBOutlet weak var visitorsTarget: DropDown!
     @IBOutlet weak var staffTarget: DropDown!
@@ -64,8 +65,10 @@ class ShopDetailsViewController: UIViewController
     var firstcusHour = Int()
     var firstcusmin = Int()
     var firstLoad = true
-    var premiseID = 5
+    var premiseID = 4
     var selectedDate = String()
+    var userSelectedDate = "2021-06-08"
+    
     var category = ["OPENED AT","FIRST CUSTOMER","CUSTOMERS","STAFF","CLOSED AT","KNOWN VISITORS"]
 //    var green1 = UIColor(red: 76/255, green: 192/255, blue: 166/255, alpha: 1)
 //    var orange = UIColor(red: 243/255, green: 118/255, blue: 108/255, alpha: 1)
@@ -84,10 +87,6 @@ class ShopDetailsViewController: UIViewController
             apiCall()
             selectedDate = todaysDate()
         }
-//        if (firstLoad)
-//        {
-//            apiCall()
-//        }
         clockchange()
         
     }
@@ -136,10 +135,11 @@ class ShopDetailsViewController: UIViewController
         firstLoad = false
         activityIndicator(view, startAnimate: true)
         var user_id = String(UserDefaults.standard.integer(forKey: "user_id"))
-        let params = [
-          "date": encryptData(str: selectedDate),
-            "id": encryptData(str: String(premiseID)),
-            "user_id": encryptData(str: user_id)
+        let params =
+            [
+                "date": encryptData(str: selectedDate),
+                "id": encryptData(str: String(premiseID)),
+                "user_id": encryptData(str: user_id)
             ]
         print(params)
         viewModel.shopDetail(params: params)
@@ -169,10 +169,10 @@ class ShopDetailsViewController: UIViewController
         let dateselected = selectedDate
         let targertstaff = String(staffTarget.text!)
         let targetcus = String(customersTarget.text!)
+        let targetknown = String(visitorsTarget.text!)
         let usertoggle = toggleSelected
         let premiseid = String(premiseID)
         let userid = String(UserDefaults.standard.integer(forKey: "user_id"))
-        print(usertoggle)
         
         let params = [
         "user_id":encryptData(str: userid),
@@ -180,23 +180,24 @@ class ShopDetailsViewController: UIViewController
         "date":encryptData(str: dateselected),
         "toggle":encryptData(str: usertoggle),
         "targetstaff":encryptData(str: targertstaff),
-        "targetcust":encryptData(str: targetcus)]
+        "targetcust":encryptData(str: targetcus),
+        "targetknown":encryptData(str: targetknown)]
         viewModel.userConfig(params: params)
         print(params)
         viewModel.userConfigstatus =
         {
             if self.viewModel.userConfigUpdated
             {
-                self.activityIndicator(self.view, startAnimate: true)
+                self.activityIndicator(self.view, startAnimate: false)
+                self.apiCall()
             }
             else
             {
-                self.activityIndicator(self.view, startAnimate: true)
+                self.activityIndicator(self.view, startAnimate: false)
                 UIApplication.shared.endIgnoringInteractionEvents()
                 print("Changes not updated in server")
             }
         }
-        apiCall()
     }
     func convertto12(time: String) -> String
     {
@@ -244,7 +245,7 @@ class ShopDetailsViewController: UIViewController
             print("12 hour formatted Date:",Date12)
             return Date12
         }
-        return "30"
+        return "0"
     }
     func setDatatoVariables()
     {
@@ -252,6 +253,8 @@ class ShopDetailsViewController: UIViewController
         self.closedat = self.viewModel.shopdetailsData?.closed_at ?? "-"
         self.firstcustomer = self.viewModel.shopdetailsData?.first_customer_time ?? "-"
         self.toggle = self.viewModel.shopdetailsData?.userconfigdata?.toggle ?? "graphic"
+        self.userSelectedDate = self.viewModel.shopdetailsData?.userconfigdata?.date ?? "2021-06-08"
+
         self.premiseImagevalue = self.viewModel.shopdetailsData?.premisedata?.photo ?? ""
         
        if (viewModel.shopdetailsData?.number_of_known_visitors_max != nil && viewModel.shopdetailsData?.number_of_known_visitors_min != nil)
@@ -292,13 +295,24 @@ class ShopDetailsViewController: UIViewController
         openedAtTimeLabel.text = convertto12(time: openedat)
         firstCustomerTimeLabel.text = convertto12(time: firstcustomer)
         closedAtTimeLabel.text = convertto12(time: closedat)
+        staffTarget.text = viewModel.shopdetailsData?.userconfigdata?.targetstaff ?? "20"
+        customersTarget.text = viewModel.shopdetailsData?.userconfigdata?.targetcust ?? "20"
+        visitorsTarget.text = viewModel.shopdetailsData?.userconfigdata?.targetknown ?? "20"
 
-        
-
+        UserDefaults.standard.setValue(viewModel.shopdetailsData?.premisedata?.name ?? "Prince Complex", forKey: "premiseTitle")
+        UserDefaults.standard.setValue(viewModel.shopdetailsData?.premisedata?.city ?? "Chennai", forKey: "premiseCity")
+        UserDefaults.standard.setValue(viewModel.shopdetailsData?.premisedata?.state  ?? "Tamilnadu", forKey: "premiseState" )
+        UserDefaults.standard.setValue(viewModel.shopdetailsData?.getcurrentstatus?.last_updated ?? "12-07-2021", forKey: "premiseDate")
+        UserDefaults.standard.setValue(viewModel.shopdetailsData?.getcurrentstatus?.status ?? "Open", forKey: "premiseStatus")
         
         staffsgraph(target: staffTarget.text ?? "10")
         customersgraph(target: customersTarget.text ?? "10")
         visitorsgraph(target: visitorsTarget.text ?? "10")
+        
+        if(statusLabel.text == "Open")
+        {
+            statusView.backgroundColor = UIColor.green
+        }
         
         if (toggle == "graphic")
         {
@@ -464,6 +478,7 @@ class ShopDetailsViewController: UIViewController
         let storyboard = UIStoryboard(name: "Main", bundle: .main)
         let popup = storyboard.instantiateViewController(withIdentifier: "DatePickerViewController") as! DatePickerViewController
         popup.isTimePicker = false
+        popup.defaultDate = userSelectedDate
         popup.modalPresentationStyle = .overCurrentContext
         popup.delegate = self
         present(popup, animated: true, completion: nil)
@@ -473,24 +488,19 @@ class ShopDetailsViewController: UIViewController
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "StaffDetailsViewController") as! StaffDetailsViewController
         vc.modalPresentationStyle = .fullScreen
-        self.navigationController?.pushViewController(vc, animated: true)
+        //self.navigationController?.pushViewController(vc, animated: true)
+        present(vc, animated: true, completion: nil)
     }
-    func gotomaintainTimingViewController(Str:String){
+    func gotomaintainTimingViewController(Str:String,time:String){
         let storyboard = UIStoryboard(name: "Main1", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "MaintainTimingViewController") as! MaintainTimingViewController
         vc.isfrom = Str
+        vc.Time = time
+        vc.selectedDate = selectedDate
         vc.modalPresentationStyle = .fullScreen
-        self.navigationController?.pushViewController(vc, animated: true)
+        //self.navigationController?.pushViewController(vc, animated: true)
+        present(vc, animated: true, completion: nil)
     }
-    
-    func gotoCustomersViewController(Str:String){
-        let storyboard = UIStoryboard(name: "Main1", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "CustomersViewController") as! CustomersViewController
-        vc.isfrom = Str
-        vc.modalPresentationStyle = .fullScreen
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
     func numericalUI()
     {
         numericalButton.layer.backgroundColor = selectedColor.cgColor
@@ -588,21 +598,13 @@ extension ShopDetailsViewController:UICollectionViewDelegate,UICollectionViewDat
         return CGSize(width: width, height: 140)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        
         if indexPath.row == 0 {
-           gotomaintainTimingViewController(Str: "OpenedAt")
+           gotomaintainTimingViewController(Str: "OpenedAt",time: convertto12(time: openedat))
         }
         else if indexPath.row == 1 {
-            gotomaintainTimingViewController(Str: "FirstCustomer")
-        }
-        else if indexPath.row == 2 {
-          gotoCustomersViewController(Str: "Customers")
-        }
-        else if indexPath.row == 5 {
-            gotoCustomersViewController(Str: "KnownVisitors")
+            gotomaintainTimingViewController(Str: "FirstCustomer",time: convertto12(time: firstcustomer))
         } else if indexPath.row == 4 {
-            gotomaintainTimingViewController(Str: "ClosedAt")
+            gotomaintainTimingViewController(Str: "ClosedAt",time: convertto12(time: closedat))
         }
         if indexPath.row == 3{
            gotoStaffDetails()

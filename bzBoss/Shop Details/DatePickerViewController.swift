@@ -12,6 +12,7 @@ class DatePickerViewController: UIViewController {
     var delegate:DatePickerDelegate?
     @IBOutlet weak var datePicker: UIDatePicker!
     var isTimePicker = false
+    var defaultDate = String()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.clear
@@ -23,6 +24,13 @@ class DatePickerViewController: UIViewController {
         }else{
             datePicker.datePickerMode = .date
         }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat =  "yyyy-MM-dd"
+
+        let date = dateFormatter.date(from: defaultDate)
+        let date1 = dateFormatter.date(from: "2021-06-08")
+
+        datePicker.date = date ?? date1!
     }
     @IBAction func cancelAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)

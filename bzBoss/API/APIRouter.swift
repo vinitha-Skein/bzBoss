@@ -8,12 +8,14 @@ enum APIRouter : URLRequestConvertible {
     case loginUser(params:[String:Any])
     case shopDetails(params:[String:Any])
     case userConfig(params:[String:Any])
+    case premisedata(params:[String:Any])
+
 
 
     // MARK: - HTTPMethod
     private var method : HTTPMethod{
         switch self{
-        case .registerUser,.loginUser,.shopDetails,.userConfig:
+        case .registerUser,.loginUser,.shopDetails,.userConfig,.premisedata:
             return .post
 //        case .editFamilyMember,.editInsurance:
 //            return .put
@@ -26,7 +28,6 @@ enum APIRouter : URLRequestConvertible {
         }
     }
     
-    // MARK: - Path
     private var path: String {
         switch self {
         case .registerUser:
@@ -37,13 +38,17 @@ enum APIRouter : URLRequestConvertible {
             return "premise"
         case .userConfig:
             return "userconfig"
+        case .premisedata:
+            return "premise/graph"
         }
     }
     
     // MARK: - Parameters
     private var parameters: Parameters?
     {
-        switch self {
+        switch self
+        {
+        
         case .registerUser(let params):
             return params
         case .loginUser(let params):
@@ -52,11 +57,11 @@ enum APIRouter : URLRequestConvertible {
             return params
         case .userConfig(let params):
             return params
-      
+        case .premisedata(let params):
+            return params
+            
         }
     }
-    
-    // MARK: - URLRequestConvertible
     func asURLRequest() throws -> URLRequest
     {
         let url = try DataService.developmentBaseURL.asURL()
@@ -70,6 +75,7 @@ enum APIRouter : URLRequestConvertible {
         // Common Headers
         urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)
         urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
+        
         switch path {
         case "auth/register":
         break//"No auth token needed
