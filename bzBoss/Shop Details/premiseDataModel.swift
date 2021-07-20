@@ -15,11 +15,11 @@ struct premiseDataModel : Codable
 	}
 }
 struct dataforPremise : Codable {
-    let premisedata : Premisedataforgraph?
+    let premisedata : Premisedata?
     let premisedailydata : [Premisedailydata]?
-
+    
     enum CodingKeys: String, CodingKey {
-
+        
         case premisedata = "premisedata"
         case premisedailydata = "premisedailydata"
     }
@@ -62,14 +62,14 @@ struct Premisedataforgraph : Codable {
 }
 
 struct Premisedailydata : Codable {
-    let premise_daily_data_id : Int?
-    let premise_id : Int?
+    let premiseDailyDataId : Int?
+    let premiseId : Int?
     let date_time_recorded : String?
     let date : String?
     let opened_at : String?
     let opened_at_image : String?
     let closed_at : String?
-    let known_visitors : String?
+    let knownVisitors : Int?
     let first_customer_time : String?
     let first_customer_image : String?
     let number_of_customers_min : Int?
@@ -84,17 +84,17 @@ struct Premisedailydata : Codable {
     let number_of_known_visitors_max : Int?
     let created_at : String?
     let updated_at : String?
-
+    
     enum CodingKeys: String, CodingKey {
-
-        case premise_daily_data_id = "premise_daily_data_id"
-        case premise_id = "premise_id"
+        
+        case premiseDailyDataId = "premise_daily_data_id"
+        case premiseId = "premise_id"
         case date_time_recorded = "date_time_recorded"
         case date = "date"
         case opened_at = "opened_at"
         case opened_at_image = "opened_at_image"
         case closed_at = "closed_at"
-        case known_visitors = "known_visitors"
+        case knownVisitors = "known_visitors"
         case first_customer_time = "first_customer_time"
         case first_customer_image = "first_customer_image"
         case number_of_customers_min = "number_of_customers_min"
@@ -110,5 +110,14 @@ struct Premisedailydata : Codable {
         case created_at = "created_at"
         case updated_at = "updated_at"
     }
-
+    
 }
+
+
+struct staffDetails : Codable{
+    var name: String!
+    var date: String!
+    var staffImage: String!
+}
+
+

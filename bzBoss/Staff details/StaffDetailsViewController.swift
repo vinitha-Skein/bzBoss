@@ -14,8 +14,14 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
     var staffs = ["Staff 1","Staff 2","Staff 3","Staff 4"]
     
     @IBOutlet weak var chartView: LineChartView!
+    
+    @IBOutlet weak var staffViewHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var showStaffDetails: UISwitch!
+    
+    
     let viewModel = premiseDataViewModel()
-
+    var staffSwitchIsOn:Bool =  true
    
     let arrayxString = ["12/07", "13/07", "14/07", "15/07", "16/07","17/07","18/07"]
     var dateString = [String()]
@@ -23,6 +29,7 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
     
     var selectedDate = "12-06-2021"
     var staffCount = [Float()]
+    var staffCountCollectionView = 0
     
     override func viewDidLoad()
     {
@@ -30,8 +37,6 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         
         collectionview.delegate = self
         collectionview.dataSource = self
-        
-        
         
        apiCall()
     }
@@ -49,6 +54,15 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         self.navigationController?.pushViewController(vc, animated: true)
     }
  
+    
+    @IBAction func ShowStaffDetailsChanged(_ sender: UISwitch) {
+        if sender.isOn {
+            staffSwitchIsOn =  true
+        } else {
+            staffSwitchIsOn =  false
+        }
+    }
+    
     func setupChart(_ chart: LineChartView, data: LineChartData, color: UIColor)
     {
         print("Date inside",dateString)
@@ -67,9 +81,7 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         chart.leftAxis.enabled = true
         chart.leftAxis.spaceTop = 0.4
         chart.leftAxis.spaceBottom = 0.4
-        chart.leftAxis.axisMinimum = 0
         chart.leftAxis.axisRange = 1.0
-        chart.leftAxis.labelCount = 2
         chart.leftAxis.granularity = 1.0
 //        chart.leftAxis.valueFormatter = XAxisNameFormater()
         chart.rightAxis.enabled = false
@@ -78,23 +90,20 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         chart.xAxis.labelHeight = 21.0
         
         chart.xAxis.valueFormatter = XAxisNameFormater()
-        chart.xAxis.labelCount = arrayxString.count
+        chart.xAxis.labelCount = dateString.count
         chart.xAxis.granularity = 1.0
         chart.data = data
         //        chart.animate(xAxisDuration: 2.5)
     }
     func dataWithCount() -> LineChartData
     {
-        let yVals = ChartDataEntry(x: 0.0, y: Double(staffCount[0]))
-        let yval2 = ChartDataEntry(x:1.0,y:Double(staffCount[1]))
-        let yval3 = ChartDataEntry(x:2.0,y:Double(staffCount[2]))
-        let yval4 = ChartDataEntry(x:3.0,y:Double(staffCount[3]))
-        let yval5 = ChartDataEntry(x:4.0, y: Double(staffCount[4]))
-        let yval6 = ChartDataEntry(x:4.0, y: Double(staffCount[5]))
-        let yval7 = ChartDataEntry(x:4.0, y: Double(staffCount[6]))
+         var yVals = [ChartDataEntry]()
         
+        for i in 0..<staffCount.count {
+            yVals.append(ChartDataEntry(x: Double(i), y: Double(staffCount[i])))
+        }
         
-        let set1 = LineChartDataSet(entries: [yVals,yval2,yval3,yval4,yval5,yval6,yval7], label: "DataSet 1")
+        let set1 = LineChartDataSet(entries: yVals, label: "DataSet 1")
         
         set1.lineWidth = 1.75
         set1.circleRadius = 5.0
@@ -140,32 +149,43 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
     }
     func setDatatoVariables()
     {
-        let count = 0...6
+        let count = 0..<(viewModel.premiseData?.premisedailydata!.count)!
+        staffCount.removeAll()
+        dateString.removeAll()
         for number in count
         {
             let staff_min = viewModel.premiseData?.premisedailydata![number].number_of_staff_min ?? 0
             let staff_max = viewModel.premiseData?.premisedailydata![number].number_of_staff_max ?? 0
-            var staff = Float((staff_min+staff_max)/2)
+            let staff = Float((staff_min+staff_max)/2)
             staffCount.append(staff)
-            var tempDate = viewModel.premiseData?.premisedailydata![number].date ?? "01-01-2020"
+            let tempDate = viewModel.premiseData?.premisedailydata![number].date ?? "01-01-2020"
             print("Temp date",tempDate)
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
             dateFormatter.dateFormat = "yyyy-MM-d"
-            var date1 = dateFormatter.date(from:tempDate)!
+            let date1 = dateFormatter.date(from:tempDate)!
             
             
-            var dateFormatter1 = DateFormatter()
+            let dateFormatter1 = DateFormatter()
             dateFormatter1.dateFormat = "dd/MM"
             dateString.append(dateFormatter1.string(from: date1))
         }
-        dateString.removeFirst()
+//        dateString.removeFirst()
         print(dateString)
+        Constants.arrayXStringValues = dateString
         let data1 = dataWithCount()
         data1.setValueFont(UIFont(name: "HelveticaNeue", size: 7)!)
         chartView.backgroundColor = UIColor.white
         setupChart(chartView, data: data1, color: .green)
-
+        staffCountCollectionView = Int(staffCount[staffCount.count-1])
+        if staffSwitchIsOn {
+            staffViewHeight.constant = 250
+        collectionview.reloadData()
+            
+        } else {
+            collectionview.isHidden = true
+            staffViewHeight.constant = 0
+        }
     }
 
     func fromdate() -> String
@@ -198,6 +218,18 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         return prevDate
     }
     
+    //MARK: Chart Delegate
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        
+        
+        print("To Display Values X/Y Values here")
+        print(entry.value(forKey: "y")!)
+        
+        staffCountCollectionView = (entry.value(forKey: "y")!) as! Int
+        collectionview.reloadData()
+        
+    }
+
 
     
 }
@@ -205,7 +237,7 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
 extension StaffDetailsViewController:UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return staffs.count
+        return staffCountCollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
@@ -225,7 +257,7 @@ extension StaffDetailsViewController:UICollectionViewDelegate,UICollectionViewDa
     {
         let height = collectionview.frame.height-10
         let width = (collectionview.frame.width/2) - 20
-        return CGSize(width: 30, height: height)
+        return CGSize(width: width, height: height)
     }
 }
 
@@ -235,15 +267,15 @@ import Charts
 class XAxisNameFormater: NSObject, IAxisValueFormatter {
     
     func stringForValue( _ value: Double, axis _: AxisBase?) -> String {
-        let variable = StaffDetailsViewController()
+//        let variable = StaffDetailsViewController()
         
-        let months: [String]! = variable.arrayxString
+        let months: [String]! = Constants.arrayXStringValues
         
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "dd.MM"
         
-        print(variable.dateString)
+        print(Constants.arrayXStringValues)
         return months[Int(value)]
         
     }
