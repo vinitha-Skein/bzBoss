@@ -356,7 +356,7 @@ class ShopDetailsViewController: UIViewController
         openedatView.layer.borderColor = UIColor.black.cgColor
         openedatView.layer.borderWidth = 0.5
         openedatView.layer.cornerRadius = 5
-        
+        dateLabel.text = selectedDate
         
         
         

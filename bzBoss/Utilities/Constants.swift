@@ -4,7 +4,7 @@ import Foundation
 struct DataService
 {
     static let productionBaseURL = ""
-    static let developmentBaseURL = "https://341c25216ab4.ngrok.io/api/user/"
+    static let developmentBaseURL = "https://a46abba0ee2d.ngrok.io/api/user/"
     static let Terms_Condition = "https://theadeptz.com/bzBoss/public/term/condition"
     static let Privacy_policy = "https://theadeptz.com/bzBoss/public/privecy/policy"
     static let About_us = "https://theadeptz.com/bzBoss/public/about/us"

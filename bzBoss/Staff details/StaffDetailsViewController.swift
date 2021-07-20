@@ -32,6 +32,7 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         collectionview.dataSource = self
         
         
+        
        apiCall()
     }
     
@@ -50,7 +51,7 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
  
     func setupChart(_ chart: LineChartView, data: LineChartData, color: UIColor)
     {
-        
+        print("Date inside",dateString)
         chart.delegate = self
         chart.backgroundColor = .white
         
@@ -147,16 +148,19 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
             var staff = Float((staff_min+staff_max)/2)
             staffCount.append(staff)
             var tempDate = viewModel.premiseData?.premisedailydata![number].date ?? "01-01-2020"
+            print("Temp date",tempDate)
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
-            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+            dateFormatter.dateFormat = "yyyy-MM-d"
             var date1 = dateFormatter.date(from:tempDate)!
             
             
             var dateFormatter1 = DateFormatter()
-            dateFormatter1.dateFormat = "dd-MM"
-            dateString.append(dateFormatter.string(from: date1))
+            dateFormatter1.dateFormat = "dd/MM"
+            dateString.append(dateFormatter1.string(from: date1))
         }
+        dateString.removeFirst()
+        print(dateString)
         let data1 = dataWithCount()
         data1.setValueFont(UIFont(name: "HelveticaNeue", size: 7)!)
         chartView.backgroundColor = UIColor.white
@@ -239,6 +243,7 @@ class XAxisNameFormater: NSObject, IAxisValueFormatter {
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "dd.MM"
         
+        print(variable.dateString)
         return months[Int(value)]
         
     }
