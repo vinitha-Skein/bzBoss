@@ -58,6 +58,12 @@
 		A7DDFA77268D825300D639B0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A7DDFA76268D825300D639B0 /* GoogleService-Info.plist */; };
 		A7DDFAB4268DD99400D639B0 /* ShopDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDFAB3268DD99400D639B0 /* ShopDetailsViewController.swift */; };
 		A7DDFABA268DD9F600D639B0 /* ShopDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDFAB9268DD9F600D639B0 /* ShopDetailsCollectionViewCell.swift */; };
+		A7FE39FC26A69C0A0023E538 /* graphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE39FB26A69C090023E538 /* graphViewController.swift */; };
+		A7FE3A0526A6A2B40023E538 /* testCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE3A0326A6A2B40023E538 /* testCollectionViewCell.swift */; };
+		A7FE3A1226A6D61B0023E538 /* IndividualStaffModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE3A0E26A6D61B0023E538 /* IndividualStaffModel.swift */; };
+		A7FE3A1F26A6D7CC0023E538 /* StaffdetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE3A1D26A6D7CC0023E538 /* StaffdetailsModel.swift */; };
+		A7FE3A2626A6D9080023E538 /* IndividualStaffViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE3A2526A6D9080023E538 /* IndividualStaffViewModel.swift */; };
+		A7FE3A2A26A6D92E0023E538 /* StaffDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE3A2926A6D92E0023E538 /* StaffDetailsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +155,12 @@
 		A7DDFA76268D825300D639B0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A7DDFAB3268DD99400D639B0 /* ShopDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailsViewController.swift; sourceTree = "<group>"; };
 		A7DDFAB9268DD9F600D639B0 /* ShopDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
+		A7FE39FB26A69C090023E538 /* graphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = graphViewController.swift; sourceTree = "<group>"; };
+		A7FE3A0326A6A2B40023E538 /* testCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testCollectionViewCell.swift; sourceTree = "<group>"; };
+		A7FE3A0E26A6D61B0023E538 /* IndividualStaffModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualStaffModel.swift; sourceTree = "<group>"; };
+		A7FE3A1D26A6D7CC0023E538 /* StaffdetailsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffdetailsModel.swift; sourceTree = "<group>"; };
+		A7FE3A2526A6D9080023E538 /* IndividualStaffViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualStaffViewModel.swift; sourceTree = "<group>"; };
+		A7FE3A2926A6D92E0023E538 /* StaffDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffDetailsViewModel.swift; sourceTree = "<group>"; };
 		D67CA8006710C10D6E8AB3D2 /* Pods_bzBoss.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bzBoss.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECF76640346C4AE2114CE36A /* Pods-bzBoss.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bzBoss.release.xcconfig"; path = "Target Support Files/Pods-bzBoss/Pods-bzBoss.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -407,9 +419,15 @@
 		A7B04B9826947BA7004D88CF /* Staff details */ = {
 			isa = PBXGroup;
 			children = (
+				A7FE3A1D26A6D7CC0023E538 /* StaffdetailsModel.swift */,
+				A7FE3A0E26A6D61B0023E538 /* IndividualStaffModel.swift */,
 				A7B04B9926947BCE004D88CF /* StaffDetailsViewController.swift */,
 				A70940A2269590BB00421C84 /* StaffCollectionViewCell.swift */,
 				A72EC81926970F450034AA34 /* IndividualStaffViewController.swift */,
+				A7FE39FB26A69C090023E538 /* graphViewController.swift */,
+				A7FE3A0326A6A2B40023E538 /* testCollectionViewCell.swift */,
+				A7FE3A2526A6D9080023E538 /* IndividualStaffViewModel.swift */,
+				A7FE3A2926A6D92E0023E538 /* StaffDetailsViewModel.swift */,
 			);
 			path = "Staff details";
 			sourceTree = "<group>";
@@ -620,12 +638,16 @@
 				1BB95EEA2693203E0085CACF /* CompanyDetailsViewController.swift in Sources */,
 				1BBF443B268F479A002367D9 /* SideMenuViewModel.swift in Sources */,
 				A762F283268C915F0058EEEB /* PasswordViewController.swift in Sources */,
+				A7FE39FC26A69C0A0023E538 /* graphViewController.swift in Sources */,
+				A7FE3A2626A6D9080023E538 /* IndividualStaffViewModel.swift in Sources */,
 				1B4DCD3A268B330F00D3710B /* UIView+Extension.swift in Sources */,
 				A7D72D6D2699813400495013 /* ShopdetailsModel.swift in Sources */,
 				1B4DCD05268AE56600D3710B /* bzBoss.xcdatamodeld in Sources */,
 				1B356288268C23E400BC0396 /* OnboardingCollectionViewCell.swift in Sources */,
 				1B35629A268C249400BC0396 /* SignUpViewController.swift in Sources */,
 				A7BA6FA026985AAB00BD17C3 /* Extension.swift in Sources */,
+				A7FE3A0526A6A2B40023E538 /* testCollectionViewCell.swift in Sources */,
+				A7FE3A2A26A6D92E0023E538 /* StaffDetailsViewModel.swift in Sources */,
 				1B64A338268D77CC00159D98 /* APIClient.swift in Sources */,
 				1BBF443A268F479A002367D9 /* SideMenuViewController.swift in Sources */,
 				A7B04B9526942675004D88CF /* ContactUsViewController.swift in Sources */,
@@ -642,7 +664,9 @@
 				A7969B0626987C3F004089FE /* SignUpViewModel.swift in Sources */,
 				1BBF443C268F479A002367D9 /* SideMenuViewCell.swift in Sources */,
 				1BB95EA02692CE500085CACF /* DashboardTableviewCell.swift in Sources */,
+				A7FE3A1F26A6D7CC0023E538 /* StaffdetailsModel.swift in Sources */,
 				A72EC81A26970F450034AA34 /* IndividualStaffViewController.swift in Sources */,
+				A7FE3A1226A6D61B0023E538 /* IndividualStaffModel.swift in Sources */,
 				A7DDFABA268DD9F600D639B0 /* ShopDetailsCollectionViewCell.swift in Sources */,
 				A7DDFAB4268DD99400D639B0 /* ShopDetailsViewController.swift in Sources */,
 				A7969AFA26987AD3004089FE /* SignUpModel.swift in Sources */,

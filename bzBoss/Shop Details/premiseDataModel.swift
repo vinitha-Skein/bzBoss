@@ -17,9 +17,9 @@ struct premiseDataModel : Codable
 struct dataforPremise : Codable {
     let premisedata : Premisedata?
     let premisedailydata : [Premisedailydata]?
-    
-    enum CodingKeys: String, CodingKey {
-        
+
+    enum CodingKeys: String, CodingKey
+    {
         case premisedata = "premisedata"
         case premisedailydata = "premisedailydata"
     }

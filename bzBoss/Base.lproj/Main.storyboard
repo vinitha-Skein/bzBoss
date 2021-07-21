@@ -2567,6 +2567,99 @@
             </objects>
             <point key="canvasLocation" x="-5659.420289855073" y="105.80357142857143"/>
         </scene>
+        <!--StaffDetailsViewController-->
+        <scene sceneID="WOZ-tK-aNI">
+            <objects>
+                <viewController storyboardIdentifier="graphViewController" title="StaffDetailsViewController" id="coz-i6-qBF" customClass="graphViewController" customModule="bzBoss" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AG2-XK-cdu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SsQ-3l-nhe">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="73T-nN-4gi">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zDg-Zp-zWe">
+                                            <size key="itemSize" width="407" height="817"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="testCollectionViewCell" id="rSh-Jt-SMf" customClass="testCollectionViewCell" customModule="bzBoss" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.5" width="407" height="817"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ZGL-ys-AG6">
+                                                    <rect key="frame" x="0.0" y="0.0" width="407" height="817"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Staff 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GLh-ou-Tgt">
+                                                            <rect key="frame" x="176.5" y="50" width="54" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test_ofer" translatesAutoresizingMaskIntoConstraints="NO" id="T1v-PP-DWD">
+                                                            <rect key="frame" x="103.5" y="91" width="200" height="200"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="200" id="Axo-iC-pTV"/>
+                                                                <constraint firstAttribute="width" constant="200" id="UeH-x4-pWR"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s0G-oy-JOG" customClass="LineChartView" customModule="Charts">
+                                                            <rect key="frame" x="53.5" y="321" width="300" height="300"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="300" id="hC1-iE-1kv"/>
+                                                                <constraint firstAttribute="height" constant="300" id="xBo-GG-5u6"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="s0G-oy-JOG" firstAttribute="top" secondItem="T1v-PP-DWD" secondAttribute="bottom" constant="30" id="BvO-Nz-XLL"/>
+                                                        <constraint firstItem="T1v-PP-DWD" firstAttribute="top" secondItem="GLh-ou-Tgt" secondAttribute="bottom" constant="20" id="CMW-AV-URl"/>
+                                                        <constraint firstItem="s0G-oy-JOG" firstAttribute="centerX" secondItem="ZGL-ys-AG6" secondAttribute="centerX" id="FdE-bu-ZK2"/>
+                                                        <constraint firstItem="GLh-ou-Tgt" firstAttribute="centerX" secondItem="ZGL-ys-AG6" secondAttribute="centerX" id="OHc-0P-yhH"/>
+                                                        <constraint firstItem="GLh-ou-Tgt" firstAttribute="top" secondItem="ZGL-ys-AG6" secondAttribute="top" constant="50" id="ePm-6c-Gcy"/>
+                                                        <constraint firstItem="T1v-PP-DWD" firstAttribute="centerX" secondItem="ZGL-ys-AG6" secondAttribute="centerX" id="nI5-Nv-lU5"/>
+                                                    </constraints>
+                                                </collectionViewCellContentView>
+                                                <size key="customSize" width="407" height="817"/>
+                                                <connections>
+                                                    <outlet property="chartview" destination="s0G-oy-JOG" id="GvH-YY-kQ8"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="73T-nN-4gi" secondAttribute="trailing" id="TZ4-P1-WZn"/>
+                                    <constraint firstAttribute="bottom" secondItem="73T-nN-4gi" secondAttribute="bottom" id="hV5-Bm-lwT"/>
+                                    <constraint firstItem="73T-nN-4gi" firstAttribute="top" secondItem="SsQ-3l-nhe" secondAttribute="top" id="lBF-A0-ynT"/>
+                                    <constraint firstItem="73T-nN-4gi" firstAttribute="leading" secondItem="SsQ-3l-nhe" secondAttribute="leading" id="woy-Wn-GOv"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Fh8-xS-a6x"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="SsQ-3l-nhe" firstAttribute="leading" secondItem="Fh8-xS-a6x" secondAttribute="leading" id="aJe-e9-Lk4"/>
+                            <constraint firstItem="Fh8-xS-a6x" firstAttribute="trailing" secondItem="SsQ-3l-nhe" secondAttribute="trailing" id="afc-wO-r1m"/>
+                            <constraint firstItem="SsQ-3l-nhe" firstAttribute="top" secondItem="Fh8-xS-a6x" secondAttribute="top" id="iX7-Lv-ENX"/>
+                            <constraint firstItem="Fh8-xS-a6x" firstAttribute="bottom" secondItem="SsQ-3l-nhe" secondAttribute="bottom" id="xuo-zh-OQC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collchaectioview" destination="73T-nN-4gi" id="kdR-kS-xkI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b7C-XZ-fVH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7066.666666666667" y="129.24107142857142"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="0Jv-Rt-2ue">

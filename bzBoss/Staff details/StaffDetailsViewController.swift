@@ -66,6 +66,7 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
     func setupChart(_ chart: LineChartView, data: LineChartData, color: UIColor)
     {
         print("Date inside",dateString)
+        print(staffCount)
         chart.delegate = self
         chart.backgroundColor = .white
         
@@ -249,7 +250,7 @@ extension StaffDetailsViewController:UICollectionViewDelegate,UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "IndividualStaffViewController") as! IndividualStaffViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "graphViewController") as! graphViewController
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true, completion: nil)
     }
