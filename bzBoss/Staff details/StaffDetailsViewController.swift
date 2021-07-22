@@ -58,8 +58,13 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
     @IBAction func ShowStaffDetailsChanged(_ sender: UISwitch) {
         if sender.isOn {
             staffSwitchIsOn =  true
+            staffViewHeight.constant = 250
+            collectionview.isHidden = false
+            collectionview.reloadData()
         } else {
             staffSwitchIsOn =  false
+            collectionview.isHidden = true
+            staffViewHeight.constant = 0
         }
     }
     
@@ -182,7 +187,6 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         if staffSwitchIsOn {
             staffViewHeight.constant = 250
         collectionview.reloadData()
-            
         } else {
             collectionview.isHidden = true
             staffViewHeight.constant = 0
@@ -227,7 +231,9 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         print(entry.value(forKey: "y")!)
         
         staffCountCollectionView = (entry.value(forKey: "y")!) as! Int
+        if staffSwitchIsOn {
         collectionview.reloadData()
+        }
         
     }
 
@@ -256,7 +262,7 @@ extension StaffDetailsViewController:UICollectionViewDelegate,UICollectionViewDa
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
-        let height = collectionview.frame.height-10
+        let height = CGFloat(200)
         let width = (collectionview.frame.width/2) - 20
         return CGSize(width: width, height: height)
     }

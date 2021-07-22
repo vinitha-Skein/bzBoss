@@ -2661,41 +2661,6 @@
             <point key="canvasLocation" x="-7066.666666666667" y="129.24107142857142"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="0Jv-Rt-2ue">
-            <size key="intrinsicContentSize" width="56" height="32"/>
-        </designable>
-        <designable name="4VO-gQ-vvF">
-            <size key="intrinsicContentSize" width="30" height="34"/>
-        </designable>
-        <designable name="5LW-ua-VBa">
-            <size key="intrinsicContentSize" width="30" height="34"/>
-        </designable>
-        <designable name="6Xd-pd-Bza">
-            <size key="intrinsicContentSize" width="58" height="28"/>
-        </designable>
-        <designable name="9n8-Vn-uUa">
-            <size key="intrinsicContentSize" width="30" height="34"/>
-        </designable>
-        <designable name="CKG-lf-loe">
-            <size key="intrinsicContentSize" width="30" height="34"/>
-        </designable>
-        <designable name="PbF-rG-Oyu">
-            <size key="intrinsicContentSize" width="137" height="32"/>
-        </designable>
-        <designable name="Vzg-bU-9Xd">
-            <size key="intrinsicContentSize" width="68" height="30"/>
-        </designable>
-        <designable name="aPZ-Ie-oVU">
-            <size key="intrinsicContentSize" width="42" height="30"/>
-        </designable>
-        <designable name="fi3-EA-vOB">
-            <size key="intrinsicContentSize" width="62" height="28"/>
-        </designable>
-        <designable name="zXb-YA-XaM">
-            <size key="intrinsicContentSize" width="30" height="34"/>
-        </designable>
-    </designables>
     <resources>
         <image name="backImage" width="42" height="42"/>
         <image name="calendar" width="512" height="512"/>
