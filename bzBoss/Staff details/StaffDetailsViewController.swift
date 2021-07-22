@@ -88,7 +88,7 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         chart.leftAxis.spaceBottom = 0.4
         chart.leftAxis.axisRange = 1.0
         chart.leftAxis.granularity = 1.0
-//        chart.leftAxis.valueFormatter = XAxisNameFormater()
+        chart.leftAxis.valueFormatter = YAxisNameFormater()
         chart.rightAxis.enabled = false
         chart.xAxis.enabled = true
         chart.xAxis.labelPosition = .bottom
@@ -286,4 +286,20 @@ class XAxisNameFormater: NSObject, IAxisValueFormatter {
     }
     
 }
+
+    class YAxisNameFormater: NSObject, IAxisValueFormatter {
+        
+        func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+            
+            let date1 = Date(timeIntervalSince1970: TimeInterval(value))
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "hh:mm a"
+            let localDate = dateFormatter.string(from: date1)
+            print(localDate)
+            return localDate
+        }
+        
+    }
+
+
 

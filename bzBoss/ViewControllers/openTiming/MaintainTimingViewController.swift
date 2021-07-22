@@ -28,7 +28,8 @@ class MaintainTimingViewController: UIViewController,ChartViewDelegate
     var selectedDate = "2021-06-01"
     
     @IBOutlet weak var imageView: UIImageView!
-    let arrayString = ["12/07", "13/07", "14/07", "15/07", "16/07"]
+    var arrayXaxisString = ["12/07", "13/07", "14/07", "15/07", "16/07"]
+    var arrayYaxisString = [Double]()
 
     override func viewDidLoad()
     {
@@ -56,25 +57,22 @@ class MaintainTimingViewController: UIViewController,ChartViewDelegate
         chart.dragEnabled = true
         chart.setScaleEnabled(true)
         chart.pinchZoomEnabled = false
-        chart.setViewPortOffsets(left: 30, top: 0, right: 20, bottom: 30)
+        chart.setViewPortOffsets(left: 60, top: 0, right: 20, bottom: 30)
         
         chart.legend.enabled = false
         
         chart.leftAxis.enabled = true
         chart.leftAxis.spaceTop = 0.4
         chart.leftAxis.spaceBottom = 0.4
-        chart.leftAxis.axisMinimum = 0
-        chart.leftAxis.axisRange = 1.0
-        chart.leftAxis.labelCount = 2
-        chart.leftAxis.granularity = 1.0
-        //        chart.leftAxis.valueFormatter = XAxisNameFormater()
+        chart.leftAxis.labelCount = 4
+        chart.leftAxis.valueFormatter = YAxisNameFormater()
         chart.rightAxis.enabled = false
         chart.xAxis.enabled = true
         chart.xAxis.labelPosition = .bottom
         chart.xAxis.labelHeight = 21.0
         
         chart.xAxis.valueFormatter = XAxisNameFormater()
-        chart.xAxis.labelCount = arrayString.count
+        chart.xAxis.labelCount = arrayXaxisString.count
         chart.xAxis.granularity = 1.0
         chart.data = data
         //        chart.animate(xAxisDuration: 2.5)
@@ -83,20 +81,28 @@ class MaintainTimingViewController: UIViewController,ChartViewDelegate
     func dataWithCount() -> LineChartData {
         var set1 = LineChartDataSet()
         if isfrom == "KnownVisitors"{
-            let yVals = ChartDataEntry(x: 0.0, y: 0.0)
-            let yval2 = ChartDataEntry(x:1.0,y:0.0)
-            let yval3 = ChartDataEntry(x:2.0,y:0.0)
-            let yval4 = ChartDataEntry(x:3.0,y:5.0)
-            let yval5 = ChartDataEntry(x:4.0, y: 4.0)
-            set1 = LineChartDataSet(entries: [yVals,yval2,yval3,yval4,yval5], label: "DataSet 1")
+//            let yVals = ChartDataEntry(x: 0.0, y: 0.0)
+//            let yval2 = ChartDataEntry(x:1.0,y:0.0)
+//            let yval3 = ChartDataEntry(x:2.0,y:0.0)
+//            let yval4 = ChartDataEntry(x:3.0,y:5.0)
+//            let yval5 = ChartDataEntry(x:4.0, y: 4.0)
+//            set1 = LineChartDataSet(entries: [yVals,yval2,yval3,yval4,yval5], label: "DataSet 1")
         }
         else {
-            let yVals = ChartDataEntry(x: 0.0, y: 0.0)
-            let yval2 = ChartDataEntry(x:1.0,y:0.0)
-            let yval3 = ChartDataEntry(x:2.0,y:0.0)
-            let yval4 = ChartDataEntry(x:3.0,y:3.0)
-            let yval5 = ChartDataEntry(x:4.0, y:4.0)
-            set1 = LineChartDataSet(entries: [yVals,yval2,yval3,yval4,yval5], label: "DataSet 1")
+            
+            var yVals = [ChartDataEntry]()
+            
+            for i in 0..<arrayYaxisString.count {
+                print(arrayYaxisString[i])
+                let date1 = Date(timeIntervalSince1970: TimeInterval(arrayYaxisString[i]))
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "hh:mm a"
+                let localDate = dateFormatter.string(from: date1)
+                print(localDate)
+                yVals.append(ChartDataEntry(x: Double(i), y: arrayYaxisString[i]))
+            }
+            
+             set1 = LineChartDataSet(entries: yVals, label: "DataSet 1")
         }
         
         
@@ -144,6 +150,7 @@ class MaintainTimingViewController: UIViewController,ChartViewDelegate
                     {
                         print("APi called")
                        print( self.viewModel.premiseData?.premisedailydata![0].closed_at)
+                        self.setDatatoVariables()
                     }
             
                     viewModel.loadingStatus =
@@ -207,7 +214,79 @@ class MaintainTimingViewController: UIViewController,ChartViewDelegate
     }
 
     
+    func setDatatoVariables()
+    {
+        let count = 0..<(viewModel.premiseData?.premisedailydata!.count)!
+        arrayYaxisString.removeAll()
+        arrayXaxisString.removeAll()
+        for number in count
+        {
+            let date = viewModel.premiseData?.premisedailydata![number].date ?? "01-01-2020"
+            if isfrom == "OpenedAt" {
+            let openAtTime = viewModel.premiseData?.premisedailydata![number].opened_at ?? "00:00:00"
 
+                if openAtTime != "" && date != "" {
+                let dataStr = convertDateToTimeStamp(Convertdate:openAtTime)
+                arrayYaxisString.append(Double(dataStr))
+            }
+            }
+            else if isfrom == "ClosedAt" {
+                let closedAtTime = viewModel.premiseData?.premisedailydata![number].closed_at ?? "00:00:00"
+                
+                if closedAtTime != "" && date != "" {
+                    let dataStr = convertDateToTimeStamp(Convertdate:closedAtTime)
+                    arrayYaxisString.append(Double(dataStr))
+                }
+                
+            } else if isfrom == "FirstCustomer" {
+                let firstCustomerTime = viewModel.premiseData?.premisedailydata![number].first_customer_time ?? "00:00:00"
+                
+                if firstCustomerTime != "" && date != "" {
+                    let dataStr = convertDateToTimeStamp(Convertdate:firstCustomerTime)
+                    arrayYaxisString.append(Double(dataStr))
+                }
+            }
+            
+
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            dateFormatter.dateFormat = "yyyy-MM-d"
+            let date1 = dateFormatter.date(from:date)!
+            
+            let dateFormatter1 = DateFormatter()
+            dateFormatter1.dateFormat = "dd/MM"
+            arrayXaxisString.append(dateFormatter1.string(from: date1))
+        }
+        print(arrayXaxisString)
+        print(arrayYaxisString)
+        Constants.arrayXStringValues = arrayXaxisString
+        let data1 = dataWithCount()
+        data1.setValueFont(UIFont(name: "HelveticaNeue", size: 7)!)
+        chartView.backgroundColor = UIColor.white
+        setupChart(chartView, data: data1, color: .green)
+    }
+    
+    
+    
+    func convertDateToTimeStamp(Convertdate:String)-> Double{
+        let dfmatter = DateFormatter()
+        dfmatter.dateFormat="HH:mm:ss"
+        let date = dfmatter.date(from: Convertdate)
+        let dateStamp:TimeInterval = date!.timeIntervalSince1970
+        let dateSt = Double(dateStamp)
+        print("Datastamp",dateSt)
+        return dateSt
+       
+    }
+    
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        
+        print("To Display Values X/Y Values here")
+        print(entry.value(forKey: "y")!)
+        
+        
+    }
+    
     
 }
 
