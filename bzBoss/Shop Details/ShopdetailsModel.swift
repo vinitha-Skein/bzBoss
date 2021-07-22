@@ -46,7 +46,7 @@ struct ShopdetailsData : Codable {
     let opened_at : String?
     let opened_at_image : String?
     let closed_at : String?
-    let known_visitors : String?
+    let known_visitors : Int?
     let first_customer_time : String?
     let first_customer_image : String?
     let number_of_customers_min : Int?

@@ -34,7 +34,6 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
         collectionview.delegate = self
         collectionview.dataSource = self
         
@@ -188,7 +187,7 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
             staffViewHeight.constant = 250
         collectionview.reloadData()
         } else {
-            collectionview.isHidden = true
+            collectionview.isHidden = false
             staffViewHeight.constant = 0
         }
     }
@@ -282,7 +281,6 @@ class XAxisNameFormater: NSObject, IAxisValueFormatter {
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "dd.MM"
         
-        print(Constants.arrayXStringValues)
         return months[Int(value)]
         
     }

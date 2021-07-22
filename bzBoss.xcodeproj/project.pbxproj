@@ -246,6 +246,7 @@
 		1B4DCCEE268AE56600D3710B = {
 			isa = PBXGroup;
 			children = (
+				A7D72D5C2699707D00495013 /* bzBossRelease.entitlements */,
 				1B4DCCF9268AE56600D3710B /* bzBoss */,
 				1B4DCD13268AE56C00D3710B /* bzBossTests */,
 				1B4DCD1E268AE56C00D3710B /* bzBossUITests */,
@@ -268,7 +269,6 @@
 		1B4DCCF9268AE56600D3710B /* bzBoss */ = {
 			isa = PBXGroup;
 			children = (
-				A7D72D5C2699707D00495013 /* bzBossRelease.entitlements */,
 				A7B04B9826947BA7004D88CF /* Staff details */,
 				A7B04B912694264A004D88CF /* Contact us */,
 				A7DDFAB2268DD97300D639B0 /* Shop Details */,

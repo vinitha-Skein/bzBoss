@@ -8,7 +8,8 @@
 import UIKit
 import SideMenu
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController
+{
     
     var leftMenu: SideMenuViewController = UIStoryboard(name: "Main1", bundle: Bundle.main).instantiateViewController(withIdentifier: "SideMenuViewController") as! SideMenuViewController
     var rightBarButtonItem:UIBarButtonItem?

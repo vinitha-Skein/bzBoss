@@ -34,6 +34,13 @@ var selectedColor = UIColor(red: 29/255, green: 138/255, blue: 254/255, alpha: 1
           setNeedsDisplay()
       }
     }
+    @IBInspectable var zeroprogressColor: UIColor = .gray {
+      didSet {
+
+          //the view needs to be refreshed, this trigger draw
+          setNeedsDisplay()
+      }
+    }
 
 
     override func draw(_ rect: CGRect)
@@ -61,7 +68,7 @@ var selectedColor = UIColor(red: 29/255, green: 138/255, blue: 254/255, alpha: 1
 		
 		//don't forget to set the donut width
 		donut.lineWidth = arcWidth
-		UIColor.lightGray.setStroke()
+		zeroprogressColor.setStroke()
 		
 		//actually perform drawing stroke
 		donut.stroke()

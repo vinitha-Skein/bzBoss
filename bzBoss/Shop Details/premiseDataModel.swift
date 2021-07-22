@@ -114,7 +114,8 @@ struct Premisedailydata : Codable {
 }
 
 
-struct staffDetails : Codable{
+struct staffDetails : Codable
+{
     var name: String!
     var date: String!
     var staffImage: String!

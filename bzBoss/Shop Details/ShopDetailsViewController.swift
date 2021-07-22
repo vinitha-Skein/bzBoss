@@ -11,6 +11,7 @@ import iOSDropDown
 
 class ShopDetailsViewController: UIViewController
 {
+    @IBOutlet weak var viewSwitch: UISwitch!
     @IBOutlet weak var statusView: Mybutton!
     @IBOutlet weak var visitorsLabel: UILabel!
     @IBOutlet weak var visitorsTarget: DropDown!
@@ -41,8 +42,8 @@ class ShopDetailsViewController: UIViewController
     @IBOutlet weak var firstCustomerClock: BEMAnalogClockView!
     @IBOutlet weak var openedatClock: BEMAnalogClockView!
     @IBOutlet var dateLabel: UILabel!
-    @IBOutlet var graphicalButton: Mybutton!
-    @IBOutlet var numericalButton: Mybutton!
+//    @IBOutlet var graphicalButton: Mybutton!
+//    @IBOutlet var numericalButton: Mybutton!
     @IBOutlet var calenderView: UIView!
     @IBOutlet var yesterdayButton: Mybutton!
     @IBOutlet var collectionview: UICollectionView!
@@ -75,10 +76,11 @@ class ShopDetailsViewController: UIViewController
 //    var blue = UIColor(red: 119/255, green: 177/255, blue: 223/255, alpha: 1)
 //    var violet = UIColor(red: 166/255, green: 148/255, blue: 232/255, alpha: 1)
 
-    var bgColors = [UIColor(red: 76/255, green: 192/255, blue: 166/255, alpha: 1),UIColor(red: 243/255, green: 118/255, blue: 108/255, alpha: 1),UIColor(red: 119/255, green: 177/255, blue: 223/255, alpha: 1),UIColor(red: 166/255, green: 148/255, blue: 232/255, alpha: 1),UIColor(red: 76/255, green: 192/255, blue: 166/255, alpha: 1),UIColor(red: 243/255, green: 118/255, blue: 108/255, alpha: 1)]
+    var bgColors = [UIColor(red: 76/255, green: 192/255, blue: 166/255, alpha: 1),UIColor(red: 243/255, green: 118/255, blue: 108/255, alpha: 1),UIColor(red: 119/255, green: 177/255, blue: 223/255, alpha: 1),UIColor(red: 166/255, green: 148/255, blue: 232/255, alpha: 1),UIColor(red: 232/255, green: 158/255, blue: 82/255, alpha: 1),UIColor(red: 200/255, green: 132/255, blue: 140/255, alpha: 1)]
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
         collectionview.delegate = self
         collectionview.dataSource = self
         setUpUI()
@@ -88,12 +90,13 @@ class ShopDetailsViewController: UIViewController
             selectedDate = todaysDate()
         }
         clockchange()
-        
     }
     override func viewWillAppear(_ animated: Bool)
     {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
+  
+
     public func clockchange()
     {
         
@@ -327,6 +330,15 @@ class ShopDetailsViewController: UIViewController
 
         
     }
+    @IBAction func ViewChanged(_ sender: UISwitch) {
+        if sender.isOn
+        {
+            graphical_Clicked()
+        } else
+        {
+            numerical_Clicked()
+        }
+    }
     func setUpUI()
     {
         customersChart.rotate(degrees: 180)
@@ -336,24 +348,23 @@ class ShopDetailsViewController: UIViewController
         let date = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
-        dateLabel.text = selectedDate
         scrollView.isHidden = true
-        firstCustomerView.layer.borderColor = UIColor.black.cgColor
+        //firstCustomerView.layer.borderColor = UIColor.black.cgColor
         firstCustomerView.layer.borderWidth = 0.5
         firstCustomerView.layer.cornerRadius = 5
-        customersChartView.layer.borderColor = UIColor.black.cgColor
+        //customersChartView.layer.borderColor = UIColor.black.cgColor
         customersChartView.layer.borderWidth = 0.5
         customersChartView.layer.cornerRadius = 5
-        staffChartView.layer.borderColor = UIColor.black.cgColor
+        //staffChartView.layer.borderColor = UIColor.black.cgColor
         staffChartView.layer.borderWidth = 0.5
         staffChartView.layer.cornerRadius = 5
-        closedatView.layer.borderColor = UIColor.black.cgColor
+        //closedatView.layer.borderColor = UIColor.black.cgColor
         closedatView.layer.borderWidth = 0.5
         closedatView.layer.cornerRadius = 5
-        visitorsChartView.layer.borderColor = UIColor.black.cgColor
+        //visitorsChartView.layer.borderColor = UIColor.black.cgColor
         visitorsChartView.layer.borderWidth = 0.5
         visitorsChartView.layer.cornerRadius = 5
-        openedatView.layer.borderColor = UIColor.black.cgColor
+        //openedatView.layer.borderColor = UIColor.black.cgColor
         openedatView.layer.borderWidth = 0.5
         openedatView.layer.cornerRadius = 5
         dateLabel.text = selectedDate
@@ -402,7 +413,7 @@ class ShopDetailsViewController: UIViewController
             }
         }
     }
-    @IBAction func numerical_Clicked(_ sender: Any)
+    func numerical_Clicked()
     {
         numericalUI()
         toggleSelected = "numeric"
@@ -410,12 +421,11 @@ class ShopDetailsViewController: UIViewController
     }
     
     
-    @IBAction func graphical_Clicked(_ sender: Any)
+    func graphical_Clicked()
     {
         graphicalUI()
         toggleSelected = "graphic"
         userConfigApi()
-
     }
     @IBAction func refresh_clicked(_ sender: Any)
     {
@@ -504,21 +514,23 @@ class ShopDetailsViewController: UIViewController
     }
     func numericalUI()
     {
-        numericalButton.layer.backgroundColor = selectedColor.cgColor
-        numericalButton.setTitleColor(UIColor.white, for: .normal)
-        graphicalButton.layer.backgroundColor = UIColor.white.cgColor
-        graphicalButton.setTitleColor(UIColor.black, for: .normal)
-        collectionview.isHidden = false
-        scrollView.isHidden = true
+          viewSwitch.isOn = false
+//        numericalButton.layer.backgroundColor = selectedColor.cgColor
+//        numericalButton.setTitleColor(UIColor.white, for: .normal)
+//        graphicalButton.layer.backgroundColor = UIColor.white.cgColor
+//        graphicalButton.setTitleColor(UIColor.black, for: .normal)
+          collectionview.isHidden = false
+          scrollView.isHidden = true
     }
     func graphicalUI()
     {
-        graphicalButton.layer.backgroundColor = selectedColor.cgColor
-        graphicalButton.setTitleColor(UIColor.white, for: .normal)
-        numericalButton.layer.backgroundColor = UIColor.white.cgColor
-        numericalButton.setTitleColor(UIColor.black, for: .normal)
-        collectionview.isHidden = true
-        scrollView.isHidden = false
+          viewSwitch.isOn = true
+//        graphicalButton.layer.backgroundColor = selectedColor.cgColor
+//        graphicalButton.setTitleColor(UIColor.white, for: .normal)
+//        numericalButton.layer.backgroundColor = UIColor.white.cgColor
+//        numericalButton.setTitleColor(UIColor.black, for: .normal)
+          collectionview.isHidden = true
+          scrollView.isHidden = false
 
     }
 }

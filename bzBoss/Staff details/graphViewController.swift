@@ -21,14 +21,15 @@ class graphViewController: UIViewController, ChartViewDelegate {
     var value5 = [0,0,0,1,0,0,0]
     var value6 = [0,0,0,0,1,0,0]
     var value7 = [0,0,0,0,0,0,0]
-    var time1 = [String]()
+    //var time1 = [[String]]()
+    var time1: [String] = []
     var time2 = [String]()
     var time3 = [String]()
     var time4 = [String]()
     var time5 = [String]()
     var time6 = [String]()
     var time7 = [String]()
-
+    var staffCount = 1
 
 
     override func viewDidLoad() {
@@ -37,13 +38,11 @@ class graphViewController: UIViewController, ChartViewDelegate {
         collchaectioview.dataSource = self
         // Do any additional setup after loading the view.
        apiCall()
+        print(time1)
     }
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        let indexPath = IndexPath(item: 3, section: 0)
-        self.collchaectioview.scrollToItem(at: indexPath, at:[.centeredHorizontally,.centeredVertically], animated: true)
+    @IBAction func back_pressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
-
     func apiCall()
     {
         activityIndicator(view, startAnimate: true)
@@ -51,18 +50,18 @@ class graphViewController: UIViewController, ChartViewDelegate {
         let params =
             [
                 "staff_id":"YVg2b0xYZTQvYzhKU3NEWjdyOGZzQT09",
-                "startdate": "R0FUbTMyVk5XclJVekY3b1A4aUxsQT09",
-                "enddate": "QmoxanJwZWk4UWQ3eGVIK1dOcU43QT09",
+                "startdate": "cUd5YTQrSmxaVHRsOE5WV2p3dk9Cdz09",
+                "enddate": "RnFoTDR3bE9LUVA4a1lpMmpYSDl5Zz09",
                 "premise_id": "K1FWc1IxcmNUdSs5S3VaSTkxNnEyQT09"
             ]
         print(params)
         viewModel.individualstaffDatafetch(params:params)
         viewModel.individualstafffetchedSuccess =
-            {
+            {                print("Copunt",self.viewModel.individualstaffdetails?.staffDetailsData?.count)
+
                 self.activityIndicator(self.view, startAnimate: false)
-                //self.storeDatatoArray()
+                self.storeDatatoArray()
                 
-                print(self.viewModel.individualstaffdetails?.staffDetailsData![0].staffdata?[0])
                 //time1.append(converttoTime(time: date1))
                 print(self.time1)
                 print(self.time2)
@@ -89,33 +88,47 @@ class graphViewController: UIViewController, ChartViewDelegate {
     }
    func storeDatatoArray()
    {
-    let n = viewModel.individualstaffdetails?.staffDetailsData?.count ?? 6
-    let count = 0...2
+    staffCount = viewModel.individualstaffdetails?.staffDetailsData?.count ?? 0
+    collchaectioview.reloadData()
+    let n = (viewModel.individualstaffdetails?.staffDetailsData!.count)!
+    let count = 0..<n
     for number in count
+    
     {
-        var date1 =  viewModel.individualstaffdetails?.staffDetailsData![0].staffdata![0].first_appearance_date_time ?? "2021-07-10 11:45:22"
-        
-        time1.append(converttoTime(time: date1))
-        print(number)
-        var date2 =
+        time1.append("staff \(number)")
+        let m = viewModel.individualstaffdetails?.staffDetailsData![number].staffdata?.count ?? 2
+        print("Value of m",m)
+        let innercount = 0..<m
+        for innernumber in innercount
+        {
             
-        viewModel.individualstaffdetails?.staffDetailsData?[1].staffdata?[1].first_appearance_date_time ?? "2021-07-10 11:45:22"
-        time2.append(converttoTime(time: date2))
-        
-        var date3 =  viewModel.individualstaffdetails?.staffDetailsData?[number].staffdata?[2].first_appearance_date_time ?? "2021-07-10 11:45:22"
-        time3.append(converttoTime(time: date3))
-        
-        var date4 =  viewModel.individualstaffdetails?.staffDetailsData?[number].staffdata?[3].first_appearance_date_time ?? "2021-07-10 11:45:22"
-        time4.append(converttoTime(time: date4))
-        var date5 =  viewModel.individualstaffdetails?.staffDetailsData?[number].staffdata?[4].first_appearance_date_time ?? "2021-07-10 11:45:22"
-        time5.append(converttoTime(time: date5))
-        
-        var date6 =  viewModel.individualstaffdetails?.staffDetailsData?[number].staffdata?[5].first_appearance_date_time ?? "2021-07-10 11:45:22"
-        time6.append(converttoTime(time: date6))
-        
-        var date7 =  viewModel.individualstaffdetails?.staffDetailsData?[number].staffdata?[6].first_appearance_date_time ?? "2021-07-10 11:45:22"
-        time7.append(converttoTime(time: date7))
+            var date1 =  viewModel.individualstaffdetails?.staffDetailsData![number].staffdata?[innernumber].first_appearance_date_time ?? "2021-07-10 11:45:22"
+            
+            time1[number].append(converttoTime(time: date1))
+            //print(number)
+          
+//            var date2 =
+//
+//            viewModel.individualstaffdetails?.staffDetailsData?[number].staffdata?[innernumber].first_appearance_date_time ?? "2021-07-10 11:45:22"
+//            time2.append(converttoTime(time: date2))
+//
+//            var date3 =  viewModel.individualstaffdetails?.staffDetailsData?[number].staffdata?[innernumber].first_appearance_date_time ?? "2021-07-10 11:45:22"
+//            time3.append(converttoTime(time: date3))
+//
+//            var date4 =  viewModel.individualstaffdetails?.staffDetailsData?[number].staffdata?[innernumber].first_appearance_date_time ?? "2021-07-10 11:45:22"
+//            time4.append(converttoTime(time: date4))
+//            var date5 =  viewModel.individualstaffdetails?.staffDetailsData?[number].staffdata?[innernumber].first_appearance_date_time ?? "2021-07-10 11:45:22"
+//            time5.append(converttoTime(time: date5))
+//
+//            var date6 =  viewModel.individualstaffdetails?.staffDetailsData?[number].staffdata?[innernumber].first_appearance_date_time ?? "2021-07-10 11:45:22"
+//            time6.append(converttoTime(time: date6))
+//
+//            var date7 =  viewModel.individualstaffdetails?.staffDetailsData?[number].staffdata?[innernumber].first_appearance_date_time ?? "2021-07-10 11:45:22"
+//            time7.append(converttoTime(time: date7))
+        }
+    
     }
+    print(time1[0])
    }
     func converttoTime(time: String) ->  String
     {   let tempDate = time
@@ -150,7 +163,7 @@ class graphViewController: UIViewController, ChartViewDelegate {
 extension graphViewController: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return staffCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -162,7 +175,7 @@ extension graphViewController: UICollectionViewDelegate,UICollectionViewDataSour
         cell.valuefor5(str: value5[indexPath.row])
         cell.valuefor6(str: value6[indexPath.row])
         cell.valuefor7(str: value7[indexPath.row])
-
+        cell.staffLabel.text = viewModel.individualstaffdetails?.staffDetailsData?[indexPath.row].first_name ?? "Staff 1"
         return cell
     }
 

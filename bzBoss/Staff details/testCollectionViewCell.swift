@@ -9,7 +9,9 @@ import UIKit
 import Charts
 
 class testCollectionViewCell: UICollectionViewCell, ChartViewDelegate {
+    @IBOutlet weak var staffLabel: UILabel!
     @IBOutlet weak var chartview: LineChartView!
+    @IBOutlet weak var staffImage: UIImageView!
     let arrayxString = ["12/07", "13/07", "14/07", "15/07", "16/07","17/07","18/07"]
    
     var value1 = Int()
@@ -47,9 +49,7 @@ class testCollectionViewCell: UICollectionViewCell, ChartViewDelegate {
         chart.leftAxis.enabled = true
         chart.leftAxis.spaceTop = 0.4
         chart.leftAxis.spaceBottom = 0.4
-        chart.leftAxis.axisMinimum = 0
         chart.leftAxis.axisRange = 1.0
-        chart.leftAxis.labelCount = 2
         chart.leftAxis.granularity = 1.0
 //        chart.leftAxis.valueFormatter = XAxisNameFormater()
         chart.rightAxis.enabled = false
@@ -58,7 +58,7 @@ class testCollectionViewCell: UICollectionViewCell, ChartViewDelegate {
         chart.xAxis.labelHeight = 21.0
         
         chart.xAxis.valueFormatter = XAxisNameFormater()
-        chart.xAxis.labelCount = arrayxString.count
+        chart.xAxis.labelCount = 7//dateString.count
         chart.xAxis.granularity = 1.0
         chart.data = data
         //        chart.animate(xAxisDuration: 2.5)
