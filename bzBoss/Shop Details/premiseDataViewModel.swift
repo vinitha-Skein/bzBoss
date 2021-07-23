@@ -40,7 +40,7 @@ class premiseDataViewModel
             {
             case .success(let responseData):
                 self.isLoading = false
-                    switch responseData.status_code!{
+                    switch responseData.status_code ?? 400{
                     case 200..<300:
                             if responseData.data != nil{
                                 
@@ -59,7 +59,10 @@ class premiseDataViewModel
                                 self.errorMessageAlert?()
                             }
                     case 400..<500:
+                        if responseData.message != nil
+                        {
                         self.errorMessage = responseData.message
+                        }
                         self.errorMessageAlert?()
                         self.isLoading = false
                     default:

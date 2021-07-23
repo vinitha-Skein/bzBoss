@@ -80,14 +80,14 @@ class ShopDetailsViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
+        //viewSwitch.addTarget(self, action: #selector(pressed), for: .valueChanged)
         collectionview.delegate = self
         collectionview.dataSource = self
         setUpUI()
         if (firstLoad)
         {
             apiCall()
-            selectedDate = todaysDate()
+            
         }
         clockchange()
     }
@@ -96,7 +96,7 @@ class ShopDetailsViewController: UIViewController
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
   
-
+   
     public func clockchange()
     {
         
@@ -344,7 +344,7 @@ class ShopDetailsViewController: UIViewController
         customersChart.rotate(degrees: 180)
         staffsChart.rotate(degrees: 180)
         knownVistorsChart.rotate(degrees: 180)
-        
+        viewSwitch.layer.cornerRadius = 14
         let date = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
@@ -367,8 +367,9 @@ class ShopDetailsViewController: UIViewController
         //openedatView.layer.borderColor = UIColor.black.cgColor
         openedatView.layer.borderWidth = 0.5
         openedatView.layer.cornerRadius = 5
+        selectedDate = todaysDate()
         dateLabel.text = selectedDate
-        
+        print("Selected Date",selectedDate)
         
         
         
