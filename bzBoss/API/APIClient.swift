@@ -30,6 +30,12 @@ class APIClient {
     static func premiseGraphData(params:[String:Any],completion:@escaping(AFResult<premiseDataModel>)->Void){
         performRequest(route: APIRouter.premisedata(params: params),completion: completion)
     }
+    
+    //Appointment
+    static func getHomeListShops(completion:@escaping(AFResult<HomeListModel>)->Void){
+        performRequest(route: APIRouter.listShops,completion: completion)
+    }
+    
     static func staffDetailsData(params:[String:Any],completion:@escaping(AFResult<StaffdetailsModel>)->Void){
         performRequest(route: APIRouter.staffdetails(params: params),completion: completion)
     }

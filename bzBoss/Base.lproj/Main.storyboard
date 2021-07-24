@@ -2032,9 +2032,7 @@
                         <outlet property="firstCustomerClock" destination="rjv-lf-B64" id="s1A-tY-xTj"/>
                         <outlet property="firstCustomerTimeLabel" destination="qFb-hy-Jp8" id="gJm-ET-oHx"/>
                         <outlet property="firstCustomerView" destination="MfM-zT-9eq" id="hqY-QP-ac8"/>
-                        <outlet property="graphicalButton" destination="6Xd-pd-Bza" id="39O-tQ-jcn"/>
                         <outlet property="knownVistorsChart" destination="IAR-X3-ZQs" id="wWm-PB-lYu"/>
-                        <outlet property="numericalButton" destination="fi3-EA-vOB" id="jQr-aB-RRi"/>
                         <outlet property="openedAtTimeLabel" destination="zO3-Fz-SjR" id="YWc-0Z-Pqq"/>
                         <outlet property="openedatClock" destination="t7c-sb-JvS" id="lZR-F0-0ux"/>
                         <outlet property="openedatView" destination="7BY-nv-4BI" id="sEM-7a-nXT"/>

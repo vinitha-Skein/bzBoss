@@ -133,8 +133,7 @@ class ShopDetailsViewController: UIViewController
         knownVistorsChart.progress = knownVisitors
         customersChart.reloadInputViews()
     }
-    func apiCall()
-    {
+    func apiCall()  {
         firstLoad = false
         activityIndicator(view, startAnimate: true)
         var user_id = String(UserDefaults.standard.integer(forKey: "user_id"))

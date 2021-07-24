@@ -35,15 +35,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        window?.rootViewController = navController
 //        window?.makeKeyAndVisible()
         
-        let viewcontroller: ShopDetailsViewController = storyboard.instantiateViewController(withIdentifier: "ShopDetailsViewController") as! ShopDetailsViewController
-        viewcontroller.modalTransitionStyle = .crossDissolve
-
-        let navController:UINavigationController = UINavigationController.init(rootViewController: viewcontroller)
-
-        window?.rootViewController = navController
-        window?.makeKeyAndVisible()
+//        let viewcontroller: ShopDetailsViewController = storyboard.instantiateViewController(withIdentifier: "ShopDetailsViewController") as! ShopDetailsViewController
+//        viewcontroller.modalTransitionStyle = .crossDissolve
+//
+//        let navController:UINavigationController = UINavigationController.init(rootViewController: viewcontroller)
+//
+//        window?.rootViewController = navController
+//        window?.makeKeyAndVisible()
         
-//        gotoOnboardingScreen()
+        gotoHome()
         
         return true
     }

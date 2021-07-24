@@ -16,19 +16,20 @@ class HomeViewController: UIViewController
 
     @IBOutlet weak var companytableview: UITableView!
     
+    let viewModel = HomeListViewModel()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        getShopLists()
     }
     override func viewWillAppear(_ animated: Bool) {
         companytableview.tableFooterView = MyUIView()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    @IBAction func RefreshListItem(_ sender: UIButton)
-    {
+    @IBAction func RefreshListItem(_ sender: UIButton)  {
+        getShopLists()
     }
-    
     
     @IBAction func barbuttonItem(_ sender: Any) {
         let sideMenuNavController: SideMenuNavigationController = SideMenuNavigationController.init(rootViewController: self.leftMenu)
@@ -44,6 +45,34 @@ class HomeViewController: UIViewController
         SideMenuManager.default.menuWidth = 280
         present(SideMenuManager.default.leftMenuNavigationController!, animated: true, completion: nil)
     }
+    
+    func getShopLists()  {
+        activityIndicator(view, startAnimate: true)
+        
+        viewModel.getShopLists()
+        viewModel.HomeListfetchedSuccess =
+            {
+                self.activityIndicator(self.view, startAnimate: false)
+                print(self.viewModel.HomeList)
+//                self.setDatatoVariables()
+//                self.filldata()
+                self.companytableview.reloadData()
+//                //UserDefaults.standard.set(true, forKey: "isLoggedIn"
+            }
+        viewModel.loadingStatus =
+            {
+                if self.viewModel.isLoading{
+                    self.activityIndicator(self.view, startAnimate: true)
+                }
+                else
+                {
+                    self.activityIndicator(self.view, startAnimate: false)
+                    UIApplication.shared.endIgnoringInteractionEvents()
+                }
+            }
+        
+    }
+    
     func  gotoCompanyDetails() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ShopDetailsViewController") as! ShopDetailsViewController
@@ -55,11 +84,11 @@ class HomeViewController: UIViewController
 }
 extension HomeViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return (viewModel.HomeList?.data!.count)!
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DashboardTableviewCell", for: indexPath) as! DashboardTableviewCell
-        
+    
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

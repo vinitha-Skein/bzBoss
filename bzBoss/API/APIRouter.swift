@@ -11,6 +11,7 @@ enum APIRouter : URLRequestConvertible {
     case premisedata(params:[String:Any])
     case staffdetails(params:[String:Any])
     case individualstaffdetails(params:[String:Any])
+    case listShops
 
     // MARK: - HTTPMethod
     private var method : HTTPMethod{
@@ -44,6 +45,8 @@ enum APIRouter : URLRequestConvertible {
             return "staff"
         case .individualstaffdetails:
             return "staff/details"
+        case .listShops:
+            return "home/data"
         }
     }
     
@@ -67,7 +70,8 @@ enum APIRouter : URLRequestConvertible {
             return params
         case .individualstaffdetails(let params):
             return params
-            
+        case .listShops:
+            return nil
         }
     }
     func asURLRequest() throws -> URLRequest
