@@ -11,12 +11,13 @@ enum APIRouter : URLRequestConvertible {
     case premisedata(params:[String:Any])
     case staffdetails(params:[String:Any])
     case individualstaffdetails(params:[String:Any])
+    case contactUs(params:[String:Any])
     case listShops
 
     // MARK: - HTTPMethod
     private var method : HTTPMethod{
         switch self{
-        case .registerUser,.loginUser,.shopDetails,.userConfig,.premisedata,.staffdetails,.individualstaffdetails:
+        case .registerUser,.loginUser,.shopDetails,.userConfig,.premisedata,.staffdetails,.individualstaffdetails,.contactUs:
             return .post
 //        case .editFamilyMember,.editInsurance:
 //            return .put
@@ -32,21 +33,24 @@ enum APIRouter : URLRequestConvertible {
     private var path: String {
         switch self {
         case .registerUser:
-            return "register"
+            return "user/register"
         case .loginUser:
-            return "login"
+            return "user/login"
         case .shopDetails:
-            return "premise"
+            return "user/premise"
         case .userConfig:
-            return "userconfig"
+            return "user/userconfig"
         case .premisedata:
-            return "premise/graph"
+            return "user/premise/graph"
         case .staffdetails:
-            return "staff"
+            return "user/staff"
         case .individualstaffdetails:
-            return "staff/details"
+            return "user/staff/details"
         case .listShops:
-            return "home/data"
+            return "user/home/data"
+        case .contactUs:
+            return "contact/us"
+            
         }
     }
     
@@ -69,6 +73,8 @@ enum APIRouter : URLRequestConvertible {
         case .staffdetails(let params):
             return params
         case .individualstaffdetails(let params):
+            return params
+        case .contactUs(let params):
             return params
         case .listShops:
             return nil

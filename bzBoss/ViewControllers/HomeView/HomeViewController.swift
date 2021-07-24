@@ -7,6 +7,7 @@
 
 import UIKit
 import SideMenu
+import AlamofireImage
 
 class HomeViewController: UIViewController
 {
@@ -17,7 +18,7 @@ class HomeViewController: UIViewController
     @IBOutlet weak var companytableview: UITableView!
     
     let viewModel = HomeListViewModel()
-
+    let kAnimationDuration = TimeInterval(0.25)
     override func viewDidLoad() {
         super.viewDidLoad()
         getShopLists()
@@ -84,11 +85,26 @@ class HomeViewController: UIViewController
 }
 extension HomeViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (viewModel.HomeList?.data!.count)!
+        if viewModel.HomeList != nil {
+            companytableview.isHidden = false
+            return (viewModel.HomeList?.data!.count)!
+        } else {
+            companytableview.isHidden = true
+            return 0
+            
+        }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DashboardTableviewCell", for: indexPath) as! DashboardTableviewCell
-    
+        let shop = viewModel.HomeList?.data![indexPath.row]
+        cell.ShopNameLabel.text = shop?.name
+        cell.shopAddressLabel.text = shop?.address
+        cell.statusView.backgroundColor = shop?.getpremisecurrentstatus?.status != "Open" ? UIColor.red : UIColor.green
+        cell.statusLabel.text = shop?.getpremisecurrentstatus?.status
+        let url = shop?.photo
+        
+        cell.ShopImageView.af.setImage(withURL: URL(string: url!)! )
+
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

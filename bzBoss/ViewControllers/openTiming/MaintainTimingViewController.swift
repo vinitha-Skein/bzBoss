@@ -230,6 +230,8 @@ class MaintainTimingViewController: UIViewController,ChartViewDelegate
                 arrayYaxisString.append(Double(dataStr))
             }
             }
+            
+            
             else if isfrom == "ClosedAt" {
                 let closedAtTime = viewModel.premiseData?.premisedailydata![number].closed_at ?? "00:00:00"
                 

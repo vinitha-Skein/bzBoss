@@ -22,7 +22,8 @@ class ContactUsViewController: UIViewController {
     @IBOutlet weak var phoneView: UIView!
     @IBOutlet weak var nameView: UIView!
     var validation = Validation()
-    
+    let viewModel = ContactUsViewModel()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,8 +46,6 @@ class ContactUsViewController: UIViewController {
         nameView.layer.borderWidth = 0.5
         nameView.layer.borderColor = UIColor.black.cgColor
         nameView.layer.cornerRadius = 5
-
-        
         
         categoryFeild.optionArray = ["Business enquiry", "Support request", "Terms & Conditions/Privacy policy"]
 //        accessLevelTextFeild.didSelect{(selectedText , index ,id) in
@@ -90,10 +89,47 @@ class ContactUsViewController: UIViewController {
     if (category == "")
     {
         self.showAlert("Please Select the your Category")
+        return
     }
     if (message == "")
     {
         self.showAlert("Please fill the Message Feild")
+        return
     }
+        callContactUS()
+        
    }
+    func callContactUS() {
+        activityIndicator(view, startAnimate: true)
+        let params =
+            [
+                "name": encryptData(str: nameTextFeild.text!),
+                "phone": encryptData(str: phoneTextFeild.text!),
+                "email": encryptData(str: emailTextFeild.text!),
+                "category": encryptData(str: categoryFeild.text!),
+                "message": encryptData(str:messageTextView.text)
+            ]
+        print(params)
+        viewModel.contactUsMessagePost(params: params)
+        viewModel.ContactUSfetchedSuccess =
+            {
+                self.activityIndicator(self.view, startAnimate: false)
+            }
+        viewModel.loadingStatus =
+            {
+                if self.viewModel.isLoading{
+                    self.activityIndicator(self.view, startAnimate: true)
+                }
+                else
+                {
+                    self.activityIndicator(self.view, startAnimate: false)
+                    UIApplication.shared.endIgnoringInteractionEvents()
+                }
+            }
+        
+        return
+    }
+    
+   
+        
 }

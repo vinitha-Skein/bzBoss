@@ -9,6 +9,16 @@ import UIKit
 
 class DashboardTableviewCell: UITableViewCell {
 
+    @IBOutlet weak var ShopNameLabel: UILabel!
+    
+    @IBOutlet weak var shopAddressLabel: UILabel!
+    
+    @IBOutlet weak var statusView: MyUIView!
+    
+    @IBOutlet weak var statusLabel: UILabel!
+    
+    @IBOutlet weak var ShopImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

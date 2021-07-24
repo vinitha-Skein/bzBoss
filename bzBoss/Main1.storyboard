@@ -207,14 +207,14 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SideMenuViewCellID" id="LWu-Wu-Oad" customClass="SideMenuViewCell" customModule="bzBoss" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LWu-Wu-Oad" id="mJT-Rh-nPQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dex-bw-NRj">
-                                                    <rect key="frame" x="28" y="11" width="42" height="21"/>
+                                                    <rect key="frame" x="28" y="11" width="42" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -298,10 +298,10 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nwb-G3-fJI" customClass="MyUIView" customModule="bzBoss" customModuleProvider="target">
-                                                            <rect key="frame" x="266" y="16" width="100" height="39"/>
+                                                            <rect key="frame" x="266" y="15.5" width="100" height="40"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Closed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMI-Dr-d5m">
-                                                                    <rect key="frame" x="22.5" y="9" width="55.5" height="21"/>
+                                                                    <rect key="frame" x="22.5" y="9.5" width="55.5" height="21"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
@@ -312,6 +312,7 @@
                                                                 <constraint firstItem="bMI-Dr-d5m" firstAttribute="centerY" secondItem="Nwb-G3-fJI" secondAttribute="centerY" id="DL4-Ki-ez4"/>
                                                                 <constraint firstAttribute="width" constant="100" id="Jkz-Is-te9"/>
                                                                 <constraint firstItem="bMI-Dr-d5m" firstAttribute="centerX" secondItem="Nwb-G3-fJI" secondAttribute="centerX" id="eWK-YV-YHY"/>
+                                                                <constraint firstAttribute="height" constant="40" id="fyb-cV-K23"/>
                                                             </constraints>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -325,13 +326,12 @@
                                                         <constraint firstItem="xi9-1X-dd1" firstAttribute="leading" secondItem="K36-3X-kcp" secondAttribute="trailing" constant="16" id="52W-iC-VEn"/>
                                                         <constraint firstItem="K36-3X-kcp" firstAttribute="top" secondItem="38z-HC-WQd" secondAttribute="top" constant="16" id="Ast-Id-kat"/>
                                                         <constraint firstAttribute="trailing" secondItem="Nwb-G3-fJI" secondAttribute="trailing" constant="16" id="F0Z-8S-WBD"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Nwb-G3-fJI" secondAttribute="bottom" constant="16" id="K2I-Yy-gsX"/>
                                                         <constraint firstItem="9Ep-cg-ixB" firstAttribute="leading" secondItem="K36-3X-kcp" secondAttribute="trailing" constant="16" id="NHH-cP-ASB"/>
                                                         <constraint firstItem="K36-3X-kcp" firstAttribute="leading" secondItem="38z-HC-WQd" secondAttribute="leading" constant="16" id="POb-Wh-lKi"/>
                                                         <constraint firstItem="xi9-1X-dd1" firstAttribute="top" secondItem="38z-HC-WQd" secondAttribute="top" constant="16" id="RWK-Nb-4RD"/>
                                                         <constraint firstItem="9Ep-cg-ixB" firstAttribute="top" secondItem="xi9-1X-dd1" secondAttribute="bottom" constant="8" symbolic="YES" id="TpP-qQ-Bkg"/>
                                                         <constraint firstAttribute="bottom" secondItem="K36-3X-kcp" secondAttribute="bottom" constant="16" id="VOf-EV-PPW"/>
-                                                        <constraint firstItem="Nwb-G3-fJI" firstAttribute="top" secondItem="38z-HC-WQd" secondAttribute="top" constant="16" id="u7N-W2-hnO"/>
+                                                        <constraint firstItem="Nwb-G3-fJI" firstAttribute="centerY" secondItem="38z-HC-WQd" secondAttribute="centerY" id="vQs-mY-IaE"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -347,6 +347,13 @@
                                                 <constraint firstItem="38z-HC-WQd" firstAttribute="top" secondItem="2P8-xv-8DO" secondAttribute="top" constant="16" id="b46-hq-dqW"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="ShopImageView" destination="K36-3X-kcp" id="IgK-vE-oqK"/>
+                                            <outlet property="ShopNameLabel" destination="xi9-1X-dd1" id="j4U-W5-Yzb"/>
+                                            <outlet property="shopAddressLabel" destination="9Ep-cg-ixB" id="IPz-8n-X18"/>
+                                            <outlet property="statusLabel" destination="bMI-Dr-d5m" id="Nov-lN-MhT"/>
+                                            <outlet property="statusView" destination="Nwb-G3-fJI" id="jfr-ch-lQt"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -1038,20 +1045,8 @@
         </scene>
     </scenes>
     <designables>
-        <designable name="1Wr-KO-yDm">
-            <size key="intrinsicContentSize" width="30" height="34"/>
-        </designable>
-        <designable name="IDg-Yl-kVc">
-            <size key="intrinsicContentSize" width="30" height="34"/>
-        </designable>
-        <designable name="VTb-uR-FkZ">
-            <size key="intrinsicContentSize" width="30" height="34"/>
-        </designable>
         <designable name="cPI-V6-PVG">
             <size key="intrinsicContentSize" width="108" height="32"/>
-        </designable>
-        <designable name="gQU-CJ-j4X">
-            <size key="intrinsicContentSize" width="30" height="34"/>
         </designable>
         <designable name="qEr-zF-LmO">
             <size key="intrinsicContentSize" width="63" height="34"/>
