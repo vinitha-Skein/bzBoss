@@ -1303,13 +1303,13 @@
                                         </cells>
                                     </collectionView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thursday,July 01,2021" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGv-Tq-Qpd">
-                                        <rect key="frame" x="20" y="68.5" width="204" height="18"/>
+                                        <rect key="frame" x="20" y="68.5" width="202" height="18"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8Es-VG-zQL">
-                                        <rect key="frame" x="266" y="62" width="51" height="31"/>
+                                        <rect key="frame" x="264" y="62" width="51" height="31"/>
                                         <color key="backgroundColor" red="0.0" green="0.63529411764705879" blue="0.90588235294117647" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="onTintColor" red="0.0" green="0.63529411764705879" blue="0.90588235294117647" alpha="0.28204766497045303" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="thumbTintColor" name="App Theme"/>
@@ -1326,14 +1326,14 @@
                                         </connections>
                                     </switch>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="numberic" translatesAutoresizingMaskIntoConstraints="NO" id="qMU-Mn-XI0">
-                                        <rect key="frame" x="254" y="67.5" width="20" height="20"/>
+                                        <rect key="frame" x="252" y="67.5" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="J64-0q-50O"/>
                                             <constraint firstAttribute="width" constant="20" id="RT3-ev-ov9"/>
                                         </constraints>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="graphic" translatesAutoresizingMaskIntoConstraints="NO" id="SGA-hI-rQu">
-                                        <rect key="frame" x="307" y="67.5" width="20" height="20"/>
+                                        <rect key="frame" x="305" y="67.5" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="dHI-b3-HRI"/>
                                             <constraint firstAttribute="height" constant="20" id="uma-Ni-6d2"/>
@@ -1930,7 +1930,7 @@
                                         </constraints>
                                     </scrollView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gkf-rL-fwb">
-                                        <rect key="frame" x="360" y="65.5" width="24" height="24"/>
+                                        <rect key="frame" x="358" y="65.5" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="24" id="Zm7-nb-RVA"/>
                                             <constraint firstAttribute="height" constant="24" id="nSW-HX-6wF"/>
@@ -1958,7 +1958,7 @@
                                     <constraint firstItem="qMU-Mn-XI0" firstAttribute="leading" secondItem="KGv-Tq-Qpd" secondAttribute="trailing" constant="30" id="eiX-hT-FF4"/>
                                     <constraint firstItem="pcq-W1-fLt" firstAttribute="leading" secondItem="a6a-aE-db9" secondAttribute="leading" constant="20" id="fpY-jg-8zn"/>
                                     <constraint firstItem="qMU-Mn-XI0" firstAttribute="centerY" secondItem="8Es-VG-zQL" secondAttribute="centerY" id="lIo-31-mzk"/>
-                                    <constraint firstAttribute="trailing" secondItem="gkf-rL-fwb" secondAttribute="trailing" constant="30" id="ldS-sc-Fpv"/>
+                                    <constraint firstAttribute="trailing" secondItem="gkf-rL-fwb" secondAttribute="trailing" constant="32" id="ldS-sc-Fpv"/>
                                     <constraint firstItem="pcq-W1-fLt" firstAttribute="top" secondItem="8Es-VG-zQL" secondAttribute="bottom" constant="30" id="tSU-Od-c10"/>
                                     <constraint firstItem="gkf-rL-fwb" firstAttribute="leading" secondItem="8Es-VG-zQL" secondAttribute="trailing" constant="45" id="v45-PL-Vus"/>
                                     <constraint firstAttribute="bottom" secondItem="pcq-W1-fLt" secondAttribute="bottom" constant="20" id="vhN-aP-jfK"/>
@@ -2725,6 +2725,12 @@
         <designable name="0Jv-Rt-2ue">
             <size key="intrinsicContentSize" width="56" height="32"/>
         </designable>
+        <designable name="4VO-gQ-vvF">
+            <size key="intrinsicContentSize" width="30" height="34"/>
+        </designable>
+        <designable name="5LW-ua-VBa">
+            <size key="intrinsicContentSize" width="30" height="34"/>
+        </designable>
         <designable name="PbF-rG-Oyu">
             <size key="intrinsicContentSize" width="137" height="32"/>
         </designable>
@@ -2733,6 +2739,9 @@
         </designable>
         <designable name="aPZ-Ie-oVU">
             <size key="intrinsicContentSize" width="42" height="30"/>
+        </designable>
+        <designable name="zXb-YA-XaM">
+            <size key="intrinsicContentSize" width="30" height="34"/>
         </designable>
     </designables>
     <resources>
