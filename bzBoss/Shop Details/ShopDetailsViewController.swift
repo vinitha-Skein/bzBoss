@@ -84,19 +84,58 @@ class ShopDetailsViewController: UIViewController
         collectionview.delegate = self
         collectionview.dataSource = self
         setUpUI()
-        if (firstLoad)
-        {
-            apiCall()
-            
-        }
+        apiCall()
         clockchange()
+        viewAction()
+        
+
+       
+
+
     }
+    
     override func viewWillAppear(_ animated: Bool)
     {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
-  
-   
+    func viewAction()
+    {
+        let openedGesture = UITapGestureRecognizer(target: self, action:  #selector(self.openedAction))
+        self.openedatView.addGestureRecognizer(openedGesture)
+        let closedGesture = UITapGestureRecognizer(target: self, action:  #selector(self.closedAction))
+        self.closedatView.addGestureRecognizer(closedGesture)
+        let firstCusGesture = UITapGestureRecognizer(target: self, action:  #selector(self.firstCusAction))
+        self.firstCustomerView.addGestureRecognizer(firstCusGesture)
+        let customerGesture = UITapGestureRecognizer(target: self, action:  #selector(self.customerAction))
+        self.customersChartView.addGestureRecognizer(customerGesture)
+        let staffGesture = UITapGestureRecognizer(target: self, action:  #selector(self.staffAction))
+        self.staffChartView.addGestureRecognizer(staffGesture)
+        let visitorsGesture = UITapGestureRecognizer(target: self, action:  #selector(self.visitorsAction))
+        self.visitorsChartView.addGestureRecognizer(visitorsGesture)
+    }
+    @objc func openedAction(sender : UITapGestureRecognizer)
+    {
+        gotomaintainTimingViewController(Str: "OpenedAt",time: convertto12(time: openedat))
+    }
+    @objc func closedAction(sender : UITapGestureRecognizer)
+    {
+        gotomaintainTimingViewController(Str: "ClosedAt",time: convertto12(time: closedat))
+    }
+    @objc func firstCusAction(sender : UITapGestureRecognizer)
+    {
+        gotomaintainTimingViewController(Str: "FirstCustomer",time: convertto12(time: firstcustomer))
+    }
+    @objc func customerAction(sender : UITapGestureRecognizer)
+    {
+    }
+    @objc func staffAction(sender : UITapGestureRecognizer)
+    {
+        gotoStaffDetails()
+    }
+    @objc func visitorsAction(sender : UITapGestureRecognizer)
+    {
+    }
+    
     public func clockchange()
     {
         
@@ -288,7 +327,8 @@ class ShopDetailsViewController: UIViewController
     }
     func filldata()
     {
-        viewDidLoad()
+        //viewDidLoad()
+        clockchange()
         premiseTitle.text = viewModel.shopdetailsData?.premisedata?.name
         premiseCityLabel.text = viewModel.shopdetailsData?.premisedata?.city
         premiseStateLabel.text = viewModel.shopdetailsData?.premisedata?.state
@@ -315,15 +355,17 @@ class ShopDetailsViewController: UIViewController
         {
             statusView.backgroundColor = UIColor.green
         }
-        
-        if (toggle == "graphic")
+        if firstLoad == true
         {
-            graphicalUI()
+            if (toggle == "graphic")
+                {
+                    graphicalUI()
             
-        }
-        else
-        {
-            numericalUI()
+                }
+            else
+            {
+                numericalUI()
+            }
         }
             setImage(from: premiseImagevalue)
 
@@ -347,7 +389,6 @@ class ShopDetailsViewController: UIViewController
         let date = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
-        scrollView.isHidden = true
         //firstCustomerView.layer.borderColor = UIColor.black.cgColor
         firstCustomerView.layer.borderWidth = 0.5
         firstCustomerView.layer.cornerRadius = 5
@@ -363,6 +404,7 @@ class ShopDetailsViewController: UIViewController
         //visitorsChartView.layer.borderColor = UIColor.black.cgColor
         visitorsChartView.layer.borderWidth = 0.5
         visitorsChartView.layer.cornerRadius = 5
+        scrollView.isHidden = true
         //openedatView.layer.borderColor = UIColor.black.cgColor
         openedatView.layer.borderWidth = 0.5
         openedatView.layer.cornerRadius = 5
@@ -404,7 +446,8 @@ class ShopDetailsViewController: UIViewController
         guard let imageURL = URL(string: url) else { return }
 
             // just not to cause a deadlock in UI!
-        DispatchQueue.global().async {
+        DispatchQueue.global().async
+        {
             guard let imageData = try? Data(contentsOf: imageURL) else { return }
 
             let image = UIImage(data: imageData)
@@ -414,18 +457,19 @@ class ShopDetailsViewController: UIViewController
         }
     }
     func numerical_Clicked()
+    
     {
+        userConfigApi()
         numericalUI()
         toggleSelected = "numeric"
-        userConfigApi()
     }
     
     
     func graphical_Clicked()
     {
+        userConfigApi()
         graphicalUI()
         toggleSelected = "graphic"
-        userConfigApi()
     }
     @IBAction func refresh_clicked(_ sender: Any)
     {
@@ -433,6 +477,7 @@ class ShopDetailsViewController: UIViewController
     }
     @IBAction func today_Clicked(_ sender: Any)
     {
+        userConfigApi()
         yesterdayButton.layer.backgroundColor = dateSelectionBG.cgColor
         yesterdayButton.setTitleColor(UIColor.black, for: .normal)
         todayButton.layer.backgroundColor = selectedColor.cgColor
@@ -444,7 +489,6 @@ class ShopDetailsViewController: UIViewController
         dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
         dateLabel.text = dateFormatter.string(from: date)
         selectedDate = dateFormatter.string(from: date)
-        userConfigApi()
     }
     
     @IBAction func ShopDetailsPressed(_ sender: Any) {
