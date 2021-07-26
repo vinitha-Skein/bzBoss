@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B196FEE26ABD35400E9CD67 /* ContactUsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B196FED26ABD35400E9CD67 /* ContactUsViewModel.swift */; };
+		1B196FF826AC4BCF00E9CD67 /* contactUSModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B196FF726AC4BCF00E9CD67 /* contactUSModel.swift */; };
 		1B22B98D26A071F5006B4AED /* CustomersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B22B98C26A071F5006B4AED /* CustomersViewController.swift */; };
 		1B356283268C23C700BC0396 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B356282268C23C700BC0396 /* OnboardingViewController.swift */; };
 		1B356288268C23E400BC0396 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B356287268C23E400BC0396 /* OnboardingCollectionViewCell.swift */; };
@@ -103,6 +104,7 @@
 
 /* Begin PBXFileReference section */
 		1B196FED26ABD35400E9CD67 /* ContactUsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewModel.swift; sourceTree = "<group>"; };
+		1B196FF726AC4BCF00E9CD67 /* contactUSModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contactUSModel.swift; sourceTree = "<group>"; };
 		1B22B98C26A071F5006B4AED /* CustomersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomersViewController.swift; sourceTree = "<group>"; };
 		1B356282268C23C700BC0396 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		1B356287268C23E400BC0396 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -432,6 +434,7 @@
 			children = (
 				1B196FED26ABD35400E9CD67 /* ContactUsViewModel.swift */,
 				A7B04B9426942675004D88CF /* ContactUsViewController.swift */,
+				1B196FF726AC4BCF00E9CD67 /* contactUSModel.swift */,
 			);
 			path = "Contact us";
 			sourceTree = "<group>";
@@ -655,6 +658,7 @@
 				1B356283268C23C700BC0396 /* OnboardingViewController.swift in Sources */,
 				A72D7E3126A561F100F8F6AE /* premiseDataViewModel.swift in Sources */,
 				1B4DCCFB268AE56600D3710B /* AppDelegate.swift in Sources */,
+				1B196FF826AC4BCF00E9CD67 /* contactUSModel.swift in Sources */,
 				1BB95EEA2693203E0085CACF /* CompanyDetailsViewController.swift in Sources */,
 				1B196FEE26ABD35400E9CD67 /* ContactUsViewModel.swift in Sources */,
 				1BBF443B268F479A002367D9 /* SideMenuViewModel.swift in Sources */,

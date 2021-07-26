@@ -114,6 +114,7 @@ class ContactUsViewController: UIViewController {
         viewModel.ContactUSfetchedSuccess =
             {
                 self.activityIndicator(self.view, startAnimate: false)
+                
             }
         viewModel.loadingStatus =
             {

@@ -40,7 +40,7 @@ class APIClient {
         performRequest(route: APIRouter.staffdetails(params: params),completion: completion)
     }
     
-    static func contactUs(params:[String:Any],completion:@escaping(AFResult<StaffdetailsModel>)->Void){
+    static func contactUs(params:[String:Any],completion:@escaping(AFResult<contactUSModel>)->Void){
         performRequest(route: APIRouter.contactUs(params: params),completion: completion)
     }
     

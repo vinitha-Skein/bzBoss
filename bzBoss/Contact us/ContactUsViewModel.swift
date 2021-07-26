@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 class ContactUsViewModel {
     //Properties
-    var HomeList:HomeListModel?
+    var contactUS:contactUSModel?
     {
         didSet{
             self.ContactUSfetchedSuccess?()
@@ -48,7 +48,7 @@ class ContactUsViewModel {
                         do
                                 {
                                     self.ContactUSfetchedSuccess?()
-//                                    self.shopdetailsData = responseData.data
+                                    self.contactUS = responseData
                                 }
                         catch {
                             print(error.localizedDescription)
