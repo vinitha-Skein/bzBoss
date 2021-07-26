@@ -27,6 +27,12 @@ class ContactUsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        nameTextFeild.delegate = self
+        phoneTextFeild.delegate = self
+        categoryFeild.delegate = self
+        emailTextFeild.delegate = self
+        messageTextView.delegate = self
+
         setupUI()
     }
     func setupUI()
@@ -132,5 +138,17 @@ class ContactUsViewController: UIViewController {
     }
     
    
+        
+}
+extension ContactUsViewController: UITextFieldDelegate,UITextViewDelegate
+{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
+        nameTextFeild.resignFirstResponder()
+    phoneTextFeild.resignFirstResponder()
+    emailTextFeild.resignFirstResponder()
+    categoryFeild.resignFirstResponder()
+        return true
+    }
         
 }

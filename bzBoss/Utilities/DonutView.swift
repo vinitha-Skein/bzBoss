@@ -52,7 +52,7 @@ var selectedColor = UIColor(red: 29/255, green: 138/255, blue: 254/255, alpha: 1
 		let radius: CGFloat = bounds.width / 2
 		
 		//the width of donut line or how thick the donut should be
-		let arcWidth: CGFloat = radius / 4
+		let arcWidth: CGFloat = 10 //radius / 5
 
         let donut = UIBezierPath(arcCenter: center,
 								//line width (arcWidth) occupy space half in and half out of circumference line

@@ -11,6 +11,8 @@ import iOSDropDown
 
 class ShopDetailsViewController: UIViewController
 {
+    @IBOutlet weak var viewHeight: NSLayoutConstraint!
+    @IBOutlet weak var graphicalView: UIView!
     @IBOutlet weak var viewSwitch: UISwitch!
     @IBOutlet weak var statusView: Mybutton!
     @IBOutlet weak var visitorsLabel: UILabel!
@@ -34,7 +36,7 @@ class ShopDetailsViewController: UIViewController
     @IBOutlet weak var customersChartView: UIView!
     @IBOutlet weak var firstCustomerView: UIView!
     @IBOutlet weak var openedatView: UIView!
-    @IBOutlet weak var scrollView: UIScrollView!
+    //@IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var knownVistorsChart: DonutView!
     @IBOutlet weak var staffsChart: DonutView!
     @IBOutlet weak var customersChart: DonutView!
@@ -87,10 +89,6 @@ class ShopDetailsViewController: UIViewController
         apiCall()
         clockchange()
         viewAction()
-        
-
-       
-
 
     }
     
@@ -356,7 +354,7 @@ class ShopDetailsViewController: UIViewController
         
         if(statusLabel.text == "Open")
         {
-            statusView.backgroundColor = UIColor.green
+            statusView.backgroundColor = UIColor(hexString: Colors.statusgreen)
         }
         if firstLoad == true
         {
@@ -407,7 +405,9 @@ class ShopDetailsViewController: UIViewController
         //visitorsChartView.layer.borderColor = UIColor.black.cgColor
         visitorsChartView.layer.borderWidth = 0.5
         visitorsChartView.layer.cornerRadius = 5
-        scrollView.isHidden = true
+        //scrollView.isHidden = true
+        graphicalView.isHidden = true
+        viewHeight.constant = 860
         //openedatView.layer.borderColor = UIColor.black.cgColor
         openedatView.layer.borderWidth = 0.5
         openedatView.layer.cornerRadius = 5
@@ -577,7 +577,8 @@ class ShopDetailsViewController: UIViewController
 //        graphicalButton.layer.backgroundColor = UIColor.white.cgColor
 //        graphicalButton.setTitleColor(UIColor.black, for: .normal)
           collectionview.isHidden = false
-          scrollView.isHidden = true
+          graphicalView.isHidden = true
+          viewHeight.constant = 860
     }
     func graphicalUI()
     {
@@ -587,8 +588,8 @@ class ShopDetailsViewController: UIViewController
 //        numericalButton.layer.backgroundColor = UIColor.white.cgColor
 //        numericalButton.setTitleColor(UIColor.black, for: .normal)
           collectionview.isHidden = true
-          scrollView.isHidden = false
-
+          graphicalView.isHidden = false
+        viewHeight.constant = 1137
     }
 }
 extension ShopDetailsViewController:UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout

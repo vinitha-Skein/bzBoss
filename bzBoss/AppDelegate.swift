@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        window?.makeKeyAndVisible()
         
         gotoHome()
-        
+        //gotoOnboardingScreen()
         return true
     }
     func gotoHome() {

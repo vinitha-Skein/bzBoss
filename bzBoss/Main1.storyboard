@@ -207,14 +207,14 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SideMenuViewCellID" id="LWu-Wu-Oad" customClass="SideMenuViewCell" customModule="bzBoss" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LWu-Wu-Oad" id="mJT-Rh-nPQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dex-bw-NRj">
-                                                    <rect key="frame" x="28" y="11" width="42" height="21.5"/>
+                                                    <rect key="frame" x="28" y="11" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -1059,8 +1059,20 @@
         </scene>
     </scenes>
     <designables>
+        <designable name="1Wr-KO-yDm">
+            <size key="intrinsicContentSize" width="30" height="34"/>
+        </designable>
+        <designable name="IDg-Yl-kVc">
+            <size key="intrinsicContentSize" width="30" height="34"/>
+        </designable>
+        <designable name="VTb-uR-FkZ">
+            <size key="intrinsicContentSize" width="30" height="34"/>
+        </designable>
         <designable name="cPI-V6-PVG">
             <size key="intrinsicContentSize" width="108" height="32"/>
+        </designable>
+        <designable name="gQU-CJ-j4X">
+            <size key="intrinsicContentSize" width="30" height="34"/>
         </designable>
         <designable name="qEr-zF-LmO">
             <size key="intrinsicContentSize" width="63" height="34"/>
