@@ -19,6 +19,17 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
     
     @IBOutlet weak var showStaffDetails: UISwitch!
     
+    @IBOutlet weak var statusView: Mybutton!
+    @IBOutlet weak var stateandcityLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var premiseTitleLabel: UILabel!
+    @IBOutlet weak var timingLabel: UILabel!
+    
+    @IBOutlet weak var chartTitle: UILabel!
+    
+    @IBOutlet weak var staffDetailsSwitchLabel: UILabel!
+    
     
     let viewModel = premiseDataViewModel()
     var staffSwitchIsOn:Bool =  true
@@ -31,12 +42,14 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
     var staffCount = [Float()]
     var staffCountCollectionView = 0
     
+    var isfrom = ""
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         collectionview.delegate = self
         collectionview.dataSource = self
-        
+        setData()
        apiCall()
     }
     
@@ -88,7 +101,7 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         chart.leftAxis.spaceBottom = 0.4
         chart.leftAxis.axisRange = 1.0
         chart.leftAxis.granularity = 1.0
-        chart.leftAxis.valueFormatter = YAxisNameFormater()
+//        chart.leftAxis.valueFormatter = YAxisNameFormater()
         chart.rightAxis.enabled = false
         chart.xAxis.enabled = true
         chart.xAxis.labelPosition = .bottom
@@ -152,6 +165,23 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
                     }
         
     }
+    func setData()
+    {
+        
+        let city = String(UserDefaults.standard.string(forKey: "premiseCity") ??  "")
+        let state = String(UserDefaults.standard.string(forKey: "premiseState") ?? "")
+        premiseTitleLabel.text = UserDefaults.standard.string(forKey: "premiseTitle")
+        
+        stateandcityLabel.text = String("\(city), \(state)")
+        timeLabel.text = UserDefaults.standard.string(forKey: "premiseDate")
+        statusLabel.text = UserDefaults.standard.string(forKey: "premiseStatus")
+        timingLabel.text = selectedDate
+        
+        if(statusLabel.text == "Open")
+        {
+            statusView.backgroundColor = UIColor.green
+        }
+    }
     func setDatatoVariables()
     {
         let count = 0..<(viewModel.premiseData?.premisedailydata!.count)!
@@ -159,10 +189,19 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         dateString.removeAll()
         for number in count
         {
+            if isfrom == "Staff" {
             let staff_min = viewModel.premiseData?.premisedailydata![number].number_of_staff_min ?? 0
             let staff_max = viewModel.premiseData?.premisedailydata![number].number_of_staff_max ?? 0
             let staff = Float((staff_min+staff_max)/2)
             staffCount.append(staff)
+            }
+            else if isfrom == "Known Visitors" {
+                let staff_min = viewModel.premiseData?.premisedailydata![number].number_of_known_visitors_min ?? 0
+                let staff_max = viewModel.premiseData?.premisedailydata![number].number_of_known_visitors_max ?? 0
+                let staff = Float((staff_min+staff_max)/2)
+                staffCount.append(staff)
+            }
+            
             let tempDate = viewModel.premiseData?.premisedailydata![number].date ?? "01-01-2020"
             print("Temp date",tempDate)
             let dateFormatter = DateFormatter()
@@ -189,6 +228,11 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         } else {
             collectionview.isHidden = false
             staffViewHeight.constant = 0
+        }
+        if isfrom == "Staff" {
+            chartTitle.text = "Staff\(staffCount[staffCount.count-1])"
+        } else if isfrom == "Known Visitors" {
+            chartTitle.text = "Known Visitors \(staffCount[staffCount.count-1])"
         }
     }
 

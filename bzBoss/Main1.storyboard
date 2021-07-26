@@ -279,8 +279,9 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="38z-HC-WQd" customClass="MyUIView" customModule="bzBoss" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="16" width="382" height="71"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test_ofer" translatesAutoresizingMaskIntoConstraints="NO" id="K36-3X-kcp">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K36-3X-kcp">
                                                             <rect key="frame" x="16" y="16" width="60" height="39"/>
+                                                            <color key="backgroundColor" red="0.23137254900000001" green="0.63529411759999999" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="60" id="0QR-wa-T1X"/>
                                                             </constraints>
@@ -375,13 +376,15 @@
                                             <action selector="barbuttonItem:" destination="7e8-9D-YeE" eventType="touchUpInside" id="Gg1-7U-H4c"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pv5-Rg-3NL">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="refresh_page_option" translatesAutoresizingMaskIntoConstraints="NO" id="UKr-l0-k3u">
+                                        <rect key="frame" x="366.5" y="49.5" width="27" height="29"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pv5-Rg-3NL">
                                         <rect key="frame" x="362" y="46" width="36" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="5Qv-x7-3Af"/>
                                             <constraint firstAttribute="width" constant="36" id="nO2-tA-w1L"/>
                                         </constraints>
-                                        <state key="normal" title="Button" image="refresh_page_option"/>
                                         <connections>
                                             <action selector="RefreshListItem:" destination="7e8-9D-YeE" eventType="touchUpInside" id="t49-Q4-eHG"/>
                                         </connections>
@@ -398,7 +401,11 @@
                                     <constraint firstItem="0x2-S5-LXh" firstAttribute="leading" secondItem="JWc-0N-bDY" secondAttribute="leading" constant="16" id="2OA-Yx-tex"/>
                                     <constraint firstItem="Boy-sc-mCr" firstAttribute="centerY" secondItem="JWc-0N-bDY" secondAttribute="centerY" constant="10" id="4rj-2F-5YY"/>
                                     <constraint firstAttribute="height" constant="108" id="E6A-Pf-SvZ"/>
+                                    <constraint firstItem="UKr-l0-k3u" firstAttribute="centerY" secondItem="pv5-Rg-3NL" secondAttribute="centerY" id="KLD-jG-Aks"/>
+                                    <constraint firstItem="UKr-l0-k3u" firstAttribute="height" secondItem="pv5-Rg-3NL" secondAttribute="height" multiplier="0.8" id="OWc-mT-3NZ"/>
                                     <constraint firstItem="Boy-sc-mCr" firstAttribute="centerX" secondItem="JWc-0N-bDY" secondAttribute="centerX" id="PPf-c5-aqj"/>
+                                    <constraint firstItem="UKr-l0-k3u" firstAttribute="width" secondItem="pv5-Rg-3NL" secondAttribute="width" multiplier="0.75" id="U1Z-X7-c3c"/>
+                                    <constraint firstItem="UKr-l0-k3u" firstAttribute="centerX" secondItem="pv5-Rg-3NL" secondAttribute="centerX" id="hjL-fN-gcq"/>
                                     <constraint firstAttribute="trailing" secondItem="pv5-Rg-3NL" secondAttribute="trailing" constant="16" id="jwF-hq-Brn"/>
                                     <constraint firstItem="pv5-Rg-3NL" firstAttribute="centerY" secondItem="JWc-0N-bDY" secondAttribute="centerY" constant="10" id="lqB-zZ-jwM"/>
                                     <constraint firstItem="0x2-S5-LXh" firstAttribute="centerY" secondItem="JWc-0N-bDY" secondAttribute="centerY" constant="10" id="uGp-15-Ykt"/>
@@ -469,8 +476,9 @@
                                     <constraint firstItem="A3n-Ta-sDV" firstAttribute="centerX" secondItem="boV-MO-S84" secondAttribute="centerX" id="yj5-li-L0f"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_slider_four" translatesAutoresizingMaskIntoConstraints="NO" id="rme-Yt-68w">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rme-Yt-68w">
                                 <rect key="frame" x="16" y="128" width="382" height="250"/>
+                                <color key="backgroundColor" red="0.23137254900000001" green="0.63529411759999999" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="uEc-1d-07A"/>
                                 </constraints>
@@ -809,7 +817,7 @@
         <!--Customers View Controller-->
         <scene sceneID="abe-sv-DMr">
             <objects>
-                <viewController storyboardIdentifier="CustomersViewController" id="Uke-8k-Fur" customClass="CustomersViewController" customModule="bzBoss" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CustomersViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Uke-8k-Fur" customClass="CustomersViewController" customModule="bzBoss" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sae-Rq-Wgb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1037,6 +1045,12 @@
                     <connections>
                         <outlet property="chartTitle" destination="wHe-Pf-Bak" id="AOY-pC-5EN"/>
                         <outlet property="chartView" destination="GQB-3E-5XF" id="e7f-Gj-txf"/>
+                        <outlet property="premiseTitleLabel" destination="XXY-qG-rjj" id="8gR-1b-BVJ"/>
+                        <outlet property="stateandcityLabel" destination="KQO-f5-3SY" id="zMu-mB-40M"/>
+                        <outlet property="statusLabel" destination="T6r-Oq-d0x" id="sja-t0-IML"/>
+                        <outlet property="statusView" destination="VTb-uR-FkZ" id="a4N-B2-KyT"/>
+                        <outlet property="timeLabel" destination="fGq-lZ-Xg1" id="hqU-iA-VBR"/>
+                        <outlet property="timingLabel" destination="SDN-ca-CYH" id="tVf-5C-ZNh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QAw-Nd-HOR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1054,7 +1068,6 @@
     </designables>
     <resources>
         <image name="backImage" width="42" height="42"/>
-        <image name="ic_slider_four" width="1024" height="1024"/>
         <image name="ic_slider_one" width="1024" height="1024"/>
         <image name="refresh_page_option" width="128" height="128"/>
         <image name="sidemenu" width="123" height="123"/>

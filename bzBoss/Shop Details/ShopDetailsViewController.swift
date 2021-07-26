@@ -127,13 +127,15 @@ class ShopDetailsViewController: UIViewController
     }
     @objc func customerAction(sender : UITapGestureRecognizer)
     {
+        gotoCustomersView(Str: "customers",time: convertto12(time: "\(customers)"))
     }
     @objc func staffAction(sender : UITapGestureRecognizer)
     {
-        gotoStaffDetails()
+        gotoStaffDetails(str: "Staff")
     }
     @objc func visitorsAction(sender : UITapGestureRecognizer)
     {
+        
     }
     
     public func clockchange()
@@ -293,6 +295,7 @@ class ShopDetailsViewController: UIViewController
         self.openedat = self.viewModel.shopdetailsData?.opened_at ?? "-"
         self.closedat = self.viewModel.shopdetailsData?.closed_at ?? "-"
         self.firstcustomer = self.viewModel.shopdetailsData?.first_customer_time ?? "-"
+        self.customers = (self.viewModel.shopdetailsData?.number_of_customersnumber)!
         self.toggle = self.viewModel.shopdetailsData?.userconfigdata?.toggle ?? "graphic"
         self.userSelectedDate = self.viewModel.shopdetailsData?.userconfigdata?.date ?? "2021-06-08"
 
@@ -538,11 +541,12 @@ class ShopDetailsViewController: UIViewController
         present(popup, animated: true, completion: nil)
     }
     //MARK: Navigation
-    func gotoStaffDetails() {
+    func gotoStaffDetails(str:String) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "StaffDetailsViewController") as! StaffDetailsViewController
         vc.modalPresentationStyle = .fullScreen
         vc.selectedDate = selectedDate
+        vc.isfrom = str
         //self.navigationController?.pushViewController(vc, animated: true)
         present(vc, animated: true, completion: nil)
     }
@@ -554,6 +558,15 @@ class ShopDetailsViewController: UIViewController
         vc.selectedDate = selectedDate
         vc.modalPresentationStyle = .fullScreen
         //self.navigationController?.pushViewController(vc, animated: true)
+        present(vc, animated: true, completion: nil)
+    }
+    func gotoCustomersView(Str:String,time:String){
+        let storyboard = UIStoryboard(name: "Main1", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "CustomersViewController") as! CustomersViewController
+        vc.isfrom = Str
+        vc.Time = time
+        vc.selectedDate = selectedDate
+        vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true, completion: nil)
     }
     func numericalUI()
@@ -662,9 +675,13 @@ extension ShopDetailsViewController:UICollectionViewDelegate,UICollectionViewDat
             gotomaintainTimingViewController(Str: "FirstCustomer",time: convertto12(time: firstcustomer))
         } else if indexPath.row == 4 {
             gotomaintainTimingViewController(Str: "ClosedAt",time: convertto12(time: closedat))
+        } else if indexPath.row == 2 {
+            gotoCustomersView(Str: "customers",time: convertto12(time: "\(customers)"))
         }
-        if indexPath.row == 3{
-           gotoStaffDetails()
+        if indexPath.row == 3 {
+            gotoStaffDetails(str: "Staff")
+        } else if indexPath.row == 5 {
+            gotoStaffDetails(str: "Known Visitors")
         }
     }
 }

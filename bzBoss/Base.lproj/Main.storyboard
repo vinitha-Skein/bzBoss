@@ -1311,8 +1311,9 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CKG-lf-loe" customClass="Mybutton" customModule="bzBoss" customModuleProvider="target">
                                                         <rect key="frame" x="20" y="96" width="374" height="96"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test_ofer" translatesAutoresizingMaskIntoConstraints="NO" id="keb-2R-q8N">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="keb-2R-q8N">
                                                                 <rect key="frame" x="24" y="23" width="50" height="50"/>
+                                                                <color key="backgroundColor" red="0.23137254900000001" green="0.63529411759999999" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="50" id="4Zj-Gt-JqB"/>
                                                                     <constraint firstAttribute="height" constant="50" id="jdX-Jn-RDb"/>
@@ -1619,10 +1620,18 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="chartTitle" destination="po9-x5-L0l" id="wVM-XW-pcU"/>
                         <outlet property="chartView" destination="905-Bp-ste" id="DZf-wa-iz4"/>
                         <outlet property="collectionview" destination="gXS-06-EUb" id="xEC-ux-HLO"/>
+                        <outlet property="premiseTitleLabel" destination="vjP-2H-b57" id="Rmw-Q8-6xc"/>
                         <outlet property="showStaffDetails" destination="0N5-e5-vur" id="EtP-gj-wfA"/>
+                        <outlet property="staffDetailsSwitchLabel" destination="iNf-C5-wyn" id="iGo-sx-mMY"/>
                         <outlet property="staffViewHeight" destination="E5C-Qs-rhz" id="7Sx-M0-Fgn"/>
+                        <outlet property="stateandcityLabel" destination="HL3-Yp-VKa" id="jIb-CK-kur"/>
+                        <outlet property="statusLabel" destination="jYl-Qz-ZCf" id="VZC-h7-4T1"/>
+                        <outlet property="statusView" destination="9n8-Vn-uUa" id="qRA-DO-tsH"/>
+                        <outlet property="timeLabel" destination="lLe-L3-WkF" id="GBo-Rw-cXf"/>
+                        <outlet property="timingLabel" destination="7b0-lJ-vxe" id="ALo-WZ-hml"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="adg-QR-ku1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1750,8 +1759,9 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2o3-gy-csI" customClass="Mybutton" customModule="bzBoss" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="100" width="374" height="96"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test_ofer" translatesAutoresizingMaskIntoConstraints="NO" id="z7d-zu-qIv">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z7d-zu-qIv">
                                                         <rect key="frame" x="24" y="23" width="50" height="50"/>
+                                                        <color key="backgroundColor" red="0.23137254900000001" green="0.63529411759999999" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="50" id="EzD-3p-mNv"/>
                                                             <constraint firstAttribute="height" constant="50" id="MsM-LC-ohG"/>
@@ -2731,26 +2741,11 @@
         <designable name="0Jv-Rt-2ue">
             <size key="intrinsicContentSize" width="56" height="32"/>
         </designable>
-        <designable name="2o3-gy-csI">
-            <size key="intrinsicContentSize" width="30" height="34"/>
-        </designable>
-        <designable name="9n8-Vn-uUa">
-            <size key="intrinsicContentSize" width="30" height="34"/>
-        </designable>
-        <designable name="CKG-lf-loe">
-            <size key="intrinsicContentSize" width="30" height="34"/>
-        </designable>
         <designable name="PbF-rG-Oyu">
             <size key="intrinsicContentSize" width="137" height="32"/>
         </designable>
-        <designable name="Vaw-l1-XWw">
-            <size key="intrinsicContentSize" width="30" height="34"/>
-        </designable>
         <designable name="abb-rr-EHw">
             <size key="intrinsicContentSize" width="68" height="30"/>
-        </designable>
-        <designable name="zJL-ZY-EhP">
-            <size key="intrinsicContentSize" width="30" height="34"/>
         </designable>
     </designables>
     <resources>
