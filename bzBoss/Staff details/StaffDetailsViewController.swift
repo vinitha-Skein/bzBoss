@@ -272,7 +272,7 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         
         print("To Display Values X/Y Values here")
         print(entry.value(forKey: "y")!)
-        
+              
         staffCountCollectionView = (entry.value(forKey: "y")!) as! Int
         if staffSwitchIsOn {
         collectionview.reloadData()
