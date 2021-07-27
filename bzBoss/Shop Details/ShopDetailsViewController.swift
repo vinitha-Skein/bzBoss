@@ -602,14 +602,12 @@ extension ShopDetailsViewController:UICollectionViewDelegate,UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShopDetailsCollectionViewCell", for: indexPath) as! ShopDetailsCollectionViewCell
-//        if(indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 5 )
-//        {
-//            cell.timeLabel.font = cell.timeLabel.font.withSize(40)
-//        }
+        
         
         cell.sectionLabel.text = category[indexPath.row]
         cell.container.layer.cornerRadius = 10
         cell.container.backgroundColor = bgColors[indexPath.row]
+        
         if (indexPath.row == 0)
         {
 //           let dateAsString = openedat
@@ -644,10 +642,12 @@ extension ShopDetailsViewController:UICollectionViewDelegate,UICollectionViewDat
 //
 //            }
             cell.timeLabel.text = "\(customers)"
+            cell.timeLabel.font = cell.timeLabel.font.withSize(40)
         }
         else if (indexPath.row == 3)
         {
             cell.timeLabel.text = "\(staff)"
+            cell.timeLabel.font = cell.timeLabel.font.withSize(40)
         }
         else if (indexPath.row == 4)
         {
@@ -664,8 +664,10 @@ extension ShopDetailsViewController:UICollectionViewDelegate,UICollectionViewDat
         else if (indexPath.row == 5)
         {
             cell.timeLabel.text = "\(knownVisitors)"
-        }
+            cell.timeLabel.font = cell.timeLabel.font.withSize(40)
 
+        }
+       
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
