@@ -51,6 +51,7 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         collectionview.dataSource = self
         setData()
        apiCall()
+       
     }
     
 
@@ -111,6 +112,15 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         chart.xAxis.labelCount = dateString.count
         chart.xAxis.granularity = 1.0
         chart.data = data
+        
+        
+        let marker = BalloonMarker(color: UIColor(white: 255/255, alpha: 1),
+                                           font: .systemFont(ofSize: 12),
+                                           textColor: .black,
+                                           insets: UIEdgeInsets(top: 8, left: 8, bottom: 20, right: 8))
+                marker.chartView = chartView
+                marker.minimumSize = CGSize(width: 100, height: 100)
+                chartView.marker = marker
         //        chart.animate(xAxisDuration: 2.5)
     }
     func dataWithCount() -> LineChartData

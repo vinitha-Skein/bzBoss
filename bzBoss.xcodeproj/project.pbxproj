@@ -45,6 +45,7 @@
 		A707C70226983C65007D50C1 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A707C70126983C65007D50C1 /* SignInViewModel.swift */; };
 		A70940A3269590BB00421C84 /* StaffCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70940A2269590BB00421C84 /* StaffCollectionViewCell.swift */; };
 		A718003E26930ACD0087637A /* DonutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A718003D26930ACC0087637A /* DonutView.swift */; };
+		A7223FAF26B0449A0019CE0C /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7223FAE26B0449A0019CE0C /* BalloonMarker.swift */; };
 		A72937D926AAD938007FE6C7 /* switchExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72937D826AAD938007FE6C7 /* switchExtension.swift */; };
 		A72D7E2D26A561E800F8F6AE /* premiseDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72D7E2C26A561E700F8F6AE /* premiseDataModel.swift */; };
 		A72D7E3126A561F100F8F6AE /* premiseDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72D7E3026A561F100F8F6AE /* premiseDataViewModel.swift */; };
@@ -146,6 +147,7 @@
 		A707C70126983C65007D50C1 /* SignInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		A70940A2269590BB00421C84 /* StaffCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffCollectionViewCell.swift; sourceTree = "<group>"; };
 		A718003D26930ACC0087637A /* DonutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonutView.swift; sourceTree = "<group>"; };
+		A7223FAE26B0449A0019CE0C /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
 		A72937D826AAD938007FE6C7 /* switchExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = switchExtension.swift; sourceTree = "<group>"; };
 		A72D7E2C26A561E700F8F6AE /* premiseDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = premiseDataModel.swift; sourceTree = "<group>"; };
 		A72D7E3026A561F100F8F6AE /* premiseDataViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = premiseDataViewModel.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 		1B356291268C240E00BC0396 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				A7223FAE26B0449A0019CE0C /* BalloonMarker.swift */,
 				A718003D26930ACC0087637A /* DonutView.swift */,
 				1B64A33B268D78E600159D98 /* Constants.swift */,
 				1B356292268C243300BC0396 /* Validation.swift */,
@@ -691,6 +694,7 @@
 				A7969B0626987C3F004089FE /* SignUpViewModel.swift in Sources */,
 				1BBF443C268F479A002367D9 /* SideMenuViewCell.swift in Sources */,
 				1BB95EA02692CE500085CACF /* DashboardTableviewCell.swift in Sources */,
+				A7223FAF26B0449A0019CE0C /* BalloonMarker.swift in Sources */,
 				A7FE3A1F26A6D7CC0023E538 /* StaffdetailsModel.swift in Sources */,
 				A72EC81A26970F450034AA34 /* IndividualStaffViewController.swift in Sources */,
 				A7FE3A1226A6D61B0023E538 /* IndividualStaffModel.swift in Sources */,
