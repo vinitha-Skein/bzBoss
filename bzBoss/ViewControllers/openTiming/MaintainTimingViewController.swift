@@ -28,6 +28,7 @@ class MaintainTimingViewController: UIViewController,ChartViewDelegate
     var selectedDate = "2021-06-01"
     
     @IBOutlet weak var imageView: UIImageView!
+    
     var arrayXaxisString = ["12/07", "13/07", "14/07", "15/07", "16/07"]
     var arrayYaxisString = [Double]()
 
