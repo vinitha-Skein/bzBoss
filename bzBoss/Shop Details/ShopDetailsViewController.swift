@@ -602,6 +602,11 @@ extension ShopDetailsViewController:UICollectionViewDelegate,UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShopDetailsCollectionViewCell", for: indexPath) as! ShopDetailsCollectionViewCell
+//        if(indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 5 )
+//        {
+//            cell.timeLabel.font = cell.timeLabel.font.withSize(40)
+//        }
+        
         cell.sectionLabel.text = category[indexPath.row]
         cell.container.layer.cornerRadius = 10
         cell.container.backgroundColor = bgColors[indexPath.row]

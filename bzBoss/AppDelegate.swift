@@ -7,7 +7,7 @@
 
 import UIKit
 import CoreData
-//import IQKeyboardManager
+import IQKeyboardManagerSwift
 import FirebaseCore
 import FirebaseAuth
 
@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         // Override point for customization after application launch.
-//        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enable = true
         let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
 //        let loginPage = storyboard.instantiateViewController(withIdentifier: "OnboardingViewController") as! OnboardingViewController
 //        self.window?.rootViewController = loginPage

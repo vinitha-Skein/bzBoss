@@ -23,16 +23,19 @@ class HomeViewController: UIViewController
         super.viewDidLoad()
         getShopLists()
     }
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool)
+    {
         companytableview.tableFooterView = MyUIView()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    @IBAction func RefreshListItem(_ sender: UIButton)  {
+    @IBAction func RefreshListItem(_ sender: UIButton)
+    {
         getShopLists()
     }
     
-    @IBAction func barbuttonItem(_ sender: Any) {
+    @IBAction func barbuttonItem(_ sender: Any)
+    {
         let sideMenuNavController: SideMenuNavigationController = SideMenuNavigationController.init(rootViewController: self.leftMenu)
         self.leftMenu.delegate = self
         sideMenuNavController.view.clipsToBounds = true
@@ -62,7 +65,8 @@ class HomeViewController: UIViewController
             }
         viewModel.loadingStatus =
             {
-                if self.viewModel.isLoading{
+                if self.viewModel.isLoading
+                {
                     self.activityIndicator(self.view, startAnimate: true)
                 }
                 else
@@ -74,7 +78,8 @@ class HomeViewController: UIViewController
         
     }
     
-    func  gotoCompanyDetails() {
+    func  gotoCompanyDetails()
+    {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ShopDetailsViewController") as! ShopDetailsViewController
         vc.modalPresentationStyle = .fullScreen
@@ -149,7 +154,10 @@ extension HomeViewController:SideMenuDelegate {
                     let appDelegate: AppDelegate = (UIApplication.shared.delegate as? AppDelegate)!
                     appDelegate.gotoOnboardingScreen()
                 } else {
-                    // Fallback on earlier versions
+                    let storyboard = UIStoryboard(name: "Main1", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "OnboardingViewController") as! OnboardingViewController
+                    vc.modalPresentationStyle = .fullScreen
+                    self.navigationController?.pushViewController(vc, animated: true)
                 }
             }))
             

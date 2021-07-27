@@ -26,6 +26,9 @@ class PasswordViewController: UIViewController {
         passwordBg_view.layer.cornerRadius = 10
         passwordBg_view.layer.borderColor = UIColor.lightGray.cgColor
         passwordBg_view.layer.borderWidth = 1
+        addDoneButtonOnKeyboard()
+        
+        
         var timeLeft = 30
                 
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true)
@@ -64,6 +67,7 @@ class PasswordViewController: UIViewController {
             }
             else
             {
+                self.verificationID = verificationID!
                 self.activityIndicator(self.view, startAnimate: false)
                 self.timerON()
             }
@@ -93,20 +97,58 @@ class PasswordViewController: UIViewController {
             }
     }
     
-     @IBAction func signin_clicked(_ sender: Any) {
-        if #available(iOS 13.0, *) {
-            let appDelegate: AppDelegate = (UIApplication.shared.delegate as? AppDelegate)!
-            appDelegate.gotoHome()
-        } else
+     @IBAction func signin_clicked(_ sender: Any)
+     {
+        let otp = passwordTextfeild.text
+        if (otp == "")
         {
-            let storyboard = UIStoryboard(name: "Main1", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true, completion: nil)
+            showAlert("Please enter the OTP")
+        }
+        let credential = PhoneAuthProvider.provider().credential(
+            withVerificationID: verificationID,
+            verificationCode: passwordTextfeild.text!)
+        Auth.auth().signIn(with: credential) { (user, error) in
+            if (error != nil)
+            {
+                self.showAlert("Invalid OTP")
+            }
+            else
+            {
+                if #available(iOS 13.0, *)
+                {
+                    let appDelegate: AppDelegate = (UIApplication.shared.delegate as? AppDelegate)!
+                    appDelegate.gotoHome()
+                }
+                else
+                {
+                    let storyboard = UIStoryboard(name: "Main1", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+                    vc.modalPresentationStyle = .fullScreen
+                    self.present(vc, animated: true, completion: nil)
             // Fallback on earlier versions
+                }
+            }
         }
      }
-    
+    func addDoneButtonOnKeyboard()
+    {
+            let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+            doneToolbar.barStyle = .default
+
+            let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
+
+            let items = [flexSpace, done]
+            doneToolbar.items = items
+            doneToolbar.sizeToFit()
+
+            passwordTextfeild.inputAccessoryView = doneToolbar
+        }
+
+        @objc func doneButtonAction()
+        {
+            passwordTextfeild.resignFirstResponder()
+        }
      // MARK: - Navigation
     /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
