@@ -126,6 +126,7 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
                                            insets: UIEdgeInsets(top: 8, left: 8, bottom: 20, right: 8))
                 marker.chartView = chartView
                 marker.minimumSize = CGSize(width: 100, height: 100)
+        marker.refreshContent(entry: "mark one", highlight: "")
                 chartView.marker = marker
         //        chart.animate(xAxisDuration: 2.5)
     }
@@ -170,7 +171,8 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         
         viewModel.loadingStatus =
             {
-                if self.viewModel.isLoading{
+                if self.viewModel.isLoading
+                {
                     //self.activityIndicator(self.view, startAnimate: true)
                 }
                 else
@@ -353,8 +355,8 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
     }
     
     //MARK: Chart Delegate
-    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight)
+    {
         
         print("To Display Values X/Y Values here")
         print(entry.value(forKey: "y")!)
@@ -386,9 +388,7 @@ extension StaffDetailsViewController:UICollectionViewDelegate,UICollectionViewDa
         cell.dateLabel.text = staff?.first_appearance_date_time
         cell.timeLabel.text = ""
         let url = staff?.first_appearance_image
-            if url != "" {
-        cell.imageViewStaff.af.setImage(withURL: URL(string: url!)! )
-            }
+       // cell.imageViewStaff.af.setImage(withURL: URL(string: url!)! )
         } else {
             let staff = knownVisitorsModel.KnownVisitorsData?[indexPath.row]
             cell.staffLabel.text = staff?.known_visitors_name
