@@ -29,6 +29,10 @@
 		1B4DCD31268AF34000D3710B /* Main1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B4DCD30268AF34000D3710B /* Main1.storyboard */; };
 		1B4DCD3A268B330F00D3710B /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4DCD39268B330F00D3710B /* UIView+Extension.swift */; };
 		1B4DCD3F268B5C2700D3710B /* MyButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4DCD3E268B5C2700D3710B /* MyButton+Extension.swift */; };
+		1B4EBFFD26B05CFB00374467 /* KnowVisitorsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4EBFFC26B05CFB00374467 /* KnowVisitorsViewModel.swift */; };
+		1B4EC00126B05D3300374467 /* KnownVisitorsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4EC00026B05D3300374467 /* KnownVisitorsModel.swift */; };
+		1B4EC00526B1071900374467 /* IndividualKnownVisitorsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4EC00426B1071900374467 /* IndividualKnownVisitorsViewModel.swift */; };
+		1B4EC00926B1073A00374467 /* individualKnownVisitorsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4EC00826B1073A00374467 /* individualKnownVisitorsModel.swift */; };
 		1B64A337268D77CC00159D98 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B64A335268D77CC00159D98 /* APIRouter.swift */; };
 		1B64A338268D77CC00159D98 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B64A336268D77CC00159D98 /* APIClient.swift */; };
 		1B64A33C268D78E600159D98 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B64A33B268D78E600159D98 /* Constants.swift */; };
@@ -130,6 +134,10 @@
 		1B4DCD30268AF34000D3710B /* Main1.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main1.storyboard; sourceTree = "<group>"; };
 		1B4DCD39268B330F00D3710B /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		1B4DCD3E268B5C2700D3710B /* MyButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MyButton+Extension.swift"; sourceTree = "<group>"; };
+		1B4EBFFC26B05CFB00374467 /* KnowVisitorsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowVisitorsViewModel.swift; sourceTree = "<group>"; };
+		1B4EC00026B05D3300374467 /* KnownVisitorsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnownVisitorsModel.swift; sourceTree = "<group>"; };
+		1B4EC00426B1071900374467 /* IndividualKnownVisitorsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualKnownVisitorsViewModel.swift; sourceTree = "<group>"; };
+		1B4EC00826B1073A00374467 /* individualKnownVisitorsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = individualKnownVisitorsModel.swift; sourceTree = "<group>"; };
 		1B64A335268D77CC00159D98 /* APIRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		1B64A336268D77CC00159D98 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		1B64A33B268D78E600159D98 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -341,6 +349,17 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		1B4EBFFB26B05CDA00374467 /* Known Visitors Model */ = {
+			isa = PBXGroup;
+			children = (
+				1B4EBFFC26B05CFB00374467 /* KnowVisitorsViewModel.swift */,
+				1B4EC00026B05D3300374467 /* KnownVisitorsModel.swift */,
+				1B4EC00426B1071900374467 /* IndividualKnownVisitorsViewModel.swift */,
+				1B4EC00826B1073A00374467 /* individualKnownVisitorsModel.swift */,
+			);
+			path = "Known Visitors Model";
+			sourceTree = "<group>";
+		};
 		1B64A334268D77AB00159D98 /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -445,6 +464,7 @@
 		A7B04B9826947BA7004D88CF /* Staff details */ = {
 			isa = PBXGroup;
 			children = (
+				1B4EBFFB26B05CDA00374467 /* Known Visitors Model */,
 				A7FE3A1D26A6D7CC0023E538 /* StaffdetailsModel.swift */,
 				A7FE3A0E26A6D61B0023E538 /* IndividualStaffModel.swift */,
 				A7B04B9926947BCE004D88CF /* StaffDetailsViewController.swift */,
@@ -659,6 +679,8 @@
 				1BB95EE526931FBF0085CACF /* PhotoPreviewViewController.swift in Sources */,
 				A72D7E2D26A561E800F8F6AE /* premiseDataModel.swift in Sources */,
 				1B356283268C23C700BC0396 /* OnboardingViewController.swift in Sources */,
+				1B4EC00526B1071900374467 /* IndividualKnownVisitorsViewModel.swift in Sources */,
+				1B4EBFFD26B05CFB00374467 /* KnowVisitorsViewModel.swift in Sources */,
 				A72D7E3126A561F100F8F6AE /* premiseDataViewModel.swift in Sources */,
 				1B4DCCFB268AE56600D3710B /* AppDelegate.swift in Sources */,
 				1B196FF826AC4BCF00E9CD67 /* contactUSModel.swift in Sources */,
@@ -677,7 +699,9 @@
 				A7BA6FA026985AAB00BD17C3 /* Extension.swift in Sources */,
 				A7FE3A0526A6A2B40023E538 /* testCollectionViewCell.swift in Sources */,
 				A7FE3A2A26A6D92E0023E538 /* StaffDetailsViewModel.swift in Sources */,
+				1B4EC00126B05D3300374467 /* KnownVisitorsModel.swift in Sources */,
 				1B64A338268D77CC00159D98 /* APIClient.swift in Sources */,
+				1B4EC00926B1073A00374467 /* individualKnownVisitorsModel.swift in Sources */,
 				1BBF443A268F479A002367D9 /* SideMenuViewController.swift in Sources */,
 				A7B04B9526942675004D88CF /* ContactUsViewController.swift in Sources */,
 				1B22B98D26A071F5006B4AED /* CustomersViewController.swift in Sources */,

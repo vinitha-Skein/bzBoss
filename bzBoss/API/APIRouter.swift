@@ -12,12 +12,14 @@ enum APIRouter : URLRequestConvertible {
     case staffdetails(params:[String:Any])
     case individualstaffdetails(params:[String:Any])
     case contactUs(params:[String:Any])
+    case knownVisitors(params:[String:Any])
+    case individualKnownVisitorsdetails(params:[String:Any])
     case listShops
 
     // MARK: - HTTPMethod
     private var method : HTTPMethod{
         switch self{
-        case .registerUser,.loginUser,.shopDetails,.userConfig,.premisedata,.staffdetails,.individualstaffdetails,.contactUs:
+        case .registerUser,.loginUser,.shopDetails,.userConfig,.premisedata,.staffdetails,.individualstaffdetails,.contactUs,.knownVisitors:
             return .post
 //        case .editFamilyMember,.editInsurance:
 //            return .put
@@ -48,6 +50,10 @@ enum APIRouter : URLRequestConvertible {
             return "user/staff/details"
         case .listShops:
             return "user/home/data"
+        case .knownVisitors:
+            return "user/knownvisitors"
+        case .individualKnownVisitorsdetails:
+            return "user/knownvisitors/details"
         case .contactUs:
             return "contact/us"
             
@@ -75,6 +81,10 @@ enum APIRouter : URLRequestConvertible {
         case .individualstaffdetails(let params):
             return params
         case .contactUs(let params):
+            return params
+        case .knownVisitors(let params):
+            return params
+        case .individualKnownVisitorsdetails(let params):
             return params
         case .listShops:
             return nil

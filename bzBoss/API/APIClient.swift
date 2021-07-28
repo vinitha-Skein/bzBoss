@@ -47,7 +47,16 @@ class APIClient {
     static func  individualStaffDetailsData(params:[String:Any],completion:@escaping(AFResult<IndividualStaffModel>)->Void){
         performRequest(route: APIRouter.individualstaffdetails(params: params),completion: completion)
     }
+    
 
+    static func KnownVisitorsData(params:[String:Any],completion:@escaping(AFResult<KnownVisitorsModel>)->Void){
+        performRequest(route: APIRouter.knownVisitors(params: params),completion: completion)
+    }
+    
+    static func  individualKnownVisitorsDetails(params:[String:Any],completion:@escaping(AFResult<individualKnownVisitorsModel>)->Void){
+        performRequest(route: APIRouter.individualKnownVisitorsdetails(params: params),completion: completion)
+    }
+    
 
     
     

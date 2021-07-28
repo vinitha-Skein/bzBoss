@@ -1452,8 +1452,8 @@
                                                                                                     <nil key="textColor"/>
                                                                                                     <nil key="highlightedColor"/>
                                                                                                 </label>
-                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021-06-08" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ikf-jA-f1I">
-                                                                                                    <rect key="frame" x="24.5" y="57" width="79.5" height="17"/>
+                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021-06-08" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ikf-jA-f1I">
+                                                                                                    <rect key="frame" x="8" y="57" width="112" height="17"/>
                                                                                                     <constraints>
                                                                                                         <constraint firstAttribute="height" constant="17" id="ft7-Hs-10K"/>
                                                                                                     </constraints>
@@ -1461,17 +1461,14 @@
                                                                                                     <nil key="textColor"/>
                                                                                                     <nil key="highlightedColor"/>
                                                                                                 </label>
-                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:13 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h85-7g-URM">
-                                                                                                    <rect key="frame" x="36" y="74" width="56.5" height="17"/>
-                                                                                                    <constraints>
-                                                                                                        <constraint firstAttribute="height" constant="17" id="nKH-p3-c8f"/>
-                                                                                                    </constraints>
+                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h85-7g-URM">
+                                                                                                    <rect key="frame" x="64" y="74" width="0.0" height="0.0"/>
                                                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                                     <nil key="textColor"/>
                                                                                                     <nil key="highlightedColor"/>
                                                                                                 </label>
                                                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test_ofer" translatesAutoresizingMaskIntoConstraints="NO" id="NWo-UW-tIe">
-                                                                                                    <rect key="frame" x="20" y="101" width="88" height="162"/>
+                                                                                                    <rect key="frame" x="20" y="84" width="88" height="179"/>
                                                                                                     <constraints>
                                                                                                         <constraint firstAttribute="width" constant="80" id="XyB-bP-NT7"/>
                                                                                                     </constraints>
@@ -1479,6 +1476,7 @@
                                                                                             </subviews>
                                                                                             <color key="backgroundColor" red="0.96198445560000001" green="0.96814233059999999" blue="0.96466296910000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                             <constraints>
+                                                                                                <constraint firstItem="ikf-jA-f1I" firstAttribute="leading" secondItem="pCS-lK-nBr" secondAttribute="leading" constant="8" id="2va-pi-Sqm"/>
                                                                                                 <constraint firstItem="NWo-UW-tIe" firstAttribute="top" secondItem="h85-7g-URM" secondAttribute="bottom" constant="10" id="8bY-ug-G5M"/>
                                                                                                 <constraint firstItem="ikf-jA-f1I" firstAttribute="centerX" secondItem="pCS-lK-nBr" secondAttribute="centerX" id="9cd-y4-SIj"/>
                                                                                                 <constraint firstItem="h85-7g-URM" firstAttribute="centerX" secondItem="pCS-lK-nBr" secondAttribute="centerX" id="Xnk-su-fml"/>
@@ -1486,6 +1484,7 @@
                                                                                                 <constraint firstItem="NWo-UW-tIe" firstAttribute="leading" secondItem="pCS-lK-nBr" secondAttribute="leading" constant="20" id="cDh-Bi-axk"/>
                                                                                                 <constraint firstItem="biv-H8-qKy" firstAttribute="top" secondItem="pCS-lK-nBr" secondAttribute="top" constant="20" id="huo-uk-Am4"/>
                                                                                                 <constraint firstItem="ikf-jA-f1I" firstAttribute="top" secondItem="biv-H8-qKy" secondAttribute="bottom" constant="20" id="jiB-tr-ST0"/>
+                                                                                                <constraint firstAttribute="trailing" secondItem="ikf-jA-f1I" secondAttribute="trailing" constant="8" id="klh-Yk-oWb"/>
                                                                                                 <constraint firstItem="biv-H8-qKy" firstAttribute="centerX" secondItem="pCS-lK-nBr" secondAttribute="centerX" id="l4A-Wm-Ant"/>
                                                                                                 <constraint firstAttribute="bottom" secondItem="NWo-UW-tIe" secondAttribute="bottom" constant="10" id="uOJ-yr-3dW"/>
                                                                                                 <constraint firstAttribute="trailing" secondItem="NWo-UW-tIe" secondAttribute="trailing" constant="20" id="z6c-Ez-zRM"/>
@@ -1507,6 +1506,7 @@
                                                                                 <size key="customSize" width="128" height="273"/>
                                                                                 <connections>
                                                                                     <outlet property="dateLabel" destination="ikf-jA-f1I" id="bqm-AN-fPA"/>
+                                                                                    <outlet property="imageViewStaff" destination="NWo-UW-tIe" id="bXH-TA-Er3"/>
                                                                                     <outlet property="staffLabel" destination="biv-H8-qKy" id="NuI-Lo-gdR"/>
                                                                                     <outlet property="timeLabel" destination="h85-7g-URM" id="Y4m-NB-L18"/>
                                                                                 </connections>
@@ -1641,7 +1641,7 @@
         <!--StaffDetailsViewController-->
         <scene sceneID="WOZ-tK-aNI">
             <objects>
-                <viewController storyboardIdentifier="graphViewController" title="StaffDetailsViewController" id="coz-i6-qBF" customClass="graphViewController" customModule="bzBoss" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="graphViewController" title="StaffDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="coz-i6-qBF" customClass="graphViewController" customModule="bzBoss" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AG2-XK-cdu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -32,8 +32,10 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
     
     
     let viewModel = premiseDataViewModel()
+    let staffViewModel = staffDetailsDataViewModel()
+    let knownVisitorsModel = KnownVisitorsViewModel()
     var staffSwitchIsOn:Bool =  true
-   
+    
     let arrayxString = ["12/07", "13/07", "14/07", "15/07", "16/07","17/07","18/07"]
     var dateString = [String()]
     let arrayYAxis = ["11.02 AM","01:50 pm" ,"04:36 pm", "07.23 pm"]
@@ -50,11 +52,15 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         collectionview.delegate = self
         collectionview.dataSource = self
         setData()
-       apiCall()
-       
+        apiCall()
+        if isfrom == "Staff" {
+            getParticularStaffOnDate()
+        } else {
+            getParticularKnownVisitorsOnDate()
+        }
     }
     
-
+    
     @IBAction func backbuttonpressed(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
@@ -66,7 +72,7 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         vc.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(vc, animated: true)
     }
- 
+    
     
     @IBAction func ShowStaffDetailsChanged(_ sender: UISwitch) {
         if sender.isOn {
@@ -102,7 +108,7 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         chart.leftAxis.spaceBottom = 0.4
         chart.leftAxis.axisRange = 1.0
         chart.leftAxis.granularity = 1.0
-//        chart.leftAxis.valueFormatter = YAxisNameFormater()
+        //        chart.leftAxis.valueFormatter = YAxisNameFormater()
         chart.rightAxis.enabled = false
         chart.xAxis.enabled = true
         chart.xAxis.labelPosition = .bottom
@@ -125,7 +131,7 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
     }
     func dataWithCount() -> LineChartData
     {
-         var yVals = [ChartDataEntry]()
+        var yVals = [ChartDataEntry]()
         
         for i in 0..<staffCount.count {
             yVals.append(ChartDataEntry(x: Double(i), y: Double(staffCount[i])))
@@ -148,31 +154,107 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
     
     func apiCall()
     {
-       
+        
         let params = [
-                "startdate": encryptData(str: fromdate()),
-                "enddate": encryptData(str: todate()),
-                "id": encryptData(str: "4")]
-                    print(params)
-            
-                    viewModel.premiseDatafetch(params: params)
-                    viewModel.premiseDatafetchedSuccess =
-                    {
-                        print("APi called")
-                        self.setDatatoVariables()
-                    }
-            
-                    viewModel.loadingStatus =
-                    {
-                        if self.viewModel.isLoading{
-                            //self.activityIndicator(self.view, startAnimate: true)
-                        }
-                        else
-                        {
-                            //self.activityIndicator(self.view, startAnimate: false)
-                            UIApplication.shared.endIgnoringInteractionEvents()
-                        }
-                    }
+            "startdate": encryptData(str: fromdate()),
+            "enddate": encryptData(str: todate()),
+            "id": encryptData(str: "4")]
+        print(params)
+        
+        viewModel.premiseDatafetch(params: params)
+        viewModel.premiseDatafetchedSuccess =
+            {
+                print("APi called")
+                self.setDatatoVariables()
+            }
+        
+        viewModel.loadingStatus =
+            {
+                if self.viewModel.isLoading{
+                    //self.activityIndicator(self.view, startAnimate: true)
+                }
+                else
+                {
+                    //self.activityIndicator(self.view, startAnimate: false)
+                    UIApplication.shared.endIgnoringInteractionEvents()
+                }
+            }
+        
+    }
+    
+    func getParticularStaffOnDate()
+    {
+        
+        let params = [
+            "startdate": encryptData(str: fromdate()),
+            "enddate": encryptData(str: todate()),
+            "id": encryptData(str: "4")]
+        print(params)
+        
+        staffViewModel.premiseDatafetch(params: params)
+        staffViewModel.staffDetailsDatafetchedSuccess =
+            {
+                print("APi called")
+                //                self.setDatatoVariables()
+                self.staffCountCollectionView = self.staffViewModel.staffDetailsData!.count
+                if self.staffSwitchIsOn {
+                    self.staffViewHeight.constant = 250
+                    self.collectionview.reloadData()
+                } else {
+                    self.collectionview.isHidden = false
+                    self.staffViewHeight.constant = 0
+                }
+                
+            }
+        
+        viewModel.loadingStatus =
+            {
+                if self.viewModel.isLoading{
+                    //self.activityIndicator(self.view, startAnimate: true)
+                }
+                else
+                {
+                    //self.activityIndicator(self.view, startAnimate: false)
+                    UIApplication.shared.endIgnoringInteractionEvents()
+                }
+            }
+        
+    }
+    func getParticularKnownVisitorsOnDate(){
+        
+        let params = [
+            "startdate": encryptData(str: fromdate()),
+            "enddate": encryptData(str: todate()),
+            "id": encryptData(str: "4")]
+        print(params)
+        
+        knownVisitorsModel.premiseDatafetch(params: params)
+        knownVisitorsModel.KnownVisitorsDatafetchedSuccess =
+            {
+                print("APi called")
+                //                self.setDatatoVariables()
+                self.staffCountCollectionView = self.knownVisitorsModel.KnownVisitorsData!.count
+                if self.staffSwitchIsOn {
+                    self.staffViewHeight.constant = 250
+                    self.collectionview.reloadData()
+                } else {
+                    self.collectionview.isHidden = false
+                    self.staffViewHeight.constant = 0
+                }
+                
+            }
+        
+        viewModel.loadingStatus =
+            {
+                if self.viewModel.isLoading{
+                    //self.activityIndicator(self.view, startAnimate: true)
+                }
+                else
+                {
+                    //self.activityIndicator(self.view, startAnimate: false)
+                    UIApplication.shared.endIgnoringInteractionEvents()
+                }
+            }
         
     }
     func setData()
@@ -200,10 +282,10 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         for number in count
         {
             if isfrom == "Staff" {
-            let staff_min = viewModel.premiseData?.premisedailydata![number].number_of_staff_min ?? 0
-            let staff_max = viewModel.premiseData?.premisedailydata![number].number_of_staff_max ?? 0
-            let staff = Float((staff_min+staff_max)/2)
-            staffCount.append(staff)
+                let staff_min = viewModel.premiseData?.premisedailydata![number].number_of_staff_min ?? 0
+                let staff_max = viewModel.premiseData?.premisedailydata![number].number_of_staff_max ?? 0
+                let staff = Float((staff_min+staff_max)/2)
+                staffCount.append(staff)
             }
             else if isfrom == "Known Visitors" {
                 let staff_min = viewModel.premiseData?.premisedailydata![number].number_of_known_visitors_min ?? 0
@@ -224,7 +306,7 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
             dateFormatter1.dateFormat = "dd/MM"
             dateString.append(dateFormatter1.string(from: date1))
         }
-//        dateString.removeFirst()
+        //        dateString.removeFirst()
         print(dateString)
         Constants.arrayXStringValues = dateString
         let data1 = dataWithCount()
@@ -232,20 +314,14 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         chartView.backgroundColor = UIColor.white
         setupChart(chartView, data: data1, color: .green)
         staffCountCollectionView = Int(staffCount[staffCount.count-1])
-        if staffSwitchIsOn {
-            staffViewHeight.constant = 250
-        collectionview.reloadData()
-        } else {
-            collectionview.isHidden = false
-            staffViewHeight.constant = 0
-        }
+        
         if isfrom == "Staff" {
             chartTitle.text = "Staff\(staffCount[staffCount.count-1])"
         } else if isfrom == "Known Visitors" {
             chartTitle.text = "Known Visitors \(staffCount[staffCount.count-1])"
         }
     }
-
+    
     func fromdate() -> String
     {
         let isoDate = selectedDate
@@ -253,14 +329,14 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
         let date3 = dateFormatter.date(from:isoDate)!
-                
+        
         let yesterday = Calendar.current.date(byAdding: .day, value: -7, to: date3)
-
+        
         let dateFormatter1 = DateFormatter()
         dateFormatter1.dateFormat = "yyyy-MM-dd"
         let prevDate = dateFormatter1.string(from: yesterday!)
         return prevDate
-
+        
     }
     func todate() -> String
     {
@@ -269,7 +345,7 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
         let date3 = dateFormatter.date(from:isoDate)!
-                
+        
         let dateFormatter1 = DateFormatter()
         dateFormatter1.dateFormat = "yyyy-MM-dd"
         let prevDate = dateFormatter1.string(from: date3)
@@ -282,15 +358,15 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         
         print("To Display Values X/Y Values here")
         print(entry.value(forKey: "y")!)
-              
+        
         staffCountCollectionView = (entry.value(forKey: "y")!) as! Int
         if staffSwitchIsOn {
-        collectionview.reloadData()
+            collectionview.reloadData()
         }
         
     }
-
-
+    
+    
     
 }
 
@@ -303,7 +379,22 @@ extension StaffDetailsViewController:UICollectionViewDelegate,UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cell = collectionview.dequeueReusableCell(withReuseIdentifier: "StaffCollectionViewCell", for: indexPath) as! StaffCollectionViewCell
-        cell.staffLabel.text = staffs[indexPath.row]
+       
+        if isfrom == "Staff"{
+        let staff = staffViewModel.staffDetailsData?[indexPath.row]
+        cell.staffLabel.text = staff?.staff_name
+        cell.dateLabel.text = staff?.first_appearance_date_time
+        cell.timeLabel.text = ""
+        let url = staff?.first_appearance_image
+        cell.imageViewStaff.af.setImage(withURL: URL(string: url!)! )
+        } else {
+            let staff = knownVisitorsModel.KnownVisitorsData?[indexPath.row]
+            cell.staffLabel.text = staff?.known_visitors_name
+            cell.dateLabel.text = staff?.appearance_date_time
+            cell.timeLabel.text = ""
+            let url = staff?.appearance_image
+            cell.imageViewStaff.af.setImage(withURL: URL(string: url!)! )
+        }
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
@@ -327,7 +418,7 @@ import Charts
 class XAxisNameFormater: NSObject, IAxisValueFormatter {
     
     func stringForValue( _ value: Double, axis _: AxisBase?) -> String {
-//        let variable = StaffDetailsViewController()
+        //        let variable = StaffDetailsViewController()
         
         let months: [String]! = Constants.arrayXStringValues
         
@@ -341,19 +432,19 @@ class XAxisNameFormater: NSObject, IAxisValueFormatter {
     
 }
 
-    class YAxisNameFormater: NSObject, IAxisValueFormatter {
+class YAxisNameFormater: NSObject, IAxisValueFormatter {
+    
+    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         
-        func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-            
-            let date1 = Date(timeIntervalSince1970: TimeInterval(value))
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "hh:mm a"
-            let localDate = dateFormatter.string(from: date1)
-            print(localDate)
-            return localDate
-        }
-        
+        let date1 = Date(timeIntervalSince1970: TimeInterval(value))
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "hh:mm a"
+        let localDate = dateFormatter.string(from: date1)
+        print(localDate)
+        return localDate
     }
+    
+}
 
 
 
