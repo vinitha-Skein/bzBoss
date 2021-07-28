@@ -49,7 +49,7 @@ class APIClient {
     }
     
 
-    static func KnownVisitorsData(params:[String:Any],completion:@escaping(AFResult<KnownVisitorsModel>)->Void){
+    static func KnownVisitorsDataOnDate(params:[String:Any],completion:@escaping(AFResult<knownVisitorsDataModel>)->Void){
         performRequest(route: APIRouter.knownVisitors(params: params),completion: completion)
     }
     

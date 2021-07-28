@@ -14,6 +14,7 @@ struct StaffdetailsModel : Codable
 		case data = "data"
 	}
 }
+
 struct StaffdetailsData : Codable {
     let staff_log_id : Int?
     let premise_daily_data_id : Int?

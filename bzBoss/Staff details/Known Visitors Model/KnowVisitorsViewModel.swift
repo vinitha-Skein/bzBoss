@@ -10,7 +10,7 @@ import Alamofire
 class KnownVisitorsViewModel
 {
     //Properties
-    var KnownVisitorsData:[KnownVisitorsData]?
+    var KnownVisitorsData:[KnownVisitorsOnDate]?
     {
         didSet{
             self.KnownVisitorsDatafetchedSuccess?()
@@ -35,7 +35,7 @@ class KnownVisitorsViewModel
     func premiseDatafetch(params:Dictionary<String,Any>)
     {
         isLoading = true
-        APIClient.KnownVisitorsData(params: params){ result in
+        APIClient.KnownVisitorsDataOnDate(params: params){ result in
             switch result
             {
             case .success(let responseData):

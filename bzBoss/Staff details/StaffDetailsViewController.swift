@@ -316,9 +316,9 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         staffCountCollectionView = Int(staffCount[staffCount.count-1])
         
         if isfrom == "Staff" {
-            chartTitle.text = "Staff\(staffCount[staffCount.count-1])"
+            chartTitle.text = "Staff\(Int(staffCount[staffCount.count-1]))"
         } else if isfrom == "Known Visitors" {
-            chartTitle.text = "Known Visitors \(staffCount[staffCount.count-1])"
+            chartTitle.text = "Known Visitors \(Int(staffCount[staffCount.count-1]))"
         }
     }
     
@@ -386,14 +386,18 @@ extension StaffDetailsViewController:UICollectionViewDelegate,UICollectionViewDa
         cell.dateLabel.text = staff?.first_appearance_date_time
         cell.timeLabel.text = ""
         let url = staff?.first_appearance_image
+            if url != "" {
         cell.imageViewStaff.af.setImage(withURL: URL(string: url!)! )
+            }
         } else {
             let staff = knownVisitorsModel.KnownVisitorsData?[indexPath.row]
             cell.staffLabel.text = staff?.known_visitors_name
             cell.dateLabel.text = staff?.appearance_date_time
             cell.timeLabel.text = ""
-            let url = staff?.appearance_image
-            cell.imageViewStaff.af.setImage(withURL: URL(string: url!)! )
+//            let url = staff?.appearance_image
+//            if url != "" {
+//            cell.imageViewStaff.af.setImage(withURL: URL(string: url!)! )
+//            }
         }
         return cell
     }

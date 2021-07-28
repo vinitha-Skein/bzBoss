@@ -1,16 +1,16 @@
 //
-//  KnownVisitorsModel.swift
+//  knownVisitorsDataModel.swift
 //  bzBoss
 //
-//  Created by Vinitha on 27/07/21.
+//  Created by Vinitha on 28/07/21.
 //
 
 import Foundation
 
-struct KnownVisitorsModel : Codable {
+struct knownVisitorsDataModel : Codable {
     let status_code : Int?
     let message : String?
-    let data : [KnownVisitorsData]?
+    let data : [KnownVisitorsOnDate]?
     
     enum CodingKeys: String, CodingKey {
         
@@ -20,8 +20,7 @@ struct KnownVisitorsModel : Codable {
     }
 }
 
-
-struct KnownVisitorsData : Codable {
+struct KnownVisitorsOnDate : Codable {
     let known_visitors_log_id : Int?
     let premise_daily_data_id : Int?
     let known_visitors_id : Int?
@@ -44,6 +43,5 @@ struct KnownVisitorsData : Codable {
         case created_at = "created_at"
         case updated_at = "updated_at"
     }
-
 }
 

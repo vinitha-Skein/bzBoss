@@ -207,14 +207,14 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SideMenuViewCellID" id="LWu-Wu-Oad" customClass="SideMenuViewCell" customModule="bzBoss" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LWu-Wu-Oad" id="mJT-Rh-nPQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dex-bw-NRj">
-                                                    <rect key="frame" x="28" y="11" width="42" height="21"/>
+                                                    <rect key="frame" x="28" y="11" width="42" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -589,10 +589,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ysF-zu-aHO">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="757"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1024"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ig6-Vc-D7r">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="280"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ig6-Vc-D7r" userLabel="topview">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="208"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gQU-CJ-j4X" customClass="Mybutton" customModule="bzBoss" customModuleProvider="target">
                                                         <rect key="frame" x="20" y="92" width="374" height="96"/>
@@ -685,15 +685,15 @@
                                                 <constraints>
                                                     <constraint firstItem="gQU-CJ-j4X" firstAttribute="centerX" secondItem="Ig6-Vc-D7r" secondAttribute="centerX" id="2lw-Ci-74I"/>
                                                     <constraint firstItem="gXh-HQ-Psi" firstAttribute="leading" secondItem="Ig6-Vc-D7r" secondAttribute="leading" constant="16" id="EPG-sV-Ip4"/>
-                                                    <constraint firstItem="gQU-CJ-j4X" firstAttribute="centerY" secondItem="Ig6-Vc-D7r" secondAttribute="centerY" id="GeL-Jv-uDo"/>
                                                     <constraint firstItem="gQU-CJ-j4X" firstAttribute="top" secondItem="gXh-HQ-Psi" secondAttribute="bottom" constant="16" id="SSN-YI-AU7"/>
                                                     <constraint firstAttribute="trailing" secondItem="gQU-CJ-j4X" secondAttribute="trailing" constant="20" id="TcQ-Sl-HJN"/>
+                                                    <constraint firstAttribute="bottom" secondItem="gQU-CJ-j4X" secondAttribute="bottom" constant="20" id="XX7-V1-OxJ"/>
                                                     <constraint firstItem="gQU-CJ-j4X" firstAttribute="leading" secondItem="Ig6-Vc-D7r" secondAttribute="leading" constant="20" id="Zf9-Su-v8B"/>
                                                     <constraint firstItem="gXh-HQ-Psi" firstAttribute="top" secondItem="Ig6-Vc-D7r" secondAttribute="top" constant="36" id="doj-N0-3cr"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CUc-tK-eR2" customClass="MyUIView" customModule="bzBoss" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="-39" width="414" height="796"/>
+                                                <rect key="frame" x="0.0" y="228" width="414" height="796"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tuesday, June 08,2021" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ljc-Ey-FIu">
                                                         <rect key="frame" x="20" y="50" width="175" height="32"/>
@@ -780,7 +780,7 @@
                                             <constraint firstAttribute="bottom" secondItem="CUc-tK-eR2" secondAttribute="bottom" id="3z3-Al-J3a"/>
                                             <constraint firstItem="CUc-tK-eR2" firstAttribute="leading" secondItem="ysF-zu-aHO" secondAttribute="leading" id="Fsb-gl-tDT"/>
                                             <constraint firstAttribute="trailing" secondItem="Ig6-Vc-D7r" secondAttribute="trailing" id="QuX-n6-ixb"/>
-                                            <constraint firstItem="Ig6-Vc-D7r" firstAttribute="height" secondItem="ysF-zu-aHO" secondAttribute="height" multiplier="0.37" id="XZz-sE-JUE"/>
+                                            <constraint firstItem="CUc-tK-eR2" firstAttribute="top" secondItem="Ig6-Vc-D7r" secondAttribute="bottom" constant="20" id="Wfw-93-qeK"/>
                                             <constraint firstAttribute="trailing" secondItem="CUc-tK-eR2" secondAttribute="trailing" id="aIH-qK-6et"/>
                                             <constraint firstItem="Ig6-Vc-D7r" firstAttribute="leading" secondItem="ysF-zu-aHO" secondAttribute="leading" id="cYC-FT-0Tv"/>
                                             <constraint firstItem="Ig6-Vc-D7r" firstAttribute="top" secondItem="ysF-zu-aHO" secondAttribute="top" id="zKT-Q1-q1h"/>

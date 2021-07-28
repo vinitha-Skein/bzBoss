@@ -39,7 +39,7 @@ struct individualKnownVisitorsDetailsData : Codable {
     let photo : String?
     let created_at : String?
     let updated_at : String?
-    let staffdata : [KnownVisitorsdata]?
+//    let staffdata : [KnownVisitorsdata]?
     
     enum CodingKeys: String, CodingKey {
         
@@ -53,7 +53,7 @@ struct individualKnownVisitorsDetailsData : Codable {
         case photo = "photo"
         case created_at = "created_at"
         case updated_at = "updated_at"
-        case staffdata = "staffdata"
+//        case staffdata = "staffdata"
     }
     
     

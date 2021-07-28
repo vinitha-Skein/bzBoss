@@ -105,26 +105,6 @@ class graphViewController: UIViewController, ChartViewDelegate {
             var date1 =  viewModel.individualstaffdetails?.staffDetailsData![number].staffdata?[innernumber].first_appearance_date_time ?? "2021-07-10 11:45:22"
             
             time1[number].append(converttoTime(time: date1))
-            //print(number)
-          
-//            var date2 =
-//
-//            viewModel.individualstaffdetails?.staffDetailsData?[number].staffdata?[innernumber].first_appearance_date_time ?? "2021-07-10 11:45:22"
-//            time2.append(converttoTime(time: date2))
-//
-//            var date3 =  viewModel.individualstaffdetails?.staffDetailsData?[number].staffdata?[innernumber].first_appearance_date_time ?? "2021-07-10 11:45:22"
-//            time3.append(converttoTime(time: date3))
-//
-//            var date4 =  viewModel.individualstaffdetails?.staffDetailsData?[number].staffdata?[innernumber].first_appearance_date_time ?? "2021-07-10 11:45:22"
-//            time4.append(converttoTime(time: date4))
-//            var date5 =  viewModel.individualstaffdetails?.staffDetailsData?[number].staffdata?[innernumber].first_appearance_date_time ?? "2021-07-10 11:45:22"
-//            time5.append(converttoTime(time: date5))
-//
-//            var date6 =  viewModel.individualstaffdetails?.staffDetailsData?[number].staffdata?[innernumber].first_appearance_date_time ?? "2021-07-10 11:45:22"
-//            time6.append(converttoTime(time: date6))
-//
-//            var date7 =  viewModel.individualstaffdetails?.staffDetailsData?[number].staffdata?[innernumber].first_appearance_date_time ?? "2021-07-10 11:45:22"
-//            time7.append(converttoTime(time: date7))
         }
     
     }
@@ -163,7 +143,7 @@ class graphViewController: UIViewController, ChartViewDelegate {
 extension graphViewController: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return staffCount
+        return (viewModel.individualstaffdetails?.staffDetailsData!.count)!
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

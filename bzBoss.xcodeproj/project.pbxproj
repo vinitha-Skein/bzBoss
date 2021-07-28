@@ -30,9 +30,9 @@
 		1B4DCD3A268B330F00D3710B /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4DCD39268B330F00D3710B /* UIView+Extension.swift */; };
 		1B4DCD3F268B5C2700D3710B /* MyButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4DCD3E268B5C2700D3710B /* MyButton+Extension.swift */; };
 		1B4EBFFD26B05CFB00374467 /* KnowVisitorsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4EBFFC26B05CFB00374467 /* KnowVisitorsViewModel.swift */; };
-		1B4EC00126B05D3300374467 /* KnownVisitorsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4EC00026B05D3300374467 /* KnownVisitorsModel.swift */; };
 		1B4EC00526B1071900374467 /* IndividualKnownVisitorsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4EC00426B1071900374467 /* IndividualKnownVisitorsViewModel.swift */; };
 		1B4EC00926B1073A00374467 /* individualKnownVisitorsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4EC00826B1073A00374467 /* individualKnownVisitorsModel.swift */; };
+		1B4EC00F26B13A2600374467 /* knownVisitorsDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4EC00E26B13A2600374467 /* knownVisitorsDataModel.swift */; };
 		1B64A337268D77CC00159D98 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B64A335268D77CC00159D98 /* APIRouter.swift */; };
 		1B64A338268D77CC00159D98 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B64A336268D77CC00159D98 /* APIClient.swift */; };
 		1B64A33C268D78E600159D98 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B64A33B268D78E600159D98 /* Constants.swift */; };
@@ -135,9 +135,9 @@
 		1B4DCD39268B330F00D3710B /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		1B4DCD3E268B5C2700D3710B /* MyButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MyButton+Extension.swift"; sourceTree = "<group>"; };
 		1B4EBFFC26B05CFB00374467 /* KnowVisitorsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowVisitorsViewModel.swift; sourceTree = "<group>"; };
-		1B4EC00026B05D3300374467 /* KnownVisitorsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnownVisitorsModel.swift; sourceTree = "<group>"; };
 		1B4EC00426B1071900374467 /* IndividualKnownVisitorsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualKnownVisitorsViewModel.swift; sourceTree = "<group>"; };
 		1B4EC00826B1073A00374467 /* individualKnownVisitorsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = individualKnownVisitorsModel.swift; sourceTree = "<group>"; };
+		1B4EC00E26B13A2600374467 /* knownVisitorsDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = knownVisitorsDataModel.swift; sourceTree = "<group>"; };
 		1B64A335268D77CC00159D98 /* APIRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		1B64A336268D77CC00159D98 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		1B64A33B268D78E600159D98 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -353,9 +353,9 @@
 			isa = PBXGroup;
 			children = (
 				1B4EBFFC26B05CFB00374467 /* KnowVisitorsViewModel.swift */,
-				1B4EC00026B05D3300374467 /* KnownVisitorsModel.swift */,
 				1B4EC00426B1071900374467 /* IndividualKnownVisitorsViewModel.swift */,
 				1B4EC00826B1073A00374467 /* individualKnownVisitorsModel.swift */,
+				1B4EC00E26B13A2600374467 /* knownVisitorsDataModel.swift */,
 			);
 			path = "Known Visitors Model";
 			sourceTree = "<group>";
@@ -699,7 +699,6 @@
 				A7BA6FA026985AAB00BD17C3 /* Extension.swift in Sources */,
 				A7FE3A0526A6A2B40023E538 /* testCollectionViewCell.swift in Sources */,
 				A7FE3A2A26A6D92E0023E538 /* StaffDetailsViewModel.swift in Sources */,
-				1B4EC00126B05D3300374467 /* KnownVisitorsModel.swift in Sources */,
 				1B64A338268D77CC00159D98 /* APIClient.swift in Sources */,
 				1B4EC00926B1073A00374467 /* individualKnownVisitorsModel.swift in Sources */,
 				1BBF443A268F479A002367D9 /* SideMenuViewController.swift in Sources */,
@@ -713,6 +712,7 @@
 				A762F27B268C8B760058EEEB /* SignInViewController.swift in Sources */,
 				A707C6F026982627007D50C1 /* SignInModel.swift in Sources */,
 				1BB95E282690BF5A0085CACF /* HomeViewController.swift in Sources */,
+				1B4EC00F26B13A2600374467 /* knownVisitorsDataModel.swift in Sources */,
 				A7D72D7C269985EE00495013 /* ShopdetailsViewModel.swift in Sources */,
 				1B358D5D26AA9E3A0099BE49 /* HomeListModel.swift in Sources */,
 				A7969B0626987C3F004089FE /* SignUpViewModel.swift in Sources */,
