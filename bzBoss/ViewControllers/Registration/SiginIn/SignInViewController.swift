@@ -150,7 +150,10 @@ class SignInViewController: UIViewController
                           if let error = error
                               {
                                   print(error.localizedDescription)
+                                  self.IndicatorView.isHidden = true
+                            self.showAlert("Verification Failed")
                                   return
+                            
                               }
                               else
                               {

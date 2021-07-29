@@ -49,7 +49,6 @@
 		A707C70226983C65007D50C1 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A707C70126983C65007D50C1 /* SignInViewModel.swift */; };
 		A70940A3269590BB00421C84 /* StaffCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70940A2269590BB00421C84 /* StaffCollectionViewCell.swift */; };
 		A718003E26930ACD0087637A /* DonutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A718003D26930ACC0087637A /* DonutView.swift */; };
-		A7223FAF26B0449A0019CE0C /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7223FAE26B0449A0019CE0C /* BalloonMarker.swift */; };
 		A72937D926AAD938007FE6C7 /* switchExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72937D826AAD938007FE6C7 /* switchExtension.swift */; };
 		A72D7E2D26A561E800F8F6AE /* premiseDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72D7E2C26A561E700F8F6AE /* premiseDataModel.swift */; };
 		A72D7E3126A561F100F8F6AE /* premiseDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72D7E3026A561F100F8F6AE /* premiseDataViewModel.swift */; };
@@ -59,6 +58,7 @@
 		A76FBADE268EE35F00D8615F /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76FBADD268EE35F00D8615F /* DatePickerViewController.swift */; };
 		A7969AFA26987AD3004089FE /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7969AF826987AD3004089FE /* SignUpModel.swift */; };
 		A7969B0626987C3F004089FE /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7969B0526987C3F004089FE /* SignUpViewModel.swift */; };
+		A7ABA74926B1580E0093B1A4 /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7ABA74826B1580E0093B1A4 /* BalloonMarker.swift */; };
 		A7B04B8E26941231004D88CF /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7B04B8D26941231004D88CF /* Colors.xcassets */; };
 		A7B04B9526942675004D88CF /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B04B9426942675004D88CF /* ContactUsViewController.swift */; };
 		A7B04B9A26947BCE004D88CF /* StaffDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B04B9926947BCE004D88CF /* StaffDetailsViewController.swift */; };
@@ -155,7 +155,6 @@
 		A707C70126983C65007D50C1 /* SignInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		A70940A2269590BB00421C84 /* StaffCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffCollectionViewCell.swift; sourceTree = "<group>"; };
 		A718003D26930ACC0087637A /* DonutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonutView.swift; sourceTree = "<group>"; };
-		A7223FAE26B0449A0019CE0C /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
 		A72937D826AAD938007FE6C7 /* switchExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = switchExtension.swift; sourceTree = "<group>"; };
 		A72D7E2C26A561E700F8F6AE /* premiseDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = premiseDataModel.swift; sourceTree = "<group>"; };
 		A72D7E3026A561F100F8F6AE /* premiseDataViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = premiseDataViewModel.swift; sourceTree = "<group>"; };
@@ -165,6 +164,7 @@
 		A76FBADD268EE35F00D8615F /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		A7969AF826987AD3004089FE /* SignUpModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		A7969B0526987C3F004089FE /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		A7ABA74826B1580E0093B1A4 /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
 		A7B04B8D26941231004D88CF /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		A7B04B9426942675004D88CF /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		A7B04B9926947BCE004D88CF /* StaffDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffDetailsViewController.swift; sourceTree = "<group>"; };
@@ -222,7 +222,7 @@
 		1B356291268C240E00BC0396 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				A7223FAE26B0449A0019CE0C /* BalloonMarker.swift */,
+				A7ABA74826B1580E0093B1A4 /* BalloonMarker.swift */,
 				A718003D26930ACC0087637A /* DonutView.swift */,
 				1B64A33B268D78E600159D98 /* Constants.swift */,
 				1B356292268C243300BC0396 /* Validation.swift */,
@@ -698,6 +698,7 @@
 				1B35629A268C249400BC0396 /* SignUpViewController.swift in Sources */,
 				A7BA6FA026985AAB00BD17C3 /* Extension.swift in Sources */,
 				A7FE3A0526A6A2B40023E538 /* testCollectionViewCell.swift in Sources */,
+				A7ABA74926B1580E0093B1A4 /* BalloonMarker.swift in Sources */,
 				A7FE3A2A26A6D92E0023E538 /* StaffDetailsViewModel.swift in Sources */,
 				1B64A338268D77CC00159D98 /* APIClient.swift in Sources */,
 				1B4EC00926B1073A00374467 /* individualKnownVisitorsModel.swift in Sources */,
@@ -718,7 +719,6 @@
 				A7969B0626987C3F004089FE /* SignUpViewModel.swift in Sources */,
 				1BBF443C268F479A002367D9 /* SideMenuViewCell.swift in Sources */,
 				1BB95EA02692CE500085CACF /* DashboardTableviewCell.swift in Sources */,
-				A7223FAF26B0449A0019CE0C /* BalloonMarker.swift in Sources */,
 				A7FE3A1F26A6D7CC0023E538 /* StaffdetailsModel.swift in Sources */,
 				A72EC81A26970F450034AA34 /* IndividualStaffViewController.swift in Sources */,
 				A7FE3A1226A6D61B0023E538 /* IndividualStaffModel.swift in Sources */,

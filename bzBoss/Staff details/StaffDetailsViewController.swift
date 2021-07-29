@@ -43,7 +43,9 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
     var selectedDate = "12-06-2021"
     var staffCount = [Float()]
     var staffCountCollectionView = 0
-    
+    var selectedyValue = String()
+    var selectedxValue = String()
+
     var isfrom = ""
     
     override func viewDidLoad()
@@ -119,15 +121,7 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         chart.xAxis.granularity = 1.0
         chart.data = data
         
-        
-        let marker = BalloonMarker(color: UIColor(white: 255/255, alpha: 1),
-                                           font: .systemFont(ofSize: 12),
-                                           textColor: .black,
-                                           insets: UIEdgeInsets(top: 8, left: 8, bottom: 20, right: 8))
-                marker.chartView = chartView
-                marker.minimumSize = CGSize(width: 100, height: 100)
-        marker.refreshContent(entry: "mark one", highlight: "")
-                chartView.marker = marker
+    
         //        chart.animate(xAxisDuration: 2.5)
     }
     func dataWithCount() -> LineChartData
@@ -353,19 +347,48 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         let prevDate = dateFormatter1.string(from: date3)
         return prevDate
     }
-    
+    func setTooltip()
+    {
+        let marker = BalloonMarker(color: UIColor(white: 225/255, alpha: 1),
+                                           font: .systemFont(ofSize: 12),
+                                           textColor: .black,
+                                           insets: UIEdgeInsets(top: 8, left: 8, bottom: 20, right: 8))
+                marker.chartView = chartView
+                marker.minimumSize = CGSize(width: 100, height: 80)
+        marker.refreshContent(entry: selectedyValue, highlight: selectedxValue)
+                chartView.marker = marker
+
+    }
     //MARK: Chart Delegate
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight)
     {
         
         print("To Display Values X/Y Values here")
-        print(entry.value(forKey: "y")!)
+        var xindex = (entry.value(forKey: "x")!) as! Int
+        let isoDate = Constants.arrayXStringValues[xindex]
+        selectedxValue = dateformatConvert(date: isoDate)
         
-        staffCountCollectionView = (entry.value(forKey: "y")!) as! Int
-        if staffSwitchIsOn {
-            collectionview.reloadData()
-        }
+        var yInt = (entry.value(forKey: "y")!) as! Int
+        selectedyValue = String(yInt)
+        setTooltip()
+//        staffCountCollectionView = (entry.value(forKey: "y")!) as! Int
+//        if staffSwitchIsOn {
+//            collectionview.reloadData()
+//        }
         
+    }
+    func dateformatConvert(date:String) -> String
+    {
+        let isoDate = date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM"
+        let date3 = dateFormatter.date(from:isoDate)!
+        
+        let dateFormatter1 = DateFormatter()
+        dateFormatter1.dateFormat = "MMMM dd"
+        let prevDate = dateFormatter1.string(from: date3)
+        print(prevDate)
+        return prevDate
     }
     
     

@@ -25,6 +25,8 @@ open class BalloonMarker: MarkerImage
     @objc open var minimumSize = CGSize()
     
     fileprivate var label: String?
+    fileprivate var label2: String?
+
     fileprivate var _labelSize: CGSize = CGSize()
     fileprivate var _paragraphStyle: NSMutableParagraphStyle?
     fileprivate var _drawAttributes = [NSAttributedString.Key : Any]()
@@ -82,13 +84,14 @@ open class BalloonMarker: MarkerImage
         {
             offset.y = chart.bounds.size.height - origin.y - height - padding
         }
-
         return offset
     }
     
     open override func draw(context: CGContext, point: CGPoint)
     {
         guard let label = label else { return }
+        guard let label2 = label2 else { return }
+
         
         let offset = self.offsetForDrawing(atPoint: point)
         let size = self.size
@@ -100,6 +103,15 @@ open class BalloonMarker: MarkerImage
             size: size)
         rect.origin.x -= size.width / 2.0
         rect.origin.y -= size.height
+        
+        var rect1 = CGRect(
+            origin: CGPoint(
+                x: (point.x + offset.x),
+                y: (point.y + offset.y)+30),
+            size: size)
+        rect1.origin.x -= size.width / 2.0
+        rect1.origin.y -= size.height
+
         
         context.saveGState()
 
@@ -177,6 +189,8 @@ open class BalloonMarker: MarkerImage
         UIGraphicsPushContext(context)
         
         label.draw(in: rect, withAttributes: _drawAttributes)
+        label2.draw(in: rect1, withAttributes: _drawAttributes)
+
         
         UIGraphicsPopContext()
         
@@ -186,7 +200,7 @@ open class BalloonMarker: MarkerImage
     open func refreshContent(entry: String, highlight: String)
     {
         setLabel(String(entry))
-        //entry.y Highlight
+        setLabel2(String(highlight))
     }
     
     @objc open func setLabel(_ newLabel: String)
@@ -207,4 +221,23 @@ open class BalloonMarker: MarkerImage
         size.height = max(minimumSize.height, size.height)
         self.size = size
     }
+    @objc open func setLabel2(_ newLabel: String)
+    {
+        label2 = newLabel
+        
+        _drawAttributes.removeAll()
+        _drawAttributes[.font] = self.font
+        _drawAttributes[.paragraphStyle] = _paragraphStyle
+        _drawAttributes[.foregroundColor] = self.textColor
+        
+        _labelSize = label?.size(withAttributes: _drawAttributes) ?? CGSize.zero
+        
+        var size = CGSize()
+        size.width = _labelSize.width + self.insets.left + self.insets.right
+        size.height = _labelSize.height + self.insets.top + self.insets.bottom
+        size.width = max(minimumSize.width, size.width)
+        size.height = max(minimumSize.height, size.height)
+        self.size = size
+    }
+
 }

@@ -620,6 +620,8 @@ extension ShopDetailsViewController:UICollectionViewDelegate,UICollectionViewDat
 //            let time12 = df.string(from: date!)
 //
             cell.timeLabel.text = convertto12(time: openedat)
+            cell.timeLabel.font = cell.timeLabel.font.withSize(28)
+
         }
         else if (indexPath.row == 1)
         {
@@ -642,12 +644,12 @@ extension ShopDetailsViewController:UICollectionViewDelegate,UICollectionViewDat
 //
 //            }
             cell.timeLabel.text = "\(customers)"
-            //cell.timeLabel.font = cell.timeLabel.font.withSize(40)
+            cell.timeLabel.font = cell.timeLabel.font.withSize(40)
         }
         else if (indexPath.row == 3)
         {
             cell.timeLabel.text = "\(staff)"
-            //cell.timeLabel.font = cell.timeLabel.font.withSize(40)
+            cell.timeLabel.font = cell.timeLabel.font.withSize(40)
         }
         else if (indexPath.row == 4)
         {
@@ -664,7 +666,7 @@ extension ShopDetailsViewController:UICollectionViewDelegate,UICollectionViewDat
         else if (indexPath.row == 5)
         {
             cell.timeLabel.text = "\(knownVisitors)"
-          //  cell.timeLabel.font = cell.timeLabel.font.withSize(40)
+            cell.timeLabel.font = cell.timeLabel.font.withSize(40)
 
         }
        
