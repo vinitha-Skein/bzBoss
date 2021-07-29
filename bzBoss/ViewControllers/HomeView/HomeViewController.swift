@@ -104,7 +104,7 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource{
         let shop = viewModel.HomeList?.data![indexPath.row]
         cell.ShopNameLabel.text = shop?.name
         cell.shopAddressLabel.text = shop?.address
-        cell.statusView.backgroundColor = shop?.getpremisecurrentstatus?.status != "Open" ? UIColor.red : UIColor.green
+        cell.statusView.backgroundColor = shop?.getpremisecurrentstatus?.status != "Open" ? UIColor.red : UIColor(hexString: Colors.statusgreen)
         cell.statusLabel.text = shop?.getpremisecurrentstatus?.status
         let url = shop?.photo
         

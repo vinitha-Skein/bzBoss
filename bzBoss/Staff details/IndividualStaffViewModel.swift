@@ -77,3 +77,11 @@ class IndividualstaffDataViewModel
     
     
 }
+
+struct individualstaffDetailsLocal : Codable{
+    var Name: String!
+    var Image: String!
+    var arrayXString: [String]!
+    var arrayYString:[Double]!
+}
+

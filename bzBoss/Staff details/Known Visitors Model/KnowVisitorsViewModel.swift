@@ -42,11 +42,11 @@ class KnownVisitorsViewModel
                 self.isLoading = false
                 switch responseData.status_code!{
                 case 200..<300:
-                    if responseData.data != nil{
+                    if responseData.Responsedata != nil{
                         
                         do
                                 {
-                                    self.KnownVisitorsData = responseData.data
+                                    self.KnownVisitorsData = responseData.Responsedata
                                 }
                         catch
                         {

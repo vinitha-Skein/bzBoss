@@ -55,7 +55,7 @@ class CustomersViewController: UIViewController, ChartViewDelegate {
         
         if(statusLabel.text == "Open")
         {
-            statusView.backgroundColor = UIColor.green
+            statusView.backgroundColor = UIColor(hexString: Colors.statusgreen)
         }
     }
     func apiCall()

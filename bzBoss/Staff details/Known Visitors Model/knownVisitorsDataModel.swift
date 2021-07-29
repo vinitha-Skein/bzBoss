@@ -10,13 +10,13 @@ import Foundation
 struct knownVisitorsDataModel : Codable {
     let status_code : Int?
     let message : String?
-    let data : [KnownVisitorsOnDate]?
+    let Responsedata : [KnownVisitorsOnDate]?
     
     enum CodingKeys: String, CodingKey {
         
         case status_code = "status_code"
         case message = "message"
-        case data = "data"
+        case Responsedata = "data"
     }
 }
 

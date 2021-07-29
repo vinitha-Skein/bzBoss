@@ -48,20 +48,27 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
 
     var isfrom = ""
     
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         collectionview.delegate = self
         collectionview.dataSource = self
-        setData()
-        apiCall()
+       
         if isfrom == "Staff" {
+            staffDetailsSwitchLabel.text = "Staff on Selected Date"
             getParticularStaffOnDate()
         } else {
+            staffDetailsSwitchLabel.text = "Known Visitors on Selected date"
             getParticularKnownVisitorsOnDate()
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        Constants.arrayXStringValues = [String]()
+        setData()
+        apiCall()
+    }
     
     @IBAction func backbuttonpressed(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -88,6 +95,9 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
             staffViewHeight.constant = 0
         }
     }
+    
+    
+   
     
     func setupChart(_ chart: LineChartView, data: LineChartData, color: UIColor)
     {
@@ -181,7 +191,7 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
     func getParticularStaffOnDate()
     {
         
-        let params = [
+            let params = [
             "startdate": encryptData(str: fromdate()),
             "enddate": encryptData(str: todate()),
             "id": encryptData(str: "4")]
@@ -221,7 +231,7 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         let params = [
             "startdate": encryptData(str: fromdate()),
             "enddate": encryptData(str: todate()),
-            "id": encryptData(str: "4")]
+            "premise_id": encryptData(str: "4")]
         print(params)
         
         knownVisitorsModel.premiseDatafetch(params: params)
@@ -267,7 +277,7 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         
         if(statusLabel.text == "Open")
         {
-            statusView.backgroundColor = UIColor.green
+            statusView.backgroundColor = UIColor(hexString: Colors.statusgreen)
         }
     }
     func setDatatoVariables()
@@ -312,7 +322,7 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         staffCountCollectionView = Int(staffCount[staffCount.count-1])
         
         if isfrom == "Staff" {
-            chartTitle.text = "Staff\(Int(staffCount[staffCount.count-1]))"
+            chartTitle.text = "Staff \(Int(staffCount[staffCount.count-1]))"
         } else if isfrom == "Known Visitors" {
             chartTitle.text = "Known Visitors \(Int(staffCount[staffCount.count-1]))"
         }

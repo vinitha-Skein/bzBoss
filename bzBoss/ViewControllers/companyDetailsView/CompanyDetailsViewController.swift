@@ -52,7 +52,7 @@ class CompanyDetailsViewController: UIViewController {
         
         if(statusLabel.text == "Open")
         {
-            statusView.backgroundColor = UIColor.green
+            statusView.backgroundColor = UIColor(hexString: Colors.statusgreen)
         }
     }
 
