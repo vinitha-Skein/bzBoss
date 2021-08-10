@@ -8,6 +8,7 @@
 import UIKit
 import BEMAnalogClock
 import iOSDropDown
+import PKHUD
 
 class ShopDetailsViewController: UIViewController
 {
@@ -68,7 +69,7 @@ class ShopDetailsViewController: UIViewController
     var firstcusHour = Int()
     var firstcusmin = Int()
     var firstLoad = true
-    var premiseID = 4
+    var premiseID = UserDefaults.standard.string(forKey: "premiseID")
     var selectedDate = String()
     var userSelectedDate = "2021-06-08"
     
@@ -113,27 +114,51 @@ class ShopDetailsViewController: UIViewController
     }
     @objc func openedAction(sender : UITapGestureRecognizer)
     {
-        gotomaintainTimingViewController(Str: "OpenedAt",time: convertto12(time: openedat))
+        if openedat != "" {
+            gotomaintainTimingViewController(Str: "OpenedAt",time: convertto12(time: openedat))
+        } else {
+            HUD.flash(.label("No data available"), delay: 2.0)
+        }
     }
     @objc func closedAction(sender : UITapGestureRecognizer)
     {
-        gotomaintainTimingViewController(Str: "ClosedAt",time: convertto12(time: closedat))
+        if closedat != "" {
+            gotomaintainTimingViewController(Str: "ClosedAt",time: convertto12(time: closedat))
+        } else {
+            HUD.flash(.label("No data available"), delay: 2.0)
+        }
     }
     @objc func firstCusAction(sender : UITapGestureRecognizer)
     {
-        gotomaintainTimingViewController(Str: "FirstCustomer",time: convertto12(time: firstcustomer))
+        if firstcustomer != "" {
+            gotomaintainTimingViewController(Str: "FirstCustomer",time: convertto12(time: firstcustomer))
+        } else {
+            HUD.flash(.label("No data available"), delay: 2.0)
+        }
     }
     @objc func customerAction(sender : UITapGestureRecognizer)
     {
-        gotoCustomersView(Str: "customers",time: convertto12(time: "\(customers)"))
+        if customers != 0 {
+            gotoCustomersView(Str: "customers",time: convertto12(time: "\(customers)"))
+        } else {
+            HUD.flash(.label("No data available"), delay: 2.0)
+        }
     }
     @objc func staffAction(sender : UITapGestureRecognizer)
     {
-        gotoStaffDetails(str: "Staff")
+        if staff != 0 {
+            gotoStaffDetails(str: "Staff")
+        } else {
+            HUD.flash(.label("No data available"), delay: 2.0)
+        }
     }
     @objc func visitorsAction(sender : UITapGestureRecognizer)
     {
-        
+        if knownVisitors != 0 {
+            gotoStaffDetails(str: "Known Visitors")
+        } else {
+            HUD.flash(.label("No data available"), delay: 2.0)
+        }
     }
     
     public func clockchange()
@@ -176,10 +201,11 @@ class ShopDetailsViewController: UIViewController
         firstLoad = false
         activityIndicator(view, startAnimate: true)
         var user_id = String(UserDefaults.standard.integer(forKey: "user_id"))
+        
         let params =
             [
                 "date": encryptData(str: selectedDate),
-                "id": encryptData(str: String(premiseID)),
+                "id": encryptData(str: String(premiseID ?? "4")),
                 "user_id": encryptData(str: user_id)
             ]
         print(params)
@@ -212,7 +238,7 @@ class ShopDetailsViewController: UIViewController
         let targetcus = String(customersTarget.text!)
         let targetknown = String(visitorsTarget.text!)
         let usertoggle = toggleSelected
-        let premiseid = String(premiseID)
+        let premiseid = String(premiseID ?? "4")
         let userid = String(UserDefaults.standard.integer(forKey: "user_id"))
         
         let params = [
@@ -301,21 +327,21 @@ class ShopDetailsViewController: UIViewController
         
        if (viewModel.shopdetailsData?.number_of_known_visitors_max != nil && viewModel.shopdetailsData?.number_of_known_visitors_min != nil)
        {
-        var visitors_min = Int((viewModel.shopdetailsData?.number_of_known_visitors_min)!)
-        var visitors_max = Int((viewModel.shopdetailsData?.number_of_known_visitors_max)!)
+        let visitors_min = Int((viewModel.shopdetailsData?.number_of_known_visitors_min)!)
+        let visitors_max = Int((viewModel.shopdetailsData?.number_of_known_visitors_max)!)
         self.knownVisitors = (visitors_min+visitors_max)/2
        }
         
         if (viewModel.shopdetailsData?.number_of_customers_max != nil && viewModel.shopdetailsData?.number_of_customers_min != nil)
         {
-         var customers_min = Int((viewModel.shopdetailsData?.number_of_customers_min)!)
-         var customers_max = Int((viewModel.shopdetailsData?.number_of_customers_max)!)
+         let customers_min = Int((viewModel.shopdetailsData?.number_of_customers_min)!)
+         let customers_max = Int((viewModel.shopdetailsData?.number_of_customers_max)!)
          self.customers = (customers_min+customers_max)/2
         }
         if (viewModel.shopdetailsData?.number_of_staff_max != nil && viewModel.shopdetailsData?.number_of_staff_min != nil)
         {
-         var staffs_min = Int((viewModel.shopdetailsData?.number_of_customers_min)!)
-         var staffs_max = Int((viewModel.shopdetailsData?.number_of_customers_max)!)
+         let staffs_min = Int((viewModel.shopdetailsData?.number_of_staff_min)!)
+         let staffs_max = Int((viewModel.shopdetailsData?.number_of_staff_max)!)
          self.staff = (staffs_min+staffs_max)/2
             
         }
@@ -341,12 +367,19 @@ class ShopDetailsViewController: UIViewController
         staffTarget.text = viewModel.shopdetailsData?.userconfigdata?.targetstaff ?? "20"
         customersTarget.text = viewModel.shopdetailsData?.userconfigdata?.targetcust ?? "20"
         visitorsTarget.text = viewModel.shopdetailsData?.userconfigdata?.targetknown ?? "20"
+        
+        
 
         UserDefaults.standard.setValue(viewModel.shopdetailsData?.premisedata?.name ?? "Prince Complex", forKey: "premiseTitle")
         UserDefaults.standard.setValue(viewModel.shopdetailsData?.premisedata?.city ?? "Chennai", forKey: "premiseCity")
         UserDefaults.standard.setValue(viewModel.shopdetailsData?.premisedata?.state  ?? "Tamilnadu", forKey: "premiseState" )
         UserDefaults.standard.setValue(viewModel.shopdetailsData?.getcurrentstatus?.last_updated ?? "12-07-2021", forKey: "premiseDate")
         UserDefaults.standard.setValue(viewModel.shopdetailsData?.getcurrentstatus?.status ?? "Open", forKey: "premiseStatus")
+        UserDefaults.standard.setValue(viewModel.shopdetailsData?.getcurrentstatus?.image_filename, forKey: "premiseImage")
+        
+        let url = viewModel.shopdetailsData?.getcurrentstatus?.image_filename
+        
+        premiseImage.af.setImage(withURL: URL(string: url!)! )
         
         staffsgraph(target: staffTarget.text ?? "10")
         customersgraph(target: customersTarget.text ?? "10")
@@ -368,7 +401,7 @@ class ShopDetailsViewController: UIViewController
                 numericalUI()
             }
         }
-            setImage(from: premiseImagevalue)
+//            setImage(from: premiseImagevalue)
 
         
     }
@@ -498,7 +531,8 @@ class ShopDetailsViewController: UIViewController
         let storyboard = UIStoryboard(name: "Main1", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "CompanyDetailsViewController") as! CompanyDetailsViewController
         vc.modalPresentationStyle = .fullScreen
-        self.navigationController?.pushViewController(vc, animated: true)
+        present(vc, animated: true, completion: nil)
+//        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func yesterday_clicked(_ sender: Any)
@@ -602,47 +636,22 @@ extension ShopDetailsViewController:UICollectionViewDelegate,UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShopDetailsCollectionViewCell", for: indexPath) as! ShopDetailsCollectionViewCell
-        
-        
         cell.sectionLabel.text = category[indexPath.row]
         cell.container.layer.cornerRadius = 10
         cell.container.backgroundColor = bgColors[indexPath.row]
         
         if (indexPath.row == 0)
         {
-//           let dateAsString = openedat
-//            let df = DateFormatter()
-//            df.dateFormat = "HH:mm:ss"
-//
-//            let date = df.date(from: dateAsString)
-//            df.dateFormat = "hh:mm:ssa"
-//
-//            let time12 = df.string(from: date!)
-//
             cell.timeLabel.text = convertto12(time: openedat)
             cell.timeLabel.font = cell.timeLabel.font.withSize(28)
 
         }
         else if (indexPath.row == 1)
         {
-//            let dateAsString = firstcustomer
-//                let df = DateFormatter()
-//                df.dateFormat = "HH:mm:ss"
-//
-//                let date = df.date(from: dateAsString)
-//                df.dateFormat = "hh:mm:ssa"
-//
-//                let time12 = df.string(from: date!)
-            
             cell.timeLabel.text = convertto12(time: firstcustomer)
         }
         else if (indexPath.row == 2)
         {
-//            if (customers == 0)
-//            {
-//                cell.timeLabel.text = "-"
-//
-//            }
             cell.timeLabel.text = "\(customers)"
             cell.timeLabel.font = cell.timeLabel.font.withSize(40)
         }
@@ -653,14 +662,6 @@ extension ShopDetailsViewController:UICollectionViewDelegate,UICollectionViewDat
         }
         else if (indexPath.row == 4)
         {
-//            let dateAsString = closedat
-//                let df = DateFormatter()
-//                df.dateFormat = "HH:mm:ss"
-//
-//                let date = df.date(from: dateAsString)
-//                df.dateFormat = "hh:mm:ssa"
-//
-//                let time12 = df.string(from: date!)
             cell.timeLabel.text = convertto12(time: closedat)
         }
         else if (indexPath.row == 5)
@@ -679,19 +680,43 @@ extension ShopDetailsViewController:UICollectionViewDelegate,UICollectionViewDat
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row == 0 {
+            if openedat != "" {
            gotomaintainTimingViewController(Str: "OpenedAt",time: convertto12(time: openedat))
+            } else {
+                HUD.flash(.label("No data available"), delay: 2.0)
+            }
         }
         else if indexPath.row == 1 {
+            if firstcustomer != "" {
             gotomaintainTimingViewController(Str: "FirstCustomer",time: convertto12(time: firstcustomer))
+            } else {
+                HUD.flash(.label("No data available"), delay: 2.0)
+            }
         } else if indexPath.row == 4 {
+            if closedat != "" {
             gotomaintainTimingViewController(Str: "ClosedAt",time: convertto12(time: closedat))
+            } else {
+                HUD.flash(.label("No data available"), delay: 2.0)
+            }
         } else if indexPath.row == 2 {
+            if customers != 0 {
             gotoCustomersView(Str: "customers",time: convertto12(time: "\(customers)"))
+            } else {
+                HUD.flash(.label("No data available"), delay: 2.0)
+            }
         }
         if indexPath.row == 3 {
+            if staff != 0 {
             gotoStaffDetails(str: "Staff")
+            } else {
+                HUD.flash(.label("No data available"), delay: 2.0)
+            }
         } else if indexPath.row == 5 {
+            if knownVisitors != 0 {
             gotoStaffDetails(str: "Known Visitors")
+            } else {
+                HUD.flash(.label("No data available"), delay: 2.0)
+            }
         }
     }
 }

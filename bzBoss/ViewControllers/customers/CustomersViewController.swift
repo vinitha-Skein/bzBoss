@@ -18,6 +18,8 @@ class CustomersViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var premiseTitleLabel: UILabel!
     @IBOutlet weak var timingLabel: UILabel!
     
+    var selectedyValue = String()
+    var selectedxValue = String()
     var arrayXaxisString = ["12/07", "13/07", "14/07", "15/07", "16/07"]
     var isfrom = ""
     var Time = ""
@@ -60,11 +62,12 @@ class CustomersViewController: UIViewController, ChartViewDelegate {
     }
     func apiCall()
     {
-        
+        let id =  UserDefaults.standard.string(forKey: "premiseID")!
+        activityIndicator(view, startAnimate: true)
         let params = [
             "startdate": encryptData(str: fromdate()),
             "enddate": encryptData(str: todate()),
-            "id": encryptData(str: "4")]
+            "id": encryptData(str: id)]
         print(params)
         
         viewModel.premiseDatafetch(params: params)
@@ -78,11 +81,11 @@ class CustomersViewController: UIViewController, ChartViewDelegate {
         viewModel.loadingStatus =
             {
                 if self.viewModel.isLoading{
-                    //self.activityIndicator(self.view, startAnimate: true)
+                    self.activityIndicator(self.view, startAnimate: true)
                 }
                 else
                 {
-                    //self.activityIndicator(self.view, startAnimate: false)
+                    self.activityIndicator(self.view, startAnimate: false)
                     UIApplication.shared.endIgnoringInteractionEvents()
                 }
             }
@@ -168,7 +171,7 @@ class CustomersViewController: UIViewController, ChartViewDelegate {
         }
         print(arrayXaxisString)
         print(staffCount)
-        chartTitle.text = "customers \(staffCount[staffCount.count-1])"
+        chartTitle.text = "customers \(Int(staffCount[staffCount.count-1]))"
         Constants.arrayXStringValues = arrayXaxisString
         let data1 = dataWithCount()
         data1.setValueFont(UIFont(name: "HelveticaNeue", size: 7)!)
@@ -206,5 +209,62 @@ class CustomersViewController: UIViewController, ChartViewDelegate {
         let prevDate = dateFormatter1.string(from: date3)
         return prevDate
     }
+    
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight)
+    {
+        
+        print("To Display Values X/Y Values here")
+        var xindex = (entry.value(forKey: "x")!) as! Int
+        let isoDate = Constants.arrayXStringValues[xindex]
+        selectedxValue = dateformatConvert(date: isoDate)
+        
+        var yInt = (entry.value(forKey: "y")!) as! Int
+        selectedyValue = String(yInt)
+        setTooltip()
+        
+    }
+    func dateformatConvert(date:String) -> String
+    {
+        let isoDate = date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM"
+        let date3 = dateFormatter.date(from:isoDate)!
+        
+        let dateFormatter1 = DateFormatter()
+        dateFormatter1.dateFormat = "MMMM dd"
+        let prevDate = dateFormatter1.string(from: date3)
+        print(prevDate)
+        return prevDate
+    }
+    
+    func dateforSelectedDate(date:String) -> String
+    {
+        let isoDate = date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-d"
+        let date3 = dateFormatter.date(from:isoDate)!
+        
+        let dateFormatter1 = DateFormatter()
+        dateFormatter1.dateFormat = "EEEE, MMMM d, yyyy"
+        let prevDate = dateFormatter1.string(from: date3)
+        print(prevDate)
+        return prevDate
+        
+    }
+    
+    func setTooltip()
+    {
+        let marker = BalloonMarker(color: UIColor(white: 245/255, alpha: 1),
+                                   font: .systemFont(ofSize: 12),
+                                   textColor: .black,
+                                   insets: UIEdgeInsets(top: 8, left: 8, bottom:16, right: 8))
+        marker.chartView = chartView
+        
+        marker.minimumSize = CGSize(width: 100, height: 60)
+        marker.refreshContent(entry: selectedyValue, highlight: selectedxValue)
+        chartView.marker = marker
+        
+    }
+    
     
 }

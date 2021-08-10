@@ -30,13 +30,15 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
     
     @IBOutlet weak var staffDetailsSwitchLabel: UILabel!
     
+    @IBOutlet weak var timingSelectLabel: UILabel!
     
+    @IBOutlet weak var PremiseImageView: UIImageView!
     let viewModel = premiseDataViewModel()
     let staffViewModel = staffDetailsDataViewModel()
     let knownVisitorsModel = KnownVisitorsViewModel()
     var staffSwitchIsOn:Bool =  true
     
-    let arrayxString = ["12/07", "13/07", "14/07", "15/07", "16/07","17/07","18/07"]
+    var arrayxString = ["12/07", "13/07", "14/07", "15/07", "16/07","17/07","18/07"]
     var dateString = [String()]
     let arrayYAxis = ["11.02 AM","01:50 pm" ,"04:36 pm", "07.23 pm"]
     
@@ -56,12 +58,13 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         collectionview.dataSource = self
        
         if isfrom == "Staff" {
-            staffDetailsSwitchLabel.text = "Staff on Selected Date"
+            staffDetailsSwitchLabel.text = "Staff"
             getParticularStaffOnDate()
         } else {
-            staffDetailsSwitchLabel.text = "Known Visitors on Selected date"
+            staffDetailsSwitchLabel.text = "Known Visitors"
             getParticularKnownVisitorsOnDate()
         }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -159,11 +162,12 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
     
     func apiCall()
     {
-        
+        let id =  UserDefaults.standard.string(forKey: "premiseID")!
+        activityIndicator(view, startAnimate: true)
         let params = [
             "startdate": encryptData(str: fromdate()),
             "enddate": encryptData(str: todate()),
-            "id": encryptData(str: "4")]
+            "id": encryptData(str: id)]
         print(params)
         
         viewModel.premiseDatafetch(params: params)
@@ -177,11 +181,11 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
             {
                 if self.viewModel.isLoading
                 {
-                    //self.activityIndicator(self.view, startAnimate: true)
+                    self.activityIndicator(self.view, startAnimate: true)
                 }
                 else
                 {
-                    //self.activityIndicator(self.view, startAnimate: false)
+                    self.activityIndicator(self.view, startAnimate: false)
                     UIApplication.shared.endIgnoringInteractionEvents()
                 }
             }
@@ -190,11 +194,11 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
     
     func getParticularStaffOnDate()
     {
-        
+        let id =  UserDefaults.standard.string(forKey: "premiseID")!
             let params = [
             "startdate": encryptData(str: fromdate()),
             "enddate": encryptData(str: todate()),
-            "id": encryptData(str: "4")]
+            "id": encryptData(str: id)]
         print(params)
         
         staffViewModel.premiseDatafetch(params: params)
@@ -216,22 +220,22 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         viewModel.loadingStatus =
             {
                 if self.viewModel.isLoading{
-                    //self.activityIndicator(self.view, startAnimate: true)
+                    self.activityIndicator(self.view, startAnimate: true)
                 }
                 else
                 {
-                    //self.activityIndicator(self.view, startAnimate: false)
+                    self.activityIndicator(self.view, startAnimate: false)
                     UIApplication.shared.endIgnoringInteractionEvents()
                 }
             }
         
     }
     func getParticularKnownVisitorsOnDate(){
-        
+        let id =  UserDefaults.standard.string(forKey: "premiseID")!
         let params = [
             "startdate": encryptData(str: fromdate()),
             "enddate": encryptData(str: todate()),
-            "premise_id": encryptData(str: "4")]
+            "premise_id": encryptData(str: id)]
         print(params)
         
         knownVisitorsModel.premiseDatafetch(params: params)
@@ -279,12 +283,19 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         {
             statusView.backgroundColor = UIColor(hexString: Colors.statusgreen)
         }
+        timingSelectLabel.text = selectedDate
+        
+        let url = UserDefaults.standard.string(forKey: "premiseImage")
+        if url != "" {
+            PremiseImageView.af.setImage(withURL: URL(string: url!)! )
+        }
     }
     func setDatatoVariables()
     {
         let count = 0..<(viewModel.premiseData?.premisedailydata!.count)!
         staffCount.removeAll()
         dateString.removeAll()
+        arrayxString.removeAll()
         for number in count
         {
             if isfrom == "Staff" {
@@ -302,6 +313,7 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
             
             let tempDate = viewModel.premiseData?.premisedailydata![number].date ?? "01-01-2020"
             print("Temp date",tempDate)
+            arrayxString.append(tempDate)
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
             dateFormatter.dateFormat = "yyyy-MM-d"
@@ -359,12 +371,13 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
     }
     func setTooltip()
     {
-        let marker = BalloonMarker(color: UIColor(white: 225/255, alpha: 1),
-                                           font: .systemFont(ofSize: 12),
-                                           textColor: .black,
-                                           insets: UIEdgeInsets(top: 8, left: 8, bottom: 20, right: 8))
-                marker.chartView = chartView
-                marker.minimumSize = CGSize(width: 100, height: 80)
+        let marker = BalloonMarker(color: UIColor(white: 245/255, alpha: 1),
+                                   font: .systemFont(ofSize: 12),
+                                   textColor: .black,
+                                   insets: UIEdgeInsets(top: 8, left: 8, bottom:16, right: 8))
+        marker.chartView = chartView
+        
+        marker.minimumSize = CGSize(width: 100, height: 60)
         marker.refreshContent(entry: selectedyValue, highlight: selectedxValue)
                 chartView.marker = marker
 
@@ -378,13 +391,17 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         let isoDate = Constants.arrayXStringValues[xindex]
         selectedxValue = dateformatConvert(date: isoDate)
         
+        selectedDate = dateforSelectedDate(date: arrayxString[xindex])
+        timingSelectLabel.text = selectedDate
+        
         var yInt = (entry.value(forKey: "y")!) as! Int
         selectedyValue = String(yInt)
         setTooltip()
-//        staffCountCollectionView = (entry.value(forKey: "y")!) as! Int
-//        if staffSwitchIsOn {
-//            collectionview.reloadData()
-//        }
+        if isfrom == "Staff" {
+            getParticularStaffOnDate()
+        } else {
+            getParticularKnownVisitorsOnDate()
+        }
         
     }
     func dateformatConvert(date:String) -> String
@@ -399,6 +416,21 @@ class StaffDetailsViewController: UIViewController, ChartViewDelegate
         let prevDate = dateFormatter1.string(from: date3)
         print(prevDate)
         return prevDate
+    }
+    
+    func dateforSelectedDate(date:String) -> String
+    {
+        let isoDate = date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-d"
+        let date3 = dateFormatter.date(from:isoDate)!
+        
+        let dateFormatter1 = DateFormatter()
+        dateFormatter1.dateFormat = "EEEE, MMMM d, yyyy"
+        let prevDate = dateFormatter1.string(from: date3)
+        print(prevDate)
+        return prevDate
+            
     }
     
     
@@ -421,23 +453,32 @@ extension StaffDetailsViewController:UICollectionViewDelegate,UICollectionViewDa
         cell.dateLabel.text = staff?.first_appearance_date_time
         cell.timeLabel.text = ""
         let url = staff?.first_appearance_image
-       // cell.imageViewStaff.af.setImage(withURL: URL(string: url!)! )
+            if url != "" {
+                cell.imageViewStaff.af.setImage(withURL: URL(string: url!)! )
+            } else
+            {
+                cell.imageViewStaff.backgroundColor = .blue
+            }
         } else {
             let staff = knownVisitorsModel.KnownVisitorsData?[indexPath.row]
             cell.staffLabel.text = staff?.known_visitors_name
             cell.dateLabel.text = staff?.appearance_date_time
             cell.timeLabel.text = ""
-//            let url = staff?.appearance_image
-//            if url != "" {
-//            cell.imageViewStaff.af.setImage(withURL: URL(string: url!)! )
-//            }
+            let url = staff?.appearance_image
+            if url != "" {
+            cell.imageViewStaff.af.setImage(withURL: URL(string: url!)! )
+            }
         }
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
+        let staff = staffViewModel.staffDetailsData?[indexPath.row]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "graphViewController") as! graphViewController
+        vc.selectedDate = self.selectedDate
+        vc.selectedId = "\(staff?.staff_id ?? 0)"
+        vc.isfrom = self.isfrom
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true, completion: nil)
     }
@@ -462,6 +503,12 @@ class XAxisNameFormater: NSObject, IAxisValueFormatter {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "dd.MM"
+        if value == -1 {
+            return ""
+        }
+        if Int(value) >= Constants.arrayXStringValues.count {
+            return ""
+        }
         
         return months[Int(value)]
         

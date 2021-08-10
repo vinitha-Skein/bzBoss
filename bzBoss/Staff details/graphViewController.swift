@@ -12,6 +12,7 @@ class graphViewController: UIViewController, ChartViewDelegate {
 
     @IBOutlet weak var collchaectioview: UICollectionView!
     let viewModel = IndividualstaffDataViewModel()
+    let individualKnownVisitorsViewModel = IndividualKnownVisitorsViewModel()
     
     @IBOutlet weak var chartView: LineChartView!
     
@@ -42,17 +43,62 @@ class graphViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var NextButton: UIButton!
     
     @IBOutlet weak var GraphTitleLabel: UILabel!
-    var arrayYaxisString = [Double]()
     
+    var isfrom = ""
+    @IBOutlet weak var mainView: UIView!
+    var arrayYaxisString = [Double]()
+    var selectedDate = "12-06-2021"
+    var selectedId = ""
+    var selectedyValue = String()
+    var selectedxValue = String()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         collchaectioview.delegate = self
         collchaectioview.dataSource = self
         // Do any additional setup after loading the view.
+        if isfrom == "Staff" {
        apiCall()
+        } else {
+            KnownVisitorsIndividualapiCall()
+        }
         selectedIndex = 0
         previousButton.isHidden = true
         print(time1)
+        
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
+        
+        leftSwipe.direction = .left
+        rightSwipe.direction = .right
+        
+        view.addGestureRecognizer(leftSwipe)
+        view.addGestureRecognizer(rightSwipe)
+        
+    }
+    
+    @objc func handleSwipes(_ sender: UISwipeGestureRecognizer)
+    {
+        if sender.direction == .right
+        {
+            if selectedIndex != 0 {
+                selectedIndex = selectedIndex-1
+            }
+            else {
+                setStaffData()
+            }
+            if selectedIndex == 0 {
+                previousButton.isHidden = true
+            }
+           
+        }
+        
+        if sender.direction == .left
+        {
+            previousButton.isHidden = false
+            selectedIndex = selectedIndex+1
+            setStaffData()
+        }
     }
     @IBAction func back_pressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -76,13 +122,12 @@ class graphViewController: UIViewController, ChartViewDelegate {
     func apiCall()
     {
         activityIndicator(view, startAnimate: true)
-        var user_id = String(UserDefaults.standard.integer(forKey: "user_id"))
+        let id =  UserDefaults.standard.string(forKey: "premiseID")!
         let params =
             [
-                "staff_id":"YVg2b0xYZTQvYzhKU3NEWjdyOGZzQT09",
-                "startdate": "cUd5YTQrSmxaVHRsOE5WV2p3dk9Cdz09",
-                "enddate": "RnFoTDR3bE9LUVA4a1lpMmpYSDl5Zz09",
-                "premise_id": "K1FWc1IxcmNUdSs5S3VaSTkxNnEyQT09"
+                "staff_id":encryptData(str: selectedId),
+                "enddate": encryptData(str: todate()),
+                "premise_id": encryptData(str: id)
             ]
         print(params)
         viewModel.individualstaffDatafetch(params:params)
@@ -106,6 +151,86 @@ class graphViewController: UIViewController, ChartViewDelegate {
     
     }
     
+    
+    func KnownVisitorsIndividualapiCall()
+    {
+        activityIndicator(view, startAnimate: true)
+        var user_id = String(UserDefaults.standard.integer(forKey: "user_id"))
+        let id =  UserDefaults.standard.string(forKey: "premiseID")!
+        let params =
+            [
+                "known_visitors_id":encryptData(str: selectedId),
+                "enddate": encryptData(str: todate()),
+                "premise_id": encryptData(str: id)
+            ]
+        print(params)
+        individualKnownVisitorsViewModel.individualVisitorsDatafetch(params:params)
+        individualKnownVisitorsViewModel.IndividualKnownVisitorsfetchedSuccess =
+            {
+                
+                self.activityIndicator(self.view, startAnimate: false)
+                self.StoreKnownVisitorsData()
+            }
+        viewModel.loadingStatus =
+            {
+                if self.individualKnownVisitorsViewModel.isLoading{
+                    self.activityIndicator(self.view, startAnimate: true)
+                }
+                else
+                {
+                    self.activityIndicator(self.view, startAnimate: false)
+                    UIApplication.shared.endIgnoringInteractionEvents()
+                }
+            }
+        
+    }
+    
+    func StoreKnownVisitorsData() {
+        staffCount = individualKnownVisitorsViewModel.IndividualKnownVisitorsdetails?.knownVisitorsData?.count ?? 0
+        collchaectioview.reloadData()
+        let n = (individualKnownVisitorsViewModel.IndividualKnownVisitorsdetails?.knownVisitorsData?.count)!
+        
+        let count = 0..<n
+        for numbers in count
+        {
+            let details = (individualKnownVisitorsViewModel.IndividualKnownVisitorsdetails?.knownVisitorsData![numbers])
+            var arrayXaxisString = [String]()
+            var dateString = [String]()
+            var arrayYaxisString = [Double]()
+            for number in 0..<(details?.knownvisitorsdata!.count)! {
+                
+                let date = details?.knownvisitorsdata![number].appearance_date_time ?? "01-01-2020 "
+                
+                let openAtTime = date.components(separatedBy:[" "])
+                
+                if openAtTime[1] != "" && date != "" {
+                    let dataStr = convertDateToTimeStamp(Convertdate:openAtTime[1])
+                    arrayYaxisString.append(Double(dataStr))
+                }
+                let dateFormatter = DateFormatter()
+                dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                dateFormatter.dateFormat = "yyyy-MM-d HH:mm:ss"
+                let date1 = dateFormatter.date(from:date)!
+                
+                let dateFormatter1 = DateFormatter()
+                dateFormatter1.dateFormat = "dd/MM"
+                arrayXaxisString.append(dateFormatter1.string(from: date1))
+                dateString.append(dateFormatter1.string(from: date1))
+                
+            }
+            print(arrayXaxisString)
+            print(arrayYaxisString)
+            let count = (details?.knownvisitorsdata!.count)!
+            let image = details?.knownvisitorsdata![count-1].appearance_image ?? ""
+            let value1 = individualstaffDetailsLocal(Name: (individualKnownVisitorsViewModel.IndividualKnownVisitorsdetails?.knownVisitorsData![numbers].first_name), Image: (image), arrayXString: arrayXaxisString, arrayYString: arrayYaxisString)
+            self.allStaffDetails.append(value1)
+            
+        }
+        
+        print(allStaffDetails.count)
+        print(allStaffDetails)
+        setStaffData()
+    }
     
    func storeDatatoArray()
    {
@@ -143,10 +268,13 @@ class graphViewController: UIViewController, ChartViewDelegate {
         }
         print(arrayXaxisString)
         print(arrayYaxisString)
-        let value1 = individualstaffDetailsLocal(Name: (viewModel.individualstaffdetails?.staffDetailsData![numbers].first_name), Image: (viewModel.individualstaffdetails?.staffDetailsData![numbers].photo), arrayXString: arrayXaxisString, arrayYString: arrayYaxisString )
+        let count = (details?.staffdata!.count)!
+         let image = details?.staffdata![count-1].first_appearance_image ?? ""
+        let value1 = individualstaffDetailsLocal(Name: (viewModel.individualstaffdetails?.staffDetailsData![numbers].first_name), Image: (image), arrayXString: arrayXaxisString, arrayYString: arrayYaxisString)
         self.allStaffDetails.append(value1)
         
     }
+    
     print(allStaffDetails.count)
     print(allStaffDetails)
     setStaffData()
@@ -175,6 +303,7 @@ class graphViewController: UIViewController, ChartViewDelegate {
         }
         setAllValues()
     }
+    
     func setupChart(_ chart: LineChartView, data: LineChartData, color: UIColor)
     {
         
@@ -274,6 +403,77 @@ class graphViewController: UIViewController, ChartViewDelegate {
         }
         return "-"
     }
+    
+    func todate() -> String
+    {
+        let isoDate = selectedDate
+        print(selectedDate)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
+        let date3 = dateFormatter.date(from:isoDate)!
+        
+        let dateFormatter1 = DateFormatter()
+        dateFormatter1.dateFormat = "yyyy-MM-dd"
+        let prevDate = dateFormatter1.string(from: date3)
+        return prevDate
+    }
+    func setTooltip()
+    {
+        let marker = BalloonMarker(color: UIColor(white: 245/255, alpha: 1),
+                                   font: .systemFont(ofSize: 12),
+                                   textColor: .black,
+                                   insets: UIEdgeInsets(top: 8, left: 8, bottom:16, right: 8))
+        marker.chartView = chartView
+        
+        marker.minimumSize = CGSize(width: 100, height: 60)
+        marker.refreshContent(entry: selectedyValue, highlight: selectedxValue)
+        chartView.marker = marker
+        
+    }
+    
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight)
+    {
+        
+        print("To Display Values X/Y Values here")
+        let xindex = (entry.value(forKey: "x")!) as! Int
+        let isoDate = Constants.arrayXStringValues[xindex]
+        selectedxValue = dateformatConvert(date: isoDate)
+        
+        selectedDate = dateforSelectedDate(date: arrayxString[xindex])
+        
+        let yInt = (entry.value(forKey: "y")!) as! Int
+        selectedyValue = String(yInt)
+        setTooltip()
+    }
+    func dateformatConvert(date:String) -> String
+    {
+        let isoDate = date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM"
+        let date3 = dateFormatter.date(from:isoDate)!
+        
+        let dateFormatter1 = DateFormatter()
+        dateFormatter1.dateFormat = "MMMM dd"
+        let prevDate = dateFormatter1.string(from: date3)
+        print(prevDate)
+        return prevDate
+    }
+    
+    func dateforSelectedDate(date:String) -> String
+    {
+        let isoDate = date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-d"
+        let date3 = dateFormatter.date(from:isoDate)!
+        
+        let dateFormatter1 = DateFormatter()
+        dateFormatter1.dateFormat = "EEEE, MMMM d, yyyy"
+        let prevDate = dateFormatter1.string(from: date3)
+        print(prevDate)
+        return prevDate
+        
+    }
+    
 
 }
 extension graphViewController: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout

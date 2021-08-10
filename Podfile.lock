@@ -70,6 +70,7 @@ PODS:
     - nanopb/encode (= 2.30906.0)
   - nanopb/decode (2.30906.0)
   - nanopb/encode (2.30906.0)
+  - PKHUD (5.3.0)
   - PromisesObjC (1.2.12)
   - SideMenu (6.5.0)
 
@@ -83,6 +84,7 @@ DEPENDENCIES:
   - FirebaseAuth
   - iOSDropDown
   - IQKeyboardManagerSwift
+  - PKHUD
   - SideMenu
 
 SPEC REPOS:
@@ -105,6 +107,7 @@ SPEC REPOS:
     - iOSDropDown
     - IQKeyboardManagerSwift
     - nanopb
+    - PKHUD
     - PromisesObjC
     - SideMenu
 
@@ -127,9 +130,10 @@ SPEC CHECKSUMS:
   iOSDropDown: c10a761f9a00c3f1cc9d3bce43ae504628e2f692
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
+  PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
 
-PODFILE CHECKSUM: 3452f0b5cdac9950e372bcec8c6049fcfb750fa5
+PODFILE CHECKSUM: c3aef8b92f2cc95dd7ada83119e84dafeeb7136e
 
 COCOAPODS: 1.8.4

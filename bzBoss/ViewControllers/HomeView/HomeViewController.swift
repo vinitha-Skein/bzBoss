@@ -103,16 +103,18 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "DashboardTableviewCell", for: indexPath) as! DashboardTableviewCell
         let shop = viewModel.HomeList?.data![indexPath.row]
         cell.ShopNameLabel.text = shop?.name
-        cell.shopAddressLabel.text = shop?.address
+        cell.shopAddressLabel.text = (shop?.city)! + ", " + (shop?.country)!
         cell.statusView.backgroundColor = shop?.getpremisecurrentstatus?.status != "Open" ? UIColor.red : UIColor(hexString: Colors.statusgreen)
         cell.statusLabel.text = shop?.getpremisecurrentstatus?.status
-        let url = shop?.photo
-        
+        let url = shop?.getpremisecurrentstatus?.image_filename
+            
         cell.ShopImageView.af.setImage(withURL: URL(string: url!)! )
 
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let shop = viewModel.HomeList?.data![indexPath.row]
+        UserDefaults.standard.setValue( shop?.premise_id ?? "4", forKey: "premiseID")
       gotoCompanyDetails()
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

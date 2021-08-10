@@ -16,6 +16,7 @@ pod 'BEMAnalogClock'
 pod 'Firebase/Messaging'
 pod 'CryptoSwift', '~> 0.15.0'
 pod 'Charts'
+pod 'PKHUD' 
 
 end
 

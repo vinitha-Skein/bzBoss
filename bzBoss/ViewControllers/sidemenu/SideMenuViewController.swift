@@ -26,6 +26,7 @@ class SideMenuViewController: UIViewController {
 //        listView.register(UINib(nibName: "SideMenuViewCell", bundle: nil), forCellReuseIdentifier: "SideMenuViewCellID")
         listView.delegate = self
         listView.dataSource = self
+        listView.tableFooterView = MyUIView()
     }
     
     override func viewWillAppear(_ animated: Bool) {

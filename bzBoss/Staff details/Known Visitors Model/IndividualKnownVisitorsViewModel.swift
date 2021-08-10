@@ -32,7 +32,7 @@ class IndividualKnownVisitorsViewModel
     var errorMessageAlert:(() -> ())?
     
     
-    func individualstaffDatafetch(params:Dictionary<String,Any>)
+    func individualVisitorsDatafetch(params:Dictionary<String,Any>)
     {
         isLoading = true
         APIClient.individualKnownVisitorsDetails(params: params){ result in

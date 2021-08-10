@@ -30,13 +30,15 @@ class CompanyDetailsViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     @IBAction func backButtonPressed(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+//        self.navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func imagepreviewclicked(_ sender: Any) {
         let vc = UIStoryboard.init(name: "PhotoPreview", bundle: Bundle.main).instantiateViewController(withIdentifier: "PhotoPreviewViewController") as! PhotoPreviewViewController
         vc.image = companyimage.image
-        self.navigationController?.pushViewController(vc, animated: true)
+        present(vc, animated: true, completion: nil)
+//        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func setData()
@@ -53,6 +55,10 @@ class CompanyDetailsViewController: UIViewController {
         if(statusLabel.text == "Open")
         {
             statusView.backgroundColor = UIColor(hexString: Colors.statusgreen)
+        }
+        let url = UserDefaults.standard.string(forKey: "premiseImage")
+        if url != "" {
+        companyimage.af.setImage(withURL: URL(string: url!)! )
         }
     }
 

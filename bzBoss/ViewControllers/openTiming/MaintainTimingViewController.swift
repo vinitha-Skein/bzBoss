@@ -19,6 +19,7 @@ class MaintainTimingViewController: UIViewController,ChartViewDelegate
     @IBOutlet weak var timingLabel: UILabel!
     @IBOutlet weak var chartView: LineChartView!
 
+    @IBOutlet weak var premiseImage: UIImageView!
     
     @IBOutlet weak var titleLabel: UILabel!
     let viewModel = premiseDataViewModel()
@@ -85,6 +86,13 @@ class MaintainTimingViewController: UIViewController,ChartViewDelegate
         //        chart.animate(xAxisDuration: 2.5)
     }
     
+    @IBAction func imagepreviewclicked(_ sender: Any) {
+        let vc = UIStoryboard.init(name: "PhotoPreview", bundle: Bundle.main).instantiateViewController(withIdentifier: "PhotoPreviewViewController") as! PhotoPreviewViewController
+        vc.image = imageView.image
+        present(vc, animated: true, completion: nil)
+//        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func dataWithCount() -> LineChartData {
         var set1 = LineChartDataSet()
         if isfrom == "KnownVisitors"{
@@ -135,7 +143,8 @@ class MaintainTimingViewController: UIViewController,ChartViewDelegate
         let storyboard = UIStoryboard(name: "Main1", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "CompanyDetailsViewController") as! CompanyDetailsViewController
         vc.modalPresentationStyle = .fullScreen
-        self.navigationController?.pushViewController(vc, animated: true)
+        present(vc, animated: true, completion: nil)
+//        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func imagePressed(_ sender: Any) {
@@ -145,11 +154,11 @@ class MaintainTimingViewController: UIViewController,ChartViewDelegate
     }
     func apiCall()
     {
-       
+        let id =  UserDefaults.standard.string(forKey: "premiseID")!
         let params = [
                 "startdate": encryptData(str: fromdate()),
                 "enddate": encryptData(str: todate()),
-                "id": encryptData(str: "4")]
+                "id": encryptData(str: id)]
                     print(params)
             
                     viewModel.premiseDatafetch(params: params)
@@ -187,7 +196,16 @@ class MaintainTimingViewController: UIViewController,ChartViewDelegate
         
         if(statusLabel.text == "Open")
         {
-            statusView.backgroundColor = UIColor.green
+            statusView.backgroundColor = UIColor(hexString: Colors.statusgreen)
+        }
+        imageView.layer.cornerRadius = 10
+        imageView.layer.masksToBounds = true
+        let url = UserDefaults.standard.string(forKey: "premiseImage")
+        if url != "" {
+            premiseImage.backgroundColor = .clear
+            premiseImage.af.setImage(withURL: URL(string: url!)! )
+        } else {
+            premiseImage.backgroundColor = .blue
         }
     }
     func fromdate() -> String
@@ -229,12 +247,22 @@ class MaintainTimingViewController: UIViewController,ChartViewDelegate
         for number in count
         {
             let date = viewModel.premiseData?.premisedailydata![number].date ?? "01-01-2020"
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            dateFormatter.dateFormat = "yyyy-MM-d"
+            let date1 = dateFormatter.date(from:date)!
+            
+            let dateFormatter1 = DateFormatter()
+            dateFormatter1.dateFormat = "dd/MM"
+           
             if isfrom == "OpenedAt" {
             let openAtTime = viewModel.premiseData?.premisedailydata![number].opened_at ?? "00:00:00"
 
                 if openAtTime != "" && date != "" {
                 let dataStr = convertDateToTimeStamp(Convertdate:openAtTime)
                 arrayYaxisString.append(Double(dataStr))
+                arrayXaxisString.append(dateFormatter1.string(from: date1))
+                    
             }
             }
             
@@ -245,6 +273,7 @@ class MaintainTimingViewController: UIViewController,ChartViewDelegate
                 if closedAtTime != "" && date != "" {
                     let dataStr = convertDateToTimeStamp(Convertdate:closedAtTime)
                     arrayYaxisString.append(Double(dataStr))
+                    arrayXaxisString.append(dateFormatter1.string(from: date1))
                 }
                 
             } else if isfrom == "FirstCustomer" {
@@ -253,28 +282,49 @@ class MaintainTimingViewController: UIViewController,ChartViewDelegate
                 if firstCustomerTime != "" && date != "" {
                     let dataStr = convertDateToTimeStamp(Convertdate:firstCustomerTime)
                     arrayYaxisString.append(Double(dataStr))
+                    arrayXaxisString.append(dateFormatter1.string(from: date1))
                 }
             }
-            
-
-            let dateFormatter = DateFormatter()
-            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-            dateFormatter.dateFormat = "yyyy-MM-d"
-            let date1 = dateFormatter.date(from:date)!
-            
-            let dateFormatter1 = DateFormatter()
-            dateFormatter1.dateFormat = "dd/MM"
-            arrayXaxisString.append(dateFormatter1.string(from: date1))
+           
         }
         print(arrayXaxisString)
         print(arrayYaxisString)
         Constants.arrayXStringValues = arrayXaxisString
+       
         let data1 = dataWithCount()
         data1.setValueFont(UIFont(name: "HelveticaNeue", size: 7)!)
         chartView.backgroundColor = UIColor.white
         setupChart(chartView, data: data1, color: .green)
+        setImage()
     }
-    
+    func setImage() {
+        let count = (viewModel.premiseData?.premisedailydata!.count)!
+        if isfrom == "OpenedAt" {
+            let image = viewModel.premiseData?.premisedailydata![count-1].opened_at_image
+            if image != "" {
+                imageView.backgroundColor = .clear
+                imageView.af.setImage(withURL: URL(string: image!)! )
+            } else {
+                imageView.backgroundColor = .blue
+            }
+        } else if isfrom == "FirstCustomer" {
+            let image = viewModel.premiseData?.premisedailydata![count-1].first_customer_image
+            if image != "" {
+                imageView.backgroundColor = .clear
+                imageView.af.setImage(withURL: URL(string: image!)! )
+            } else {
+                imageView.backgroundColor = .blue
+            }
+        } else if isfrom == "ClosedAt"{
+            let image = viewModel.premiseData?.premisedailydata![count-1].opened_at_image
+            if image != "" {
+                imageView.backgroundColor = .clear
+                imageView.af.setImage(withURL: URL(string: image!)! )
+            } else {
+                imageView.backgroundColor = .blue
+            }
+        }
+    }
     
     
     func convertDateToTimeStamp(Convertdate:String)-> Double{
@@ -289,12 +339,13 @@ class MaintainTimingViewController: UIViewController,ChartViewDelegate
     }
     func setTooltip()
     {
-        let marker = BalloonMarker(color: UIColor(white: 225/255, alpha: 1),
+        let marker = BalloonMarker(color: UIColor(white: 245/255, alpha: 1),
                                            font: .systemFont(ofSize: 12),
                                            textColor: .black,
-                                           insets: UIEdgeInsets(top: 8, left: 8, bottom: 20, right: 8))
+                                           insets: UIEdgeInsets(top: 8, left: 8, bottom:16, right: 8))
                 marker.chartView = chartView
-                marker.minimumSize = CGSize(width: 100, height: 80)
+        
+                marker.minimumSize = CGSize(width: 100, height: 60)
         marker.refreshContent(entry: selectedyValue, highlight: selectedxValue)
                 chartView.marker = marker
 

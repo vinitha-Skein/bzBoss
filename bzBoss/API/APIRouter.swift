@@ -19,7 +19,7 @@ enum APIRouter : URLRequestConvertible {
     // MARK: - HTTPMethod
     private var method : HTTPMethod{
         switch self{
-        case .registerUser,.loginUser,.shopDetails,.userConfig,.premisedata,.staffdetails,.individualstaffdetails,.contactUs,.knownVisitors:
+        case .registerUser,.loginUser,.shopDetails,.userConfig,.premisedata,.staffdetails,.individualstaffdetails,.contactUs,.knownVisitors,.individualKnownVisitorsdetails:
             return .post
 //        case .editFamilyMember,.editInsurance:
 //            return .put
