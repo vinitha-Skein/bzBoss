@@ -298,8 +298,9 @@ class graphViewController: UIViewController, ChartViewDelegate {
         arrayxString = allStaffDetails[selectedIndex].arrayXString
         arrayYaxisString = allStaffDetails[selectedIndex].arrayYString
         let url = allStaffDetails[selectedIndex].Image
-        if url != "" {
-            imageView.af.setImage(withURL: URL(string: url!)! )
+        let replace = url!.replacingOccurrences(of: " ", with: "%20")
+        if replace != "" {
+            imageView.af.setImage(withURL: URL(string: replace)! )
         }
         setAllValues()
     }

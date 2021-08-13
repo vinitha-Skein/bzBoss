@@ -107,8 +107,8 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource{
         cell.statusView.backgroundColor = shop?.getpremisecurrentstatus?.status != "Open" ? UIColor.red : UIColor(hexString: Colors.statusgreen)
         cell.statusLabel.text = shop?.getpremisecurrentstatus?.status
         let url = shop?.getpremisecurrentstatus?.image_filename
-            
-        cell.ShopImageView.af.setImage(withURL: URL(string: url!)! )
+        let replace = url!.replacingOccurrences(of: " ", with: "%20")
+        cell.ShopImageView.af.setImage(withURL: URL(string: replace)! )
 
         return cell
     }

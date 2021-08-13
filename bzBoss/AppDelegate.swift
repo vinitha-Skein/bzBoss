@@ -44,8 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        window?.rootViewController = navController
 //        window?.makeKeyAndVisible()
         
-//        gotoHome()
-        gotoOnboardingScreen()
+        gotoHome()
+//        gotoOnboardingScreen()
         return true
     }
     func gotoHome() {

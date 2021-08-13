@@ -378,8 +378,8 @@ class ShopDetailsViewController: UIViewController
         UserDefaults.standard.setValue(viewModel.shopdetailsData?.getcurrentstatus?.image_filename, forKey: "premiseImage")
         
         let url = viewModel.shopdetailsData?.getcurrentstatus?.image_filename
-        
-        premiseImage.af.setImage(withURL: URL(string: url!)! )
+        let replace = url!.replacingOccurrences(of: " ", with: "%20")
+        premiseImage.af.setImage(withURL: URL(string: replace)! )
         
         staffsgraph(target: staffTarget.text ?? "10")
         customersgraph(target: customersTarget.text ?? "10")

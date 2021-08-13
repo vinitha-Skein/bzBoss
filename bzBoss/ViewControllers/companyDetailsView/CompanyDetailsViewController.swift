@@ -57,8 +57,9 @@ class CompanyDetailsViewController: UIViewController {
             statusView.backgroundColor = UIColor(hexString: Colors.statusgreen)
         }
         let url = UserDefaults.standard.string(forKey: "premiseImage")
-        if url != "" {
-        companyimage.af.setImage(withURL: URL(string: url!)! )
+        let replace = url!.replacingOccurrences(of: " ", with: "%20")
+        if replace != "" {
+        companyimage.af.setImage(withURL: URL(string: replace)! )
         }
     }
 

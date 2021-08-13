@@ -7,6 +7,7 @@
 
 import UIKit
 import Charts
+import MonthYearPicker
 
 class MaintainTimingViewController: UIViewController,ChartViewDelegate
 {
@@ -36,22 +37,60 @@ class MaintainTimingViewController: UIViewController,ChartViewDelegate
     
     var arrayXaxisString = ["12/07", "13/07", "14/07", "15/07", "16/07"]
     var arrayYaxisString = [Double]()
+    
+    @IBOutlet weak var viewDatePopup: UIView!
+    
+    @IBOutlet weak var datePickerView: MonthYearPickerView!
+    
+    @IBOutlet weak var titleBarView: UIView!
+    
+    @IBOutlet weak var DoneButton: Mybutton!
+    
+    @IBOutlet weak var monthYearLabel: UILabel!
+    
+    @IBOutlet weak var monthDatePicker: UIButton!
+    
+    var pdfURL: URL!
+    var pdfDownloadDate = ""
+    var type = ""
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
         if isfrom == "OpenedAt" {
             titleLabel.text = "OPENED AT \(Time)"
+            type = "Opened_at"
         } else if isfrom == "FirstCustomer" {
             titleLabel.text = "FIRST CUSTOMER \(Time)"
+            type = "First_customer"
         } else if isfrom == "ClosedAt"{
             titleLabel.text = "CLOSED AT \(Time)"
+            type = "Closed_at"
         }
         setData()
         apiCall()
-
+        viewDatePopup.isHidden = true
+        pdfDownloadDate = todate()
         
     }
+    
+    @IBAction func monthDatePickerPressed(_ sender: Any) {
+        datePickerView.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
+        viewDatePopup.isHidden = false
+    }
+    
+    @IBAction func DownloadPdfPressed(_ sender: Any) {
+        self.activityIndicator(self.view, startAnimate: true)
+        let id =  UserDefaults.standard.string(forKey: "premiseID")!
+        guard let url = URL(string: "https://demo.emeetify.com:4500/api/user/pdfgraph?premise_id=\(id)&date=\(pdfDownloadDate)&type=\(type)") else { return }
+        
+        let urlSession = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())
+        
+        let downloadTask = urlSession.downloadTask(with: url)
+        downloadTask.resume()
+        
+    }
+    
     func setupChart(_ chart: LineChartView, data: LineChartData, color: UIColor)
     {
         
@@ -201,9 +240,10 @@ class MaintainTimingViewController: UIViewController,ChartViewDelegate
         imageView.layer.cornerRadius = 10
         imageView.layer.masksToBounds = true
         let url = UserDefaults.standard.string(forKey: "premiseImage")
-        if url != "" {
+        let replace = url!.replacingOccurrences(of: " ", with: "%20")
+        if replace != "" {
             premiseImage.backgroundColor = .clear
-            premiseImage.af.setImage(withURL: URL(string: url!)! )
+            premiseImage.af.setImage(withURL: URL(string: replace)! )
         } else {
             premiseImage.backgroundColor = .blue
         }
@@ -235,6 +275,12 @@ class MaintainTimingViewController: UIViewController,ChartViewDelegate
         let dateFormatter1 = DateFormatter()
         dateFormatter1.dateFormat = "yyyy-MM-dd"
         let prevDate = dateFormatter1.string(from: date3)
+        
+        let dateFormatter2 = DateFormatter()
+        dateFormatter2.dateFormat = "MMMM yyyy"
+        monthYearLabel.text = dateFormatter2.string(from: date3)
+        
+        
         return prevDate
     }
 
@@ -384,7 +430,83 @@ class MaintainTimingViewController: UIViewController,ChartViewDelegate
         return prevDate
     }
     
+    
+    
+    @IBAction func DoneButtonpressed(_ sender: Any) {
+        print(datePickerView.date)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        pdfDownloadDate = dateFormatter.string(from: datePickerView.date)
+        print(pdfDownloadDate)
+        
+        let dateFormatter1 = DateFormatter()
+        dateFormatter1.dateFormat = "MMMM yyyy"
+        monthYearLabel.text = dateFormatter1.string(from: datePickerView.date)
+        print(monthYearLabel.text)
+        viewDatePopup.isHidden = true
+    }
+    
+    @objc func dateChanged(_ picker: MonthYearPickerView) {
+        
+    }
+    
+    
+    func showDownloaded() {
+        let alert = UIAlertController.init(title: nil, message: "PDF Download Complete", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction.init(title: "View", style: .default, handler: { (action) in
+            
+            let storyboard = UIStoryboard(name: "Main1", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "PDFViewController") as! PDFViewController
+            vc.modalPresentationStyle = .fullScreen
+            vc.pdfURL = self.pdfURL
+            self.present(vc, animated: true, completion: nil)
+        }))
+        
+        alert.addAction(UIAlertAction.init(title: "Share", style: .cancel, handler: { (action) in
+            var filesToShare = [Any]()
+            filesToShare.append(self.pdfURL as Any)
+            let activityViewController = UIActivityViewController(activityItems: filesToShare, applicationActivities: nil)
+            self.present(activityViewController, animated: true, completion: nil)
+            
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+        
+        
+    }
+    
+    
+    
 }
 
     
-
+extension MaintainTimingViewController:  URLSessionDownloadDelegate {
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        print("downloadLocation:", location)
+        // create destination URL with the original pdf name
+        guard let url = downloadTask.originalRequest?.url else { return }
+        let documentsPath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+        let destinationURL = documentsPath.appendingPathComponent(url.lastPathComponent)
+        // delete original copy
+        try? FileManager.default.removeItem(at: destinationURL)
+        
+        // copy from temp to Document
+        do {
+            try FileManager.default.copyItem(at: location, to: destinationURL)
+            
+            self.pdfURL = destinationURL
+            DispatchQueue.main.async {
+                self.activityIndicator(self.view, startAnimate: false)
+                UIApplication.shared.endIgnoringInteractionEvents()
+                self.showDownloaded()
+            }
+            
+            
+        } catch let error {
+            self.activityIndicator(self.view, startAnimate: false)
+            UIApplication.shared.endIgnoringInteractionEvents()
+            print("Copy Error: \(error.localizedDescription)")
+        }
+    }
+}

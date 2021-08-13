@@ -18,6 +18,7 @@
 		1B3562C3268C270000BC0396 /* Pods_bzBoss.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D67CA8006710C10D6E8AB3D2 /* Pods_bzBoss.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1B358D5926AA9D750099BE49 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B358D5826AA9D750099BE49 /* HomeViewModel.swift */; };
 		1B358D5D26AA9E3A0099BE49 /* HomeListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B358D5C26AA9E3A0099BE49 /* HomeListModel.swift */; };
+		1B47D9F226C5614C00B067B8 /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B47D9F126C5614B00B067B8 /* PDFViewController.swift */; };
 		1B4DCCFB268AE56600D3710B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4DCCFA268AE56600D3710B /* AppDelegate.swift */; };
 		1B4DCCFF268AE56600D3710B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4DCCFE268AE56600D3710B /* ViewController.swift */; };
 		1B4DCD02268AE56600D3710B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B4DCD00268AE56600D3710B /* Main.storyboard */; };
@@ -117,6 +118,7 @@
 		1B356299268C249400BC0396 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		1B358D5826AA9D750099BE49 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		1B358D5C26AA9E3A0099BE49 /* HomeListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListModel.swift; sourceTree = "<group>"; };
+		1B47D9F126C5614B00B067B8 /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
 		1B4DCCF7268AE56600D3710B /* bzBoss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bzBoss.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B4DCCFA268AE56600D3710B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B4DCCFE268AE56600D3710B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				1BBF4436268F475A002367D9 /* sidemenu */,
 				1B35629E268C249A00BC0396 /* Onboarding */,
 				1B356298268C247100BC0396 /* Registration */,
+				1B47D9F126C5614B00B067B8 /* PDFViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -710,6 +713,7 @@
 				1B64A33C268D78E600159D98 /* Constants.swift in Sources */,
 				A76FBADE268EE35F00D8615F /* DatePickerViewController.swift in Sources */,
 				A70940A3269590BB00421C84 /* StaffCollectionViewCell.swift in Sources */,
+				1B47D9F226C5614C00B067B8 /* PDFViewController.swift in Sources */,
 				A762F27B268C8B760058EEEB /* SignInViewController.swift in Sources */,
 				A707C6F026982627007D50C1 /* SignInModel.swift in Sources */,
 				1BB95E282690BF5A0085CACF /* HomeViewController.swift in Sources */,
@@ -903,9 +907,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = /Users/vinitha/Documents/Skein/bzBoss/bzBossRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 66AXNRYMA4;
+				DEVELOPMENT_TEAM = 8D6QJ8FVC9;
 				INFOPLIST_FILE = bzBoss/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -926,10 +931,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = bzBoss/bzBossRelease.entitlements;
+				CODE_SIGN_ENTITLEMENTS = /Users/vinitha/Documents/Skein/bzBoss/bzBossRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 66AXNRYMA4;
+				DEVELOPMENT_TEAM = 8D6QJ8FVC9;
 				INFOPLIST_FILE = bzBoss/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
