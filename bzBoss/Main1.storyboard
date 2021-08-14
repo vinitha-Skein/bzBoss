@@ -1386,7 +1386,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BXR-ly-p7I">
-                                <rect key="frame" x="0.0" y="44" width="414" height="64"/>
+                                <rect key="frame" x="0.0" y="46" width="414" height="64"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DeG-bp-RXw">
                                         <rect key="frame" x="16" y="16" width="42" height="40"/>
@@ -1408,7 +1408,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mnk-fc-yaI" customClass="PDFView">
-                                <rect key="frame" x="0.0" y="108" width="414" height="754"/>
+                                <rect key="frame" x="0.0" y="110" width="414" height="752"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
@@ -1417,7 +1417,7 @@
                         <constraints>
                             <constraint firstItem="Mnk-fc-yaI" firstAttribute="leading" secondItem="Qfy-ne-kvg" secondAttribute="leading" id="3ET-Pn-qOT"/>
                             <constraint firstItem="Qfy-ne-kvg" firstAttribute="trailing" secondItem="Mnk-fc-yaI" secondAttribute="trailing" id="9zb-Zi-zW0"/>
-                            <constraint firstItem="BXR-ly-p7I" firstAttribute="top" secondItem="Qfy-ne-kvg" secondAttribute="top" id="Ets-MX-QsK"/>
+                            <constraint firstItem="BXR-ly-p7I" firstAttribute="top" secondItem="Qfy-ne-kvg" secondAttribute="top" constant="2" id="Ets-MX-QsK"/>
                             <constraint firstItem="Qfy-ne-kvg" firstAttribute="bottom" secondItem="Mnk-fc-yaI" secondAttribute="bottom" id="IgI-nm-cO9"/>
                             <constraint firstItem="Mnk-fc-yaI" firstAttribute="top" secondItem="BXR-ly-p7I" secondAttribute="bottom" id="YUo-Rv-iPh"/>
                             <constraint firstItem="BXR-ly-p7I" firstAttribute="leading" secondItem="Qfy-ne-kvg" secondAttribute="leading" id="dbk-Xk-FKe"/>
