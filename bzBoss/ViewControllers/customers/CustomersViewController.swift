@@ -372,7 +372,7 @@ extension CustomersViewController:  URLSessionDownloadDelegate {
         // create destination URL with the original pdf name
         guard let url = downloadTask.originalRequest?.url else { return }
         let documentsPath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
-        let destinationURL = documentsPath.appendingPathComponent(url.lastPathComponent)
+        let destinationURL = documentsPath.appendingPathComponent("pdfGraph.pdf")
         // delete original copy
         try? FileManager.default.removeItem(at: destinationURL)
         

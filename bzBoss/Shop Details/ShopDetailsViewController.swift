@@ -211,11 +211,12 @@ class ShopDetailsViewController: UIViewController
         print(params)
         viewModel.shopDetail(params: params)
         viewModel.shopdetailsfetchedSuccess =
-            {
+            { [self] in
                 self.activityIndicator(self.view, startAnimate: false)
                 self.setDatatoVariables()
                 self.filldata()
                 self.collectionview.reloadData()
+                print(self.viewModel.shopdetailsData?.userpremise?.opened_at)
             //UserDefaults.standard.set(true, forKey: "isLoggedIn"
         }
         viewModel.loadingStatus =

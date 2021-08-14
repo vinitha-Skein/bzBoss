@@ -1377,10 +1377,10 @@
             </objects>
             <point key="canvasLocation" x="-4946.376811594203" y="105.80357142857143"/>
         </scene>
-        <!--View Controller-->
+        <!--PDFViewController-->
         <scene sceneID="jFq-Lk-gn1">
             <objects>
-                <viewController storyboardIdentifier="PDFViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="byO-zj-O4b" customClass="PDFViewController" customModule="bzBoss" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PDFViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="byO-zj-O4b" userLabel="PDFViewController" customClass="PDFViewController" customModule="bzBoss" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="diX-ED-gdQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

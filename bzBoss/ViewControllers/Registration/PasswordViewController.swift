@@ -124,6 +124,7 @@ class PasswordViewController: UIViewController {
                     let storyboard = UIStoryboard(name: "Main1", bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
                     vc.modalPresentationStyle = .fullScreen
+                    
                     self.present(vc, animated: true, completion: nil)
             // Fallback on earlier versions
                 }
