@@ -14,6 +14,9 @@ class IndividualStaffViewController: UIViewController {
     @IBOutlet weak var staffLabel: UILabel!
     @IBOutlet weak var staffImage: UIImageView!
     
+    
+  
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()

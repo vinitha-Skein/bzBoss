@@ -7,6 +7,7 @@
 
 import UIKit
 import Charts
+import MonthYearPicker
 
 class graphViewController: UIViewController, ChartViewDelegate {
 
@@ -19,6 +20,7 @@ class graphViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var imageView: UIImageView!
     
     var arrayxString = ["12/07", "13/07", "14/07", "15/07", "16/07","17/07","18/07"]
+    var arrayX = ["12/07", "13/07", "14/07", "15/07", "16/07","17/07","18/07"]
     var value1 = [0,0,0,0,0,0,0]
     var value2 = [0,0,0,0,0,0,0]
     var value3 = [0,0,1,0,0,1,0]
@@ -51,6 +53,20 @@ class graphViewController: UIViewController, ChartViewDelegate {
     var selectedId = ""
     var selectedyValue = String()
     var selectedxValue = String()
+    
+    @IBOutlet weak var viewDatePopup: UIView!
+    
+    @IBOutlet weak var datePickerView: MonthYearPickerView!
+    
+    @IBOutlet weak var titleBarView: UIView!
+    
+    @IBOutlet weak var DoneButton: Mybutton!
+    
+    @IBOutlet weak var monthYearLabel: UILabel!
+    
+    @IBOutlet weak var monthDatePicker: UIButton!
+    var pdfURL: URL!
+    var pdfDownloadDate = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +81,9 @@ class graphViewController: UIViewController, ChartViewDelegate {
         selectedIndex = 0
         previousButton.isHidden = true
         print(time1)
+        
+        viewDatePopup.isHidden = true
+        pdfDownloadDate = todate()
         
         let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
         let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
@@ -237,7 +256,7 @@ class graphViewController: UIViewController, ChartViewDelegate {
     staffCount = viewModel.individualstaffdetails?.staffDetailsData?.count ?? 0
     collchaectioview.reloadData()
     let n = (viewModel.individualstaffdetails?.staffDetailsData!.count)!
-   
+    arrayX.removeAll()
     let count = 0..<n
     for numbers in count
     {
@@ -255,6 +274,7 @@ class graphViewController: UIViewController, ChartViewDelegate {
                     let dataStr = convertDateToTimeStamp(Convertdate:openAtTime[1])
                     arrayYaxisString.append(Double(dataStr))
             }
+            arrayX.append(openAtTime[0])
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "en_US_POSIX")
             dateFormatter.dateFormat = "yyyy-MM-d HH:mm:ss"
@@ -416,6 +436,12 @@ class graphViewController: UIViewController, ChartViewDelegate {
         let dateFormatter1 = DateFormatter()
         dateFormatter1.dateFormat = "yyyy-MM-dd"
         let prevDate = dateFormatter1.string(from: date3)
+        
+        
+        let dateFormatter2 = DateFormatter()
+        dateFormatter2.dateFormat = "MMMM yyyy"
+        monthYearLabel.text = dateFormatter2.string(from: date3)
+        
         return prevDate
     }
     func setTooltip()
@@ -440,10 +466,18 @@ class graphViewController: UIViewController, ChartViewDelegate {
         let isoDate = Constants.arrayXStringValues[xindex]
         selectedxValue = dateformatConvert(date: isoDate)
         
-        selectedDate = dateforSelectedDate(date: arrayxString[xindex])
+        selectedDate = dateforSelectedDate(date: arrayX[xindex])
         
-        let yInt = (entry.value(forKey: "y")!) as! Int
-        selectedyValue = String(yInt)
+        let timeResult = entry.y
+        let date1 = Date(timeIntervalSince1970: TimeInterval(timeResult))
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = DateFormatter.Style.medium //Set time style
+        // dateFormatter.dateStyle = DateFormatter.Style.medium //Set date style
+        dateFormatter.timeZone = .current
+        let localDate = dateFormatter.string(from: date1)
+        
+        selectedyValue = localDate
+        
         setTooltip()
     }
     func dateformatConvert(date:String) -> String
@@ -474,6 +508,73 @@ class graphViewController: UIViewController, ChartViewDelegate {
         return prevDate
         
     }
+    
+    
+    @IBAction func monthDatePickerPressed(_ sender: Any) {
+        datePickerView.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
+        viewDatePopup.isHidden = false
+    }
+    
+    
+    
+    @IBAction func DownloadPdfPressed(_ sender: Any) {
+        self.activityIndicator(self.view, startAnimate: true)
+        let id =  UserDefaults.standard.string(forKey: "premiseID")!
+        guard let url = URL(string: "https://demo.emeetify.com:4500/api/user/pdfgraph?premise_id=\(id)&date=\(pdfDownloadDate)&type=Ind-cust") else { return }
+        
+        let urlSession = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())
+        
+        let downloadTask = urlSession.downloadTask(with: url)
+        downloadTask.resume()
+        
+    }
+    
+    @IBAction func DoneButtonpressed(_ sender: Any) {
+        print(datePickerView.date)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        pdfDownloadDate = dateFormatter.string(from: datePickerView.date)
+        print(pdfDownloadDate)
+        
+        let dateFormatter1 = DateFormatter()
+        dateFormatter1.dateFormat = "MMMM yyyy"
+        monthYearLabel.text = dateFormatter1.string(from: datePickerView.date)
+        print(monthYearLabel.text)
+        viewDatePopup.isHidden = true
+    }
+    
+    @objc func dateChanged(_ picker: MonthYearPickerView) {
+        
+        
+    }
+    func showDownloaded() {
+        let alert = UIAlertController.init(title: nil, message: "PDF Download Complete", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction.init(title: "View", style: .default, handler: { (action) in
+            
+            let storyboard = UIStoryboard(name: "Main1", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "PDFViewController") as! PDFViewController
+            vc.modalPresentationStyle = .fullScreen
+            vc.pdfURL = self.pdfURL
+            self.present(vc, animated: true, completion: nil)
+        }))
+        
+        alert.addAction(UIAlertAction.init(title: "Share", style: .cancel, handler: { (action) in
+            var filesToShare = [Any]()
+            filesToShare.append(self.pdfURL as Any)
+            let activityViewController = UIActivityViewController(activityItems: filesToShare, applicationActivities: nil)
+            self.present(activityViewController, animated: true, completion: nil)
+            
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+        
+        
+    }
+    
+    
+    
+    
     
 
 }
@@ -514,3 +615,35 @@ extension graphViewController: UICollectionViewDelegate,UICollectionViewDataSour
     }
     
 }
+
+
+extension graphViewController:  URLSessionDownloadDelegate {
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        print("downloadLocation:", location)
+        // create destination URL with the original pdf name
+        guard let url = downloadTask.originalRequest?.url else { return }
+        let documentsPath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+        let destinationURL = documentsPath.appendingPathComponent(url.lastPathComponent)
+        // delete original copy
+        try? FileManager.default.removeItem(at: destinationURL)
+        
+        // copy from temp to Document
+        do {
+            try FileManager.default.copyItem(at: location, to: destinationURL)
+            
+            self.pdfURL = destinationURL
+            DispatchQueue.main.async {
+                self.activityIndicator(self.view, startAnimate: false)
+                UIApplication.shared.endIgnoringInteractionEvents()
+                self.showDownloaded()
+            }
+            
+            
+        } catch let error {
+            self.activityIndicator(self.view, startAnimate: false)
+            UIApplication.shared.endIgnoringInteractionEvents()
+            print("Copy Error: \(error.localizedDescription)")
+        }
+    }
+}
+

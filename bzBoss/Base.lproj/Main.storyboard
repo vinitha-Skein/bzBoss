@@ -1887,6 +1887,7 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbF-PN-LAq">
                                                         <rect key="frame" x="0.0" y="0.0" width="255" height="48"/>
                                                         <connections>
+                                                            <action selector="monthDatePickerPressed:" destination="coz-i6-qBF" eventType="touchUpInside" id="Dvy-A3-Rdj"/>
                                                             <action selector="monthDatePickerPressed:" destination="c39-c7-l1m" eventType="touchUpInside" id="aei-Xx-p1O"/>
                                                         </connections>
                                                     </button>
@@ -1928,6 +1929,7 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="DownloadPdfPressed:" destination="c39-c7-l1m" eventType="touchUpInside" id="KbL-ws-yp3"/>
+                                                    <action selector="DownloadPdfPressed:" destination="coz-i6-qBF" eventType="touchUpInside" id="dwd-f8-aof"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -2019,19 +2021,73 @@
                                             <action selector="back_pressed:" destination="coz-i6-qBF" eventType="touchUpInside" id="YMs-dH-GIS"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vbA-iQ-9Xu">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PhD-Z7-LvC" customClass="MonthYearPickerView" customModule="MonthYearPicker">
+                                                <rect key="frame" x="0.0" y="602" width="414" height="216"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="216" id="Z0x-qx-g2m"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z1L-4r-oPr">
+                                                <rect key="frame" x="0.0" y="542" width="414" height="60"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxu-Dq-8Hh" customClass="Mybutton" customModule="bzBoss" customModuleProvider="target">
+                                                        <rect key="frame" x="331" y="8" width="75" height="44"/>
+                                                        <color key="backgroundColor" red="0.95686274510000002" green="0.96422046419999996" blue="0.96074181800000003" alpha="0.54254929060000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="75" id="xDZ-7g-K67"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Done"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="DoneButtonpressed:" destination="coz-i6-qBF" eventType="touchUpInside" id="IEQ-nO-dNA"/>
+                                                            <action selector="DoneButtonpressed:" destination="c39-c7-l1m" eventType="touchUpInside" id="jxz-FP-HCI"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="oxu-Dq-8Hh" firstAttribute="top" secondItem="z1L-4r-oPr" secondAttribute="top" constant="8" id="RsR-k1-v8q"/>
+                                                    <constraint firstAttribute="bottom" secondItem="oxu-Dq-8Hh" secondAttribute="bottom" constant="8" id="emJ-Su-5kw"/>
+                                                    <constraint firstAttribute="trailing" secondItem="oxu-Dq-8Hh" secondAttribute="trailing" constant="8" id="qnP-0T-0Mu"/>
+                                                    <constraint firstAttribute="height" constant="60" id="yTl-K9-Bg5"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.3962747633" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="PhD-Z7-LvC" secondAttribute="trailing" id="2ro-Hv-VWg"/>
+                                            <constraint firstItem="z1L-4r-oPr" firstAttribute="leading" secondItem="vbA-iQ-9Xu" secondAttribute="leading" id="GYZ-H6-8rl"/>
+                                            <constraint firstItem="PhD-Z7-LvC" firstAttribute="leading" secondItem="vbA-iQ-9Xu" secondAttribute="leading" id="Le5-np-iYA"/>
+                                            <constraint firstAttribute="trailing" secondItem="z1L-4r-oPr" secondAttribute="trailing" id="ODy-YM-hVT"/>
+                                            <constraint firstItem="PhD-Z7-LvC" firstAttribute="top" secondItem="z1L-4r-oPr" secondAttribute="bottom" id="tou-YU-ScD"/>
+                                            <constraint firstAttribute="bottom" secondItem="PhD-Z7-LvC" secondAttribute="bottom" id="wFg-0A-lY0"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="J4c-oW-Wv4" firstAttribute="top" secondItem="bCH-FF-kDg" secondAttribute="bottom" constant="16" id="3TQ-Yg-rmS"/>
+                                    <constraint firstItem="vbA-iQ-9Xu" firstAttribute="top" secondItem="SsQ-3l-nhe" secondAttribute="top" id="AOo-qI-V1I"/>
+                                    <constraint firstItem="vbA-iQ-9Xu" firstAttribute="leading" secondItem="SsQ-3l-nhe" secondAttribute="leading" id="JOR-z7-a0u"/>
                                     <constraint firstItem="YQR-18-KbQ" firstAttribute="leading" secondItem="SsQ-3l-nhe" secondAttribute="leading" id="JVJ-zi-oYy"/>
                                     <constraint firstItem="bCH-FF-kDg" firstAttribute="top" secondItem="SsQ-3l-nhe" secondAttribute="top" constant="10" id="KoG-WG-LXZ"/>
                                     <constraint firstItem="bCH-FF-kDg" firstAttribute="leading" secondItem="SsQ-3l-nhe" secondAttribute="leading" constant="20" id="L6T-o6-7gi"/>
+                                    <constraint firstAttribute="trailing" secondItem="vbA-iQ-9Xu" secondAttribute="trailing" id="Rkf-HR-BIa"/>
                                     <constraint firstAttribute="trailing" secondItem="73T-nN-4gi" secondAttribute="trailing" id="TZ4-P1-WZn"/>
                                     <constraint firstAttribute="trailing" secondItem="J4c-oW-Wv4" secondAttribute="trailing" constant="16" id="Z80-tn-eGT"/>
                                     <constraint firstAttribute="bottom" secondItem="73T-nN-4gi" secondAttribute="bottom" id="hV5-Bm-lwT"/>
                                     <constraint firstItem="YQR-18-KbQ" firstAttribute="top" secondItem="J4c-oW-Wv4" secondAttribute="bottom" id="iij-mE-hMO"/>
                                     <constraint firstItem="73T-nN-4gi" firstAttribute="top" secondItem="SsQ-3l-nhe" secondAttribute="top" constant="50" id="lBF-A0-ynT"/>
                                     <constraint firstAttribute="bottom" secondItem="YQR-18-KbQ" secondAttribute="bottom" id="ljJ-g6-ndN"/>
+                                    <constraint firstAttribute="bottom" secondItem="vbA-iQ-9Xu" secondAttribute="bottom" id="mgm-5j-Fze"/>
                                     <constraint firstItem="J4c-oW-Wv4" firstAttribute="leading" secondItem="SsQ-3l-nhe" secondAttribute="leading" constant="16" id="mj1-Yb-y9T"/>
                                     <constraint firstAttribute="trailing" secondItem="YQR-18-KbQ" secondAttribute="trailing" id="ohX-89-qzn"/>
                                     <constraint firstItem="73T-nN-4gi" firstAttribute="leading" secondItem="SsQ-3l-nhe" secondAttribute="leading" id="woy-Wn-GOv"/>
@@ -2048,13 +2104,19 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="DoneButton" destination="oxu-Dq-8Hh" id="2Ay-hr-wlU"/>
                         <outlet property="GraphTitleLabel" destination="YkL-u1-siu" id="QrO-iz-bzw"/>
                         <outlet property="NextButton" destination="eFE-lo-JNC" id="ppF-hp-Kvx"/>
                         <outlet property="chartView" destination="3Fz-3L-bNX" id="IJJ-ek-9hO"/>
                         <outlet property="collchaectioview" destination="73T-nN-4gi" id="kdR-kS-xkI"/>
+                        <outlet property="datePickerView" destination="PhD-Z7-LvC" id="t7C-UG-C1D"/>
                         <outlet property="imageView" destination="UVb-fj-qzb" id="ZEM-pd-dxi"/>
                         <outlet property="mainView" destination="YQR-18-KbQ" id="vd5-z1-xPL"/>
+                        <outlet property="monthDatePicker" destination="zbF-PN-LAq" id="HXi-tE-nux"/>
+                        <outlet property="monthYearLabel" destination="K4t-zk-u0g" id="4FX-8O-gQo"/>
                         <outlet property="previousButton" destination="yI8-fX-RuJ" id="6tb-7i-tJo"/>
+                        <outlet property="titleBarView" destination="z1L-4r-oPr" id="C5E-BW-uvW"/>
+                        <outlet property="viewDatePopup" destination="vbA-iQ-9Xu" id="UKr-WT-D8m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b7C-XZ-fVH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3098,6 +3160,9 @@
         </designable>
         <designable name="Vic-Ow-Wxq">
             <size key="intrinsicContentSize" width="30" height="34"/>
+        </designable>
+        <designable name="oxu-Dq-8Hh">
+            <size key="intrinsicContentSize" width="37" height="30"/>
         </designable>
         <designable name="pbt-D8-B5b">
             <size key="intrinsicContentSize" width="30" height="34"/>
