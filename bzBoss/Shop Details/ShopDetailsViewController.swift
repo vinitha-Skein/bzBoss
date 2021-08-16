@@ -80,6 +80,10 @@ class ShopDetailsViewController: UIViewController
 //    var violet = UIColor(red: 166/255, green: 148/255, blue: 232/255, alpha: 1)
 
     var bgColors = [UIColor(red: 76/255, green: 192/255, blue: 166/255, alpha: 1),UIColor(red: 243/255, green: 118/255, blue: 108/255, alpha: 1),UIColor(red: 119/255, green: 177/255, blue: 223/255, alpha: 1),UIColor(red: 166/255, green: 148/255, blue: 232/255, alpha: 1),UIColor(red: 232/255, green: 158/255, blue: 82/255, alpha: 1),UIColor(red: 200/255, green: 132/255, blue: 140/255, alpha: 1)]
+    
+    @IBOutlet weak var collectionViewGrpahical: UICollectionView!
+    
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -91,6 +95,10 @@ class ShopDetailsViewController: UIViewController
         clockchange()
         viewAction()
 
+        collectionViewGrpahical.register(UINib(nibName: "TimingCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TimingCollectionViewCell")
+        collectionViewGrpahical.register(UINib(nibName: "PersonsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PersonsCollectionViewCell")
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -215,6 +223,7 @@ class ShopDetailsViewController: UIViewController
                 self.activityIndicator(self.view, startAnimate: false)
                 self.setDatatoVariables()
                 self.filldata()
+                self.setUserPremise()
                 self.collectionview.reloadData()
                 print(self.viewModel.shopdetailsData?.userpremise?.opened_at)
             //UserDefaults.standard.set(true, forKey: "isLoggedIn"
@@ -231,6 +240,36 @@ class ShopDetailsViewController: UIViewController
             }
         }
     
+    }
+    func setUserPremise() {
+        category.removeAll()
+        bgColors.removeAll()
+        
+        if self.viewModel.shopdetailsData?.userpremise?.opened_at! == "True" {
+            category.append("OPENED AT")
+            bgColors.append(UIColor(red: 76/255, green: 192/255, blue: 166/255, alpha: 1))
+        }
+        if self.viewModel.shopdetailsData?.userpremise?.first_customer! == "True" {
+            category.append("FIRST CUSTOMER")
+            bgColors.append(UIColor(red: 243/255, green: 118/255, blue: 108/255, alpha: 1))
+        }
+        if self.viewModel.shopdetailsData?.userpremise?.customer! == "True" {
+            category.append("CUSTOMERS")
+            bgColors.append(UIColor(red: 119/255, green: 177/255, blue: 223/255, alpha: 1))
+        }
+        if self.viewModel.shopdetailsData?.userpremise?.staff! == "True" {
+            category.append("STAFF")
+            bgColors.append(UIColor(red: 166/255, green: 148/255, blue: 232/255, alpha: 1))
+        }
+        if self.viewModel.shopdetailsData?.userpremise?.closed_at! == "True" {
+            category.append("CLOSED AT")
+            bgColors.append(UIColor(red: 232/255, green: 158/255, blue: 82/255, alpha: 1))
+        }
+        if self.viewModel.shopdetailsData?.userpremise?.visitors! == "True" {
+            category.append("KNOWN VISITORS")
+            bgColors.append(UIColor(red: 200/255, green: 132/255, blue: 140/255, alpha: 1))
+        }
+        collectionview.reloadData()
     }
     func userConfigApi()
     {
@@ -625,6 +664,8 @@ class ShopDetailsViewController: UIViewController
           collectionview.isHidden = true
           graphicalView.isHidden = false
         viewHeight.constant = 1137
+        collectionViewGrpahical.isHidden = false
+        collectionViewGrpahical.reloadData()
     }
 }
 extension ShopDetailsViewController:UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout
@@ -636,48 +677,114 @@ extension ShopDetailsViewController:UICollectionViewDelegate,UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShopDetailsCollectionViewCell", for: indexPath) as! ShopDetailsCollectionViewCell
+        if collectionView != collectionViewGrpahical {
+        let cell = collectionview.dequeueReusableCell(withReuseIdentifier: "ShopDetailsCollectionViewCell", for: indexPath) as! ShopDetailsCollectionViewCell
+            
         cell.sectionLabel.text = category[indexPath.row]
         cell.container.layer.cornerRadius = 10
         cell.container.backgroundColor = bgColors[indexPath.row]
-        
-        if (indexPath.row == 0)
-        {
+
+        if (category[indexPath.row] == "OPENED AT")     {
             cell.timeLabel.text = convertto12(time: openedat)
             cell.timeLabel.font = cell.timeLabel.font.withSize(28)
-
+            
         }
-        else if (indexPath.row == 1)
-        {
+        else if (category[indexPath.row] == "FIRST CUSTOMER")   {
             cell.timeLabel.text = convertto12(time: firstcustomer)
         }
-        else if (indexPath.row == 2)
-        {
+        else if (category[indexPath.row] == "CUSTOMERS")    {
             cell.timeLabel.text = "\(customers)"
             cell.timeLabel.font = cell.timeLabel.font.withSize(40)
         }
-        else if (indexPath.row == 3)
-        {
+        else if (category[indexPath.row] == "STAFF")    {
             cell.timeLabel.text = "\(staff)"
             cell.timeLabel.font = cell.timeLabel.font.withSize(40)
         }
-        else if (indexPath.row == 4)
-        {
+        else if (category[indexPath.row] == "CLOSED AT")    {
             cell.timeLabel.text = convertto12(time: closedat)
         }
-        else if (indexPath.row == 5)
-        {
+        else if (category[indexPath.row]  == "KNOWN VISITORS")  {
             cell.timeLabel.text = "\(knownVisitors)"
             cell.timeLabel.font = cell.timeLabel.font.withSize(40)
-
         }
-       
+        
         return cell
+        } else {
+            if (category[indexPath.row] == "OPENED AT") || (category[indexPath.row] == "FIRST CUSTOMER") || (category[indexPath.row] == "CLOSED AT") {
+            let cell = collectionViewGrpahical.dequeueReusableCell(withReuseIdentifier: "TimingCollectionViewCell", for: indexPath) as! TimingCollectionViewCell
+            
+            if (category[indexPath.row] == "OPENED AT")     {
+                cell.clock.hours = Int(converttohour(time: openedat)) ?? 12
+                cell.clock.minutes = Int(converttominute(time: openedat)) ?? 12
+                cell.timingLabel.text = convertto12(time: openedat)
+                cell.descriptionLabel.text = "Opened At"
+                cell.viewBAckground.backgroundColor = bgColors[indexPath.row]
+                cell.clock.reloadClock()
+            }
+            else if (category[indexPath.row] == "FIRST CUSTOMER")   {
+                cell.clock.hours = Int(converttohour(time: firstcustomer)) ?? 12
+                cell.clock.minutes = Int(converttominute(time: firstcustomer)) ?? 12
+                cell.descriptionLabel.text = "FIRST CUSTOMER"
+                cell.clock.reloadClock()
+                cell.viewBAckground.backgroundColor = bgColors[indexPath.row]
+                cell.timingLabel.text = convertto12(time: firstcustomer)
+            }
+            else {
+                cell.clock.hours = Int(converttohour(time:closedat)) ?? 12
+                cell.clock.minutes = Int(converttominute(time: closedat)) ?? 12
+                cell.descriptionLabel.text = "CLOSED AT"
+                cell.clock.reloadClock()
+                cell.viewBAckground.backgroundColor = bgColors[indexPath.row]
+                cell.timingLabel.text = convertto12(time: closedat)
+            }
+            
+            return cell
+            } else {
+                let cell = collectionViewGrpahical.dequeueReusableCell(withReuseIdentifier: "PersonsCollectionViewCell", for: indexPath) as! PersonsCollectionViewCell
+                cell.viewBackGround.backgroundColor = bgColors[indexPath.row]
+                
+              if (category[indexPath.row] == "CUSTOMERS") {
+                cell.donutViewCahrt.goal = Int(customersTarget.text!) ?? 10
+                cell.donutViewCahrt.progress = customers
+                cell.personsLabel.text = "Customers"
+                cell.targetValueLabel.text = customersTarget.text!
+                cell.targetLabel.text = "Target"
+                cell.visitLabel.text = "\(customers)"
+                cell.donutViewCahrt.progressColor = UIColor(red: 0.13, green: 0.37, blue: 0.57, alpha: 1.00)
+                cell.donutViewCahrt.reloadInputViews()
+              } else if (category[indexPath.row] == "STAFF") {
+                cell.donutViewCahrt.goal = Int(staffTarget.text!) ?? 10
+                cell.donutViewCahrt.progress = staff
+                cell.personsLabel.text = "Staff"
+                cell.visitLabel.text = "\(staff)"
+                cell.targetValueLabel.text = staffTarget.text!
+                cell.targetLabel.text = "Max"
+                cell.donutViewCahrt.progressColor = UIColor(red: 0.45, green: 0.34, blue: 0.86, alpha: 1.00)
+                cell.donutViewCahrt.reloadInputViews()
+              } else {
+                cell.donutViewCahrt.goal = Int(visitorsTarget.text!) ?? 10
+                cell.donutViewCahrt.progress = knownVisitors
+                cell.personsLabel.text = "known\nVisitors"
+                cell.targetValueLabel.text = visitorsTarget.text!
+                cell.targetLabel.text = "Max"
+                cell.donutViewCahrt.progressColor = UIColor(red: 0.42, green: 0.18, blue: 0.21, alpha: 1.00)
+                cell.visitLabel.text = "\(knownVisitors)"
+                cell.donutViewCahrt.reloadInputViews()
+              }
+                return cell
+                
+            }
+        }
+        
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
-        var width = collectionView.frame.width/2 - 10
-        return CGSize(width: width, height: 140)
+        let width = collectionView.frame.width/2 - 10
+        var height1 = CGFloat(140)
+        if collectionView == collectionViewGrpahical {
+         height1 = CGFloat(230)
+        }
+        return CGSize(width: width, height: height1)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row == 0 {

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B14F35B26C907CD00F7D240 /* TimingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B14F35926C907CD00F7D240 /* TimingCollectionViewCell.swift */; };
+		1B14F35C26C907CD00F7D240 /* TimingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B14F35A26C907CD00F7D240 /* TimingCollectionViewCell.xib */; };
+		1B14F36126CA2C0B00F7D240 /* PersonsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B14F35F26CA2C0A00F7D240 /* PersonsCollectionViewCell.swift */; };
+		1B14F36226CA2C0B00F7D240 /* PersonsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B14F36026CA2C0B00F7D240 /* PersonsCollectionViewCell.xib */; };
 		1B196FEE26ABD35400E9CD67 /* ContactUsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B196FED26ABD35400E9CD67 /* ContactUsViewModel.swift */; };
 		1B196FF826AC4BCF00E9CD67 /* contactUSModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B196FF726AC4BCF00E9CD67 /* contactUSModel.swift */; };
 		1B22B98D26A071F5006B4AED /* CustomersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B22B98C26A071F5006B4AED /* CustomersViewController.swift */; };
@@ -109,6 +113,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1B14F35926C907CD00F7D240 /* TimingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimingCollectionViewCell.swift; sourceTree = "<group>"; };
+		1B14F35A26C907CD00F7D240 /* TimingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimingCollectionViewCell.xib; sourceTree = "<group>"; };
+		1B14F35F26CA2C0A00F7D240 /* PersonsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsCollectionViewCell.swift; sourceTree = "<group>"; };
+		1B14F36026CA2C0B00F7D240 /* PersonsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonsCollectionViewCell.xib; sourceTree = "<group>"; };
 		1B196FED26ABD35400E9CD67 /* ContactUsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewModel.swift; sourceTree = "<group>"; };
 		1B196FF726AC4BCF00E9CD67 /* contactUSModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contactUSModel.swift; sourceTree = "<group>"; };
 		1B22B98C26A071F5006B4AED /* CustomersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomersViewController.swift; sourceTree = "<group>"; };
@@ -491,6 +499,10 @@
 				A7DDFAB9268DD9F600D639B0 /* ShopDetailsCollectionViewCell.swift */,
 				A76FBADD268EE35F00D8615F /* DatePickerViewController.swift */,
 				A7D72D7B269985EE00495013 /* ShopdetailsViewModel.swift */,
+				1B14F35926C907CD00F7D240 /* TimingCollectionViewCell.swift */,
+				1B14F35A26C907CD00F7D240 /* TimingCollectionViewCell.xib */,
+				1B14F35F26CA2C0A00F7D240 /* PersonsCollectionViewCell.swift */,
+				1B14F36026CA2C0B00F7D240 /* PersonsCollectionViewCell.xib */,
 			);
 			path = "Shop Details";
 			sourceTree = "<group>";
@@ -605,6 +617,8 @@
 				1B4DCD31268AF34000D3710B /* Main1.storyboard in Resources */,
 				A7DDFA77268D825300D639B0 /* GoogleService-Info.plist in Resources */,
 				A7B04B8E26941231004D88CF /* Colors.xcassets in Resources */,
+				1B14F35C26C907CD00F7D240 /* TimingCollectionViewCell.xib in Resources */,
+				1B14F36226CA2C0B00F7D240 /* PersonsCollectionViewCell.xib in Resources */,
 				1B4DCD07268AE56B00D3710B /* Assets.xcassets in Resources */,
 				1BB95EE426931FBF0085CACF /* PhotoPreview.storyboard in Resources */,
 				1B4DCD02268AE56600D3710B /* Main.storyboard in Resources */,
@@ -700,6 +714,7 @@
 				1B356288268C23E400BC0396 /* OnboardingCollectionViewCell.swift in Sources */,
 				1B35629A268C249400BC0396 /* SignUpViewController.swift in Sources */,
 				A7BA6FA026985AAB00BD17C3 /* Extension.swift in Sources */,
+				1B14F35B26C907CD00F7D240 /* TimingCollectionViewCell.swift in Sources */,
 				A7FE3A0526A6A2B40023E538 /* testCollectionViewCell.swift in Sources */,
 				A7ABA74926B1580E0093B1A4 /* BalloonMarker.swift in Sources */,
 				A7FE3A2A26A6D92E0023E538 /* StaffDetailsViewModel.swift in Sources */,
@@ -726,6 +741,7 @@
 				A7FE3A1F26A6D7CC0023E538 /* StaffdetailsModel.swift in Sources */,
 				A72EC81A26970F450034AA34 /* IndividualStaffViewController.swift in Sources */,
 				A7FE3A1226A6D61B0023E538 /* IndividualStaffModel.swift in Sources */,
+				1B14F36126CA2C0B00F7D240 /* PersonsCollectionViewCell.swift in Sources */,
 				1B358D5926AA9D750099BE49 /* HomeViewModel.swift in Sources */,
 				A7DDFABA268DD9F600D639B0 /* ShopDetailsCollectionViewCell.swift in Sources */,
 				A7DDFAB4268DD99400D639B0 /* ShopDetailsViewController.swift in Sources */,

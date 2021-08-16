@@ -2348,7 +2348,7 @@
                                                             <constraint firstAttribute="width" constant="20" id="xBd-pz-NDj"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wYo-Sz-sDH">
+                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wYo-Sz-sDH">
                                                         <rect key="frame" x="20" y="123" width="374" height="729"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mrA-Qa-10j">
@@ -2919,12 +2919,31 @@
                                                                     </view>
                                                                 </subviews>
                                                             </stackView>
+                                                            <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Df9-Ql-Bgi">
+                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="729"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bWC-Eg-g5D">
+                                                                    <size key="itemSize" width="128" height="128"/>
+                                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                                </collectionViewFlowLayout>
+                                                                <cells/>
+                                                                <connections>
+                                                                    <outlet property="dataSource" destination="gMQ-Zt-Y2i" id="mqC-Cs-GVv"/>
+                                                                    <outlet property="delegate" destination="gMQ-Zt-Y2i" id="eXe-iA-Ji8"/>
+                                                                </connections>
+                                                            </collectionView>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstItem="mrA-Qa-10j" firstAttribute="leading" secondItem="wYo-Sz-sDH" secondAttribute="leading" id="4QB-sD-zgf"/>
+                                                            <constraint firstAttribute="bottom" secondItem="Df9-Ql-Bgi" secondAttribute="bottom" id="AIA-TX-EI2"/>
+                                                            <constraint firstItem="Df9-Ql-Bgi" firstAttribute="top" secondItem="wYo-Sz-sDH" secondAttribute="top" id="Azm-SS-DBx"/>
                                                             <constraint firstItem="mrA-Qa-10j" firstAttribute="top" secondItem="wYo-Sz-sDH" secondAttribute="top" id="GPF-ur-vCp"/>
+                                                            <constraint firstItem="Df9-Ql-Bgi" firstAttribute="leading" secondItem="wYo-Sz-sDH" secondAttribute="leading" id="Wub-W3-Lb6"/>
                                                             <constraint firstAttribute="trailing" secondItem="mrA-Qa-10j" secondAttribute="trailing" id="X6U-Uq-ppP"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Df9-Ql-Bgi" secondAttribute="trailing" id="q3D-Nl-28G"/>
                                                             <constraint firstAttribute="bottom" secondItem="mrA-Qa-10j" secondAttribute="bottom" id="rIg-RY-sC7"/>
                                                             <constraint firstAttribute="height" constant="729" id="x2n-TG-Tqd"/>
                                                         </constraints>
@@ -3094,6 +3113,7 @@
                         <outlet property="closedAtTimeLabel" destination="csz-1f-Ifh" id="6Qz-hT-d3u"/>
                         <outlet property="closedatClock" destination="hRN-fw-vyc" id="PrB-yD-GeN"/>
                         <outlet property="closedatView" destination="vQz-pU-7O1" id="CAC-Hq-1u4"/>
+                        <outlet property="collectionViewGrpahical" destination="Df9-Ql-Bgi" id="qwH-22-oRk"/>
                         <outlet property="collectionview" destination="2W2-8X-pzj" id="jwV-eQ-G0Q"/>
                         <outlet property="cuctomersLabel" destination="Sef-wD-Rsc" id="5zc-ev-CEw"/>
                         <outlet property="customersChart" destination="uwd-YN-s9n" id="ixt-zU-WEz"/>
