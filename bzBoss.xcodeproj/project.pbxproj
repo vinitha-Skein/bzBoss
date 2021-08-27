@@ -520,6 +520,7 @@
 				1B4DCCF5268AE56600D3710B /* Resources */,
 				515159644197243F7A5043F4 /* [CP] Embed Pods Frameworks */,
 				1B3562C4268C270000BC0396 /* Embed Frameworks */,
+				1B38FA8926D79B78009F3F57 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -642,6 +643,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1B38FA8926D79B78009F3F57 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+		};
 		515159644197243F7A5043F4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 12;
@@ -926,7 +946,9 @@
 				CODE_SIGN_ENTITLEMENTS = /Users/vinitha/Documents/Skein/bzBoss/bzBossRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8D6QJ8FVC9;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = bzBoss/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -951,6 +973,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8D6QJ8FVC9;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = bzBoss/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (

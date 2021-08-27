@@ -25,6 +25,7 @@ class HomeViewController: UIViewController
     }
     override func viewWillAppear(_ animated: Bool)
     {
+        UserDefaults.standard.setValue(true, forKey: "IS_LOGGED_IN")
         companytableview.tableFooterView = MyUIView()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }

@@ -44,8 +44,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        window?.rootViewController = navController
 //        window?.makeKeyAndVisible()
         
+        if UserDefaults.standard.bool(forKey: "IS_LOGGED_IN"){
         gotoHome()
-//        gotoOnboardingScreen()
+        } else {
+        gotoOnboardingScreen()
+        }
         return true
     }
     func gotoHome() {

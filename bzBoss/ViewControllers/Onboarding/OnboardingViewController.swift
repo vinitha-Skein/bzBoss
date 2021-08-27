@@ -21,6 +21,7 @@ class OnboardingViewController: UIViewController,UIScrollViewDelegate{
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        UserDefaults.standard.setValue(false, forKey: "IS_LOGGED_IN")
     }
     @objc func scrollToNextCell(){
         

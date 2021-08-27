@@ -18,5 +18,7 @@ pod 'CryptoSwift', '~> 0.15.0'
 pod 'Charts'
 pod 'PKHUD'
 pod "MonthYearPicker", '~> 4.0.2'
+pod 'Firebase/Crashlytics'
+
 end
 

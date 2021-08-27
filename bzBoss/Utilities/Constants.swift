@@ -5,6 +5,7 @@ struct DataService
 {
     static let productionBaseURL = ""
     static let developmentBaseURL = "https://demo.emeetify.com:4500/api/"
+//    static let developmentBaseURL = "https://theadeptz.com/bzBoss/public/api/"
     static let Terms_Condition = "https://theadeptz.com/bzBoss/public/term/condition"
     static let Privacy_policy = "https://theadeptz.com/bzBoss/public/privecy/policy"
     static let About_us = "https://theadeptz.com/bzBoss/public/about/us"

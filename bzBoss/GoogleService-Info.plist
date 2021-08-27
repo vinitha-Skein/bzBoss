@@ -3,21 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>513256632782-t5tkg21h6mmqirl8tsqb1p0ro92npcbp.apps.googleusercontent.com</string>
+	<string>309944173023-v8rp9u5ronum5c5uv0r4mqbgamjag0g6.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.513256632782-t5tkg21h6mmqirl8tsqb1p0ro92npcbp</string>
+	<string>com.googleusercontent.apps.309944173023-v8rp9u5ronum5c5uv0r4mqbgamjag0g6</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>309944173023-ieoi19q545i6l7dsqn3mou5eig5jic8a.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyD_zkJNqGmKiaSga1etZpyMAa00t7K8TXU</string>
+	<string>AIzaSyBPmW2f4QcZKTRrdtRZn8DUtSWYs0erqiA</string>
 	<key>GCM_SENDER_ID</key>
-	<string>513256632782</string>
+	<string>309944173023</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.skeintech.bzBoss</string>
 	<key>PROJECT_ID</key>
-	<string>bzbossauth</string>
+	<string>bzboss</string>
 	<key>STORAGE_BUCKET</key>
-	<string>bzbossauth.appspot.com</string>
+	<string>bzboss.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:513256632782:ios:f2e3c5105ff51968997b9f</string>
+	<string>1:309944173023:ios:9b4ac65ed630390148446a</string>
 </dict>
 </plist>
