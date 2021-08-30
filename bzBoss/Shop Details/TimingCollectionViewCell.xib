@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="216" height="226"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Chr-fb-JLX">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Chr-fb-JLX" customClass="MyUIView" customModule="bzBoss" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="216" height="226"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mLL-la-fNJ" customClass="Mybutton" customModule="bzBoss" customModuleProvider="target">
@@ -116,6 +116,11 @@
                                     <constraint firstItem="5rG-ng-4A2" firstAttribute="centerX" secondItem="mLL-la-fNJ" secondAttribute="centerX" id="YJx-zk-Euk"/>
                                     <constraint firstItem="beq-cs-w2d" firstAttribute="top" secondItem="5rG-ng-4A2" secondAttribute="bottom" constant="20" id="mn0-z5-MaJ"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -125,6 +130,11 @@
                             <constraint firstAttribute="bottom" secondItem="mLL-la-fNJ" secondAttribute="bottom" id="jtf-Y6-LO8"/>
                             <constraint firstAttribute="trailing" secondItem="mLL-la-fNJ" secondAttribute="trailing" id="pJJ-It-Pug"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
             </view>

@@ -779,7 +779,7 @@ extension ShopDetailsViewController:UICollectionViewDelegate,UICollectionViewDat
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
-        let width = collectionView.frame.width/2 - 10
+        let width = collectionView.frame.width - 10
         var height1 = CGFloat(140)
         if collectionView == collectionViewGrpahical {
          height1 = CGFloat(230)
