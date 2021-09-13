@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>309944173023-v8rp9u5ronum5c5uv0r4mqbgamjag0g6.apps.googleusercontent.com</string>
+	<string>309944173023-keidkft8smi6l10vgb6rcv1vm4ik5l0k.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.309944173023-v8rp9u5ronum5c5uv0r4mqbgamjag0g6</string>
+	<string>com.googleusercontent.apps.309944173023-keidkft8smi6l10vgb6rcv1vm4ik5l0k</string>
 	<key>ANDROID_CLIENT_ID</key>
 	<string>309944173023-ieoi19q545i6l7dsqn3mou5eig5jic8a.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
@@ -15,22 +15,22 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.skeintech.bzBoss</string>
+	<string>com.theadeptz.bzboss</string>
 	<key>PROJECT_ID</key>
 	<string>bzboss</string>
 	<key>STORAGE_BUCKET</key>
 	<string>bzboss.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:309944173023:ios:9b4ac65ed630390148446a</string>
+	<string>1:309944173023:ios:576a210c48c2a3bc48446a</string>
 </dict>
 </plist>

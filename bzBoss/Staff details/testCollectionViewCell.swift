@@ -44,6 +44,9 @@ class testCollectionViewCell: UICollectionViewCell, ChartViewDelegate {
         chart.xAxis.labelPosition = .bottom
         chart.xAxis.labelHeight = 21.0
         
+        chart.leftAxis.labelTextColor = .black
+        chart.xAxis.labelTextColor = .black
+        
         chart.xAxis.valueFormatter = XAxisNameFormater()
         chart.xAxis.labelCount = arrayxString.count
         chart.xAxis.granularity = 1.0

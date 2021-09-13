@@ -71,7 +71,7 @@ class CustomersViewController: UIViewController, ChartViewDelegate {
     @IBAction func DownloadPdfPressed(_ sender: Any) {
         self.activityIndicator(self.view, startAnimate: true)
         let id =  UserDefaults.standard.string(forKey: "premiseID")!
-        guard let url = URL(string: "https://demo.emeetify.com:4500/api/user/pdfgraph?premise_id=\(id)&date=\(pdfDownloadDate)&type=Ind-cust") else { return }
+        guard let url = URL(string: "https://theadeptz.com/bzBoss/public/api/user/pdfgraph?premise_id=\(id)&date=\(pdfDownloadDate)&type=Ind-cust") else { return }
 
         let urlSession = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())
 
@@ -154,6 +154,9 @@ class CustomersViewController: UIViewController, ChartViewDelegate {
         chart.xAxis.enabled = true
         chart.xAxis.labelPosition = .bottom
         chart.xAxis.labelHeight = 21.0
+        
+        chart.leftAxis.labelTextColor = .black
+        chart.xAxis.labelTextColor = .black
         
         chart.xAxis.valueFormatter = XAxisNameFormater()
         chart.xAxis.labelCount = arrayXaxisString.count

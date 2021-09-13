@@ -480,7 +480,7 @@ class ShopDetailsViewController: UIViewController
         visitorsChartView.layer.cornerRadius = 5
         //scrollView.isHidden = true
         graphicalView.isHidden = true
-        viewHeight.constant = 860
+        viewHeight.constant = 1200
         //openedatView.layer.borderColor = UIColor.black.cgColor
         openedatView.layer.borderWidth = 0.5
         openedatView.layer.cornerRadius = 5
@@ -652,7 +652,7 @@ class ShopDetailsViewController: UIViewController
 //        graphicalButton.setTitleColor(UIColor.black, for: .normal)
           collectionview.isHidden = false
           graphicalView.isHidden = true
-          viewHeight.constant = 860
+          viewHeight.constant = 1200
     }
     func graphicalUI()
     {
